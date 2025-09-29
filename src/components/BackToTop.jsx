@@ -18,12 +18,10 @@ export default function BackToTop({ theme }) {
         return () => window.removeEventListener('scroll', toggleVisibility);
     }, []);
 
-    // Scroll to top smoothly
+    // Scroll to top smoothly - works with SmoothScroll
     const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        // Use the same method as SmoothScroll's anchor link handling
+        window.scrollTo(0, 0);
     };
 
     return (
