@@ -288,8 +288,10 @@ hr {
         font-size: 1rem;
     }
     .description-quote {
-        padding-top: 4%;
+        font-family: 'Boska-Variable', sans-serif;
         font-size: 2rem;
+        font-variation-settings: 'wght' 300;
+        padding-top: 4%;
     }
 
     .progress {
