@@ -86,13 +86,20 @@ export default function SmoothScroll({ children }) {
     };
     document.addEventListener("click", handleAnchorClick);
 
+    // Handle back to top functionality
+    const handleScrollToTop = () => {
+      targetScrollY = 0; // let inertia loop glide to top
+    };
+    window.addEventListener("scrollToTop", handleScrollToTop);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       resizeObserver.disconnect();
       ScrollTrigger.removeEventListener("refresh", setHeight);
       document.removeEventListener("click", handleAnchorClick);
+      window.removeEventListener("scrollToTop", handleScrollToTop);
     };
   }, []);
 
-  return <div ref={containerRef}>{children}</div>;
+  return <div ref={containerRef} data-smooth-scroll>{children}</div>;
 }
