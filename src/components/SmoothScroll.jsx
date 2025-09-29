@@ -9,7 +9,16 @@ export default function SmoothScroll({ children }) {
 
   useEffect(() => {
     const container = containerRef.current;
+    
+    // Detect if device is mobile
+    const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // On mobile, just return children without smooth scroll
+      return;
+    }
 
+    // Desktop smooth scroll implementation
     // Make container fixed so we can move it
     gsap.set(container, { position: "fixed", top: 0, left: 0, width: "100%" });
 
