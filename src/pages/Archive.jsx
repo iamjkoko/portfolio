@@ -1,6 +1,6 @@
 import React from 'react';
 import '../global.css';
-import styles from '../styles/Archive.module.css';
+import styles from '../styles/archive.module.css';
 
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
