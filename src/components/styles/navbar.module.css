@@ -1,0 +1,273 @@
+.navbarParent {
+    position: fixed;
+    display: flex;
+    top: 0px;
+    width: 100%;
+    z-index: 1001;
+}
+
+.navbar {
+    position: sticky;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: transparent;
+    z-index: 1001;
+}
+
+.navbarParent:global(.light) .navbar {
+    background-color: white; 
+    border-bottom: 1px solid #f0f0f0;
+}
+.navbarParent:global(.dark) .navbar {
+    background-color: black;
+    border-bottom: 1px solid #262626;
+}
+
+.navbar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: none; 
+}
+.navbar li {
+    margin-left: 30px;
+}
+.navbar li a {
+    font-size: 35px;
+    font-weight: 1000;
+    text-decoration: none;
+    opacity: 0.2;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.navbarParent:global(.dark) .navbar li a {
+    color: white;
+}
+.navbarParent:global(.light) .navbar li a {
+    color: black;
+}
+
+.navbar a:hover {
+    opacity: 1;
+}
+.navbar li a.active {
+    opacity: 1;
+}
+.navbar .logo {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 0 0 30px;
+    opacity: 1;
+    transition: none;
+    transform: none;
+}
+.navbar .logo a {
+    display: block;
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+.navbar .logo a:hover {
+    transform-origin: center;
+    transform: rotate(-0.25turn);
+}
+.navbar .logo img {
+    height: 40px;
+    width: 40px;
+}
+
+@media (max-width: 935px) {
+    .navbarParent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 20px;
+    }
+    .navbarParent:global(.dark) {
+        background-color: black;
+        border-bottom: 1px solid #454545;
+    }
+    .navbarParent:global(.light) {
+        background-color: white;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .navbar {
+        display: none;
+    }
+    .hamburgerMenu {
+        font-size: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1002;
+        padding: 0;
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+    }
+    
+    .hamburgerLine {
+        width: 100%;
+        height: 3px;
+        background-color: currentColor;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+    
+    /* Hamburger animation to X */
+    .hamburgerMenu:global(.active) .hamburgerLine:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .hamburgerMenu:global(.active) .hamburgerLine:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+    }
+    
+    .hamburgerMenu:global(.active) .hamburgerLine:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Hover effects */
+    .hamburgerMenu:hover {
+        transform: scale(1.1);
+    }
+    
+    .hamburgerMenu:hover .hamburgerLine {
+        background-color: currentColor;
+    }
+    .navbarParent:global(.dark) .hamburgerMenu {
+        color: white;
+    }
+    .navbarParent:global(.light) .hamburgerMenu {
+        color: black;
+    }
+    .dropdown {
+        position: relative;
+    }
+    .dropdownContent {
+        display: block;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        border: 1px solid;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .dropdownContent:global(.show) {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    
+    .navbarParent:global(.dark) .dropdownContent {
+        background-color: black;
+        border-color: #454545;
+    }
+    .navbarParent:global(.light) .dropdownContent {
+        background-color: white;
+        border-color: #f0f0f0;
+    }
+    .dropdownItem {
+        border-bottom: 1px solid;
+        padding: 6% 8%;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+    }
+    
+    .dropdownContent:global(.show) .dropdownItem:nth-child(1) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.1s;
+    }
+    
+    .dropdownContent:global(.show) .dropdownItem:nth-child(2) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.15s;
+    }
+    
+    .dropdownContent:global(.show) .dropdownItem:nth-child(3) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.2s;
+    }
+    
+    .dropdownContent:global(.show) .dropdownItem:nth-child(4) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.25s;
+    }
+    
+    .dropdownContent:global(.show) .dropdownItem:nth-child(5) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.3s;
+    }
+    
+    
+    .dropdownItem:last-child {
+        border-bottom: none;
+    }
+    
+    .navbarParent:global(.dark) .dropdownItem {
+        border-color: #454545;
+    }
+    .navbarParent:global(.light) .dropdownItem {
+        border-color: #e7e7e7;
+    }
+    
+    .dropdownContent a {
+        text-decoration: none;
+        display: block;
+        font-size: 2rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .dropdownContent a:hover {
+        transform: scale(1.05);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbarParent:global(.dark) .dropdownContent a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbarParent:global(.light) .dropdownContent a:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .navbarParent:global(.dark) .dropdownContent a {
+        color: white;
+    }
+    .navbarParent:global(.light) .dropdownContent a {
+        color: black;
+    }
+    
+}
+    
+@media (min-width: 935px) {
+    .dropdown {
+        display: none; 
+    }
+}

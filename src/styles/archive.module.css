@@ -1,0 +1,56 @@
+.archive {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+  }
+    .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; 
+    justify-content: center;
+    margin: 0 auto; 
+    overflow: hidden;
+    padding: 0 3rem;
+    }
+    .project {
+      overflow: hidden;
+    }
+    .thumbnail {
+      max-width: 810px;
+      max-height: 540px;
+      width: 100%; /* Makes it responsive */
+      height: auto; /* Maintains aspect ratio */
+      overflow: hidden;
+      object-fit: cover;
+    }
+    .thumbnail img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.2s ease-in-out;
+    }
+    .thumbnail:hover img {
+      transform: scale(1.1);
+    }
+    @media (max-width: 935px) {
+      .archive {
+        padding-top: 40px;
+        padding-bottom: 5px;
+      }
+      .gallery {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      .thumbnail {
+        max-width: 750px;
+        max-height: 500px;
+        width: 100%; /* Makes it responsive */
+        height: auto; /* Maintains aspect ratio */
+        overflow: hidden;
+      }
+      }

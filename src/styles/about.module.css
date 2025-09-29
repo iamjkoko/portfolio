@@ -1,0 +1,103 @@
+.aboutPage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    background-color: white;
+  }
+  
+  .aboutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .profileImage {
+    max-width: 480px;
+    max-height: 640px;
+    margin-right: 5%;
+    border-radius: 8px;
+  }
+  
+  .description {
+    max-width: 720px;
+  }
+  
+  .description h6 {
+    font-weight: 350;
+    font-size: 1rem;
+  }
+  
+  .description h6 strong {
+    font-weight: 600;
+  }
+  
+  .description p {
+    font-weight: 350;
+    font-size: 0.9rem;
+  }
+  
+  .description img {
+    max-width: 240px;
+    padding-top: 3%;
+  }
+  
+  .socials {
+    display: flex;
+    gap: 10px;
+    padding-top: 3%;
+    justify-content: left;
+  }
+  
+  .socials img {
+    max-width: 1.375rem;
+    max-height: 1.375rem;
+  }
+  
+  @media (max-width: 935px) {
+    .aboutPage {
+      margin-top: 20%;
+    }
+    .aboutContainer {
+      flex-direction: column;
+    }
+    .profileImage {
+      margin-right: 0;
+      width: 100%;
+    }
+    .description {
+      padding: 10% 4% 10%;
+      width: 100%;
+    }
+    .description h6 {
+      font-size: 0.9rem;
+    }
+    .description p {
+      font-size: 0.8rem;
+    }
+    .socials {
+      display: flex;
+      gap: 5%;
+      padding: 15% 0;
+      margin: 0 auto;
+    }
+    .socials img {
+      max-width: 2rem;
+      max-height: 2rem;
+    }
+    .description img {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+  }
+  

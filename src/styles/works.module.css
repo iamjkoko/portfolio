@@ -1,0 +1,335 @@
+hr {
+    border: .8px solid #bdbdbd;
+    width: 90%;
+    margin: 20px auto;
+}
+
+/* Project Main */
+.projectMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Project Image and Video */
+.project-vid-hor, 
+.project-img {
+    display: flex;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    max-width: 1280px;
+    max-height: 920px;
+    height: 100%;
+    width: 100%;
+}
+.project-vid-ver {
+    display: flex;
+    margin-top: 50px;
+    max-width: 720px;
+    max-height: 1280px;
+    height: 100%;
+    width: 100%;
+  }
+
+/* Project Info */
+.project-info {
+    display: flex;
+    position: relative;
+    padding: 4% 12% 4%;
+    flex-direction: row;
+    width: 100%;
+    min-height: 300px;
+}
+    .project-basics {
+        padding-right: 15%;
+    }
+    .project-basics h1 {
+        font-size: 2.7rem;
+        font-weight: 900;
+        width: 300px;
+    }
+    .project-basics h2 {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .project-basics h3 {
+        font-weight: 400;
+    }
+    .project-basics h4 {
+        padding-top: 8%;
+        font-weight: 400;
+    }
+    .project-intro h4 {
+        font-size: 1.2rem;
+        font-weight: 300;
+        word-spacing: .1rem;
+    }
+
+/* Project Description */
+.project-description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 0 4%;
+    box-sizing: border-box;
+}
+    .description {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 0 12% 4%;
+        box-sizing: border-box;
+    }
+    .description-img {
+        display: flex;
+        margin: 0 auto;
+        justify-items: center;
+        overflow: hidden;
+        padding: 4% 0 1%;
+    }
+    .description-img img {
+        max-width: 720px;
+        max-height: 480px;;
+        width: 100%;
+        height: auto;
+    }
+    .largeImage {
+        padding-top: 6%;
+        max-width: 1200px !important;
+        max-height: none !important;
+    }
+    .description-body {
+        width: 100%;
+        padding-top: 4%;
+    }
+    .description-body h5 {
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+    .description-quote {
+        font-family: 'Boska-Variable', sans-serif;
+        font-size: 3rem;
+        font-variation-settings: 'wght' 300;
+    }
+
+/* Project Progress */
+.progress {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 2% 0;
+}
+    .progress-title {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        margin: 0 auto;
+        padding-bottom: 2%;
+    }
+    .progress-title h3 {
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+    .progress-img {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 0 auto;
+        justify-items: center;
+        padding: 0 4%;
+        overflow: hidden;
+    }
+    .progress-img img {
+        display: flex;
+        max-width: 720px;
+        width: 100%;
+        overflow: hidden;
+        object-fit: cover;
+    }
+    .progress-vid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 2% 4% 0;
+    }
+    .progress-vid video {
+        width: 100%;
+        max-height: 815px;
+        width: 100%;
+        overflow: hidden; 
+    }
+
+
+.references {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 4% 0 2%;
+}
+    .references-title {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        padding-bottom: 2%;
+    }
+    .references-title h3 {
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+    .references-img {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 80%;
+        margin: 0 auto;
+        justify-items: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .references-img img {
+        max-width: 720px;
+        width: 100%;
+    }
+    .figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .figcaption {
+        font-size: 0.7rem;
+        color: white;
+        margin-top: 2%;
+        width: 80%;
+    }
+    
+
+.banner {
+        display: flex;
+        margin: 0 auto;
+        justify-items: center;
+        overflow: hidden;
+        padding: 4% 0 2%;
+}
+    .banner img {
+        width: 100%;
+        overflow: hidden;
+    }
+
+
+.youtube {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding-top: 4%;
+        width: 100%;
+        max-width: 960px;
+        box-sizing: border-box;
+}
+    .youtube iframe {
+        width: 100%;
+        height: 540px;
+        max-width: 960px;
+        max-height: 540px;
+    }
+
+
+@media (max-width: 935px) {
+    .project-vid-ver {
+        margin-top: 90px;
+    }
+    .project-info{
+        flex-direction: column;
+        padding-bottom: 12%;
+    }
+    .project-basics h2 {
+        font-size: 1.2rem;
+    }
+    .project-basics h3 {
+        font-size: 1rem;
+    }
+    .project-basics h4 {
+        padding-top: 8%;
+        font-weight: 400;
+        font-size: 0.9rem;
+    }
+    .project-intro h4 {
+        font-size: 1rem;
+        padding-top: 10%;
+    }
+
+    .project-description {
+        padding: 0 4%;
+    }
+    .description {
+        padding: 8%;
+        box-sizing: border-box;
+    }
+    .description-img {
+        padding: 8% 0;
+    }
+    .description-img img {
+        max-width: 720px;
+        max-height: 480px;
+        width: 100%;
+        height: auto;
+    }
+    .description-body h5{
+        font-size: 1rem;
+    }
+    .description-quote {
+        padding-top: 4%;
+        font-size: 2rem;
+    }
+
+    .progress {
+        padding: 2% 8% 4%;
+    }
+    .progress-title h3 {
+        font-size: 1.2rem;
+        padding-bottom: 6%;
+        justify-content: center;
+    }
+    .progress-img {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4%;
+    }
+
+    .youtube {
+        width: 100%;
+        max-width: 360px;
+        box-sizing: border-box;
+        padding-bottom: 8%;
+    }
+    .youtube iframe {
+        width: 100%;
+        height: 202px;
+        max-width: 360px;
+        max-height: 202px;
+    }
+
+    .references-title {
+        padding-bottom: 4%;
+    }
+    .references-title h3 {
+        font-size: 1.2rem;
+    }
+    .references-img {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2%;
+    }
+    .figcaption {
+        font-size: 0.5rem;
+        padding-bottom: 4%;
+    }
+}

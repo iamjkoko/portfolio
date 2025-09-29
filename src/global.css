@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overscroll-behavior: none;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;   
+  overscroll-behavior: none; /* block overscroll chaining */
+  overflow-x: hidden;        /* no horizontal scroll */
+  overflow-y: auto;     
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+img {
+  user-select: none;
+  pointer-events: auto;
+}
+
+strong {
+  font-weight: 600;
+}

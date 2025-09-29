@@ -1,0 +1,87 @@
+.gallery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .navButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .image {
+    max-width: 1280px;
+    max-height: 960px;
+    object-fit: cover;
+    margin-top: 100px;
+    transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translateX(0);
+  }
+  
+  .image.swipeLeft {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  
+  .image.swipeRight {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  
+  .image.swipeIn {
+    animation: swipeIn 0.4s ease-in-out forwards;
+  }
+  
+  .image.swipeInFromLeft {
+    animation: swipeInFromLeft 0.4s ease-in-out forwards;
+  }
+  
+  @keyframes swipeIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes swipeInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @media (max-width: 935px) {
+    .gallery {
+      flex-direction: column;
+      gap: 20px;
+      padding-bottom: 40px;
+    }
+    
+    .image {
+      max-width: 600px;
+      max-height: 400px;
+      margin-top: 80px;
+      order: 1;
+    }
+    
+    .navButton {
+      display: none;
+    }
+  }
