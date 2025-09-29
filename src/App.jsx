@@ -68,11 +68,17 @@ function AppRoutes() {
 function App() {
   return (
     <Router>
-      <SmoothScroll>
-        <AppRoutes />
-        <Analytics />
-        <SpeedInsights />
-      </SmoothScroll>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <SmoothScroll>
+          <AppRoutes />
+          <Analytics />
+          <SpeedInsights />
+        </SmoothScroll>
+      </motion.div>
     </Router>
   );
 }
