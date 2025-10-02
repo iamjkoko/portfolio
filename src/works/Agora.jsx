@@ -4,7 +4,6 @@ import styles from '../styles/works.module.css';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import BackToTop from '../components/BackToTop';
 
 import AgoraLayout from '../assets/images/works/agora/agora-layout.webp';
 import AgoraConcept from '../assets/images/works/agora/agora-concept.webp';
@@ -58,7 +57,6 @@ function Agora() {
 
     </section>
 
-    <BackToTop theme="light" />
     <Footer theme="light" />
     </div>
   );

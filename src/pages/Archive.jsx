@@ -14,7 +14,6 @@ import SaoPaulo from '../assets/images/archive/sao-paulo/saopaulo.webp';
 import LightPainting from '../assets/images/archive/light-painting/light-painting.webp';
 
 import Navbar from '../components/Navbar';
-import BackToTop from '../components/BackToTop';
 import Footer from '../components/Footer';
 
 
@@ -73,7 +72,6 @@ function Archive() {
         </section>
     </section>
 
-    <BackToTop theme="light" />
     <Footer theme='light' />
     </>
   );

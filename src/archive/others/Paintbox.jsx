@@ -5,7 +5,6 @@ import styles from '../../styles/works.module.css';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
-import BackToTop from '../../components/BackToTop';
 import Gallery from '../../components/Gallery';
 
 import Paintbox1 from '../../assets/images/archive/paintbox/paintbox-1.webp';
@@ -48,7 +47,6 @@ function Paintbox() {
         </div>
       </section>
 
-      <BackToTop theme="light" />
       <Footer theme="light" />
     </div>
   );

@@ -5,7 +5,6 @@ import styles from '../../styles/works.module.css';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
-import BackToTop from '../../components/BackToTop';
 import Gallery from '../../components/Gallery';
 
 import InfinityBox1 from '../../assets/images/archive/infinity-box/infinity-box-1.webp';
@@ -49,7 +48,6 @@ function InfinityBox() {
         </div>
       </section>
 
-      <BackToTop theme="light" />
       <Footer theme="light" />
     </div>
   );

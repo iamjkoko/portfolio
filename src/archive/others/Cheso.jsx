@@ -5,7 +5,6 @@ import styles from '../../styles/works.module.css';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
-import BackToTop from '../../components/BackToTop';
 import Gallery from '../../components/Gallery';
 
 import Cheso1 from '../../assets/images/archive/cheso/cheso-1.webp';
@@ -102,7 +101,6 @@ function Cheso() {
         </div>
       </section>
       
-      <BackToTop theme="light" />
       <Footer theme="light" />
     </div>
   );

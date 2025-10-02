@@ -8,7 +8,6 @@ import { ROUTES } from '../constants/routes';
 import Caveman from '../assets/images/works/caveman/caveman.webp';
 
 import Navbar from '../components/Navbar';
-import BackToTop from '../components/BackToTop';
 import Footer from '../components/Footer';
 
 
@@ -42,7 +41,6 @@ function Works() {
         </div>
     </section>
 
-    <BackToTop theme="light" />
     <Footer theme='light' />
     </>
   );

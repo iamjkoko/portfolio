@@ -4,7 +4,6 @@ import styles from '../styles/works.module.css';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import BackToTop from '../components/BackToTop';
 
 import Name from '../assets/images/works/logo/name.webp';
 
@@ -76,7 +75,6 @@ function Logo() {
 
     </section>
 
-    <BackToTop theme="light" />
     <Footer theme="light" />
     </div>
   );

@@ -5,7 +5,6 @@ import styles from '../../styles/works.module.css';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
-import BackToTop from '../../components/BackToTop';
 
 import LightPainting1 from '../../assets/images/archive/light-painting/light-painting-1.webp';
 
@@ -70,7 +69,6 @@ function LightPainting() {
         </div>
       </section>
 
-      <BackToTop theme="dark" />
       <Footer theme="dark" />
     </div>
   );
