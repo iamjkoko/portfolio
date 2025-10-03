@@ -24,8 +24,8 @@ const Home = () => {
       setShowIntro(true);
       
       setTimeout(() => setIntroStep(1), 100);
-      setTimeout(() => setIntroStep(2), 2000);
-      setTimeout(() => setShowIntro(false), 2800);
+      setTimeout(() => setIntroStep(2), 1400);
+      setTimeout(() => setShowIntro(false), 2000);
     }
   }, []);
 
