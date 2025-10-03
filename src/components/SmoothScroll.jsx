@@ -9,27 +9,27 @@ export default function SmoothScroll({ children }) {
 
   useEffect(() => {
     const container = containerRef.current;
-    
-    // Detect if device is mobile
-    const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-      // On mobile, just return children without smooth scroll
-      return;
-    }
+    if (!container) return;
 
-    // Desktop smooth scroll implementation
-    // Make container fixed so we can move it
+    // Detect mobile devices
+    const isMobile =
+      window.innerWidth <= 768 ||
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+
+    if (isMobile) return; // Skip smooth scroll on mobile
+
+    // Fix container for smooth scrolling
     gsap.set(container, { position: "fixed", top: 0, left: 0, width: "100%" });
 
-    // Sync body height with container
-    const setHeight = () => {
-      document.body.style.height = `${container.getBoundingClientRect().height}px`;
+    // Keep body height in sync with container
+    const setBodyHeight = () => {
+      document.body.style.height = `${container.scrollHeight}px`;
     };
-    setHeight();
+    setBodyHeight();
 
-    // Watch for dynamic content changes
-    const resizeObserver = new ResizeObserver(setHeight);
+    const resizeObserver = new ResizeObserver(setBodyHeight);
     resizeObserver.observe(container);
 
     let scrollY = 0;
@@ -37,69 +37,71 @@ export default function SmoothScroll({ children }) {
 
     const updateScroll = () => {
       scrollY += (targetScrollY - scrollY) * 0.05; // inertia
-      const maxScroll = container.getBoundingClientRect().height - window.innerHeight;
+      const maxScroll = container.scrollHeight - window.innerHeight;
       scrollY = Math.max(0, Math.min(scrollY, maxScroll));
 
       gsap.set(container, { y: -scrollY });
       requestAnimationFrame(updateScroll);
     };
 
-    const onScroll = () => {
+    const handleScroll = () => {
       targetScrollY = window.scrollY;
     };
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", handleScroll);
     updateScroll();
 
-    // Tell ScrollTrigger to use this custom scroller
+    // ScrollTrigger integration
     ScrollTrigger.scrollerProxy(container, {
       scrollTop(value) {
-        if (arguments.length) targetScrollY = value;
+        if (value !== undefined) targetScrollY = value;
         return scrollY;
       },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight
-        };
-      }
+      getBoundingClientRect: () => ({
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      }),
     });
 
-    ScrollTrigger.addEventListener("refresh", setHeight);
+    ScrollTrigger.addEventListener("refresh", setBodyHeight);
     ScrollTrigger.refresh();
 
-    // Handle anchor links (#about, etc.)
+    // Smooth anchor navigation
     const handleAnchorClick = (e) => {
-      const target = e.target.closest("a[href^='#']");
-      if (target) {
-        e.preventDefault();
-        const id = target.getAttribute("href");
-        const el = document.querySelector(id);
-        if (el) {
-          const y = el.getBoundingClientRect().top + window.scrollY;
-          targetScrollY = y; // let inertia loop glide there
-          window.scrollTo(0, y); // update native scroll position instantly
-        }
+      const link = e.target.closest("a[href^='#']");
+      if (!link) return;
+
+      e.preventDefault();
+      const targetEl = document.querySelector(link.getAttribute("href"));
+      if (targetEl) {
+        const y = targetEl.getBoundingClientRect().top + window.scrollY;
+        targetScrollY = y;
+        window.scrollTo(0, y); // sync native scroll
       }
     };
     document.addEventListener("click", handleAnchorClick);
 
-    // Handle back to top functionality
+    // Custom "scrollToTop" event
     const handleScrollToTop = () => {
-      targetScrollY = 0; // let inertia loop glide to top
+      targetScrollY = 0;
     };
     window.addEventListener("scrollToTop", handleScrollToTop);
 
+    // Cleanup
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", handleScroll);
       resizeObserver.disconnect();
-      ScrollTrigger.removeEventListener("refresh", setHeight);
+      ScrollTrigger.removeEventListener("refresh", setBodyHeight);
       document.removeEventListener("click", handleAnchorClick);
       window.removeEventListener("scrollToTop", handleScrollToTop);
     };
   }, []);
 
-  return <div ref={containerRef} data-smooth-scroll>{children}</div>;
+  return (
+    <div ref={containerRef} data-smooth-scroll>
+      {children}
+    </div>
+  );
 }
