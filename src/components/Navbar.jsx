@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../global.css';
 import styles from './styles/navbar.module.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 
 const Navbar = ({ theme }) => {
@@ -46,16 +46,16 @@ const Navbar = ({ theme }) => {
         </button>
         <nav id="myDropdown" className={`${styles.dropdownContent} ${dropdownOpen ? 'show' : ''}`}>
           <div className={styles.dropdownItem}>
-            <Link to={ROUTES.HOME}>HOME</Link>
+            <NavLink to={ROUTES.HOME}>HOME</NavLink>
           </div>
           <div className={styles.dropdownItem}>
-            <Link to={ROUTES.ABOUT}>ABOUT</Link>
+            <NavLink to={ROUTES.ABOUT}>ABOUT</NavLink>
           </div>
           <div className={styles.dropdownItem}>
-            <Link to={ROUTES.WORKS.ROOT}>WORKS</Link>
+            <NavLink to={ROUTES.WORKS.ROOT}>WORKS</NavLink>
           </div>
           <div className={styles.dropdownItem}>
-            <Link to={ROUTES.ARCHIVE.ROOT}>ARCHIVE</Link>
+            <NavLink to={ROUTES.ARCHIVE.ROOT}>ARCHIVE</NavLink>
           </div>
           <div className={styles.dropdownItem}>
             <a href="https://filmbyko.cargo.site" target="_blank" rel="noopener noreferrer">PHOTOGRAPHY</a>
@@ -65,9 +65,9 @@ const Navbar = ({ theme }) => {
 
       <nav className={styles.navbar}>
         <ul>
-          <li><Link to={ROUTES.ABOUT}>ABOUT</Link></li>
-          <li><Link to={ROUTES.WORKS.ROOT}>WORKS</Link></li>
-          <li><Link to={ROUTES.ARCHIVE.ROOT}>ARCHIVE</Link></li>
+          <li><NavLink to={ROUTES.ABOUT}>ABOUT</NavLink></li>
+          <li><NavLink to={ROUTES.WORKS.ROOT}>WORKS</NavLink></li>
+          <li><NavLink to={ROUTES.ARCHIVE.ROOT}>ARCHIVE</NavLink></li>
           <li>
             <a href="https://filmbyko.cargo.site/" target="_blank" rel="noopener noreferrer">
               PHOTOGRAPHY

@@ -55,7 +55,7 @@
 .navbar a:hover {
     opacity: 1;
 }
-.navbar li a.active {
+.navbar li a:global(.active) {
     opacity: 1;
 }
 .navbar .logo {
@@ -262,6 +262,10 @@
     }
     .navbarParent:global(.light) .dropdownContent a {
         color: black;
+    }
+    
+    .dropdownContent a:global(.active) {
+        opacity: 1;
     }
     
 }
