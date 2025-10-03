@@ -16,97 +16,41 @@ import LinkedinIcon from '../assets/icons/linkedin-white.png';
 const Home = () => {
   const [showIntro, setShowIntro] = useState(false);
   const [introStep, setIntroStep] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadingProgress, setLoadingProgress] = useState(0);
 
   useEffect(() => {
-    // Simulate loading progress
-    const loadingInterval = setInterval(() => {
-      setLoadingProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(loadingInterval);
-          setIsLoading(false);
-          return 100;
-        }
-        return prev + Math.random() * 15;
-      });
-    }, 100);
-
-    // Ensure loading completes within 2-3 seconds
-    const loadingTimeout = setTimeout(() => {
-      clearInterval(loadingInterval);
-      setLoadingProgress(100);
-      setIsLoading(false);
-    }, 2500);
-
-    return () => {
-      clearInterval(loadingInterval);
-      clearTimeout(loadingTimeout);
-    };
+    const hasVisited = sessionStorage.getItem("hasVisited");
+    if (!hasVisited) {
+      sessionStorage.setItem("hasVisited", "true");
+      setShowIntro(true);
+      
+      setTimeout(() => setIntroStep(1), 100);
+      setTimeout(() => setIntroStep(2), 1400);
+      setTimeout(() => setShowIntro(false), 2000);
+    }
   }, []);
 
   useEffect(() => {
-    if (!isLoading) {
-      const hasVisited = sessionStorage.getItem("hasVisited");
-      if (!hasVisited) {
-        sessionStorage.setItem("hasVisited", "true");
-        setShowIntro(true);
-        
-        setTimeout(() => setIntroStep(1), 100);
-        setTimeout(() => setIntroStep(2), 1400);
-        setTimeout(() => setShowIntro(false), 2000);
-      }
+    if (!showIntro) {
+      const fadeInContainers = document.querySelectorAll(".fade-container");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const children = entry.target.querySelectorAll('[class*="fadeIn"]');
+            children.forEach((child, index) => {
+              setTimeout(() => {
+                child.setAttribute('data-visible', 'true');
+              }, index * 150);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      fadeInContainers.forEach((container) => observer.observe(container));
     }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (!isLoading && !showIntro) {
-      // Add a small delay to ensure smooth transition from loading
-      setTimeout(() => {
-        const fadeInContainers = document.querySelectorAll(".fade-container");
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const children = entry.target.querySelectorAll('[class*="fadeIn"]');
-              children.forEach((child, index) => {
-                setTimeout(() => {
-                  child.setAttribute('data-visible', 'true');
-                }, index * 150); // Slightly increased delay for smoother effect
-              });
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.2 });
-        fadeInContainers.forEach((container) => observer.observe(container));
-      }, 300);
-    }
-  }, [isLoading, showIntro]);
+  }, [showIntro]);
 
   return (
     <>
-      {/* Loading Animation */}
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            className={styles.loadingOverlay}
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className={styles.loadingContainer}>
-              <div className={styles.progressBar}>
-                <motion.div
-                  className={styles.progressFill}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${loadingProgress}%` }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                />
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <AnimatePresence>
         {showIntro && (
           <motion.div
@@ -135,17 +79,10 @@ const Home = () => {
         )}
       </AnimatePresence>
 
-      {/* Main Content - Only show when not loading */}
-      {!isLoading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <section 
-            id="hero" 
-            className={styles.hero}
-          >
+      <section 
+        id="hero" 
+        className={styles.hero}
+      >
         <img src={Background} className={styles.background} />
   
         <motion.nav 
@@ -199,9 +136,7 @@ const Home = () => {
         </div>
           </section>
 
-          <Footer theme='dark' />
-        </motion.div>
-      )}
+      <Footer theme='dark' />
     </>
   );
 };
