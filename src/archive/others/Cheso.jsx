@@ -46,9 +46,6 @@ function Cheso() {
     <div style={themeStyles["light"]}>
       <Navbar theme="light" />
       <section id="project-main" className={styles.projectMain}>
-      <div className="cheso-gallery">
-        <Gallery images={imageList} />
-      </div>
         <div className="cheso-grid"
         style={{
           display: 'grid',

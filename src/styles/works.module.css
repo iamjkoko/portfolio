@@ -47,9 +47,10 @@ hr {
         padding-right: 15%;
     }
     .project-basics h1 {
-        font-size: 2.7rem;
+        font-size: 4rem;
         font-weight: 900;
-        width: 300px;
+        width: 350px;
+        font-family: 'Boska-Variable', serif;
     }
     .project-basics h2 {
         font-weight: 600;

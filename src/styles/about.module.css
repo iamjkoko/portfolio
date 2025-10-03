@@ -32,6 +32,46 @@
     max-width: 720px;
   }
   
+  /* Animation keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Animated elements */
+  .description h6,
+  .description p,
+  .socials {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Animation delays */
+  .description h6:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  .description h6:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .description h6:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+
+  .description p {
+    animation-delay: 0.5s;
+  }
+
+  .socials {
+    animation-delay: 0.6s;
+  }
+
+  /* Typography styles */
   .description h6 {
     font-weight: 350;
     font-size: 1rem;

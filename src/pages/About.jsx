@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../global.css';
 import styles from '../styles/about.module.css';
 
@@ -11,6 +11,14 @@ import LinkedinIcon from '../assets/icons/linkedin-black.png';
 import Signature from '/signature.webp';
 
 function About() {
+  useEffect(() => {
+    // Trigger animations when component mounts
+    const h6Elements = document.querySelectorAll('#about-page .description h6');
+    h6Elements.forEach((element, index) => {
+      element.style.animationDelay = `${0.2 + (index * 0.2)}s`;
+    });
+  }, []);
+
   return (
     <>
     <Navbar theme="light"></Navbar>
