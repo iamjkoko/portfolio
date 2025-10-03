@@ -7,11 +7,14 @@ footer {
     width: 100%;
     position: relative;
     z-index: 1;
+    margin: 0;
+    border: none;
 }
 
 footer.dark {
     background-color: black;
     color: rgb(118, 118, 118);
+    margin-top: 0;
 }
 
 footer.light {
