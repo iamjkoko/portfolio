@@ -69,7 +69,7 @@ const Home = () => {
                 opacity: introStep >= 2 ? 0 : 1
               }}
               transition={{ 
-                y: { duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] },
+                y: { duration: 0.5, ease: [0.3, 0.05, 0.01, 0.9] },
                 opacity: { duration: 0.3 }
               }}
             >
