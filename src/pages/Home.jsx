@@ -35,12 +35,6 @@ return (
     <>
     <section id="hero" className={styles.hero}>
     <img src={Background} className={styles.background} />
-
-    {/*}
-    <div className={styles.titleContainer}>
-        <h1 className={styles.title}>Crafting ideas into form.</h1>
-    </div>
-    */}
   
     <nav className={styles.navbarMain}>
         <ul>
