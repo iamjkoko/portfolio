@@ -22,17 +22,12 @@ const Home = () => {
     if (!hasVisited) {
       sessionStorage.setItem("hasVisited", "true");
       setShowIntro(true);
-      setIntroStep(1); // Start with title and background visible
+      
+      setTimeout(() => setIntroStep(1), 100);
+      setTimeout(() => setIntroStep(2), 2000);
+      setTimeout(() => setShowIntro(false), 2800);
     }
   }, []);
-
-  const handleIntroClick = () => {
-    if (introStep === 1) {
-      // First click: exit title
-      setIntroStep(2);
-      setTimeout(() => setShowIntro(false), 800); // Wait for exit animation
-    }
-  };
 
   useEffect(() => {
     if (!showIntro) {
@@ -63,14 +58,9 @@ const Home = () => {
             initial={{ opacity: 1 }}
             exit={{ opacity: 1 }}
             transition={{ duration: 0 }}
-            style={{ 
-              backgroundImage: `url(${Background})`, 
-              backgroundSize: 'cover', 
-              backgroundPosition: 'center',
-              cursor: 'pointer'
-            }}
-            onClick={handleIntroClick}
+            style={{ backgroundImage: `url(${Background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
           >
+
             <motion.div
               className={styles.introTitle}
               initial={{ y: 100, opacity: 0 }}
@@ -80,7 +70,7 @@ const Home = () => {
               }}
               transition={{ 
                 y: { duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] },
-                opacity: { duration: 0.5 }
+                opacity: { duration: 0.3 }
               }}
             >
               Crafting ideas into form.
@@ -99,7 +89,7 @@ const Home = () => {
           className={styles.navbarMain}
           initial={{ opacity: 0 }}
           animate={{ opacity: showIntro ? 0 : 1 }}
-          transition={{ duration: 0.3, delay: showIntro ? 0 : 0.3 }}
+          transition={{ duration: 0.2, delay: showIntro ? 0 : 0 }}
         >
           <ul>
             <li><a href="#about">ABOUT</a></li>
