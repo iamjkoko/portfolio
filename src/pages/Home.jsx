@@ -22,12 +22,17 @@ const Home = () => {
     if (!hasVisited) {
       sessionStorage.setItem("hasVisited", "true");
       setShowIntro(true);
-      
-      setTimeout(() => setIntroStep(1), 100);
-      setTimeout(() => setIntroStep(2), 2000);
-      setTimeout(() => setShowIntro(false), 2800);
+      setIntroStep(1); // Start with title and background visible
     }
   }, []);
+
+  const handleIntroClick = () => {
+    if (introStep === 1) {
+      // First click: exit title
+      setIntroStep(2);
+      setTimeout(() => setShowIntro(false), 800); // Wait for exit animation
+    }
+  };
 
   useEffect(() => {
     if (!showIntro) {
@@ -58,9 +63,14 @@ const Home = () => {
             initial={{ opacity: 1 }}
             exit={{ opacity: 1 }}
             transition={{ duration: 0 }}
-            style={{ backgroundImage: `url(${Background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+            style={{ 
+              backgroundImage: `url(${Background})`, 
+              backgroundSize: 'cover', 
+              backgroundPosition: 'center',
+              cursor: 'pointer'
+            }}
+            onClick={handleIntroClick}
           >
-
             <motion.div
               className={styles.introTitle}
               initial={{ y: 100, opacity: 0 }}
@@ -89,7 +99,7 @@ const Home = () => {
           className={styles.navbarMain}
           initial={{ opacity: 0 }}
           animate={{ opacity: showIntro ? 0 : 1 }}
-          transition={{ duration: 0.3, delay: showIntro ? 0 : 0. }}
+          transition={{ duration: 0.3, delay: showIntro ? 0 : 0.3 }}
         >
           <ul>
             <li><a href="#about">ABOUT</a></li>
