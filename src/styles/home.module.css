@@ -2,6 +2,49 @@ body {
   background-color: black;
 }
 
+/* Loading Animation Styles */
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #052773;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressBar {
+  width: 300px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: white;
+  border-radius: 2px;
+  transition: width 0.3s ease-out;
+}
+
+@media (max-width: 935px) {
+  .progressBar {
+    width: 200px;
+    height: 2px;
+  }
+}
+
 .fadeIn {
   opacity: 0;
   transform: translateY(20px);
