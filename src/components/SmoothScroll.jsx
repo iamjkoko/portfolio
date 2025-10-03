@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -6,6 +6,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll({ children }) {
   const containerRef = useRef(null);
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  // Listen for intro state changes
+  useEffect(() => {
+    const handleIntroState = (e) => {
+      setIsDisabled(e.detail.showIntro);
+    };
+    
+    window.addEventListener('introStateChange', handleIntroState);
+    return () => window.removeEventListener('introStateChange', handleIntroState);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -36,7 +47,10 @@ export default function SmoothScroll({ children }) {
     let targetScrollY = 0;
 
     const updateScroll = () => {
-      scrollY += (targetScrollY - scrollY) * 0.05; // inertia
+      // Only update scroll if not disabled
+      if (!isDisabled) {
+        scrollY += (targetScrollY - scrollY) * 0.05; // inertia
+      }
       const maxScroll = container.scrollHeight - window.innerHeight;
       scrollY = Math.max(0, Math.min(scrollY, maxScroll));
 
@@ -45,7 +59,13 @@ export default function SmoothScroll({ children }) {
     };
 
     const handleScroll = () => {
-      targetScrollY = window.scrollY;
+      // Only update target scroll if not disabled
+      if (!isDisabled) {
+        targetScrollY = window.scrollY;
+      } else {
+        // Reset scroll position when disabled
+        window.scrollTo(0, scrollY);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -54,7 +74,7 @@ export default function SmoothScroll({ children }) {
     // ScrollTrigger integration
     ScrollTrigger.scrollerProxy(container, {
       scrollTop(value) {
-        if (value !== undefined) targetScrollY = value;
+        if (value !== undefined && !isDisabled) targetScrollY = value;
         return scrollY;
       },
       getBoundingClientRect: () => ({
@@ -70,6 +90,8 @@ export default function SmoothScroll({ children }) {
 
     // Smooth anchor navigation
     const handleAnchorClick = (e) => {
+      if (isDisabled) return; // Don't handle anchor clicks when disabled
+      
       const link = e.target.closest("a[href^='#']");
       if (!link) return;
 
@@ -85,7 +107,7 @@ export default function SmoothScroll({ children }) {
 
     // Custom "scrollToTop" event
     const handleScrollToTop = () => {
-      targetScrollY = 0;
+      if (!isDisabled) targetScrollY = 0;
     };
     window.addEventListener("scrollToTop", handleScrollToTop);
 
@@ -97,7 +119,7 @@ export default function SmoothScroll({ children }) {
       document.removeEventListener("click", handleAnchorClick);
       window.removeEventListener("scrollToTop", handleScrollToTop);
     };
-  }, []);
+  }, [isDisabled]); // Add isDisabled to dependency array
 
   return (
     <div ref={containerRef} data-smooth-scroll>

@@ -29,6 +29,41 @@ const Home = () => {
     }
   }, []);
 
+  // Dispatch intro state changes for SmoothScroll
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('introStateChange', { detail: { showIntro } }));
+  }, [showIntro]);
+
+  // Prevent all scroll attempts during intro
+  useEffect(() => {
+    if (showIntro) {
+      const preventScroll = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      };
+
+      const preventKeyScroll = (e) => {
+        if (['ArrowUp', 'ArrowDown', 'Space', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.code)) {
+          e.preventDefault();
+        }
+      };
+      
+      // Prevent wheel scroll
+      window.addEventListener('wheel', preventScroll, { passive: false });
+      // Prevent touch scroll
+      window.addEventListener('touchmove', preventScroll, { passive: false });
+      // Prevent keyboard scroll
+      window.addEventListener('keydown', preventKeyScroll);
+      
+      return () => {
+        window.removeEventListener('wheel', preventScroll);
+        window.removeEventListener('touchmove', preventScroll);
+        window.removeEventListener('keydown', preventKeyScroll);
+      };
+    }
+  }, [showIntro]);
+
   useEffect(() => {
     if (!showIntro) {
       const fadeInContainers = document.querySelectorAll(".fade-container");
@@ -134,7 +169,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-          </section>
+      </section>
 
       <Footer theme='dark' />
     </>
