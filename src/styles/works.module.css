@@ -253,6 +253,9 @@ hr {
         flex-direction: column;
         padding-bottom: 12%;
     }
+    .project-basics h1 {
+        font-size: 3rem;
+    }
     .project-basics h2 {
         font-size: 1.2rem;
     }
