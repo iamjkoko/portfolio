@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../global.css';
 import styles from '../styles/about.module.css';
 
@@ -8,15 +8,23 @@ import Footer from '../components/Footer';
 import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.png';
 import LinkedinIcon from '../assets/icons/linkedin-black.png';
-import Signature from '/signature.webp';
 
 function About() {
+  const videoRef = useRef(null);
+
   useEffect(() => {
     // Trigger animations when component mounts
     const h6Elements = document.querySelectorAll('#about-page .description h6');
     h6Elements.forEach((element, index) => {
       element.style.animationDelay = `${0.2 + (index * 0.2)}s`;
     });
+
+    // Delay video playback
+    if (videoRef.current) {
+      setTimeout(() => {
+        videoRef.current.play();
+      }, 600);
+    }
   }, []);
 
   return (
@@ -41,7 +49,9 @@ function About() {
                 <img src={LinkedinIcon} alt="LinkedIn" />
                 </a>
                 </div>
-                <img src={Signature} className="signature" alt="Signature" draggable={false}/>
+                <video ref={videoRef} src="https://res.cloudinary.com/db6ifdikq/video/upload/v1760045865/signature-anim_zzvoov.mp4" className={styles.signature} muted playsInline controlsList="nodownload" draggable={false}> 
+                Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </section>
