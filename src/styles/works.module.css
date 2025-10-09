@@ -253,6 +253,9 @@ hr {
         flex-direction: column;
         padding-bottom: 12%;
     }
+    .project-basics {
+        padding-bottom: 10%;
+    }
     .project-basics h1 {
         font-size: 3rem;
     }
@@ -269,7 +272,7 @@ hr {
     }
     .project-intro h4 {
         font-size: 1rem;
-        padding-top: 10%;
+        padding-top: 2%;
     }
 
     .project-description {
