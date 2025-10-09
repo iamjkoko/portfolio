@@ -56,6 +56,8 @@ function Agora() {
     </section>
 
     </section>
+    
+    <br />
 
     <Footer theme="light" />
     </div>

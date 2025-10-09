@@ -72,6 +72,8 @@ function SaoPaulo() {
         </div>
       </section>
 
+      <br />
+
       <Footer theme="light" />
     </div>
   );

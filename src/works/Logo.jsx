@@ -75,6 +75,8 @@ function Logo() {
 
     </section>
 
+    <br />
+
     <Footer theme="light" />
     </div>
   );

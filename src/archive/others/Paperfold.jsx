@@ -48,6 +48,8 @@ function Paperfold() {
         </div>
       </section>
 
+      <br />
+
       <Footer theme="light" />
     </div>
   );

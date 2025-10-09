@@ -48,6 +48,8 @@ function InfinityBox() {
         </div>
       </section>
 
+      <br />
+
       <Footer theme="light" />
     </div>
   );

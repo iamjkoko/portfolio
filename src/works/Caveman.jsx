@@ -119,6 +119,8 @@ function Caveman() {
 
     </section>
 
+    <br />
+
     <Footer theme="light" />
     </div>
   );

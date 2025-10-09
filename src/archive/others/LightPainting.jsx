@@ -69,6 +69,8 @@ function LightPainting() {
         </div>
       </section>
 
+      <br />
+
       <Footer theme="dark" />
     </div>
   );

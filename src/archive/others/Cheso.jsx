@@ -97,6 +97,8 @@ function Cheso() {
           <img src={ChesoConcept2} alt="Cheso Concept 2" />
         </div>
       </section>
+
+      <br />
       
       <Footer theme="light" />
     </div>

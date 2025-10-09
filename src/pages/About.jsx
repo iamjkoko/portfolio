@@ -45,6 +45,7 @@ function About() {
             </div>
         </div>
     </section>
+    <br />
     <Footer theme="light" />
     </>
   );

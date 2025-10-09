@@ -47,6 +47,8 @@ function Paintbox() {
         </div>
       </section>
 
+      <br />
+
       <Footer theme="light" />
     </div>
   );
