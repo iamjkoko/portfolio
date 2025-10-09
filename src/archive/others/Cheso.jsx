@@ -54,7 +54,7 @@ function Cheso() {
           justifyContent: 'center',
           margin: '0 auto',
           overflow: 'hidden',
-          padding: '100px 30px 0',
+          padding: '100px 30px 20px',
         }}>
           {imageList.map((img, i) => (
             <div className="cheso-cont" key={i}

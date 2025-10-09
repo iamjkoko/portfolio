@@ -34,7 +34,7 @@ function LightPainting() {
           width: '100%', 
           height: 'auto',
           maxWidth: '1280px',
-          paddingTop: '100px'
+          padding: '100px 0 20px'
         }} 
       />
         <div className={styles['project-info']}>

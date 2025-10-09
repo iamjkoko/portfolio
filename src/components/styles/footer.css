@@ -14,7 +14,6 @@ footer {
 footer.dark {
     background-color: black;
     color: rgb(118, 118, 118);
-    margin-top: 0;
 }
 
 footer.light {
