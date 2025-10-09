@@ -8,6 +8,33 @@
   transform: translateY(0);
 }
 
+/* Loading Animation Styles */
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #052773;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressBarContainer {
+  width: 200px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: white;
+  border-radius: 1px;
+}
 
 /* Intro Animation Styles */
 .introOverlay {

@@ -14,6 +14,7 @@ import InstagramIcon from '../assets/icons/instagram-white.png';
 import LinkedinIcon from '../assets/icons/linkedin-white.png';
 
 const Home = () => {
+  const [showLoading, setShowLoading] = useState(false);
   const [showIntro, setShowIntro] = useState(false);
   const [introStep, setIntroStep] = useState(0);
 
@@ -21,11 +22,18 @@ const Home = () => {
     const hasVisited = sessionStorage.getItem("hasVisited");
     if (!hasVisited) {
       sessionStorage.setItem("hasVisited", "true");
-      setShowIntro(true);
+      setShowLoading(true);
       
-      setTimeout(() => setIntroStep(1), 100);
-      setTimeout(() => setIntroStep(2), 1800);
-      setTimeout(() => setShowIntro(false), 2600);
+      // Loading animation duration: 1.5 seconds
+      setTimeout(() => {
+        setShowLoading(false);
+        setShowIntro(true);
+        
+        // Intro animation timing (adjusted to start after loading)
+        setTimeout(() => setIntroStep(1), 100);
+        setTimeout(() => setIntroStep(2), 1800);
+        setTimeout(() => setShowIntro(false), 2600);
+      }, 1500);
     }
   }, []);
 
@@ -34,9 +42,9 @@ const Home = () => {
     window.dispatchEvent(new CustomEvent('introStateChange', { detail: { showIntro } }));
   }, [showIntro]);
 
-  // Prevent all scroll attempts during intro
+  // Prevent all scroll attempts during loading and intro
   useEffect(() => {
-    if (showIntro) {
+    if (showLoading || showIntro) {
       const preventScroll = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -62,7 +70,7 @@ const Home = () => {
         window.removeEventListener('keydown', preventKeyScroll);
       };
     }
-  }, [showIntro]);
+  }, [showLoading, showIntro]);
 
   useEffect(() => {
     if (!showIntro) {
@@ -86,6 +94,26 @@ const Home = () => {
 
   return (
     <>
+      <AnimatePresence>
+        {showLoading && (
+          <motion.div
+            className={styles.loadingOverlay}
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className={styles.progressBarContainer}>
+              <motion.div
+                className={styles.progressBar}
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <AnimatePresence>
         {showIntro && (
           <motion.div
