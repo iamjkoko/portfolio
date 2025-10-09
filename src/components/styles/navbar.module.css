@@ -90,7 +90,7 @@
     }
     .navbarParent:global(.dark) {
         background-color: black;
-        border-bottom: 1px solid #454545;
+        border-bottom: 1px solid rgb(38, 38, 38);
     }
     .navbarParent:global(.light) {
         background-color: white;
@@ -180,7 +180,7 @@
     
     .navbarParent:global(.dark) .dropdownContent {
         background-color: black;
-        border-color: #454545;
+        border-color: rgb(38, 38, 38);
     }
     .navbarParent:global(.light) .dropdownContent {
         background-color: white;
@@ -230,7 +230,7 @@
     }
     
     .navbarParent:global(.dark) .dropdownItem {
-        border-color: #454545;
+        border-color: rgb(38, 38, 38);
     }
     .navbarParent:global(.light) .dropdownItem {
         border-color: #e7e7e7;
