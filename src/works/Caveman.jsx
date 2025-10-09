@@ -97,9 +97,7 @@ function Caveman() {
             <br />
             <h5>When the actual objects are revealed, however, the outcomes are often <strong>unexpected</strong>. What once appeared to be a fresh, lively plant in shadow is, in truth, decaying and nearing death. A pair of sunglasses turns out to be missing its lenses—an essential part of its functionality. The shadow of a chess piece, despite its small size, resembles a living horse in the viewers' eye. These moments of realization communicate just how easily our <strong>perception can be misled</strong> and how we sometimes tend to form <strong>quick conclusions based on incomplete information</strong>.</h5>
             <br />
-            <br />
             <h5>In the contemporary world, media outlets saturate their audience with an overwhelming amount of content, which distorts the ability to process and assess the authenticity of what is real or not through critical thinking. The rapid development of <strong>AI and deepfake technology</strong> today further reiterates the core questions asked in this project:</h5> 
-            <br />
             <br />
             <div className={styles['description-quote']}>
                 <em><strong>How confident can we be in what we think we know when our understanding is limited? How much should we trust our intuition—or even our own eyes?</strong></em></div>
