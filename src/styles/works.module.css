@@ -283,7 +283,7 @@ hr {
         box-sizing: border-box;
     }
     .description-img {
-        padding: 8% 0;
+        padding: 4% 0;
     }
     .description-img img {
         max-width: 720px;
@@ -302,7 +302,10 @@ hr {
     }
 
     .progress {
-        padding: 2% 8% 4%;
+        padding: 2% 4% 4%;
+    }
+    .progress-title {
+        padding: 0 8% 4%;
     }
     .progress-title h3 {
         font-size: 1.2rem;
@@ -311,7 +314,10 @@ hr {
     }
     .progress-img {
         grid-template-columns: repeat(1, 1fr);
-        gap: 4%;
+        gap: 10px;
+    }
+    .progress-vid {
+        padding-top: 10px;
     }
 
     .youtube {

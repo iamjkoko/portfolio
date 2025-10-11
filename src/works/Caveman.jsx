@@ -99,9 +99,11 @@ function Caveman() {
             <br />
             <h5>In the contemporary world, media outlets saturate their audience with an overwhelming amount of content, which distorts the ability to process and assess the authenticity of what is real or not through critical thinking. The rapid development of <strong>AI and deepfake technology</strong> today further reiterates the core questions asked in this project:</h5> 
             <br />
+            <br />
             <div className={styles['description-quote']}>
                 <em><strong>How confident can we be in what we think we know when our understanding is limited? How much should we trust our intuition—or even our own eyes?</strong></em></div>
             </div>
+            <br />
         </div>
     </section>
 
