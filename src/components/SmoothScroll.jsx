@@ -6,72 +6,75 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll({ children }) {
   const containerRef = useRef(null);
-  const isDisabledRef = useRef(false);
   const [isDisabled, setIsDisabled] = useState(false);
-
-  // Keep ref in sync with state
-  useEffect(() => {
-    isDisabledRef.current = isDisabled;
-  }, [isDisabled]);
 
   // Listen for intro state changes
   useEffect(() => {
-    const handleIntroState = (e) => setIsDisabled(e.detail.showIntro);
-    window.addEventListener("introStateChange", handleIntroState);
-    return () => window.removeEventListener("introStateChange", handleIntroState);
+    const handleIntroState = (e) => {
+      setIsDisabled(e.detail.showIntro);
+    };
+    
+    window.addEventListener('introStateChange', handleIntroState);
+    return () => window.removeEventListener('introStateChange', handleIntroState);
   }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Detect mobile devices (use matchMedia for cleaner logic)
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    // Detect mobile devices
+    const isMobile =
+      window.innerWidth <= 768 ||
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+
     if (isMobile) return; // Skip smooth scroll on mobile
 
     // Fix container for smooth scrolling
     gsap.set(container, { position: "fixed", top: 0, left: 0, width: "100%" });
 
-    // Sync body height to enable scrollbar
-    let resizeTimeout;
+    // Keep body height in sync with container
     const setBodyHeight = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        document.body.style.height = `${container.scrollHeight}px`;
-      }, 50);
+      document.body.style.height = `${container.scrollHeight}px`;
     };
     setBodyHeight();
+
     const resizeObserver = new ResizeObserver(setBodyHeight);
     resizeObserver.observe(container);
 
     let scrollY = 0;
     let targetScrollY = 0;
 
-    // Smooth scroll loop (using GSAP ticker for better sync)
     const updateScroll = () => {
-      if (!isDisabledRef.current) {
+      // Only update scroll if not disabled
+      if (!isDisabled) {
         scrollY += (targetScrollY - scrollY) * 0.05; // inertia
-        scrollY = Math.max(0, Math.min(scrollY, container.scrollHeight - window.innerHeight));
-        gsap.set(container, { y: -scrollY });
       }
-      ScrollTrigger.update(); // keep triggers synced
-    };
-    gsap.ticker.add(updateScroll);
+      const maxScroll = container.scrollHeight - window.innerHeight;
+      scrollY = Math.max(0, Math.min(scrollY, maxScroll));
 
-    // Handle real scroll events
+      gsap.set(container, { y: -scrollY });
+      requestAnimationFrame(updateScroll);
+    };
+
     const handleScroll = () => {
-      if (!isDisabledRef.current) {
+      // Only update target scroll if not disabled
+      if (!isDisabled) {
         targetScrollY = window.scrollY;
       } else {
+        // Reset scroll position when disabled
         window.scrollTo(0, scrollY);
       }
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // ScrollTrigger proxy integration
+    window.addEventListener("scroll", handleScroll);
+    updateScroll();
+
+    // ScrollTrigger integration
     ScrollTrigger.scrollerProxy(container, {
       scrollTop(value) {
-        if (value !== undefined && !isDisabledRef.current) targetScrollY = value;
+        if (value !== undefined && !isDisabled) targetScrollY = value;
         return scrollY;
       },
       getBoundingClientRect: () => ({
@@ -87,7 +90,8 @@ export default function SmoothScroll({ children }) {
 
     // Smooth anchor navigation
     const handleAnchorClick = (e) => {
-      if (isDisabledRef.current) return;
+      if (isDisabled) return; // Don't handle anchor clicks when disabled
+      
       const link = e.target.closest("a[href^='#']");
       if (!link) return;
 
@@ -96,26 +100,26 @@ export default function SmoothScroll({ children }) {
       if (targetEl) {
         const y = targetEl.getBoundingClientRect().top + window.scrollY;
         targetScrollY = y;
+        window.scrollTo(0, y); // sync native scroll
       }
     };
     document.addEventListener("click", handleAnchorClick);
 
     // Custom "scrollToTop" event
     const handleScrollToTop = () => {
-      if (!isDisabledRef.current) targetScrollY = 0;
+      if (!isDisabled) targetScrollY = 0;
     };
     window.addEventListener("scrollToTop", handleScrollToTop);
 
     // Cleanup
     return () => {
-      resizeObserver.disconnect();
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scrollToTop", handleScrollToTop);
-      document.removeEventListener("click", handleAnchorClick);
+      resizeObserver.disconnect();
       ScrollTrigger.removeEventListener("refresh", setBodyHeight);
-      gsap.ticker.remove(updateScroll);
+      document.removeEventListener("click", handleAnchorClick);
+      window.removeEventListener("scrollToTop", handleScrollToTop);
     };
-  }, []); // only run once
+  }, [isDisabled]); // Add isDisabled to dependency array
 
   return (
     <div ref={containerRef} data-smooth-scroll>
