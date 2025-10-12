@@ -7,6 +7,9 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScroll({ children }) {
   const containerRef = useRef(null);
   const [isDisabled, setIsDisabled] = useState(false);
+  const scrollYRef = useRef(0);
+  const targetScrollYRef = useRef(0);
+  const rafIdRef = useRef(null);
 
   // Listen for intro state changes
   useEffect(() => {
@@ -29,53 +32,63 @@ export default function SmoothScroll({ children }) {
         navigator.userAgent
       );
 
-    if (isMobile) return; // Skip smooth scroll on mobile
+    if (isMobile) return;
 
-    // Fix container for smooth scrolling
-    gsap.set(container, { position: "fixed", top: 0, left: 0, width: "100%" });
+    // Setup container for smooth scrolling
+    gsap.set(container, { 
+      position: "fixed", 
+      top: 0, 
+      left: 0, 
+      width: "100%",
+      overflow: "visible" // Allow children to overflow for sticky positioning
+    });
 
-    // Keep body height in sync with container
+    // Sync body height with container
     const setBodyHeight = () => {
       document.body.style.height = `${container.scrollHeight}px`;
     };
     setBodyHeight();
 
-    const resizeObserver = new ResizeObserver(setBodyHeight);
+    // Watch for container size changes
+    const resizeObserver = new ResizeObserver(() => {
+      setBodyHeight();
+      ScrollTrigger.refresh();
+    });
     resizeObserver.observe(container);
 
-    let scrollY = 0;
-    let targetScrollY = 0;
-
+    // Smooth scroll animation loop
     const updateScroll = () => {
-      // Only update scroll if not disabled
       if (!isDisabled) {
-        scrollY += (targetScrollY - scrollY) * 0.05; // inertia
-      }
-      const maxScroll = container.scrollHeight - window.innerHeight;
-      scrollY = Math.max(0, Math.min(scrollY, maxScroll));
+        const ease = 0.08; // Adjust for smoothness (0.05-0.15 recommended)
+        scrollYRef.current += (targetScrollYRef.current - scrollYRef.current) * ease;
+        
+        const maxScroll = container.scrollHeight - window.innerHeight;
+        scrollYRef.current = Math.max(0, Math.min(scrollYRef.current, maxScroll));
 
-      gsap.set(container, { y: -scrollY });
-      requestAnimationFrame(updateScroll);
+        gsap.set(container, { y: -scrollYRef.current });
+      }
+      
+      rafIdRef.current = requestAnimationFrame(updateScroll);
     };
 
+    // Handle native scroll events
     const handleScroll = () => {
-      // Only update target scroll if not disabled
       if (!isDisabled) {
-        targetScrollY = window.scrollY;
+        targetScrollYRef.current = window.scrollY;
       } else {
-        // Reset scroll position when disabled
-        window.scrollTo(0, scrollY);
+        // Keep scroll position locked when disabled
+        window.scrollTo(0, scrollYRef.current);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    updateScroll();
-
-    // ScrollTrigger integration
+    // ScrollTrigger configuration for proper integration
     ScrollTrigger.scrollerProxy(container, {
       scrollTop(value) {
-        if (value !== undefined && !isDisabled) targetScrollY = value;
-        return scrollY;
+        if (value !== undefined && !isDisabled) {
+          targetScrollYRef.current = value;
+          scrollYRef.current = value; // Instant update for ScrollTrigger
+        }
+        return scrollYRef.current;
       },
       getBoundingClientRect: () => ({
         top: 0,
@@ -83,43 +96,63 @@ export default function SmoothScroll({ children }) {
         width: window.innerWidth,
         height: window.innerHeight,
       }),
+      pinType: "transform" // Critical for sticky/pin to work
     });
-
-    ScrollTrigger.addEventListener("refresh", setBodyHeight);
-    ScrollTrigger.refresh();
 
     // Smooth anchor navigation
     const handleAnchorClick = (e) => {
-      if (isDisabled) return; // Don't handle anchor clicks when disabled
+      if (isDisabled) return;
       
       const link = e.target.closest("a[href^='#']");
       if (!link) return;
 
       e.preventDefault();
-      const targetEl = document.querySelector(link.getAttribute("href"));
+      const href = link.getAttribute("href");
+      const targetEl = document.querySelector(href);
+      
       if (targetEl) {
-        const y = targetEl.getBoundingClientRect().top + window.scrollY;
-        targetScrollY = y;
-        window.scrollTo(0, y); // sync native scroll
+        // Calculate target position relative to the container
+        const rect = targetEl.getBoundingClientRect();
+        const y = rect.top + scrollYRef.current;
+        
+        targetScrollYRef.current = y;
+        window.scrollTo(0, y);
       }
     };
-    document.addEventListener("click", handleAnchorClick);
 
-    // Custom "scrollToTop" event
+    // Custom scroll to top event
     const handleScrollToTop = () => {
-      if (!isDisabled) targetScrollY = 0;
+      if (!isDisabled) {
+        targetScrollYRef.current = 0;
+        window.scrollTo(0, 0);
+      }
     };
+
+    // Start animation loop
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("click", handleAnchorClick);
     window.addEventListener("scrollToTop", handleScrollToTop);
+    ScrollTrigger.addEventListener("refresh", setBodyHeight);
+    
+    updateScroll();
+    ScrollTrigger.refresh();
 
     // Cleanup
     return () => {
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
       window.removeEventListener("scroll", handleScroll);
-      resizeObserver.disconnect();
-      ScrollTrigger.removeEventListener("refresh", setBodyHeight);
       document.removeEventListener("click", handleAnchorClick);
       window.removeEventListener("scrollToTop", handleScrollToTop);
+      ScrollTrigger.removeEventListener("refresh", setBodyHeight);
+      resizeObserver.disconnect();
+      
+      // Reset styles
+      gsap.set(container, { clearProps: "all" });
+      document.body.style.height = "";
     };
-  }, [isDisabled]); // Add isDisabled to dependency array
+  }, [isDisabled]);
 
   return (
     <div ref={containerRef} data-smooth-scroll>
