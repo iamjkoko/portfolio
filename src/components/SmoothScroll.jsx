@@ -25,14 +25,6 @@ export default function SmoothScroll({ children }) {
     const container = containerRef.current;
     if (!container) return;
 
-    // Detect mobile devices
-    const isMobile =
-      window.innerWidth <= 768 ||
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
-
-    if (isMobile) return;
 
     // Setup container for smooth scrolling
     gsap.set(container, { 
