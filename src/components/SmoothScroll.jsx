@@ -7,9 +7,24 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScroll({ children }) {
   const containerRef = useRef(null);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const scrollYRef = useRef(0);
   const targetScrollYRef = useRef(0);
   const rafIdRef = useRef(null);
+  const lastScrollTime = useRef(0);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+        || window.innerWidth < 768;
+      setIsMobile(mobile);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Listen for intro state changes
   useEffect(() => {
@@ -25,60 +40,86 @@ export default function SmoothScroll({ children }) {
     const container = containerRef.current;
     if (!container) return;
 
+    // Disable smooth scroll on mobile for better performance
+    if (isMobile) {
+      // Just use native scroll on mobile
+      gsap.set(container, { clearProps: "all" });
+      document.body.style.height = "";
+      return;
+    }
 
-    // Setup container for smooth scrolling
+    // Setup container for smooth scrolling (desktop only)
     gsap.set(container, { 
       position: "fixed", 
       top: 0, 
       left: 0, 
       width: "100%",
-      overflow: "visible" // Allow children to overflow for sticky positioning
+      overflow: "visible",
+      willChange: "transform" // GPU acceleration hint
     });
 
     // Sync body height with container
     const setBodyHeight = () => {
-      document.body.style.height = `${container.scrollHeight}px`;
+      const height = container.scrollHeight;
+      document.body.style.height = `${height}px`;
     };
     setBodyHeight();
 
-    // Watch for container size changes
+    // Debounced resize observer for better performance
+    let resizeTimeout;
     const resizeObserver = new ResizeObserver(() => {
-      setBodyHeight();
-      ScrollTrigger.refresh();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        setBodyHeight();
+        ScrollTrigger.refresh();
+      }, 150);
     });
     resizeObserver.observe(container);
 
-    // Smooth scroll animation loop
+    // Optimized smooth scroll animation loop
     const updateScroll = () => {
       if (!isDisabled) {
-        const ease = 0.08; // Adjust for smoothness (0.05-0.15 recommended)
-        scrollYRef.current += (targetScrollYRef.current - scrollYRef.current) * ease;
+        const now = performance.now();
+        const deltaTime = now - lastScrollTime.current;
         
-        const maxScroll = container.scrollHeight - window.innerHeight;
-        scrollYRef.current = Math.max(0, Math.min(scrollYRef.current, maxScroll));
+        // Throttle updates to ~60fps max
+        if (deltaTime >= 16) {
+          const ease = 0.08;
+          const diff = targetScrollYRef.current - scrollYRef.current;
+          
+          // Only update if difference is significant (reduces unnecessary repaints)
+          if (Math.abs(diff) > 0.5) {
+            scrollYRef.current += diff * ease;
+            
+            const maxScroll = container.scrollHeight - window.innerHeight;
+            scrollYRef.current = Math.max(0, Math.min(scrollYRef.current, maxScroll));
 
-        gsap.set(container, { y: -scrollYRef.current });
+            // Use transform directly instead of GSAP for better performance
+            container.style.transform = `translate3d(0, ${-scrollYRef.current}px, 0)`;
+          }
+          
+          lastScrollTime.current = now;
+        }
       }
       
       rafIdRef.current = requestAnimationFrame(updateScroll);
     };
 
-    // Handle native scroll events
+    // Handle native scroll events with passive listener
     const handleScroll = () => {
       if (!isDisabled) {
         targetScrollYRef.current = window.scrollY;
       } else {
-        // Keep scroll position locked when disabled
         window.scrollTo(0, scrollYRef.current);
       }
     };
 
-    // ScrollTrigger configuration for proper integration
+    // ScrollTrigger configuration
     ScrollTrigger.scrollerProxy(container, {
       scrollTop(value) {
         if (value !== undefined && !isDisabled) {
           targetScrollYRef.current = value;
-          scrollYRef.current = value; // Instant update for ScrollTrigger
+          scrollYRef.current = value;
         }
         return scrollYRef.current;
       },
@@ -88,7 +129,7 @@ export default function SmoothScroll({ children }) {
         width: window.innerWidth,
         height: window.innerHeight,
       }),
-      pinType: "transform" // Critical for sticky/pin to work
+      pinType: "transform"
     });
 
     // Smooth anchor navigation
@@ -103,7 +144,6 @@ export default function SmoothScroll({ children }) {
       const targetEl = document.querySelector(href);
       
       if (targetEl) {
-        // Calculate target position relative to the container
         const rect = targetEl.getBoundingClientRect();
         const y = rect.top + scrollYRef.current;
         
@@ -126,6 +166,7 @@ export default function SmoothScroll({ children }) {
     window.addEventListener("scrollToTop", handleScrollToTop);
     ScrollTrigger.addEventListener("refresh", setBodyHeight);
     
+    lastScrollTime.current = performance.now();
     updateScroll();
     ScrollTrigger.refresh();
 
@@ -134,6 +175,7 @@ export default function SmoothScroll({ children }) {
       if (rafIdRef.current) {
         cancelAnimationFrame(rafIdRef.current);
       }
+      clearTimeout(resizeTimeout);
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("click", handleAnchorClick);
       window.removeEventListener("scrollToTop", handleScrollToTop);
@@ -144,7 +186,7 @@ export default function SmoothScroll({ children }) {
       gsap.set(container, { clearProps: "all" });
       document.body.style.height = "";
     };
-  }, [isDisabled]);
+  }, [isDisabled, isMobile]);
 
   return (
     <div ref={containerRef} data-smooth-scroll>
