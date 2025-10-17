@@ -12,6 +12,8 @@ export default function SmoothScroll({ children }) {
   const targetScrollYRef = useRef(0);
   const rafIdRef = useRef(null);
   const lastScrollTime = useRef(0);
+  const resizeTimeoutRef = useRef(null);
+  const resizeObserverRef = useRef(null);
 
   // Detect mobile device
   useEffect(() => {
@@ -42,7 +44,6 @@ export default function SmoothScroll({ children }) {
 
     // Disable smooth scroll on mobile for better performance
     if (isMobile) {
-      // Just use native scroll on mobile
       gsap.set(container, { clearProps: "all" });
       document.body.style.height = "";
       return;
@@ -55,7 +56,7 @@ export default function SmoothScroll({ children }) {
       left: 0, 
       width: "100%",
       overflow: "visible",
-      willChange: "transform" // GPU acceleration hint
+      willChange: "transform"
     });
 
     // Sync body height with container
@@ -65,15 +66,15 @@ export default function SmoothScroll({ children }) {
     };
     setBodyHeight();
 
-    // Debounced resize observer for better performance
-    let resizeTimeout;
+    // Debounced resize observer
     const resizeObserver = new ResizeObserver(() => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
+      clearTimeout(resizeTimeoutRef.current);
+      resizeTimeoutRef.current = setTimeout(() => {
         setBodyHeight();
         ScrollTrigger.refresh();
       }, 150);
     });
+    resizeObserverRef.current = resizeObserver;
     resizeObserver.observe(container);
 
     // Optimized smooth scroll animation loop
@@ -87,14 +88,13 @@ export default function SmoothScroll({ children }) {
           const ease = 0.08;
           const diff = targetScrollYRef.current - scrollYRef.current;
           
-          // Only update if difference is significant (reduces unnecessary repaints)
+          // Only update if difference is significant
           if (Math.abs(diff) > 0.5) {
             scrollYRef.current += diff * ease;
             
             const maxScroll = container.scrollHeight - window.innerHeight;
             scrollYRef.current = Math.max(0, Math.min(scrollYRef.current, maxScroll));
 
-            // Use transform directly instead of GSAP for better performance
             container.style.transform = `translate3d(0, ${-scrollYRef.current}px, 0)`;
           }
           
@@ -175,12 +175,16 @@ export default function SmoothScroll({ children }) {
       if (rafIdRef.current) {
         cancelAnimationFrame(rafIdRef.current);
       }
-      clearTimeout(resizeTimeout);
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("click", handleAnchorClick);
       window.removeEventListener("scrollToTop", handleScrollToTop);
       ScrollTrigger.removeEventListener("refresh", setBodyHeight);
-      resizeObserver.disconnect();
+      if (resizeObserverRef.current) {
+        resizeObserverRef.current.disconnect();
+      }
       
       // Reset styles
       gsap.set(container, { clearProps: "all" });
