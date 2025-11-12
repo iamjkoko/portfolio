@@ -147,19 +147,16 @@ const Home = () => {
                 Born and raised in <strong className="font-bold">Seoul, South Korea</strong>, and having spent four years in <strong className="font-bold">São Paulo, Brazil</strong>, his works are shaped by his cultural experiences and curiosity about the intersection of <strong className="font-bold">technology, innovation,</strong> and <strong className="font-bold">sustainability</strong>.
               </p>
               <br />
-              <br />
             </div>
           
-            <div className="fade-in flex flex-col items-center">
-              <div className="flex justify-center max-[935px]:pb-5 max-[935px]:text-[0.8rem]">
+            <div className="fade-in flex flex-col items-center pt-8 max-[935px]:pt-0">
+              <div className="flex justify-center max-[935px]:pb-0 max-[935px]:text-[0.8rem]">
                 <Link to={`${ROUTES.ABOUT}#about-page`} className="text-white underline underline-offset-2 transition-opacity duration-300 ease-in-out hover:opacity-70">
                   LEARN MORE
                 </Link>
               </div>
         
-              <br />
-        
-              <div className="flex justify-center gap-[15px] max-[935px]:gap-[30px]">
+              <div className="hidden min-[936px]:flex justify-center gap-[15px] pt-10 max-[935px]:gap-[30px] max-[935px]:pt-2">
                 <a href="https://www.instagram.com/morebyko/" className="instagram" target="_blank" rel="noopener noreferrer">
                   <img src={InstagramIcon} alt="Instagram" className="max-w-[1.375rem] max-h-[1.375rem] max-[935px]:max-w-[2rem] max-[935px]:max-h-[2rem]" />
                 </a>
