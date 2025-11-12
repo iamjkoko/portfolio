@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* Tailwind v4 theme configuration */
+@theme {
+  --font-family-boska: 'Boska-Variable', serif;
+  --breakpoint-mobile: 935px;
+}
+
+/* ========================================== */
+/* BASE STYLES (reset, html, body, etc.) */
+/* ========================================== */
+
+* {
+  box-sizing: border-box;
+  overscroll-behavior: none;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;   
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  overflow-y: auto;     
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+img {
+  user-select: none;
+  pointer-events: auto;
+}
+strong {
+  font-weight: 600;
+}
+
+
+/* ========================================== */
+/* TYPOGRAPHY (fonts, titles) */
+/* ========================================== */
+
+/* Intro title with custom font and clamp sizing */
+.intro-title {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-variation-settings: 'wght' 400;
+  color: white;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-family: var(--font-family-boska);
+  z-index: 9999;
+  pointer-events: none;
+}
+@media (max-width: 935px) {
+  .intro-title {
+    bottom: 30px;
+    left: 30px;
+    font-size: clamp(5rem, 8vw, 8rem);
+  }
+}
+
+/* Custom animations for fade-in effect */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ========================================== */
+/* ANIMATIONS (fade, swipe, etc.) */
+/* ========================================== */
+
+/* FadeIn keyframes for About page */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Gallery animations */
+@keyframes swipeIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes swipeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.swipe-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.swipe-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.swipe-in {
+  animation: swipeIn 0.4s ease-in-out forwards;
+}
+.swipe-in-from-left {
+  animation: swipeInFromLeft 0.4s ease-in-out forwards;
+}
+
+
+/* ========================================== */
+/* THEME & VARIABLES */
+/* ========================================== */
+:root {
+  /* Core Theme Colors */
+  --color-background: white;
+  --color-text: black;
+  --color-border-gray: #bdbdbd;
+  --color-keyword-text: rgb(113, 113, 113);
+  --color-keyword-bg: #ececec;
+  --color-text-muted: rgb(194, 194, 194);
+  --color-figcaption: black;
+}
+.dark {
+  /* Dark Theme */
+  --color-background: black;
+  --color-text: white;
+  --color-border-gray: #bdbdbd;
+  --color-keyword-text: #ececec;
+  --color-keyword-bg: rgb(113, 113, 113);
+  --color-text-muted: rgb(194, 194, 194);
+  --color-figcaption: white;
+}
+
+/* Back button theme styling */
+.dark .back-button {
+  color: white;
+}
+.dark .back-button:hover {
+  color: rgb(140, 140, 140);
+}
+.dark .back-button svg {
+  color: inherit;
+}
