@@ -168,12 +168,10 @@ const Home = () => {
             </div>
 
             <div className="fade-in flex flex-col items-center gap-2 pt-8 pb-8 absolute bottom-0 left-0 right-0">
-              <a 
-                href="#works" 
-                className="text-white text-sm max-[935px]:text-xs transition-opacity duration-300 ease-in-out hover:opacity-70"
+              <div className="text-white text-sm max-[935px]:text-xs transition-opacity duration-300 ease-in-out"
               >
                 SEE LATEST PROJECTS
-              </a>
+              </div>
               <ChevronDown className="w-4 h-4 text-white" />
             </div>
           </div>
