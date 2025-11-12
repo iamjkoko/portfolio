@@ -169,7 +169,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="fade-in flex flex-col items-center gap-2 pb-8 absolute bottom-0 left-0 right-0">
+            <div className="fade-in flex flex-col items-center gap-2 pt-8 pb-8 absolute bottom-0 left-0 right-0">
               <a 
                 href="#works" 
                 className="text-white text-sm max-[935px]:text-xs transition-opacity duration-300 ease-in-out hover:opacity-70"
