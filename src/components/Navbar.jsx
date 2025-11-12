@@ -133,7 +133,7 @@ export default function Navbar({ showNavbar = true }) {
                     >
                       <Link
                         to={ROUTES.HOME}
-                        className="text-[4rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        className="text-[3.2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
                         onClick={closeMobileMenu}
                       >
                         HOME
@@ -146,7 +146,7 @@ export default function Navbar({ showNavbar = true }) {
                     >
                       <Link
                         to={ROUTES.ABOUT}
-                        className="text-[4rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        className="text-[3.2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
                         onClick={closeMobileMenu}
                       >
                         ABOUT
@@ -172,7 +172,7 @@ export default function Navbar({ showNavbar = true }) {
                             navigate('/#works');
                           }
                         }}
-                        className="text-[4rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)] cursor-pointer bg-transparent border-0 p-0"
+                        className="text-[3.2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)] cursor-pointer bg-transparent border-0 p-0"
                       >
                         WORKS
                       </button>
@@ -188,7 +188,7 @@ export default function Navbar({ showNavbar = true }) {
                     >
                       <Link
                         to={ROUTES.ARCHIVE.STUDIO.ROOT}
-                        className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        className="text-[1.5rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
                         onClick={closeMobileMenu}
                       >
                         STUDIO
@@ -201,7 +201,7 @@ export default function Navbar({ showNavbar = true }) {
                     >
                       <Link
                         to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT}
-                        className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        className="text-[1.5rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
                         onClick={closeMobileMenu}
                       >
                         EXPERIMENTS
@@ -214,7 +214,7 @@ export default function Navbar({ showNavbar = true }) {
                     >
                       <a
                         href={ROUTES.PHOTOGRAPHY}
-                        className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        className="text-[1.5rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={closeMobileMenu}
@@ -227,7 +227,7 @@ export default function Navbar({ showNavbar = true }) {
 
                 {/* Social Icons */}
                 <motion.div
-                  className="flex gap-6 mt-auto pb-4"
+                  className="flex gap-4 mt-auto pb-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
@@ -242,7 +242,7 @@ export default function Navbar({ showNavbar = true }) {
                     <img
                       src={InstagramIcon}
                       alt="Instagram"
-                      className="max-w-[3rem] max-h-[3rem] transition-opacity duration-300 ease-in-out hover:opacity-70"
+                      className="max-w-[2rem] max-h-[2rem] transition-opacity duration-300 ease-in-out hover:opacity-70"
                     />
                   </a>
                   <a
@@ -255,7 +255,7 @@ export default function Navbar({ showNavbar = true }) {
                     <img
                       src={LinkedinIcon}
                       alt="LinkedIn"
-                      className="max-w-[3rem] max-h-[3rem] transition-opacity duration-300 ease-in-out hover:opacity-70"
+                      className="max-w-[2rem] max-h-[2rem] transition-opacity duration-300 ease-in-out hover:opacity-70"
                     />
                   </a>
                 </motion.div>
