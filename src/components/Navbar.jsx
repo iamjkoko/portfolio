@@ -116,7 +116,7 @@ export default function Navbar({ showNavbar = true }) {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              className="fixed top-0 left-0 w-screen h-screen bg-white z-[10001] flex items-start justify-start pt-24"
+              className="fixed top-0 left-0 w-screen h-screen bg-white z-[10001] flex items-start justify-start pt-12"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
