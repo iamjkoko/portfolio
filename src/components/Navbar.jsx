@@ -2,8 +2,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-import { ROUTES } from '../constants/routes';
+import { ROUTES, EXTERNAL_LINKS } from '../constants/routes';
 import logo from '/favicon.webp';
+import InstagramIcon from '../assets/icons/instagram-black.webp';
+import LinkedinIcon from '../assets/icons/linkedin-black.webp';
 
 export default function Navbar({ showNavbar = true }) {
   const navigate = useNavigate();
@@ -114,103 +116,147 @@ export default function Navbar({ showNavbar = true }) {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              className="fixed top-0 left-0 w-screen h-screen bg-white z-[10001] flex items-center justify-center"
+              className="fixed top-0 left-0 w-screen h-screen bg-white z-[10001] flex items-start justify-start pt-24"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <nav className="flex flex-col items-start gap-8 w-full p-8 max-[360px]:gap-6">
+              <nav className="flex flex-col items-start gap-0 w-full h-full p-8 max-[360px]:gap-6">
+                <div className="flex flex-col items-start gap-0">
+                  {/* First Group: HOME, ABOUT, WORKS */}
+                  <div className="flex flex-col items-start gap-0">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1, duration: 0.4 }}
+                    >
+                      <Link
+                        to={ROUTES.HOME}
+                        className="text-[4rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        onClick={closeMobileMenu}
+                      >
+                        HOME
+                      </Link>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.15, duration: 0.4 }}
+                    >
+                      <Link
+                        to={ROUTES.ABOUT}
+                        className="text-[4rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        onClick={closeMobileMenu}
+                      >
+                        ABOUT
+                      </Link>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2, duration: 0.4 }}
+                    >
+                      <button
+                        onClick={() => {
+                          closeMobileMenu();
+                          if (location.pathname === ROUTES.HOME) {
+                            const element = document.querySelector('#works');
+                            if (element) {
+                              window.scrollTo({ 
+                                top: element.offsetTop, 
+                                behavior: 'smooth' 
+                              });
+                            }
+                          } else {
+                            navigate('/#works');
+                          }
+                        }}
+                        className="text-[4rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)] cursor-pointer bg-transparent border-0 p-0"
+                      >
+                        WORKS
+                      </button>
+                    </motion.div>
+                  </div>
+
+                  {/* Second Group: STUDIO, EXPERIMENTS, PHOTOGRAPHY */}
+                  <div className="flex flex-col items-start gap-2 mt-8">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.25, duration: 0.4 }}
+                    >
+                      <Link
+                        to={ROUTES.ARCHIVE.STUDIO.ROOT}
+                        className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        onClick={closeMobileMenu}
+                      >
+                        STUDIO
+                      </Link>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3, duration: 0.4 }}
+                    >
+                      <Link
+                        to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT}
+                        className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        onClick={closeMobileMenu}
+                      >
+                        EXPERIMENTS
+                      </Link>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.35, duration: 0.4 }}
+                    >
+                      <a
+                        href={ROUTES.PHOTOGRAPHY}
+                        className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={closeMobileMenu}
+                      >
+                        PHOTOGRAPHY
+                      </a>
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Social Icons */}
                 <motion.div
+                  className="flex gap-6 mt-auto pb-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1, duration: 0.4 }}
-                >
-                  <Link
-                    to={ROUTES.HOME}
-                    className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
-                    onClick={closeMobileMenu}
-                  >
-                    HOME
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.4 }}
-                >
-                  <Link
-                    to={ROUTES.ABOUT}
-                    className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
-                    onClick={closeMobileMenu}
-                  >
-                    ABOUT
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                >
-                  <button
-                    onClick={() => {
-                      closeMobileMenu();
-                      if (location.pathname === ROUTES.HOME) {
-                        const element = document.querySelector('#works');
-                        if (element) {
-                          window.scrollTo({ 
-                            top: element.offsetTop, 
-                            behavior: 'smooth' 
-                          });
-                        }
-                      } else {
-                        navigate('/#works');
-                      }
-                    }}
-                    className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)] cursor-pointer bg-transparent border-0 p-0"
-                  >
-                    WORKS
-                  </button>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.25, duration: 0.4 }}
-                >
-                  <Link
-                    to={ROUTES.ARCHIVE.STUDIO.ROOT}
-                    className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
-                    onClick={closeMobileMenu}
-                  >
-                    STUDIO
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                >
-                  <Link
-                    to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT}
-                    className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
-                    onClick={closeMobileMenu}
-                  >
-                    EXPERIMENTS
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.35, duration: 0.4 }}
+                  transition={{ delay: 0.4, duration: 0.4 }}
                 >
                   <a
-                    href={ROUTES.PHOTOGRAPHY}
-                    className="text-[2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                    href={EXTERNAL_LINKS.INSTAGRAM}
+                    className="instagram"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMobileMenu}
                   >
-                    PHOTOGRAPHY
+                    <img
+                      src={InstagramIcon}
+                      alt="Instagram"
+                      className="max-w-[3rem] max-h-[3rem] transition-opacity duration-300 ease-in-out hover:opacity-70"
+                    />
+                  </a>
+                  <a
+                    href={EXTERNAL_LINKS.LINKEDIN}
+                    className="linkedin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMobileMenu}
+                  >
+                    <img
+                      src={LinkedinIcon}
+                      alt="LinkedIn"
+                      className="max-w-[3rem] max-h-[3rem] transition-opacity duration-300 ease-in-out hover:opacity-70"
+                    />
                   </a>
                 </motion.div>
               </nav>
