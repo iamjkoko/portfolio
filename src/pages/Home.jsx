@@ -134,24 +134,24 @@ const Home = () => {
 
       <section 
         id="about" 
-        className="w-full h-screen flex text-center justify-center items-center bg-black opacity-100 relative m-0 border-none"
+        className="w-full h-screen flex text-center justify-center items-center bg-black opacity-100 relative m-0 border-none max-[935px]:h-[calc(100vh+80px)]"
       >
         <div className="opacity-100 w-full h-full flex flex-col relative">
           <div className="fade-container flex flex-col items-center w-full flex-1 justify-center">
             <div className="flex flex-col text-white w-[45%] max-[935px]:w-[70%] max-[935px]:p-[2%] text-center">
-              <p className="fade-in font-extralight text-lg max-[935px]:text-[0.9rem] leading-[1.8]">
+              <p className="fade-in font-extralight text-lg max-[935px]:text-[0.75rem] leading-[1.8]">
                 <strong className="font-bold">Eric Ko</strong> (b. 2004) is a multidisciplinary artist and designer currently pursuing a <strong className="font-bold">BFA in Industrial Design</strong> at the <strong className="font-bold">Rhode Island School of Design (RISD)</strong>.
               </p>
               <br />
               <br />
-              <p className="fade-in font-extralight text-lg max-[935px]:text-[0.9rem] leading-[1.8]">
+              <p className="fade-in font-extralight text-lg max-[935px]:text-[0.75rem] leading-[1.8]">
                 Born and raised in <strong className="font-bold">Seoul, South Korea</strong>, and having spent four years in <strong className="font-bold">São Paulo, Brazil</strong>, his works are shaped by his cultural experiences and curiosity about the intersection of <strong className="font-bold">technology, innovation,</strong> and <strong className="font-bold">sustainability</strong>.
               </p>
               <br />
             </div>
           
-            <div className="fade-in flex flex-col items-center pt-8 max-[935px]:pt-0">
-              <div className="flex justify-center max-[935px]:pb-0 max-[935px]:text-[0.8rem]">
+            <div className="fade-in flex flex-col items-center pt-8 max-[935px]:pt-0 max-[935px]:pb-20">
+              <div className="flex justify-center max-[935px]:pb-0 max-[935px]:text-[0.75rem]">
                 <Link to={`${ROUTES.ABOUT}#about-page`} className="text-white underline underline-offset-2 transition-opacity duration-300 ease-in-out hover:opacity-70">
                   LEARN MORE
                 </Link>
@@ -168,7 +168,7 @@ const Home = () => {
             </div>
 
             <div className="fade-in flex flex-col items-center gap-2 pt-8 pb-8 absolute bottom-0 left-0 right-0">
-              <div className="text-white text-sm max-[935px]:text-xs transition-opacity duration-300 ease-in-out"
+              <div className="text-white text-sm max-[935px]:text-[0.75rem] transition-opacity duration-300 ease-in-out"
               >
                 SEE LATEST PROJECTS
               </div>
