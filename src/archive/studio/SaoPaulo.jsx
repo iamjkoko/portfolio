@@ -40,7 +40,7 @@ function SaoPaulo() {
             <h3>OVERVIEW</h3>
         </div>
         <div className={styles['description-body']}>
-            <h5>One of Brazil's most pressing societal challenges lies in its infamous slums, also referred to as favelas. These neighborhoods emerged much like slum communities worldwide, as rural populations migrated to cities in search of opportunities, only to find themselves confined to makeshift housing on the fringes of urban life. Over time, this cyclical poverty has become deeply embedded within the society, passing from one generation to the next with little hope of escape.</h5>
+            <h5>One of Brazil's most pressing societal challenges lies in its infamous slums, also referred to as favelas. These neighborhoods emerged much like slum communities worldwide, as rural populations migrated to cities in search of opportunities, only to find themselves confined to makeshift housing. Over time, this cyclical poverty has become deeply embedded within the society, passing from one generation to the next with little hope of escape.</h5>
             <br />
             <h5>The following video by Vox delves into the history and social dynamics of favelas in Rio de Janeiro, a major city in Brazil.</h5>
             <br />

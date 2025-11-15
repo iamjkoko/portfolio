@@ -29,11 +29,7 @@ function Paperfold() {
             <h4>9 x 16 x 10 in.</h4>
         </div>
         <div className={styles['project-intro']}>
-            <h4>Paperfold is a series of experimental sculptures that investigate mathematical and geometric forms through the art of origami. Using different folding techniques, the project transforms flat sheets of paper into complex three-dimensional structures composed of repeating angular modules.</h4>
-            <br />
-            <h4>The project explores the intersection of art and mathematics, creating a visual language that transcends traditional boundaries. By manipulating the folding process, the artist creates a series of dynamic forms that challenge the viewer's perception of space and geometry.</h4>
-            <br />
-            <h4>The project allows viewers to explore the beauty of mathematical forms and the creative process of folding paper, inspiring a deeper appreciation for the interplay between art and science.</h4>
+            <h4>Paperfold is an experimental sculpture that investigates into the mathematical and geometric forms through the art of origami. Using different folding techniques, the project transforms flat sheets of paper into complex three-dimensional structures composed of repeating angular modules.</h4>
             <div className={styles['project-keywords']}>
                 <span>SCULPTURE</span>
                 <span>GEOMETRY</span>
