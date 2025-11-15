@@ -40,6 +40,8 @@ function Paperfold() {
       </section>
 
       <br />
+      <br />
+      <br />
 
       <Footer theme="light" />
     </>
