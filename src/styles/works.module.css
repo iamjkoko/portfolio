@@ -349,7 +349,7 @@ hr {
         padding-top: 1.25rem;
     }
     .project-keywords {
-        padding-top: 3rem;
+        padding: 3rem 0 2rem;
     }
     .project-keywords span {
         font-size: 0.85rem;
@@ -392,7 +392,7 @@ hr {
     }
 
     .progress {
-        padding: 1.25rem 3rem 2.5rem;
+        padding: 1.25rem 2rem 2.5rem;
     }
     .progress-title {
         padding: 0 5rem 2.5rem;
@@ -441,8 +441,11 @@ hr {
         max-height: 202px;
     }
 
+    .references {
+        padding: 1.25rem 3rem 0;
+    }
     .references-title {
-        padding-bottom: 2.5rem;
+        padding: 0 0 1.25rem;
     }
     .references-title h3 {
         font-size: 1.2rem;

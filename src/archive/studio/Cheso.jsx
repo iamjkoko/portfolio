@@ -38,11 +38,11 @@ function Cheso() {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '10px',
+          gap: '5px',
           justifyContent: 'center',
           margin: '0 auto',
           overflow: 'hidden',
-          padding: '5rem 1.875rem 1.25rem',
+          padding: '5rem 2rem 1.25rem',
         }}>
           {imageList.map((img, i) => (
             <div className="cheso-cont" key={i}
