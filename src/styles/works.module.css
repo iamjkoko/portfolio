@@ -122,7 +122,7 @@ hr {
         margin: 0 auto;
         justify-items: center;
         overflow: hidden;
-        padding: 2.5rem 0 0.625rem;
+        padding: 2.5rem 0 0.5rem;
     }
     .description-img img {
         max-width: 720px;
@@ -191,7 +191,7 @@ hr {
         align-items: center;
         justify-content: center;
         margin: 0 auto;
-        padding: 0.625rem 2.5rem 0;
+        padding: 0.5rem 2.5rem 0;
     }
     .progress-vid video {
         width: 100%;
@@ -303,7 +303,7 @@ hr {
         justify-content: center;
         align-items: center;
         margin: 0 auto;
-        padding: 2.5rem 0 0.625rem;
+        padding: 2.5rem 0 0.5rem;
         width: 100%;
         max-width: 960px;
         box-sizing: border-box;
@@ -353,7 +353,7 @@ hr {
     }
     .project-keywords span {
         font-size: 0.85rem;
-        padding: 0.1875rem 0.625rem;
+        padding: 0.25rem 0.5rem;
     }
 
     .project-description {
@@ -370,7 +370,7 @@ hr {
         font-size: 1.2rem;
     }
     .description-img {
-        padding: 2.5rem 0 1rem;
+        padding: 2.5rem 0 0.5rem;
     }
     .description-img img {
         max-width: 720px;
@@ -408,7 +408,7 @@ hr {
         padding: 0;
     }
     .progress-vid {
-        padding: 0.625rem 0;
+        padding: 0.5rem 0;
     }
 
     .project-credits {
@@ -432,7 +432,7 @@ hr {
         width: 100%;
         max-width: 360px;
         box-sizing: border-box;
-        padding-bottom: 0.2rem;
+        padding-bottom: 0.25rem;
     }
     .youtube iframe {
         width: 100%;
