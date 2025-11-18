@@ -27,7 +27,7 @@ function About() {
 
   return (
     <>
-    <section id="about-page" className="flex flex-col min-h-screen justify-center mx-auto w-full bg-white max-[935px]:mt-[20%]">
+    <section id="about-page" className="flex flex-col min-h-screen justify-center mx-auto w-full bg-white max-[935px]:mt-[10%]">
         <div className="flex items-center justify-center text-left bg-white p-5 rounded-[10px] flex-1 max-w-[1200px] mx-auto max-[935px]:flex-col">
             <img 
               src={Profile} 
