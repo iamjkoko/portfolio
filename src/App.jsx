@@ -10,6 +10,7 @@ import SmoothScroll from './components/SmoothScroll';
 
 import Home from './pages/Home';
 import About from './pages/About';
+import Works from './pages/Works';
 
 import Studio from './pages/Studio';
 import Experiments from './pages/Experiments';
@@ -60,6 +61,8 @@ function AppRoutes() {
       <Routes location={location} key={location.pathname}>
             <Route path={ROUTES.HOME} element={<AnimatedPage><Home /></AnimatedPage>} />
             <Route path={ROUTES.ABOUT} element={<AnimatedPage><About /></AnimatedPage>} />
+            
+            <Route path={ROUTES.WORKS.ROOT} element={<AnimatedPage><Works /></AnimatedPage>} />
             
             <Route path={ROUTES.WORKS.CAVEMAN} element={<AnimatedPage><Caveman /></AnimatedPage>} />
             <Route path={ROUTES.WORKS.LOGO} element={<AnimatedPage><Logo /></AnimatedPage>} />

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { ROUTES, EXTERNAL_LINKS } from '../constants/routes';
 import logo from '/favicon.webp';
@@ -8,8 +8,6 @@ import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
 
 export default function Navbar({ showNavbar = true }) {
-  const navigate = useNavigate();
-  const location = useLocation();
   const [isExpanded, setIsExpanded] = useState(false);
   const [showArchiveDropdown, setShowArchiveDropdown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -157,25 +155,13 @@ export default function Navbar({ showNavbar = true }) {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2, duration: 0.4 }}
                     >
-                      <button
-                        onClick={() => {
-                          closeMobileMenu();
-                          if (location.pathname === ROUTES.HOME) {
-                            const element = document.querySelector('#works');
-                            if (element) {
-                              window.scrollTo({ 
-                                top: element.offsetTop, 
-                                behavior: 'smooth' 
-                              });
-                            }
-                          } else {
-                            navigate('/#works');
-                          }
-                        }}
-                        className="text-[3.2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)] cursor-pointer bg-transparent border-0 p-0"
+                      <Link
+                        to={ROUTES.WORKS.ROOT}
+                        className="text-[3.2rem] font-semibold text-black no-underline transition-colors duration-300 ease-in-out hover:text-[rgb(140,140,140)]"
+                        onClick={closeMobileMenu}
                       >
                         WORKS
-                      </button>
+                      </Link>
                     </motion.div>
                   </div>
 
@@ -309,24 +295,12 @@ export default function Navbar({ showNavbar = true }) {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3, delay: 0.1 }}
                 >
-                  <button
-                    onClick={() => {
-                      if (location.pathname === ROUTES.HOME) {
-                        const element = document.querySelector('#works');
-                        if (element) {
-                          window.scrollTo({ 
-                            top: element.offsetTop, 
-                            behavior: 'smooth' 
-                          });
-                        }
-                      } else {
-                        navigate('/#works');
-                      }
-                    }}
-                    className="no-underline text-base font-medium whitespace-nowrap transition-colors duration-[0.4s] ease-in-out py-2 px-2 block text-black hover:text-[rgb(140,140,140)] cursor-pointer bg-transparent border-0"
+                  <Link
+                    to={ROUTES.WORKS.ROOT}
+                    className="no-underline text-base font-medium whitespace-nowrap transition-colors duration-[0.4s] ease-in-out py-2 px-2 block text-black hover:text-[rgb(140,140,140)]"
                   >
                     WORKS
-                  </button>
+                  </Link>
                 </motion.div>
                 
 

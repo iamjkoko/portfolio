@@ -3,10 +3,9 @@ import '../global.css';
 
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-import Placeholder from '../assets/images/background/placeholder-lt.png';
 import ColorBends from '../components/ColorBends';
 
 import Footer from '../components/Footer';
@@ -18,12 +17,7 @@ import Caveman from '../assets/images/works/caveman/caveman.webp';
 
 const Home = () => {
   const [showIntro, setShowIntro] = useState(false);
-  const [introStep, setIntroStep] = useState(0);
-  const [initialHash, setInitialHash] = useState('');
-
-  useEffect(() => {
-    setInitialHash(window.location.hash);
-  }, []);
+  const [setIntroStep] = useState(0);
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("hasVisited");
@@ -45,18 +39,6 @@ const Home = () => {
       }, 800);
     }
   }, []);
-
-  useEffect(() => {
-    if (initialHash === '#works') {
-      setTimeout(() => {
-        const element = document.querySelector('#works');
-        if (element) {
-          const elementTop = element.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo(0, elementTop);
-        }
-      }, 0);
-    }
-  }, [initialHash]);
 
   // Dispatch intro state changes for SmoothScroll
   useEffect(() => {
@@ -178,33 +160,52 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-white pt-32 pb-[3.75rem] max-[935px]:pt-10 max-[935px]:pb-10">
-        <div className="grid grid-cols-2 gap-[15px] justify-items-center mx-auto overflow-hidden px-[1.875rem] max-[935px]:grid-cols-1 max-[935px]:p-[0.625rem] max-[935px]:gap-[15px]">
-        <div className="border-2 border-[#f6f6f6] overflow-hidden">
-            <Link to={ROUTES.WORKS.LOGO}>
-            <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/logo_n5druz.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
+      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-white pt-32 pb-16 max-[935px]:pt-10 max-[935px]:pb-10">
+        <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-[935px]:p-[0.625rem] max-[935px]:gap-[15px]">
+
+        {/* Logo */}
+        <div className="flex items-start gap-[15px] w-full max-[935px]:flex-col max-[935px]:flex-col-reverse max-[935px]:px-[1rem]">
+            <div className="flex-1 flex items-start pt-[2rem] max-[935px]:w-full max-[935px]:pt-4 max-[935px]:justify-start max-[935px]:items-start">
+                <Link to={ROUTES.WORKS.LOGO} className="text-black transition-opacity">
+                    <h2 className="text-3xl font-medium pb-[1rem] max-[935px]:text-xl max-[935px]:text-left max-[935px]:pl-[0.5rem]">Ko: Logo Animation</h2>
+                    <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-[935px]:text-base max-[935px]:text-left max-[935px]:pl-[0.5rem] max-[935px]:pr-[0.5rem] max-[935px]:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</h4>
+                    
+                </Link>
             </div>
-            </Link>
+            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-[935px]:w-full">
+                <Link to={ROUTES.WORKS.LOGO}>
+                <div className="aspect-[3/2] w-full max-w-[1080px] overflow-hidden">
+                    <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/logo_n5druz.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
+                </div>
+                </Link>
+            </div>
         </div>
-        <div className="border-2 border-[#f6f6f6] overflow-hidden">
-            <Link to={ROUTES.WORKS.CAVEMAN}>
-            <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Caveman} />
+
+        <br />
+        
+        {/* Caveman */}
+        <div className="flex items-start gap-[15px] w-full max-[935px]:flex-col max-[935px]:flex-col-reverse max-[935px]:px-[1rem]">
+            <div className="flex-1 flex items-start pt-[2rem] max-[935px]:w-full max-[935px]:pt-4 max-[935px]:justify-start max-[935px]:items-start">
+                <Link to={ROUTES.WORKS.CAVEMAN} className="text-black transition-opacity">
+                    <h2 className="text-3xl font-medium pb-[1rem] max-[935px]:text-xl max-[935px]:text-left max-[935px]:pl-[0.5rem]">Modern Caveman</h2>
+                    <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-[935px]:text-base max-[935px]:text-left max-[935px]:pl-[0.5rem] max-[935px]:pr-[1rem] max-[935px]:text-sm">A series of shadow-based explorations inspired by Plato's Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</h4>
+                </Link>
             </div>
-            </Link>
+            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-[935px]:w-full">
+                <Link to={ROUTES.WORKS.CAVEMAN}>
+                <div className="aspect-[3/2] w-full max-w-[1080px] max-[935px]:max-w-[720px] overflow-hidden">
+                    <img className="block w-full h-full object-cover rounded-none" src={Caveman} />
+                </div>
+                </Link>
+            </div>
         </div>
         
-        {/* Placeholders */}
-        <div className="border-2 border-[#f6f6f6] overflow-hidden">
-            <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} />
-            </div>
-        </div>
-        <div className="border-2 border-[#f6f6f6] overflow-hidden">
-            <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} />
-            </div>
+        <div className="flex flex-row justify-center flex-wrap gap-3 pt-20">
+          <span className="text-[0.9rem] font-normal py-4 px-10 rounded-[30px] bg-[#f0f0f0]">
+            <Link to={ROUTES.WORKS.ROOT} className="text-[rgb(118,118,118)] transition-opacity duration-300 ease-in-out">
+              VIEW ALL PROJECTS
+            </Link>
+          </span>
         </div>
         </div>
     </section>

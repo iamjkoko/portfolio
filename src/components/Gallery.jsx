@@ -6,23 +6,22 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
   const imageRef = useRef(null);
+  const autoplayRef = useRef(null);
+  const resumeTimeoutRef = useRef(null);
+
+  // Touch handling
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-  const autoplayRef = useRef(null);
-
-  // Minimum distance for a swipe
   const minSwipeDistance = 50;
 
-  // Autoplay functionality
+  // Autoplay management
   const startAutoplay = () => {
     if (autoplayRef.current) {
       clearInterval(autoplayRef.current);
     }
     
     autoplayRef.current = setInterval(() => {
-      if (!isTransitioning && isAutoplayActive) {
-        goNext();
-      }
+      goNext();
     }, autoplayInterval);
   };
 
@@ -34,31 +33,81 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
   };
 
   const pauseAutoplay = () => {
-    setIsAutoplayActive(false);
     stopAutoplay();
+    setIsAutoplayActive(false);
   };
 
-  const resumeAutoplay = () => {
-    setIsAutoplayActive(true);
-    startAutoplay();
+  const resumeAutoplayDelayed = (delay = 2000) => {
+    if (resumeTimeoutRef.current) {
+      clearTimeout(resumeTimeoutRef.current);
+    }
+    
+    resumeTimeoutRef.current = setTimeout(() => {
+      setIsAutoplayActive(true);
+    }, delay);
   };
 
-  // Initialize autoplay on component mount
+  // Initialize and manage autoplay
   useEffect(() => {
-    startAutoplay();
+    if (isAutoplayActive) {
+      startAutoplay();
+    } else {
+      stopAutoplay();
+    }
     
     return () => {
       stopAutoplay();
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+      }
     };
-  }, [isAutoplayActive, isTransitioning]);
+  }, [isAutoplayActive, autoplayInterval]);
 
-  // Restart autoplay when currentIndex changes
+  // Restart autoplay when index changes (only if active)
   useEffect(() => {
-    if (isAutoplayActive) {
+    if (isAutoplayActive && !isTransitioning) {
       startAutoplay();
     }
   }, [currentIndex]);
 
+  // Navigation functions
+  const navigate = (direction) => {
+    if (isTransitioning) return;
+    
+    pauseAutoplay();
+    setIsTransitioning(true);
+    const imageElement = imageRef.current;
+    
+    const isNext = direction === 'next';
+    const swipeOutClass = isNext ? 'swipe-left' : 'swipe-right';
+    const swipeInClass = isNext ? 'swipe-in' : 'swipe-in-from-left';
+    
+    imageElement.classList.add(swipeOutClass);
+    
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => {
+        if (isNext) {
+          return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+        } else {
+          return prevIndex === 0 ? images.length - 1 : prevIndex - 1;
+        }
+      });
+      
+      imageElement.classList.remove(swipeOutClass);
+      imageElement.classList.add(swipeInClass);
+      
+      setTimeout(() => {
+        imageElement.classList.remove(swipeInClass);
+        setIsTransitioning(false);
+        resumeAutoplayDelayed();
+      }, 500);
+    }, 300);
+  };
+
+  const goPrev = () => navigate('prev');
+  const goNext = () => navigate('next');
+
+  // Touch handlers
   const onTouchStart = (e) => {
     pauseAutoplay();
     setTouchEnd(null);
@@ -80,104 +129,42 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
       goNext();
     } else if (isRightSwipe) {
       goPrev();
+    } else {
+      // If no swipe detected, resume autoplay
+      resumeAutoplayDelayed();
     }
-    
-    // Resume autoplay after a short delay
-    setTimeout(() => {
-      resumeAutoplay();
-    }, 2000);
-  };
-
-  const goPrev = () => {
-    if (isTransitioning) return;
-    
-    pauseAutoplay();
-    setIsTransitioning(true);
-    const imageElement = imageRef.current;
-    
-    // Add swipe out animation
-    imageElement.classList.add("swipe-right");
-    
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? images.length - 1 : prevIndex - 1
-      );
-      
-      // Remove swipe out class and add swipe in animation from left
-      imageElement.classList.remove("swipe-right");
-      imageElement.classList.add("swipe-in-from-left");
-      
-      // Reset animation classes after animation completes
-      setTimeout(() => {
-        imageElement.classList.remove("swipe-in-from-left");
-        setIsTransitioning(false);
-        // Resume autoplay after transition
-        setTimeout(() => {
-          resumeAutoplay();
-        }, 2000);
-      }, 500);
-    }, 300);
-  };
-
-  const goNext = () => {
-    if (isTransitioning) return;
-    
-    pauseAutoplay();
-    setIsTransitioning(true);
-    const imageElement = imageRef.current;
-    
-    // Add swipe out animation
-    imageElement.classList.add("swipe-left");
-    
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-      
-      // Remove swipe out class and add swipe in animation
-      imageElement.classList.remove("swipe-left");
-      imageElement.classList.add("swipe-in");
-      
-      // Reset animation classes after animation completes
-      setTimeout(() => {
-        imageElement.classList.remove("swipe-in");
-        setIsTransitioning(false);
-        // Resume autoplay after transition
-        setTimeout(() => {
-          resumeAutoplay();
-        }, 2000);
-      }, 500);
-    }, 300);
   };
 
   return (
     <div className="flex items-center justify-center gap-2.5 relative overflow-hidden max-[935px]:flex-col max-[935px]:gap-5 max-[935px]:pb-10">
-      <button 
-        onClick={goPrev} 
-        className="bg-transparent border-none cursor-pointer max-[935px]:hidden" 
-        aria-label="Previous"
-      >
-        <ChevronLeft size={32} />
-      </button>
+        <button 
+          onClick={goPrev} 
+          className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-[935px]:hidden" 
+          aria-label="Previous"
+          disabled={isTransitioning}
+        >
+          <ChevronLeft size={32} />
+        </button>
 
-      <img
-        ref={imageRef}
-        src={images[currentIndex].src}
-        alt={images[currentIndex].alt}
-        className="max-w-[1280px] max-h-[960px] object-cover mt-[100px] transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-w-[600px] max-[935px]:max-h-[400px] max-[935px]:mt-20 max-[935px]:order-1"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      />
+        <img
+          ref={imageRef}
+          src={images[currentIndex].src}
+          alt={images[currentIndex].alt}
+          className="max-w-[1280px] max-h-[960px] object-cover mt-[100px] transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-w-[600px] max-[935px]:max-h-[400px] max-[935px]:mt-20 max-[935px]:order-1"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        />
 
-      <button 
-        onClick={goNext} 
-        className="bg-transparent border-none cursor-pointer max-[935px]:hidden" 
-        aria-label="Next"
-      >
-        <ChevronRight size={32} />
-      </button>
-    </div>
+        <button 
+          onClick={goNext} 
+          className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-[935px]:hidden" 
+          aria-label="Next"
+          disabled={isTransitioning}
+        >
+          <ChevronRight size={32} />
+        </button>
+      </div>
   );
 };
 
