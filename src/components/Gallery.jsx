@@ -16,10 +16,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
 
   // Autoplay management
   const startAutoplay = () => {
-    if (autoplayRef.current) {
-      clearInterval(autoplayRef.current);
-    }
-    
+    if (autoplayRef.current) clearInterval(autoplayRef.current);
     autoplayRef.current = setInterval(() => {
       goNext();
     }, autoplayInterval);
@@ -38,64 +35,49 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
   };
 
   const resumeAutoplayDelayed = (delay = 2000) => {
-    if (resumeTimeoutRef.current) {
-      clearTimeout(resumeTimeoutRef.current);
-    }
-    
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     resumeTimeoutRef.current = setTimeout(() => {
       setIsAutoplayActive(true);
     }, delay);
   };
 
-  // Initialize and manage autoplay
   useEffect(() => {
-    if (isAutoplayActive) {
-      startAutoplay();
-    } else {
-      stopAutoplay();
-    }
-    
+    if (isAutoplayActive) startAutoplay();
+    else stopAutoplay();
+
     return () => {
       stopAutoplay();
-      if (resumeTimeoutRef.current) {
-        clearTimeout(resumeTimeoutRef.current);
-      }
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
   }, [isAutoplayActive, autoplayInterval]);
 
-  // Restart autoplay when index changes (only if active)
   useEffect(() => {
-    if (isAutoplayActive && !isTransitioning) {
-      startAutoplay();
-    }
+    if (isAutoplayActive && !isTransitioning) startAutoplay();
   }, [currentIndex]);
 
-  // Navigation functions
   const navigate = (direction) => {
     if (isTransitioning) return;
-    
+
     pauseAutoplay();
     setIsTransitioning(true);
     const imageElement = imageRef.current;
-    
-    const isNext = direction === 'next';
-    const swipeOutClass = isNext ? 'swipe-left' : 'swipe-right';
-    const swipeInClass = isNext ? 'swipe-in' : 'swipe-in-from-left';
-    
+
+    const isNext = direction === "next";
+    const swipeOutClass = isNext ? "swipe-left" : "swipe-right";
+    const swipeInClass = isNext ? "swipe-in" : "swipe-in-from-left";
+
     imageElement.classList.add(swipeOutClass);
-    
+
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => {
-        if (isNext) {
-          return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
-        } else {
-          return prevIndex === 0 ? images.length - 1 : prevIndex - 1;
-        }
-      });
-      
+      setCurrentIndex((prevIndex) =>
+        isNext
+          ? prevIndex === images.length - 1 ? 0 : prevIndex + 1
+          : prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+
       imageElement.classList.remove(swipeOutClass);
       imageElement.classList.add(swipeInClass);
-      
+
       setTimeout(() => {
         imageElement.classList.remove(swipeInClass);
         setIsTransitioning(false);
@@ -104,10 +86,10 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
     }, 300);
   };
 
-  const goPrev = () => navigate('prev');
-  const goNext = () => navigate('next');
+  const goPrev = () => navigate("prev");
+  const goNext = () => navigate("next");
 
-  // Touch handlers
+  // Touch handlers on container
   const onTouchStart = (e) => {
     pauseAutoplay();
     setTouchEnd(null);
@@ -120,51 +102,49 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
 
-    if (isLeftSwipe) {
-      goNext();
-    } else if (isRightSwipe) {
-      goPrev();
-    } else {
-      // If no swipe detected, resume autoplay
-      resumeAutoplayDelayed();
-    }
+    if (isLeftSwipe) goNext();
+    else if (isRightSwipe) goPrev();
+    else resumeAutoplayDelayed();
   };
 
   return (
-    <div className="flex items-center justify-center gap-2.5 relative overflow-hidden max-[935px]:flex-col max-[935px]:gap-5 max-[935px]:pb-10">
-        <button 
-          onClick={goPrev} 
-          className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-[935px]:hidden" 
-          aria-label="Previous"
-          disabled={isTransitioning}
-        >
-          <ChevronLeft size={32} />
-        </button>
+    <div
+      className="flex items-center justify-center gap-2.5 relative max-[935px]:flex-col max-[935px]:gap-5 max-[935px]:pb-10"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      style={{ touchAction: "pan-y" }} // allow vertical scroll
+    >
+      <button
+        onClick={goPrev}
+        className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-[935px]:hidden"
+        aria-label="Previous"
+        disabled={isTransitioning}
+      >
+        <ChevronLeft size={32} />
+      </button>
 
-        <img
-          ref={imageRef}
-          src={images[currentIndex].src}
-          alt={images[currentIndex].alt}
-          className="max-w-[1280px] max-h-[960px] object-cover mt-[100px] transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-w-[600px] max-[935px]:max-h-[400px] max-[935px]:mt-20 max-[935px]:order-1"
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        />
+      <img
+        ref={imageRef}
+        src={images[currentIndex].src}
+        alt={images[currentIndex].alt}
+        className="max-w-[1280px] max-h-[960px] object-cover mt-[60px] transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-w-[600px] max-[935px]:max-h-[400px] max-[935px]:mt-20 max-[935px]:order-1"
+      />
 
-        <button 
-          onClick={goNext} 
-          className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-[935px]:hidden" 
-          aria-label="Next"
-          disabled={isTransitioning}
-        >
-          <ChevronRight size={32} />
-        </button>
-      </div>
+      <button
+        onClick={goNext}
+        className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-[935px]:hidden"
+        aria-label="Next"
+        disabled={isTransitioning}
+      >
+        <ChevronRight size={32} />
+      </button>
+    </div>
   );
 };
 
