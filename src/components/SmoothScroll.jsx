@@ -11,10 +11,13 @@ export default function SmoothScroll({ children }) {
     const container = containerRef.current;
     if (!container) return;
 
-    // Variables for smooth scrolling
+    // Mobile check - disable on mobile
+    const isMobile = window.innerWidth < 1024;
+    if (isMobile) return;
+
     let currentScroll = 0;
     let targetScroll = 0;
-    let rafId;
+    let rafId = null;
 
     // Setup
     gsap.set(container, { 
