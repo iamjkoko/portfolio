@@ -1,13 +1,95 @@
 import React from "react";
+import { CornerDownRight } from "lucide-react";
 
 const Footer = ({ theme }) => {
-  const themeClasses = theme === 'dark' 
-    ? 'bg-black text-[rgb(118,118,118)]'
+  const isDark = theme === 'dark';
+  const themeClasses = isDark 
+    ? 'bg-[#111111] text-[rgb(118,118,118)]'
     : 'bg-[#f0f0f0] text-[rgb(170,170,170)]';
+
+  const iconSrc = (name) => 
+    isDark 
+      ? `/src/assets/icons/${name}-white.webp`
+      : `/src/assets/icons/${name}-black.webp`;
   
   return (
-    <footer className={`flex justify-between items-center p-5 text-sm max-[935px]:text-[0.625rem] w-full relative z-[1] m-0 border-none ${themeClasses}`}>
-      <p className="font-normal flex-1 text-center">eko03@risd.edu © 2025 Eric Ko</p>
+    <footer className={`w-full relative z-[1] p-8 max-[935px]:p-5 border-none ${themeClasses}`}>
+      {/* Large KO Text */}
+      <div className="max-w-[1400px] mx-auto mb-12 md:pl-0">
+        <h2 
+          className={`text-[180px] md:text-[240px] lg:text-[300px] leading-none font-bold tracking-tight ${
+            isDark ? 'text-white/20' : 'text-black/10'
+          }`}
+          style={{ fontFamily: 'Boska, serif' }}
+        >
+        KO:
+        </h2>
+      </div>
+
+      {/* Main Footer Grid */}
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 pl-4 md:pl-0">
+        
+        {/* Contact Section */}
+        <div className="space-y-3">
+          <h3 className="text-base font-medium mb-3 opacity-80">Get in Touch</h3>
+          <a 
+            href="mailto:eko03@risd.edu" 
+            className={`flex items-center gap-2 text-sm transition-colors`}
+          >
+            <CornerDownRight size={16} />
+            eko03@risd.edu
+          </a>
+          {/*
+          <div className="flex items-center gap-2 text-sm">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span>Available for work</span>
+          </div>
+          */}
+        </div>
+
+        {/* Social Links Section */}
+        <div className="space-y-3">
+          <h3 className="text-base font-medium mb-3 opacity-80">Connect</h3>
+          <div className="flex items-center gap-2">
+            <CornerDownRight size={16} />
+            <div className="flex gap-2">
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-opacity opacity-40`}
+                aria-label="LinkedIn"
+              >
+                <img src={iconSrc('linkedin')} alt="LinkedIn" className="w-6 h-6" />
+              </a>
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-opacity opacity-40`}
+                aria-label="Instagram"
+              >
+                <img src={iconSrc('instagram')} alt="Instagram" className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Info Section */}
+        <div className="space-y-3">
+          <p className="text-xs opacity-60 pt-0.5">
+            Last updated: November 2025
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="max-w-[1400px] mx-auto pt-60">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60">
+          <p>© 2025 Eric Ko. All rights reserved.</p>
+          <p>Designed & Built with React</p>
+        </div>
+      </div>
     </footer>
   );
 };

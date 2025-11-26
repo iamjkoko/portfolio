@@ -56,7 +56,6 @@ const Home = () => {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // Fix: Changed from [class*="fadeIn"] to .fade-in
               const children = entry.target.querySelectorAll('.fade-in');
               children.forEach((child, index) => {
                 setTimeout(() => {
