@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom"; // or next/navigation for Next.js
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -7,31 +6,32 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll({ children }) {
   const containerRef = useRef(null);
-  const location = useLocation(); // Track route changes
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
+    // Mobile check - disable smooth scroll animation on mobile
     const isMobile = window.innerWidth < 1024;
 
-    // Mobile: Simple scroll-to-top on route change
+    // Handle hash navigation for mobile (without smooth scroll)
     if (isMobile) {
-      const hash = window.location.hash;
-      
-      if (hash) {
-        // Hash navigation - scroll to element
-        const element = document.querySelector(hash);
-        if (element) {
-          setTimeout(() => {
-            element.scrollIntoView({ behavior: 'auto' });
-          }, 100);
+      const handleInitialHashMobile = () => {
+        const hash = window.location.hash;
+        if (hash) {
+          const element = document.querySelector(hash);
+          if (element) {
+            // Use native scrolling on mobile
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: 'auto' });
+            }, 100);
+          }
         }
-      } else {
-        // No hash - scroll to top
-        window.scrollTo(0, 0);
-      }
+      };
+
+      handleInitialHashMobile();
       
+      // No cleanup needed for mobile
       return;
     }
 
@@ -40,6 +40,7 @@ export default function SmoothScroll({ children }) {
     let targetScroll = 0;
     let rafId = null;
 
+    // Setup
     gsap.set(container, { 
       position: "fixed", 
       top: 0, 
@@ -49,6 +50,7 @@ export default function SmoothScroll({ children }) {
     });
 
     const updateHeight = () => {
+      // Use requestAnimationFrame to ensure accurate height after render
       requestAnimationFrame(() => {
         const height = container.scrollHeight;
         document.body.style.height = `${height}px`;
@@ -67,18 +69,14 @@ export default function SmoothScroll({ children }) {
           window.scrollTo(0, scrollPosition);
           container.style.transform = `translate3d(0, ${-scrollPosition}px, 0)`;
         }
-      } else {
-        // Reset scroll position on route change
-        currentScroll = 0;
-        targetScroll = 0;
-        window.scrollTo(0, 0);
-        container.style.transform = `translate3d(0, 0, 0)`;
       }
     };
 
+    // Initial height update with delay to ensure content is rendered
     const initialUpdate = setTimeout(updateHeight, 100);
     setTimeout(handleInitialHash, 150);
 
+    // Smooth scroll loop
     const animate = () => {
       targetScroll = window.scrollY;
       currentScroll += (targetScroll - currentScroll) * 0.1;
@@ -90,6 +88,7 @@ export default function SmoothScroll({ children }) {
       rafId = requestAnimationFrame(animate);
     };
 
+    // ScrollTrigger proxy
     ScrollTrigger.scrollerProxy(container, {
       scrollTop(value) {
         if (value !== undefined) {
@@ -105,6 +104,7 @@ export default function SmoothScroll({ children }) {
       }),
     });
 
+    // Watch for content changes with MutationObserver
     const observer = new MutationObserver(() => {
       updateHeight();
     });
@@ -115,6 +115,7 @@ export default function SmoothScroll({ children }) {
       attributes: true,
     });
 
+    // Update height on resize
     let resizeTimeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -122,8 +123,10 @@ export default function SmoothScroll({ children }) {
     };
     window.addEventListener("resize", handleResize);
     
+    // Start
     animate();
 
+    // Cleanup
     return () => {
       clearTimeout(initialUpdate);
       clearTimeout(resizeTimeout);
@@ -134,7 +137,7 @@ export default function SmoothScroll({ children }) {
       document.body.style.height = "";
       ScrollTrigger.refresh();
     };
-  }, [location]); // Re-run on route change (includes both children and location)
+  }, [children]); // Re-run when children change (route changes)
 
   return <div ref={containerRef}>{children}</div>;
 }
