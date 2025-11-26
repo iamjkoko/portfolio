@@ -11,10 +11,31 @@ export default function SmoothScroll({ children }) {
     const container = containerRef.current;
     if (!container) return;
 
-    // Mobile check - disable on mobile
+    // Mobile check - disable smooth scroll animation on mobile
     const isMobile = window.innerWidth < 1024;
-    if (isMobile) return;
 
+    // Handle hash navigation for mobile (without smooth scroll)
+    if (isMobile) {
+      const handleInitialHashMobile = () => {
+        const hash = window.location.hash;
+        if (hash) {
+          const element = document.querySelector(hash);
+          if (element) {
+            // Use native scrolling on mobile
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: 'auto' });
+            }, 100);
+          }
+        }
+      };
+
+      handleInitialHashMobile();
+      
+      // No cleanup needed for mobile
+      return;
+    }
+
+    // Desktop: Full smooth scroll implementation
     let currentScroll = 0;
     let targetScroll = 0;
     let rafId = null;
