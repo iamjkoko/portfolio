@@ -1,17 +1,20 @@
 import React from "react";
 import { CornerDownRight } from "lucide-react";
 
+import InstagramIconBlack from '../assets/icons/instagram-black.webp';
+import LinkedinIconBlack from '../assets/icons/linkedin-black.webp';
+import InstagramIconWhite from '../assets/icons/instagram-white.webp';
+import LinkedinIconWhite from '../assets/icons/linkedin-white.webp';
+
 const Footer = ({ theme }) => {
   const isDark = theme === 'dark';
   const themeClasses = isDark 
     ? 'bg-[#111111] text-[rgb(118,118,118)]'
     : 'bg-[#f0f0f0] text-[rgb(170,170,170)]';
-
-  const iconSrc = (name) => 
-    isDark 
-      ? `/src/assets/icons/${name}-white.webp`
-      : `/src/assets/icons/${name}-black.webp`;
   
+  const InstagramIcon = isDark ? InstagramIconWhite : InstagramIconBlack;
+  const LinkedinIcon = isDark ? LinkedinIconWhite : LinkedinIconBlack;
+
   return (
     <footer className={`w-full relative z-[1] p-8 max-[935px]:p-5 border-none ${themeClasses}`}>
       {/* Large KO Text */}
@@ -60,7 +63,7 @@ const Footer = ({ theme }) => {
                 className={`transition-opacity opacity-40`}
                 aria-label="LinkedIn"
               >
-                <img src={iconSrc('linkedin')} alt="LinkedIn" className="w-6 h-6" />
+                <img src={LinkedinIcon} alt="LinkedIn" className="w-6 h-6" />
               </a>
               <a 
                 href="https://instagram.com" 
@@ -69,7 +72,7 @@ const Footer = ({ theme }) => {
                 className={`transition-opacity opacity-40`}
                 aria-label="Instagram"
               >
-                <img src={iconSrc('instagram')} alt="Instagram" className="w-6 h-6" />
+                <img src={InstagramIcon} alt="Instagram" className="w-6 h-6" />
               </a>
             </div>
           </div>
