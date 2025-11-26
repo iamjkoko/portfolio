@@ -17,7 +17,7 @@ const Footer = ({ theme }) => {
 
   return (
     <footer className={`w-full relative z-[1] p-8 max-[935px]:p-5 border-none ${themeClasses}`}>
-      {/* Large KO Text */}
+      {/*}
       <div className="max-w-[1400px] mx-auto mb-12 md:pl-0">
         <h2 
           className={`text-[180px] md:text-[240px] lg:text-[300px] leading-none font-bold tracking-tight ${
@@ -28,13 +28,14 @@ const Footer = ({ theme }) => {
         KO:
         </h2>
       </div>
+      */}
 
       {/* Main Footer Grid */}
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 pl-4 md:pl-0">
         
         {/* Contact Section */}
         <div className="space-y-3">
-          <h3 className="text-base font-medium mb-3 opacity-80">Get in Touch</h3>
+          <h3 className="text-base font-medium mb-3 opacity-80 max-[935px]:pt-4">Get in Touch</h3>
           <a 
             href="mailto:eko03@risd.edu" 
             className={`flex items-center gap-2 text-sm transition-colors`}

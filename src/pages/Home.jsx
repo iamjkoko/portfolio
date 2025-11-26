@@ -163,8 +163,8 @@ const Home = () => {
         <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-lg:p-[0.625rem] max-lg:gap-[15px]">
 
         {/* Ko: Logo Animation */}
-        <div className="flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
-            <div className="flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
+        <div className="fade-container flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
+            <div className="fade-in flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <Link to={ROUTES.WORKS.LOGO} className="text-black transition-opacity">
                     <h2 className="text-3xl font-medium pb-[1rem] max-lg:text-xl max-lg:text-left max-lg:pl-[0.5rem]">Ko: Logo Animation</h2>
                     <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[0.5rem] max-lg:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</h4>
@@ -177,7 +177,7 @@ const Home = () => {
                     </div>
                 </Link>
             </div>
-            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
+            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
                 <Link to={ROUTES.WORKS.LOGO}>
                 <div className="aspect-[3/2] w-full max-w-[1080px] overflow-hidden">
                     <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/logo_n5druz.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
@@ -189,8 +189,8 @@ const Home = () => {
         <br />
         
         {/* Modern Caveman */}
-        <div className="flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
-            <div className="flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
+        <div className="fade-container flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
+            <div className="fade-in flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <Link to={ROUTES.WORKS.CAVEMAN} className="text-black transition-opacity">
                     <h2 className="text-3xl font-medium pb-[1rem] max-lg:text-xl max-lg:text-left max-lg:pl-[0.5rem]">Modern Caveman</h2>
                     <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[1rem] max-lg:text-sm">A series of shadow-based explorations inspired by Plato's Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</h4>
@@ -201,7 +201,7 @@ const Home = () => {
                     </div>
                 </Link>
             </div>
-            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
+            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
                 <Link to={ROUTES.WORKS.CAVEMAN}>
                 <div className="aspect-[3/2] w-full max-w-[1080px] max-lg:max-w-[720px] overflow-hidden">
                     <img className="block w-full h-full object-cover rounded-none" src={Caveman} />
