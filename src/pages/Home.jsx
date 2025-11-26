@@ -4,7 +4,7 @@ import '../global.css';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 
 import ColorBends from '../components/ColorBends';
 
@@ -116,41 +116,41 @@ const Home = () => {
 
       <section 
         id="about" 
-        className="w-full h-screen flex text-center justify-center items-center bg-black opacity-100 relative m-0 border-none max-[935px]:h-[calc(100vh+80px)]"
+        className="w-full h-screen flex text-center justify-center items-center bg-black opacity-100 relative m-0 border-none max-lg:h-[calc(100vh+80px)]"
       >
         <div className="opacity-100 w-full h-full flex flex-col relative">
           <div className="fade-container flex flex-col items-center w-full flex-1 justify-center">
-            <div className="flex flex-col text-white w-[45%] max-[935px]:w-[70%] max-[935px]:p-[2%] text-center">
-              <p className="fade-in font-extralight text-lg max-[935px]:text-[0.75rem] leading-[1.8]">
+            <div className="flex flex-col text-white w-[45%] max-lg:w-[70%] max-lg:p-[2%] text-center">
+              <p className="fade-in font-extralight text-lg max-lg:text-[0.75rem] leading-[1.8]">
                 <strong className="font-bold">Eric Ko</strong> (b. 2004) is a multidisciplinary artist and designer currently pursuing a <strong className="font-bold">BFA in Industrial Design</strong> at the <strong className="font-bold">Rhode Island School of Design (RISD)</strong>.
               </p>
               <br />
               <br />
-              <p className="fade-in font-extralight text-lg max-[935px]:text-[0.75rem] leading-[1.8]">
+              <p className="fade-in font-extralight text-lg max-lg:text-[0.75rem] leading-[1.8]">
                 Born and raised in <strong className="font-bold">Seoul, South Korea</strong>, and having spent four years in <strong className="font-bold">São Paulo, Brazil</strong>, his works are shaped by his cultural experiences and curiosity about the intersection of <strong className="font-bold">technology, innovation,</strong> and <strong className="font-bold">sustainability</strong>.
               </p>
               <br />
             </div>
           
-            <div className="fade-in flex flex-col items-center pt-8 max-[935px]:pt-0 max-[935px]:pb-20">
-              <div className="flex justify-center max-[935px]:pb-0 max-[935px]:text-[0.75rem]">
+            <div className="fade-in flex flex-col items-center pt-8 max-lg:pt-0 max-lg:pb-20">
+              <div className="flex justify-center max-lg:pb-0 max-lg:text-[0.75rem]">
                 <Link to={`${ROUTES.ABOUT}#about-page`} className="text-white underline underline-offset-2 transition-opacity duration-300 ease-in-out hover:opacity-70">
                   LEARN MORE
                 </Link>
               </div>
         
-              <div className="hidden min-[936px]:flex justify-center gap-[15px] pt-10 max-[935px]:gap-[30px] max-[935px]:pt-2">
+              <div className="hidden lg:flex justify-center gap-[15px] pt-10 max-lg:gap-[30px] max-lg:pt-2">
                 <a href="https://www.instagram.com/morebyko/" className="instagram" target="_blank" rel="noopener noreferrer">
-                  <img src={InstagramIcon} alt="Instagram" className="max-w-[1.375rem] max-h-[1.375rem] max-[935px]:max-w-[2rem] max-[935px]:max-h-[2rem]" />
+                  <img src={InstagramIcon} alt="Instagram" className="max-w-[1.375rem] max-h-[1.375rem] max-lg:max-w-[2rem] max-lg:max-h-[2rem]" />
                 </a>
                 <a href="https://www.linkedin.com/in/ericko26" className="linkedin" target="_blank" rel="noopener noreferrer">
-                  <img src={LinkedinIcon} alt="LinkedIn" className="max-w-[1.375rem] max-h-[1.375rem] max-[935px]:max-w-[2rem] max-[935px]:max-h-[2rem]" />
+                  <img src={LinkedinIcon} alt="LinkedIn" className="max-w-[1.375rem] max-h-[1.375rem] max-lg:max-w-[2rem] max-lg:max-h-[2rem]" />
                 </a>
               </div>
             </div>
 
             <div className="fade-in flex flex-col items-center gap-2 pt-8 pb-8 absolute bottom-0 left-0 right-0">
-              <div className="text-white text-sm max-[935px]:text-[0.75rem] transition-opacity duration-300 ease-in-out"
+              <div className="text-white text-sm max-lg:text-[0.75rem] transition-opacity duration-300 ease-in-out"
               >
                 SEE LATEST PROJECTS
               </div>
@@ -160,19 +160,23 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-white pt-32 pb-16 max-[935px]:pt-10 max-[935px]:pb-10">
-        <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-[935px]:p-[0.625rem] max-[935px]:gap-[15px]">
+      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-white pt-32 pb-16 max-lg:pt-10 max-lg:pb-10">
+        <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-lg:p-[0.625rem] max-lg:gap-[15px]">
 
-        {/* Logo */}
-        <div className="flex items-start gap-[15px] w-full max-[935px]:flex-col max-[935px]:flex-col-reverse max-[935px]:px-[1rem]">
-            <div className="flex-1 flex items-start pt-[2rem] max-[935px]:w-full max-[935px]:pt-4 max-[935px]:justify-start max-[935px]:items-start">
+        {/* Ko: Logo Animation */}
+        <div className="flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
+            <div className="flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <Link to={ROUTES.WORKS.LOGO} className="text-black transition-opacity">
-                    <h2 className="text-3xl font-medium pb-[1rem] max-[935px]:text-xl max-[935px]:text-left max-[935px]:pl-[0.5rem]">Ko: Logo Animation</h2>
-                    <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-[935px]:text-base max-[935px]:text-left max-[935px]:pl-[0.5rem] max-[935px]:pr-[0.5rem] max-[935px]:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</h4>
-                    
+                    <h2 className="text-3xl font-medium pb-[1rem] max-lg:text-xl max-lg:text-left max-lg:pl-[0.5rem]">Ko: Logo Animation</h2>
+                    <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[0.5rem] max-lg:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</h4>
+
+                     <div className="flex flex-row flex-wrap gap-3 pt-8 max-lg:py-0 max-lg:pt-8 max-lg:pb-8 max-lg:pl-[0.5rem]">
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-lg:text-[0.75rem] max-lg:py-[0.25rem] max-lg:px-3">MOTION DESIGN</span>
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-lg:text-[0.75rem] max-lg:py-[0.25rem] max-lg:px-3">TYPOGRAPHY</span>
+                    </div>
                 </Link>
             </div>
-            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-[935px]:w-full">
+            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
                 <Link to={ROUTES.WORKS.LOGO}>
                 <div className="aspect-[3/2] w-full max-w-[1080px] overflow-hidden">
                     <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/logo_n5druz.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
@@ -183,29 +187,33 @@ const Home = () => {
 
         <br />
         
-        {/* Caveman */}
-        <div className="flex items-start gap-[15px] w-full max-[935px]:flex-col max-[935px]:flex-col-reverse max-[935px]:px-[1rem]">
-            <div className="flex-1 flex items-start pt-[2rem] max-[935px]:w-full max-[935px]:pt-4 max-[935px]:justify-start max-[935px]:items-start">
+        {/* Modern Caveman */}
+        <div className="flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
+            <div className="flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <Link to={ROUTES.WORKS.CAVEMAN} className="text-black transition-opacity">
-                    <h2 className="text-3xl font-medium pb-[1rem] max-[935px]:text-xl max-[935px]:text-left max-[935px]:pl-[0.5rem]">Modern Caveman</h2>
-                    <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-[935px]:text-base max-[935px]:text-left max-[935px]:pl-[0.5rem] max-[935px]:pr-[1rem] max-[935px]:text-sm">A series of shadow-based explorations inspired by Plato's Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</h4>
+                    <h2 className="text-3xl font-medium pb-[1rem] max-lg:text-xl max-lg:text-left max-lg:pl-[0.5rem]">Modern Caveman</h2>
+                    <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[1rem] max-lg:text-sm">A series of shadow-based explorations inspired by Plato's Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</h4>
+
+                     <div className="flex flex-row flex-wrap gap-3 pt-8 max-lg:py-0 max-lg:pt-8 max-lg:pb-8 max-lg:pl-[0.5rem]">
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-lg:text-[0.75rem] max-lg:py-[0.25rem] max-lg:px-3">CONCEPTUAL</span>
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-lg:text-[0.75rem] max-lg:py-[0.25rem] max-lg:px-3">3D RENDERING</span>
+                    </div>
                 </Link>
             </div>
-            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-[935px]:w-full">
+            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
                 <Link to={ROUTES.WORKS.CAVEMAN}>
-                <div className="aspect-[3/2] w-full max-w-[1080px] max-[935px]:max-w-[720px] overflow-hidden">
+                <div className="aspect-[3/2] w-full max-w-[1080px] max-lg:max-w-[720px] overflow-hidden">
                     <img className="block w-full h-full object-cover rounded-none" src={Caveman} />
                 </div>
                 </Link>
             </div>
         </div>
         
-        <div className="flex flex-row justify-center flex-wrap gap-3 pt-20">
-          <span className="text-[0.9rem] font-normal py-4 px-10 rounded-[30px] bg-[#f0f0f0]">
-            <Link to={ROUTES.WORKS.ROOT} className="text-[rgb(118,118,118)] transition-opacity duration-300 ease-in-out">
-              VIEW ALL PROJECTS
-            </Link>
-          </span>
+        <div className="flex justify-end pt-20 max-lg:pt-10">
+          <Link to={`${ROUTES.WORKS.ROOT}#top`} className="flex items-center gap-2 text-[rgb(118,118,118)] text-lg max-lg:px-[1.25rem] max-lg:text-sm">
+            VIEW ALL PROJECTS
+            <ArrowRight className="w-5 h-5 max-lg:w-4 max-lg:h-4" />
+          </Link>
         </div>
         </div>
     </section>

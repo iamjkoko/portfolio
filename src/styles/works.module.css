@@ -83,7 +83,7 @@ hr {
         font-size: 0.9rem;
         font-weight: 400;
         color: var(--color-keyword-text);
-        padding: 0.25rem 0.75rem;
+        padding: 0.25rem 1rem;
         border-radius: 30px;
         background-color: var(--color-keyword-bg);
     }
