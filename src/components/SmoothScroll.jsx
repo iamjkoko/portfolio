@@ -11,6 +11,11 @@ export default function SmoothScroll({ children }) {
     const container = containerRef.current;
     if (!container) return;
 
+    // Variables for smooth scrolling
+    let currentScroll = 0;
+    let targetScroll = 0;
+    let rafId;
+
     // Setup
     gsap.set(container, { 
       position: "fixed", 
