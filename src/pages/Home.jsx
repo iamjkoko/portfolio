@@ -133,7 +133,7 @@ const Home = () => {
           
             <div className="fade-in flex flex-col items-center pt-8 max-lg:pt-0 max-lg:pb-20">
               <div className="flex justify-center max-lg:pb-0 max-lg:text-[0.75rem]">
-                <Link to={`${ROUTES.ABOUT}#about-page`} className="text-white underline underline-offset-2 transition-opacity duration-300 ease-in-out hover:opacity-70">
+                <Link to={ROUTES.ABOUT} className="text-white underline underline-offset-2 transition-opacity duration-300 ease-in-out hover:opacity-70">
                   LEARN MORE
                 </Link>
               </div>
@@ -211,7 +211,7 @@ const Home = () => {
         </div>
         
         <div className="flex justify-end pt-20 max-lg:pt-10">
-          <Link to={`${ROUTES.WORKS.ROOT}#top`} className="flex items-center gap-2 text-[rgb(118,118,118)] text-lg max-lg:px-[1.25rem] max-lg:text-sm">
+          <Link to={ROUTES.WORKS.ROOT} className="flex items-center gap-2 text-[rgb(118,118,118)] text-lg max-lg:px-[1.25rem] max-lg:text-sm">
             VIEW ALL PROJECTS
             <ArrowRight className="w-5 h-5 max-lg:w-4 max-lg:h-4" />
           </Link>
