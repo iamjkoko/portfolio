@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 const CvmGalleryItem = ({ src, alt }) => {
     const [isActive, setIsActive] = useState(false);
-    const [currentSrc, setCurrentSrc] = useState(src);
-    const [isTransitioning, setIsTransitioning] = useState(false);
   
     useEffect(() => {
       const preload = new Image();
@@ -12,24 +10,22 @@ const CvmGalleryItem = ({ src, alt }) => {
     }, [alt]);
   
     const handleClick = () => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        const newSrc = isActive ? src : alt;
-        setCurrentSrc(newSrc);
-        setIsActive(!isActive);
-        setIsTransitioning(false);
-      }, 250); // Match CSS duration
+      setIsActive(!isActive);
     };
   
     return (
-      <div className="overflow-hidden max-w-[360px] max-h-[360px] w-full h-auto rounded-[3px] md:rounded-md">
+      <div className="overflow-hidden max-w-[360px] max-h-[360px] w-full h-auto rounded-[3px] md:rounded-md relative cursor-pointer" onClick={handleClick}>
         <img
-          className={`block w-full h-auto object-cover transition-all duration-[250ms] ease-in-out cursor-pointer ${
-            isTransitioning ? 'opacity-0 blur-md' : 'opacity-100 blur-0'
-          }`}
-          src={currentSrc}
+          className="block w-full h-auto object-cover transition-opacity duration-[500ms] ease-in-out"
+          src={src}
           alt=""
-          onClick={handleClick}
+        />
+        <img
+          className={`block w-full h-auto object-cover transition-opacity duration-[500ms] ease-in-out absolute inset-0 ${
+            isActive ? 'opacity-100' : 'opacity-0'
+          }`}
+          src={alt}
+          alt=""
         />
       </div>
     );
