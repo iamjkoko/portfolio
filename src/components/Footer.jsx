@@ -43,7 +43,7 @@ const Footer = ({ theme }) => {
             <span className="opacity-60">
             <CornerDownRight size={16} />
             </span>
-            <span className="transition-opacity opacity-50 hover:opacity-100">
+            <span className="transition-opacity opacity-50 hover:opacity-90">
             eko03@risd.edu
             </span>
           </a>
