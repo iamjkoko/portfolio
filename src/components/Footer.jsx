@@ -9,7 +9,7 @@ import LinkedinIconWhite from '../assets/icons/linkedin-white.webp';
 const Footer = ({ theme }) => {
   const isDark = theme === 'dark';
   const themeClasses = isDark 
-    ? 'bg-[#111111] text-[rgb(118,118,118)]'
+    ? 'bg-[#111111] text-[rgb(192, 192, 192)]'
     : 'bg-[#f0f0f0] text-[rgb(170,170,170)]';
   
   const InstagramIcon = isDark ? InstagramIconWhite : InstagramIconBlack;
@@ -35,13 +35,17 @@ const Footer = ({ theme }) => {
         
         {/* Contact Section */}
         <div className="space-y-3">
-          <h3 className="text-base font-medium mb-3 opacity-80 max-[935px]:pt-4">Get in Touch</h3>
+          <h3 className="text-base font-medium mb-3 opacity-60 max-[935px]:pt-4">Get in Touch</h3>
           <a 
             href="mailto:eko03@risd.edu" 
-            className={`flex items-center gap-2 text-sm transition-colors`}
+            className={`flex items-center gap-2 text-sm`}
           >
+            <span className="opacity-60">
             <CornerDownRight size={16} />
+            </span>
+            <span className="transition-opacity opacity-50 hover:opacity-100">
             eko03@risd.edu
+            </span>
           </a>
           {/*
           <div className="flex items-center gap-2 text-sm">
@@ -53,15 +57,17 @@ const Footer = ({ theme }) => {
 
         {/* Social Links Section */}
         <div className="space-y-3">
-          <h3 className="text-base font-medium mb-3 opacity-80">Connect</h3>
+          <h3 className="text-base font-medium mb-3 opacity-60">Connect</h3>
           <div className="flex items-center gap-2">
+            <span className="opacity-50">
             <CornerDownRight size={16} />
+            </span>
             <div className="flex gap-2">
               <a 
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className={`transition-opacity opacity-40`}
+                className={`transition-opacity opacity-40 hover:opacity-70`}
                 aria-label="LinkedIn"
               >
                 <img src={LinkedinIcon} alt="LinkedIn" className="w-6 h-6" />
@@ -70,7 +76,7 @@ const Footer = ({ theme }) => {
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className={`transition-opacity opacity-40`}
+                className={`transition-opacity opacity-40 hover:opacity-70`}
                 aria-label="Instagram"
               >
                 <img src={InstagramIcon} alt="Instagram" className="w-6 h-6" />
@@ -89,7 +95,7 @@ const Footer = ({ theme }) => {
 
       {/* Bottom Bar */}
       <div className="max-w-[1400px] mx-auto pt-60">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-40">
           <p>© 2025 Eric Ko. All rights reserved.</p>
           <p>Designed & Built with React</p>
         </div>

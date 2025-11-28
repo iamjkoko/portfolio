@@ -1,0 +1,232 @@
+================================================================================
+DESIGN SYSTEM REFERENCE
+Margin/Padding Rules & Color Options
+================================================================================
+
+BREAKPOINTS
+--------------------------------------------------------------------------------
+Mobile Breakpoint: 935px
+  - Used in media queries: @media (max-width: 935px)
+  - Tailwind config: --breakpoint-mobile: 935px
+
+
+================================================================================
+COLOR SYSTEM
+================================================================================
+
+CSS VARIABLES (Theme-based)
+--------------------------------------------------------------------------------
+
+LIGHT THEME (:root)
+  --color-background: white
+  --color-text: black
+  --color-border-gray: #bdbdbd
+  --color-keyword-text: rgb(113, 113, 113)
+  --color-keyword-bg: #ececec
+  --color-text-muted: rgb(194, 194, 194)
+  --color-figcaption: black
+
+DARK THEME (.dark)
+  --color-background: black
+  --color-text: white
+  --color-border-gray: #bdbdbd (same as light)
+  --color-keyword-text: #ececec
+  --color-keyword-bg: rgb(113, 113, 113)
+  --color-text-muted: rgb(194, 194, 194) (same as light)
+  --color-figcaption: white
+
+ADDITIONAL COLORS (Used in Components)
+--------------------------------------------------------------------------------
+Hover States:
+  - rgb(140, 140, 140) - Used for hover text color on links/buttons
+  - rgb(118, 118, 118) - Footer text (dark theme)
+  - rgb(170, 170, 170) - Footer text (light theme)
+
+Background Colors:
+  - #111111 - Footer background (dark theme)
+  - #f0f0f0 - Footer background (light theme)
+  - white - Default background
+  - black - Default dark background
+
+Border Colors:
+  - #bdbdbd - Standard border gray (used in hr elements)
+
+
+================================================================================
+SPACING SYSTEM (Margin & Padding)
+================================================================================
+
+COMMON PADDING VALUES
+--------------------------------------------------------------------------------
+
+Small Spacing:
+  0.25rem  (4px)   - Small padding (e.g., keyword tags, mobile iframe)
+  0.5rem   (8px)   - Small padding (e.g., progress video)
+  0.625rem (10px)  - Small margin/padding (e.g., hr margin, progress grid gap)
+
+Medium Spacing:
+  0.75rem  (12px)  - Keyword gap
+  1rem     (16px)  - Standard small spacing
+  1.25rem  (20px)  - Common padding/margin (hr margin, description padding)
+  2rem     (32px)  - Medium spacing
+  2.5rem   (40px)  - Common section padding (project info, descriptions)
+
+Large Spacing:
+  3rem     (48px)  - Large padding (mobile project info, description sections)
+  3.75rem  (60px)  - Large padding (project info bottom, progress title mobile)
+  4rem     (64px)  - Extra large padding (project info top, credits, references)
+  5rem     (80px)  - Extra large padding (description, credits sections)
+  6rem     (96px)  - Very large (mobile project main margin-top)
+  8rem     (128px) - Extra large (project basics padding-right)
+  10rem    (160px) - Extra large (project info horizontal padding)
+
+SPECIFIC PADDING PATTERNS
+--------------------------------------------------------------------------------
+
+Project Info (.project-info):
+  Desktop: padding: 4rem 10rem 3.75rem
+  Mobile:   padding: 2.5rem 3rem 1rem
+
+Project Basics (.project-basics):
+  Desktop: padding-right: 8rem
+  Mobile:   padding-right: 2rem; padding-bottom: 1rem
+
+Project Description (.project-description):
+  Desktop: padding: 1.25rem 5rem
+  Mobile:   padding: 4rem 0 1rem
+
+Description Section (.description):
+  Desktop: padding: 0 5rem 2.5rem
+  Mobile:   padding: 0 3rem 2.5rem
+
+Description Image (.description-img):
+  padding: 2.5rem 0 0.5rem
+
+Description Body (.description-body):
+  Desktop: padding-top: 2.5rem
+  Mobile:   padding-top: 1rem
+
+Description Quote (.description-quote):
+  Desktop: padding-top: 1.25rem
+  Mobile:   padding-top: 2.5rem
+
+Progress Section (.progress):
+  Desktop: padding: 1.25rem 0 2.5rem
+  Mobile:   padding: 1.25rem 2rem 2.5rem
+
+Progress Title (.progress-title):
+  Desktop: padding-bottom: 1.25rem
+  Mobile:   padding: 0 5rem 2.5rem; padding-bottom: 3.75rem
+
+Progress Image Grid (.progress-img):
+  Desktop: padding: 0 2.5rem
+  Mobile:   padding: 0
+
+Progress Video (.progress-vid):
+  Desktop: padding: 0.5rem 2.5rem 0
+  Mobile:   padding: 0.5rem 0
+
+Project Credits (.project-credits):
+  Desktop: padding: 4rem 5rem
+  Mobile:   padding: 1.25rem 0 0
+
+Credits Title (.credits-title):
+  Desktop: padding: 0 5rem 1.25rem
+  Mobile:   padding: 0 3rem 1.25rem
+
+Credits Body (.credits-body):
+  Desktop: padding: 0 5rem 2.5rem
+  Mobile:   padding: 0 3rem 2.5rem
+
+References (.references):
+  Desktop: padding: 4rem 5rem
+  Mobile:   padding: 1.25rem 3rem 0
+
+References Title (.references-title):
+  Desktop: padding: 0 5rem 1.25rem
+  Mobile:   padding: 0 0 1.25rem
+
+Banner (.banner):
+  padding: 2.5rem 0 1.25rem
+
+YouTube Container (.youtube):
+  Desktop: padding: 2.5rem 0 0.5rem
+  Mobile:   padding-bottom: 0.25rem
+
+COMMON MARGIN VALUES
+--------------------------------------------------------------------------------
+
+Small Margins:
+  0.125rem (2px)   - Very small margin (mobile project video)
+  0.625rem (10px)  - Small margin (progress grid gap)
+  1.25rem  (20px)  - Standard margin (hr elements, figcaption)
+
+Medium Margins:
+  1.25rem  (20px)  - Common margin
+  2.5rem   (40px)  - Medium margin
+
+Large Margins:
+  6rem     (96px)  - Large margin (mobile project main margin-top)
+
+SPECIFIC MARGIN PATTERNS
+--------------------------------------------------------------------------------
+
+HR Elements:
+  margin: 1.25rem auto
+
+Project Main (Mobile):
+  margin-top: 6rem
+
+Project Video Vertical (Mobile):
+  margin-top: 0.125rem
+
+Progress Image Grid:
+  gap: 0.625rem (desktop), 0.625rem (mobile)
+
+References Image Grid:
+  gap: 1.25rem
+
+Figcaption:
+  margin-top: 1.25rem
+
+GAP VALUES (Flexbox/Grid)
+--------------------------------------------------------------------------------
+  0.75rem  (12px)  - Keyword tags gap
+  0.625rem (10px)  - Progress image grid gap
+  1.25rem  (20px)  - References image grid gap
+
+
+================================================================================
+POSITIONING VALUES
+================================================================================
+
+Intro Title (.intro-title):
+  Desktop: bottom: 60px; left: 60px
+  Mobile:   bottom: 30px; left: 30px
+
+Back Button (.back-button):
+  top: 2.4rem; left: 3rem
+
+
+================================================================================
+BORDER & RADIUS VALUES
+================================================================================
+
+Border Width:
+  0.8px - HR border width
+
+Border Radius:
+  30px  - Keyword tag border-radius
+  8px   - Progress image/video border-radius
+
+
+================================================================================
+NOTES
+================================================================================
+
+- All spacing values use rem units (relative to root font-size of 16px)
+- Mobile breakpoint is consistently 935px across the codebase
+- Padding patterns typically reduce on mobile (e.g., 5rem → 3rem)
+- Color system uses CSS variables for theme switching
+- Hover states consistently use rgb(140, 140, 140) for text color changes
+
