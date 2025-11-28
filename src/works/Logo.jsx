@@ -15,7 +15,7 @@ function Logo() {
     <>
     <Back text="BACK" />
     <section id="project-main" className={styles.projectMain}>
-        <video className={styles['project-vid-hor']} src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/logo_n5druz.mp4" autoPlay loop muted playsInline controlsList="nodownload"> 
+        <video className={styles['project-vid-hor']} src="https://res.cloudinary.com/db6ifdikq/video/upload/v1764331938/logo_n5druz_1_yopcck.mp4" autoPlay loop muted playsInline controlsList="nodownload"> 
         Your browser does not support the video tag.
         </video>
         <div className={styles['project-info']}>
