@@ -18,16 +18,11 @@ hr {
 .project-vid-hor, 
 .project-img {
     display: flex;
-    margin-top: 4rem;
-    margin-bottom: 1.875rem;
-    max-width: 1280px;
-    max-height: 920px;
     height: 100%;
-    width: 100%;
+    width: 100vw;
 }
 .project-vid-ver {
     display: flex;
-    margin-top: 3.125rem;
     max-width: 720px;
     max-height: 1280px;
     height: 100%;
@@ -38,7 +33,7 @@ hr {
 .project-info {
     display: flex;
     position: relative;
-    padding: 2.5rem 10rem 3.75rem;
+    padding: 4rem 10rem 3.75rem;
     flex-direction: row;
     width: 100%;
     min-height: 300px;
@@ -317,8 +312,11 @@ hr {
 
 
 @media (max-width: 935px) {
+    .projectMain {
+        margin-top: 6rem;
+    }
     .project-vid-ver {
-        margin-top: 5.625rem;
+        margin-top: 0.125rem;
     }
     .project-info{
         flex-direction: column;

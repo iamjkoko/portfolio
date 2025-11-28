@@ -32,6 +32,13 @@ function Cheso() {
   ];
   return (
     <>
+      <style>{`
+        @media (max-width: 935px) {
+          .cheso-grid {
+            padding-top: 1.23rem !important;
+          }
+        }
+      `}</style>
       <Back text="BACK" />
       <section id="project-main" className={styles.projectMain}>
         <div className="cheso-grid"
@@ -42,7 +49,7 @@ function Cheso() {
           justifyContent: 'center',
           margin: '0 auto',
           overflow: 'hidden',
-          padding: '5rem 2rem 1.25rem',
+          padding: '8rem 2rem 1.25rem',
         }}>
           {imageList.map((img, i) => (
             <div className="cheso-cont" key={i}
