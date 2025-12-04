@@ -12,12 +12,20 @@ export default function SmoothScroll({ children }) {
 // Handle route changes
 useEffect(() => {
   if (location.hash) {
-    // Hash navigation handled by main effect below
     return;
   }
   
-  // Scroll to top on route change (mobile and desktop)
+  // Immediate scroll
   window.scrollTo(0, 0);
+  
+  // Backup scroll after browser scroll restoration
+  const timer1 = setTimeout(() => window.scrollTo(0, 0), 0);
+  const timer2 = setTimeout(() => window.scrollTo(0, 0), 100);
+  
+  return () => {
+    clearTimeout(timer1);
+    clearTimeout(timer2);
+  };
 }, [location.pathname, location.hash]);
 
   useEffect(() => {

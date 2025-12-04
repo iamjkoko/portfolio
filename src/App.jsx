@@ -68,6 +68,13 @@ function AppRoutes() {
 }
 
 function App() {
+  useEffect(() => {
+    // Disable automatic scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   return (
     <Router>
       <Layout>
