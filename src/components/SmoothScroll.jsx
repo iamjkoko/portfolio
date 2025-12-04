@@ -8,28 +8,32 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScroll({ children }) {
   const containerRef = useRef(null);
   const location = useLocation();
+  const prevPathnameRef = useRef(location.pathname);
 
-  // Handle route changes - AGGRESSIVE scroll reset
+  // Handle route changes
   useEffect(() => {
-    if (location.hash) {
-      return;
+    // Only scroll if pathname actually changed (not just hash)
+    if (prevPathnameRef.current !== location.pathname && !location.hash) {
+      // Scroll after a small delay to let fade-out animation start
+      // This hides the scroll jump behind the opacity transition
+      const scrollTimer = setTimeout(() => {
+        const scrollToTop = () => {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        };
+        
+        scrollToTop();
+        
+        requestAnimationFrame(() => {
+          scrollToTop();
+        });
+      }, 50); // Small delay so fade-out covers the scroll
+      
+      prevPathnameRef.current = location.pathname;
+      
+      return () => clearTimeout(scrollTimer);
     }
-    
-    // Multiple methods to force scroll to top for iOS
-    const scrollToTop = () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    };
-    
-    // Immediate
-    scrollToTop();
-    
-    // After browser's next paint
-    requestAnimationFrame(() => {
-      scrollToTop();
-    });
-    
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
@@ -60,7 +64,6 @@ export default function SmoothScroll({ children }) {
     let targetScroll = 0;
     let rafId = null;
 
-    // Setup
     gsap.set(container, { 
       position: "fixed", 
       top: 0, 
