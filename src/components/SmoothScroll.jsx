@@ -9,24 +9,28 @@ export default function SmoothScroll({ children }) {
   const containerRef = useRef(null);
   const location = useLocation();
 
-// Handle route changes
-useEffect(() => {
-  if (location.hash) {
-    return;
-  }
-  
-  // Immediate scroll
-  window.scrollTo(0, 0);
-  
-  // Backup scroll after browser scroll restoration
-  const timer1 = setTimeout(() => window.scrollTo(0, 0), 0);
-  const timer2 = setTimeout(() => window.scrollTo(0, 0), 100);
-  
-  return () => {
-    clearTimeout(timer1);
-    clearTimeout(timer2);
-  };
-}, [location.pathname, location.hash]);
+  // Handle route changes - AGGRESSIVE scroll reset
+  useEffect(() => {
+    if (location.hash) {
+      return;
+    }
+    
+    // Multiple methods to force scroll to top for iOS
+    const scrollToTop = () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+    
+    // Immediate
+    scrollToTop();
+    
+    // After browser's next paint
+    requestAnimationFrame(() => {
+      scrollToTop();
+    });
+    
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -66,7 +70,6 @@ useEffect(() => {
     });
 
     const updateHeight = () => {
-      // Use requestAnimationFrame to ensure accurate height after render
       requestAnimationFrame(() => {
         const height = container.scrollHeight;
         document.body.style.height = `${height}px`;
@@ -88,11 +91,9 @@ useEffect(() => {
       }
     };
 
-    // Initial height update with delay to ensure content is rendered
     const initialUpdate = setTimeout(updateHeight, 100);
     setTimeout(handleInitialHash, 150);
 
-    // Smooth scroll loop
     const animate = () => {
       targetScroll = window.scrollY;
       currentScroll += (targetScroll - currentScroll) * 0.1;
@@ -104,7 +105,6 @@ useEffect(() => {
       rafId = requestAnimationFrame(animate);
     };
 
-    // ScrollTrigger proxy
     ScrollTrigger.scrollerProxy(container, {
       scrollTop(value) {
         if (value !== undefined) {
@@ -120,7 +120,6 @@ useEffect(() => {
       }),
     });
 
-    // Watch for content changes with MutationObserver
     const observer = new MutationObserver(() => {
       updateHeight();
     });
@@ -131,7 +130,6 @@ useEffect(() => {
       attributes: true,
     });
 
-    // Update height on resize
     let resizeTimeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -139,10 +137,8 @@ useEffect(() => {
     };
     window.addEventListener("resize", handleResize);
     
-    // Start
     animate();
 
-    // Cleanup
     return () => {
       clearTimeout(initialUpdate);
       clearTimeout(resizeTimeout);
@@ -153,7 +149,7 @@ useEffect(() => {
       document.body.style.height = "";
       ScrollTrigger.refresh();
     };
-  }, [children]); // Re-run when children change (route changes)
+  }, [children]);
 
   return <div ref={containerRef}>{children}</div>;
 }

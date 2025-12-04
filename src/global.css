@@ -24,6 +24,7 @@ html, body {
   overflow-y: auto;     
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: auto !important;
 }
 img {
   user-select: none;
