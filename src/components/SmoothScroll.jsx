@@ -28,7 +28,7 @@ export default function SmoothScroll({ children }) {
         requestAnimationFrame(() => {
           scrollToTop();
         });
-      }, 50); // Small delay so fade-out covers the scroll
+      }, 300); // Small delay so fade-out covers the scroll
       
       prevPathnameRef.current = location.pathname;
       
