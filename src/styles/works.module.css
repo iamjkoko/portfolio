@@ -125,6 +125,20 @@ hr {
         width: 100%;
         height: auto;
     }
+    .description-vid {
+        display: flex;
+        margin: 0 auto;
+        justify-items: center;
+        overflow: hidden;
+        padding: 2.5rem 0 0.5rem;
+    }
+    .description-vid video {
+        width: 100%;
+        max-height: 480px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+    }
     .largeImage {
         max-width: 1200px !important;
         max-height: none !important;

@@ -6,6 +6,7 @@ import Back from '../components/Back';
 import Footer from '../components/Footer';
 
 import Name from '../assets/images/works/logo/name.webp';
+import LogoStc from '../assets/videos/logo-stc.mp4';
 
 import Progress1 from '../assets/images/works/logo/progress-1.webp';
 import Progress2 from '../assets/images/works/logo/progress-2.webp';
@@ -46,8 +47,10 @@ function Logo() {
         <div className={styles['description-body']}>
             <h5>My Korean name, spelled 고정혁 (pronounced KO-JUNG-HYOUK), follows the naming tradition of my country. The family name, 고 (KO), is inherited from my father, and my given name, 정혁 (JUNG-HYOUK), consists of two syllables, which is a common structure in Korea.</h5>
         </div>
-        <div className={styles['description-img']}>
-            <img src={Name} alt="Name" />
+        <div className={styles['description-vid']}>
+            <video src={LogoStc} autoPlay muted playsInline controlsList="nodownload">
+            Your browser does not support the video tag.
+            </video>
         </div>
         <div className={styles['description-body']}>
             <h5>For this project, I was mostly interested in exploring the visual similarities between the characters of my name in the two languages. Particularly, I found that the letters "ㅈ" and "ㅇ" from "정" closely resemble the English letters "K" and "O". Building on this observation, I focused on creating a dynamic transtion in between the two versions of my name, while maintaining the consistent imagery to help viewers understand and follow the logical flow.</h5>

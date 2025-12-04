@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
+import Signature from '../assets/videos/signature.mp4';
 
 function About() {
   const videoRef = useRef(null);
@@ -61,7 +62,7 @@ function About() {
                 </div>
                 <video 
                   ref={videoRef} 
-                  src="https://res.cloudinary.com/db6ifdikq/video/upload/v1760045865/signature-anim_zzvoov.mp4" 
+                  src={Signature} 
                   className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.7s]" 
                   muted 
                   playsInline 
