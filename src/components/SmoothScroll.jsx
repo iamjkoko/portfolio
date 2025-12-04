@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -6,22 +7,31 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll({ children }) {
   const containerRef = useRef(null);
+  const location = useLocation();
+
+// Handle route changes
+useEffect(() => {
+  if (location.hash) {
+    // Hash navigation handled by main effect below
+    return;
+  }
+  
+  // Scroll to top on route change (mobile and desktop)
+  window.scrollTo(0, 0);
+}, [location.pathname, location.hash]);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Mobile check - disable smooth scroll animation on mobile
     const isMobile = window.innerWidth < 1024;
 
-    // Handle hash navigation for mobile (without smooth scroll)
     if (isMobile) {
       const handleInitialHashMobile = () => {
         const hash = window.location.hash;
         if (hash) {
           const element = document.querySelector(hash);
           if (element) {
-            // Use native scrolling on mobile
             setTimeout(() => {
               element.scrollIntoView({ behavior: 'auto' });
             }, 100);
@@ -30,8 +40,6 @@ export default function SmoothScroll({ children }) {
       };
 
       handleInitialHashMobile();
-      
-      // No cleanup needed for mobile
       return;
     }
 

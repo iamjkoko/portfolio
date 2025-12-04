@@ -35,27 +35,6 @@ function AnimatedPage({ children }) {
 function AppRoutes() {
   const location = useLocation();
 
-  useEffect(() => {
-    if (location.hash) {
-      setTimeout(() => {
-        const element = document.querySelector(location.hash);
-        if (element) {
-          const container = document.querySelector('[data-smooth-scroll]');
-          if (container) {
-            const rect = element.getBoundingClientRect();
-            const scrollTop = window.scrollY;
-            const elementTop = rect.top + scrollTop;
-            window.scrollTo(0, elementTop);
-          } else {
-            window.scrollTo(0, element.offsetTop);
-          }
-        }
-      }, 300);
-    } else {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname, location.hash]);
-
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
