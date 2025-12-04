@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 
 import ColorBends from '../components/ColorBends';
+import StaggeredText from '../components/StaggeredText';
 
 import Footer from '../components/Footer';
 
@@ -84,20 +85,10 @@ const Home = () => {
         id="hero" 
         className="flex justify-center items-center h-screen relative overflow-hidden"
       >
-        <motion.div
+        <StaggeredText 
+          text="Crafting ideas into form." 
           className="intro-title"
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ 
-            y: 0,
-            opacity: 1
-          }}
-          transition={{ 
-            y: { duration: 0.5, ease: [0.3, 0.05, 0.01, 0.9] },
-            opacity: { duration: 0.3 }
-          }}
-        >
-          Crafting ideas into form.
-        </motion.div>
+        />
         <ColorBends
           colors={["#ffffff"]} 
           rotation={80}
