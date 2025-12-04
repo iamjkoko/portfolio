@@ -12,10 +12,9 @@ export default function SmoothScroll({ children }) {
 
   // Handle route changes
   useEffect(() => {
-    // Only scroll if pathname actually changed (not just hash)
+    const isMobile = window.innerWidth < 1024;
+    
     if (prevPathnameRef.current !== location.pathname && !location.hash) {
-      // Scroll after a small delay to let fade-out animation start
-      // This hides the scroll jump behind the opacity transition
       const scrollTimer = setTimeout(() => {
         const scrollToTop = () => {
           window.scrollTo(0, 0);
@@ -28,7 +27,7 @@ export default function SmoothScroll({ children }) {
         requestAnimationFrame(() => {
           scrollToTop();
         });
-      }, 300); // Small delay so fade-out covers the scroll
+      }, isMobile ? 300 : 0); // Mobile: hide in fade; Desktop: scroll immediately
       
       prevPathnameRef.current = location.pathname;
       
