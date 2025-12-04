@@ -202,9 +202,9 @@ const Home = () => {
         </div>
         
         <div className="flex justify-end pt-20 max-lg:pt-10">
-          <Link to={ROUTES.WORKS.ROOT} className="flex items-center gap-2 text-[rgb(118,118,118)] text-lg max-lg:px-[1.25rem] max-lg:text-sm">
+          <Link to={ROUTES.WORKS.ROOT} className="flex items-center gap-2 text-[rgb(118,118,118)] text-lg max-lg:px-[1.25rem] max-lg:text-sm group">
             VIEW ALL PROJECTS
-            <ArrowRight className="w-5 h-5 max-lg:w-4 max-lg:h-4" />
+            <ArrowRight className="w-5 h-5 max-lg:w-4 max-lg:h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
           </Link>
         </div>
         </div>
