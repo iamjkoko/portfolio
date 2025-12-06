@@ -43,7 +43,7 @@ const Footer = ({ theme }) => {
             <span className="opacity-60">
             <CornerDownRight size={16} />
             </span>
-            <span className="transition-opacity opacity-60 hover:opacity-100">
+            <span className="transition-opacity font-medium opacity-60 hover:opacity-100">
             eko03@risd.edu
             </span>
           </a>
@@ -88,7 +88,7 @@ const Footer = ({ theme }) => {
         {/* Info Section */}
         <div className="space-y-3">
           <p className="text-xs opacity-60 pt-0.5">
-            Last updated: November 2025
+            Last updated: December 2025
           </p>
         </div>
       </div>

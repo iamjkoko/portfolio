@@ -61,6 +61,11 @@ strong {
   }
 }
 
+
+/* ========================================== */
+/* ANIMATIONS (fade, swipe, etc.) */
+/* ========================================== */
+
 /* Custom animations for fade-in effect */
 .fade-in {
   opacity: 0;
@@ -71,11 +76,6 @@ strong {
   opacity: 1;
   transform: translateY(0);
 }
-
-
-/* ========================================== */
-/* ANIMATIONS (fade, swipe, etc.) */
-/* ========================================== */
 
 /* FadeIn keyframes for About page */
 @keyframes fadeIn {
@@ -124,7 +124,6 @@ strong {
 .swipe-in-from-left {
   animation: swipeInFromLeft 0.4s ease-in-out forwards;
 }
-
 
 /* ========================================== */
 /* THEME & VARIABLES */
