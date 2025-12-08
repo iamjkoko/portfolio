@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CornerDownRight } from "lucide-react";
 
 import InstagramIconBlack from '../assets/icons/instagram-black.webp';
@@ -15,20 +15,38 @@ const Footer = ({ theme }) => {
   const InstagramIcon = isDark ? InstagramIconWhite : InstagramIconBlack;
   const LinkedinIcon = isDark ? LinkedinIconWhite : LinkedinIconBlack;
 
+  const [localTime, setLocalTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+      setLocalTime(timeString);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <footer className={`w-full relative z-[1] p-8 max-[935px]:p-5 border-none ${themeClasses}`}>
-      {/*}
       <div className="max-w-[1400px] mx-auto mb-12 md:pl-0">
         <h2 
-          className={`text-[180px] md:text-[240px] lg:text-[300px] leading-none font-bold tracking-tight ${
+          className={`text-[80px] md:text-[80px] lg:text-[150px] leading-none font-bold tracking-tight ${
             isDark ? 'text-white/20' : 'text-black/10'
           }`}
           style={{ fontFamily: 'Boska, serif' }}
         >
-        KO:
+        Let's connect.
         </h2>
       </div>
-      */}
 
       {/* Main Footer Grid */}
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 pl-4 md:pl-0">
@@ -57,7 +75,7 @@ const Footer = ({ theme }) => {
 
         {/* Social Links Section */}
         <div className="space-y-3">
-          <h3 className="text-base font-medium mb-3 opacity-60">Connect</h3>
+          <h3 className="text-base font-medium mb-3 opacity-60">Links</h3>
           <div className="flex items-center gap-2">
             <span className="opacity-50">
             <CornerDownRight size={16} />
@@ -87,6 +105,9 @@ const Footer = ({ theme }) => {
 
         {/* Info Section */}
         <div className="space-y-3">
+          <p className="text-xs opacity-60 pt-0.5">
+            Local time: {localTime}
+          </p>
           <p className="text-xs opacity-60 pt-0.5">
             Last updated: December 2025
           </p>
