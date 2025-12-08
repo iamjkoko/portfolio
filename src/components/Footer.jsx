@@ -37,6 +37,7 @@ const Footer = ({ theme }) => {
 
   return (
     <footer className={`w-full relative z-[1] p-8 max-[935px]:p-5 border-none ${themeClasses}`}>
+      {/*}
       <div className="max-w-[1400px] mx-auto mb-12 md:pl-0">
         <h2 
           className={`text-[80px] md:text-[80px] lg:text-[150px] leading-none font-bold tracking-tight ${
@@ -44,9 +45,10 @@ const Footer = ({ theme }) => {
           }`}
           style={{ fontFamily: 'Boska, serif' }}
         >
-        Let's connect.
+        Eric Ko
         </h2>
       </div>
+      */}
 
       {/* Main Footer Grid */}
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 pl-4 md:pl-0">
