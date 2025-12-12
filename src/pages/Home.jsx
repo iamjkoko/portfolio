@@ -3,9 +3,9 @@ import '../global.css';
 
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
-import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 
+import Tooltip from '../components/Tooltip';
 import ColorBends from '../components/ColorBends';
 import StaggeredText from '../components/StaggeredText';
 
@@ -154,6 +154,7 @@ const Home = () => {
         <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-lg:p-[0.625rem] max-lg:gap-[15px]">
 
         {/* Ko: Logo Animation */}
+        <Tooltip content="View work">
         <div className="fade-container flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
             <div className="fade-in flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <Link to={ROUTES.WORKS.LOGO} className="text-black transition-opacity">
@@ -176,10 +177,12 @@ const Home = () => {
                 </Link>
             </div>
         </div>
+        </Tooltip>
 
         <br />
         
         {/* Modern Caveman */}
+        <Tooltip content="View work">
         <div className="fade-container flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
             <div className="fade-in flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <Link to={ROUTES.WORKS.CAVEMAN} className="text-black transition-opacity">
@@ -200,6 +203,7 @@ const Home = () => {
                 </Link>
             </div>
         </div>
+        </Tooltip>
         
         <div className="flex justify-end pt-20 max-lg:pt-10">
           <Link to={ROUTES.WORKS.ROOT} className="flex items-center gap-2 text-[rgb(118,118,118)] text-lg max-lg:px-[1.25rem] max-lg:text-sm group">
