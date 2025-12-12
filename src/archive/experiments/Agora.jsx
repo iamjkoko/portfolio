@@ -2,7 +2,6 @@ import React from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
-import Back from '../../components/Back';
 import Footer from '../../components/Footer';
 
 import AgoraLayout from '../../assets/images/archive/agora/agora-layout.webp';
@@ -11,8 +10,7 @@ import AgoraConcept from '../../assets/images/archive/agora/agora-concept.webp';
 function Agora() {
   return (
     <>
-    <Back text="BACK" />
-    <section id="project-main" className={styles.projectMain}>
+    <section id="project-main" className={styles['project-main']}>
         <video className={styles['project-vid-ver']} src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039958/agora-full_kaej38.mp4" autoPlay loop muted playsInline controlsList="nodownload"> 
         Your browser does not support the video tag.
         </video>

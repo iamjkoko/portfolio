@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
-import Back from '../../components/Back';
 import Footer from '../../components/Footer';
 
 import LightPainting1 from '../../assets/images/archive/light-painting/light-painting-1.webp';
@@ -18,8 +17,7 @@ function LightPainting() {
 
   return (
     <div style={{ background: 'var(--color-background)', color: 'var(--color-text)' }}> 
-      <Back text="BACK" />
-      <section id="project-main" className={styles.projectMain}>
+      <section id="project-main" className={styles['project-main']}>
       <img 
         src={LightPainting1} 
         alt="Light Painting" 

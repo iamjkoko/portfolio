@@ -2,7 +2,6 @@ import React from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
-import Back from '../../components/Back';
 import Footer from '../../components/Footer';
 
 import ImgCredit from '../../components/ImgCredit';
@@ -12,8 +11,7 @@ import SaoPaulo1 from '../../assets/images/archive/sao-paulo/saopaulo-1.webp';
 function SaoPaulo() {
   return (
     <>
-      <Back text="BACK" />
-      <section id="project-main" className={styles.projectMain}>
+      <section id="project-main" className={styles['project-main']}>
       <img src={SaoPaulo1} alt="Sao Paulo" className={styles['project-img']} />
         <div className={styles['project-info']}>
         <div className={styles['project-basics']}>

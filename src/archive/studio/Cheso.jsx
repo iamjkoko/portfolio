@@ -2,7 +2,6 @@ import React from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
-import Back from '../../components/Back';
 import Footer from '../../components/Footer';
 
 import Cheso1 from '../../assets/images/archive/cheso/cheso-1.webp';
@@ -32,15 +31,7 @@ function Cheso() {
   ];
   return (
     <>
-      <style>{`
-        @media (max-width: 935px) {
-          .cheso-grid {
-            padding-top: 1.23rem !important;
-          }
-        }
-      `}</style>
-      <Back text="BACK" />
-      <section id="project-main" className={styles.projectMain}>
+      <section id="project-main" className={styles['project-main']}>
         <div className="cheso-grid"
         style={{
           display: 'grid',

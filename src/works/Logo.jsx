@@ -2,7 +2,6 @@ import React from 'react';
 import '../global.css';
 import styles from '../styles/works.module.css';
 
-import Back from '../components/Back';
 import Footer from '../components/Footer';
 
 import Name from '../assets/images/works/logo/name.webp';
@@ -14,8 +13,7 @@ import Progress2 from '../assets/images/works/logo/progress-2.webp';
 function Logo() {
   return (
     <>
-    <Back text="BACK" />
-    <section id="project-main" className={styles.projectMain}>
+    <section id="project-main" className={styles['project-main']}>
         <video className={styles['project-vid-hor']} src="https://res.cloudinary.com/db6ifdikq/video/upload/v1764331938/logo_n5druz_1_yopcck.mp4" autoPlay loop muted playsInline controlsList="nodownload"> 
         Your browser does not support the video tag.
         </video>
