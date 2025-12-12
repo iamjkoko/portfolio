@@ -33,7 +33,7 @@ const Tooltip = ({ children, content }) => {
       
       {shouldRender && (
         <div
-          className="fixed pointer-events-none z-50 transition-opacity duration-300 ease-in-out"
+          className="fixed pointer-events-none z-50 transition-opacity duration-300 ease-in-out hidden md:block"
           style={{
             left: `${position.x + 15}px`,
             top: `${position.y + 15}px`,
