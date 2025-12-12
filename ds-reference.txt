@@ -3,6 +3,13 @@ DESIGN SYSTEM REFERENCE
 Margin/Padding Rules & Color Options
 ================================================================================
 
+QUICK REFERENCE
+--------------------------------------------------------------------------------
+Standard spacing scale: 0.25rem, 0.5rem, 1rem, 1.25rem, 2.5rem, 5rem
+Mobile breakpoint: 935px
+Border radius: 8px (media), 30px (tags)
+Max widths: 720px (images), 960px (YouTube), 1440px (grids)
+
 BREAKPOINTS
 --------------------------------------------------------------------------------
 Mobile Breakpoint: 935px
@@ -60,6 +67,7 @@ COMMON PADDING VALUES
 --------------------------------------------------------------------------------
 
 Small Spacing:
+  0.125rem (2px)   - Very small padding (mobile description image)
   0.25rem  (4px)   - Small padding (e.g., keyword tags, mobile iframe)
   0.5rem   (8px)   - Small padding (e.g., progress video)
   0.625rem (10px)  - Small margin/padding (e.g., hr margin, progress grid gap)
@@ -72,11 +80,12 @@ Medium Spacing:
   2.5rem   (40px)  - Common section padding (project info, descriptions)
 
 Large Spacing:
+  2.125rem (34px)  - Medium-large padding (mobile project info, description horizontal)
   3rem     (48px)  - Large padding (mobile project info, description sections)
   3.75rem  (60px)  - Large padding (project info bottom, progress title mobile)
   4rem     (64px)  - Extra large padding (project info top, credits, references)
   5rem     (80px)  - Extra large padding (description, credits sections)
-  6rem     (96px)  - Very large (mobile project main margin-top)
+  6rem     (96px)  - Very large (mobile project video/image margin-top)
   8rem     (128px) - Extra large (project basics padding-right)
   10rem    (160px) - Extra large (project info horizontal padding)
 
@@ -85,11 +94,15 @@ SPECIFIC PADDING PATTERNS
 
 Project Info (.project-info):
   Desktop: padding: 4rem 10rem 3.75rem
-  Mobile:   padding: 2.5rem 3rem 1rem
+  Mobile:   padding: 2.5rem 2.125rem 1rem
 
 Project Basics (.project-basics):
   Desktop: padding-right: 8rem
   Mobile:   padding-right: 2rem; padding-bottom: 1rem
+
+Project Keywords (.project-keywords):
+  Desktop: padding-top: 3rem; gap: 0.75rem
+  Mobile:   padding: 3rem 0 2rem; gap: 0.75rem
 
 Project Description (.project-description):
   Desktop: padding: 1.25rem 5rem
@@ -97,14 +110,19 @@ Project Description (.project-description):
 
 Description Section (.description):
   Desktop: padding: 0 5rem 2.5rem
-  Mobile:   padding: 0 3rem 2.5rem
+  Mobile:   padding: 0 2.125rem 2.5rem
 
 Description Image (.description-img):
-  padding: 2.5rem 0 0.5rem
+  Desktop: padding: 2.5rem 0 0.5rem
+  Mobile:   padding: 0.125rem 0 0.5rem
+
+Description Video (.description-vid):
+  Desktop: padding: 2.5rem 0 0.5rem
+  Mobile:   padding: 2.5rem 0
 
 Description Body (.description-body):
   Desktop: padding-top: 2.5rem
-  Mobile:   padding-top: 1rem
+  Mobile:   padding-top: 0.125rem
 
 Description Quote (.description-quote):
   Desktop: padding-top: 1.25rem
@@ -116,7 +134,8 @@ Progress Section (.progress):
 
 Progress Title (.progress-title):
   Desktop: padding-bottom: 1.25rem
-  Mobile:   padding: 0 5rem 2.5rem; padding-bottom: 3.75rem
+  Mobile:   padding: 0 5rem 2.5rem
+  Mobile h3: padding-bottom: 3.75rem
 
 Progress Image Grid (.progress-img):
   Desktop: padding: 0 2.5rem
@@ -135,8 +154,8 @@ Credits Title (.credits-title):
   Mobile:   padding: 0 3rem 1.25rem
 
 Credits Body (.credits-body):
-  Desktop: padding: 0 5rem 2.5rem
-  Mobile:   padding: 0 3rem 2.5rem
+  Desktop: padding: 0 5rem 2.5rem; width: 60%
+  Mobile:   padding: 0 3rem 2.5rem; width: 100%
 
 References (.references):
   Desktop: padding: 4rem 5rem
@@ -150,8 +169,11 @@ Banner (.banner):
   padding: 2.5rem 0 1.25rem
 
 YouTube Container (.youtube):
-  Desktop: padding: 2.5rem 0 0.5rem
-  Mobile:   padding-bottom: 0.25rem
+  Desktop: padding: 2.5rem 0 0.5rem; max-width: 960px
+  Mobile:   padding-bottom: 0.25rem; max-width: 360px
+  YouTube iframe:
+    Desktop: width: 100%; height: 540px; max-width: 960px; max-height: 540px
+    Mobile:   width: 100%; height: 202px; max-width: 360px; max-height: 202px
 
 COMMON MARGIN VALUES
 --------------------------------------------------------------------------------
@@ -172,22 +194,28 @@ SPECIFIC MARGIN PATTERNS
 --------------------------------------------------------------------------------
 
 HR Elements:
-  margin: 1.25rem auto
+  margin: 1.25rem auto; border: 0.8px solid var(--color-border-gray); width: 90%
 
 Project Main (Mobile):
+  margin-top: 0rem
+
+Project Video/Image Horizontal (Mobile):
   margin-top: 6rem
 
 Project Video Vertical (Mobile):
   margin-top: 0.125rem
 
 Progress Image Grid:
-  gap: 0.625rem (desktop), 0.625rem (mobile)
+  Desktop: gap: 0.625rem; grid-template-columns: repeat(2, 1fr); padding: 0 2.5rem
+  Mobile:   gap: 0.625rem; grid-template-columns: repeat(1, 1fr); padding: 0
 
 References Image Grid:
-  gap: 1.25rem
+  Desktop: gap: 1.25rem; grid-template-columns: repeat(2, 1fr); max-width: 1440px
+  Mobile:   gap: 1.25rem; grid-template-columns: repeat(1, 1fr)
 
 Figcaption:
-  margin-top: 1.25rem
+  Desktop: margin-top: 1.25rem; font-size: 0.7rem; width: 80%
+  Mobile:   margin-top: 1.25rem; font-size: 0.5rem; padding-bottom: 2.5rem; width: 80%
 
 GAP VALUES (Flexbox/Grid)
 --------------------------------------------------------------------------------
@@ -205,7 +233,7 @@ Intro Title (.intro-title):
   Mobile:   bottom: 30px; left: 30px
 
 Back Button (.back-button):
-  top: 2.4rem; left: 3rem
+  top: 2.4rem; left: 2.125rem
 
 
 ================================================================================
@@ -217,7 +245,68 @@ Border Width:
 
 Border Radius:
   30px  - Keyword tag border-radius
-  8px   - Progress image/video border-radius
+  8px   - Progress image/video border-radius, description video border-radius
+
+
+================================================================================
+TYPOGRAPHY VALUES
+================================================================================
+
+Project Basics h1:
+  Desktop: font-size: 4rem; font-weight: 900; width: 350px; font-family: 'Boska-Variable', serif
+  Mobile:   font-size: 2.5rem; width: 100%
+
+Project Basics h2:
+  Desktop: font-weight: 600; margin-bottom: 0.625rem
+  Mobile:   font-size: 1.2rem
+
+Project Basics h3:
+  Desktop: font-weight: 400
+  Mobile:   font-size: 1rem
+
+Project Basics h4:
+  Desktop: padding-top: 2rem; font-weight: 400
+  Mobile:   padding-top: 2rem; font-weight: 400; font-size: 0.9rem
+
+Project Intro h4:
+  Desktop: font-size: 1.2rem; font-weight: 300; word-spacing: 0.1rem
+  Mobile:   font-size: 0.875rem; padding-top: 1.25rem
+
+Project Keywords span:
+  Desktop: font-size: 0.9rem; font-weight: 400; padding: 0.25rem 1rem
+  Mobile:   font-size: 0.75rem; padding: 0.25rem 0.75rem
+
+Description Title h3:
+  Desktop: font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted)
+  Mobile:   font-size: 1.2rem
+
+Description Body h5:
+  Desktop: font-size: 1.1rem; font-weight: 300
+  Mobile:   font-size: 0.875rem
+
+Description Quote:
+  Desktop: font-family: 'Boska-Variable', sans-serif; font-size: 3rem; font-variation-settings: 'wght' 300
+  Mobile:   font-family: 'Boska-Variable', sans-serif; font-size: 2rem; font-variation-settings: 'wght' 300
+
+Progress Title h3:
+  Desktop: font-size: 1.5rem; font-weight: 300
+  Mobile:   font-size: 1.2rem
+
+Credits Title h3:
+  Desktop: font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted)
+  Mobile:   font-size: 1.2rem
+
+Credits Body h5:
+  Desktop: font-size: 0.9rem; font-weight: 300
+  Mobile:   font-size: 0.6rem
+
+References Title h3:
+  Desktop: font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted)
+  Mobile:   font-size: 1.2rem
+
+Intro Title (.intro-title):
+  Desktop: font-size: clamp(4rem, 8vw, 8rem); font-variation-settings: 'wght' 400; letter-spacing: -0.02em; line-height: 1.2
+  Mobile:   font-size: clamp(5rem, 8vw, 8rem); font-variation-settings: 'wght' 400; letter-spacing: -0.02em; line-height: 1.2
 
 
 ================================================================================
@@ -226,7 +315,12 @@ NOTES
 
 - All spacing values use rem units (relative to root font-size of 16px)
 - Mobile breakpoint is consistently 935px across the codebase
-- Padding patterns typically reduce on mobile (e.g., 5rem → 3rem)
+- Padding patterns typically reduce on mobile (e.g., 5rem → 2.125rem or 3rem)
 - Color system uses CSS variables for theme switching
 - Hover states consistently use rgb(140, 140, 140) for text color changes
+- Description images have max-width: 720px; max-height: 480px
+- Description videos have max-height: 480px
+- Progress videos have max-height: 815px
+- Project vertical videos have max-width: 720px; max-height: 1280px
+- Large images use max-width: 1200px (via .largeImage class)
 
