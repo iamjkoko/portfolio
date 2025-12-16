@@ -1,7 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-export default function Back({ text = 'Back' }) {
+interface BackProps {
+  text?: string;
+}
+
+export default function Back({ text = 'Back' }: BackProps) {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -18,4 +22,3 @@ export default function Back({ text = 'Back' }) {
     </button>
   );
 }
-

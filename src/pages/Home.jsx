@@ -94,7 +94,7 @@ const Home = () => {
           rotation={80}
           autoRotate={2}
           speed={0.3}
-          scale={1.8}
+          scale={0.7}
           frequency={2}
           warpStrength={1.1}
           mouseInfluence={0.5}

@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 
-const Tooltip = ({ children, content }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+interface TooltipProps {
+  children: React.ReactNode;
+  content: React.ReactNode;
+}
+
+const Tooltip = ({ children, content }: TooltipProps) => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [shouldRender, setShouldRender] = useState<boolean>(false);
+  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   const handleMouseEnter = () => {
     setShouldRender(true);
@@ -15,7 +20,7 @@ const Tooltip = ({ children, content }) => {
     setTimeout(() => setShouldRender(false), 300);
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     setPosition({
       x: e.pageX,
       y: e.pageY
