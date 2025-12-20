@@ -153,5 +153,5 @@ export default function SmoothScroll({ children }) {
     };
   }, [children]);
 
-  return <div ref={containerRef}>{children}</div>;
+  return <div ref={containerRef} id="snap-main-container">{children}</div>;
 }

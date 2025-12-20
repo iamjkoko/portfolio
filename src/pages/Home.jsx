@@ -6,6 +6,8 @@ import { ROUTES } from '../constants/routes';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 
 import Tooltip from '../components/Tooltip';
+import FadeContent from '../components/FadeContent';
+import Underline from '../components/Underline';
 import ColorBends from '../components/ColorBends';
 import StaggeredText from '../components/StaggeredText';
 
@@ -109,20 +111,25 @@ const Home = () => {
         className="w-full h-screen flex text-center justify-center items-center bg-black opacity-100 relative m-0 border-none max-lg:h-[calc(100vh+80px)]"
       >
         <div className="opacity-100 w-full h-full flex flex-col relative">
-          <div className="fade-container flex flex-col items-center w-full flex-1 justify-center">
+          <div className="flex flex-col items-center w-full flex-1 justify-center">
             <div className="flex flex-col text-white w-[45%] max-lg:w-[70%] max-lg:p-[2%] text-center">
-              <p className="fade-in font-extralight text-lg max-lg:text-[0.75rem] leading-[1.8]">
+              <FadeContent duration={1000} delay={0} easing="ease-out">
+              <p className="font-extralight text-lg max-lg:text-[0.75rem] leading-[1.8]">
                 <strong className="font-bold">Eric Ko</strong> (b. 2004) is a multidisciplinary artist and designer currently pursuing a <strong className="font-bold">BFA in Industrial Design</strong> at the <strong className="font-bold">Rhode Island School of Design (RISD)</strong>.
               </p>
+              </FadeContent> 
               <br />
               <br />
-              <p className="fade-in font-extralight text-lg max-lg:text-[0.75rem] leading-[1.8]">
+              <FadeContent duration={1000} delay={120} easing="ease-out">
+              <p className="font-extralight text-lg max-lg:text-[0.75rem] leading-[1.8]">
                 Born and raised in <strong className="font-bold">Seoul, South Korea</strong>, and having spent four years in <strong className="font-bold">São Paulo, Brazil</strong>, his works are shaped by his cultural experiences and curiosity about the intersection of <strong className="font-bold">technology, innovation,</strong> and <strong className="font-bold">sustainability</strong>.
               </p>
+              </FadeContent>
               <br />
             </div>
           
-            <div className="fade-in flex flex-col items-center pt-8 max-lg:pt-0 max-lg:pb-20">
+            <FadeContent duration={1000} delay={240} easing="ease-out">
+            <div className="flex flex-col items-center pt-8 max-lg:pt-0 max-lg:pb-20">
               <div className="flex justify-center max-lg:pb-0 max-lg:text-[0.75rem]">
                 <Link to={ROUTES.ABOUT} className="text-white underline underline-offset-2 transition-opacity duration-300 ease-in-out hover:opacity-70">
                   LEARN MORE
@@ -138,14 +145,17 @@ const Home = () => {
                 </a>
               </div>
             </div>
+            </FadeContent>
 
-            <div className="fade-in flex flex-col items-center gap-2 pt-8 pb-8 absolute bottom-0 left-0 right-0">
+            <FadeContent duration={1000} delay={0} easing="ease-out" className="absolute bottom-0 left-0 right-0"> 
+            <div className="flex flex-col items-center gap-2 pt-8 pb-8">
               <div className="text-white text-sm max-lg:text-[0.75rem] transition-opacity duration-300 ease-in-out"
               >
                 SEE LATEST PROJECTS
               </div>
               <ChevronDown className="w-4 h-4 text-white" />
             </div>
+            </FadeContent>
           </div>
         </div>
       </section>
@@ -155,8 +165,9 @@ const Home = () => {
 
         {/* Ko: Logo Animation */}
         <Tooltip content="View work">
-        <div className="fade-container flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
-            <div className="fade-in flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
+        <div className="flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
+          <FadeContent duration={1000} delay={0} easing="ease-out">
+            <div className="flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <Link to={ROUTES.WORKS.LOGO} className="text-black transition-opacity">
                     <h2 className="text-3xl font-medium pb-[1rem] max-lg:text-xl max-lg:text-left max-lg:pl-[0.5rem]">Ko: Logo Animation</h2>
                     <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[0.5rem] max-lg:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</h4>
@@ -169,13 +180,16 @@ const Home = () => {
                     </div>
                 </Link>
             </div>
-            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
+          </FadeContent>
+          <FadeContent duration={1000} delay={0} easing="ease-out">
+            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
                 <Link to={ROUTES.WORKS.LOGO}>
-                <div className="aspect-[3/2] w-full max-w-[1080px] overflow-hidden">
+                <div className="w-[720px] h-[480px] max-lg:w-[720px] max-lg:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
                     <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1764331938/logo_n5druz_1_yopcck.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
                 </div>
                 </Link>
             </div>
+          </FadeContent>
         </div>
         </Tooltip>
 
@@ -183,8 +197,9 @@ const Home = () => {
         
         {/* Modern Caveman */}
         <Tooltip content="View work">
-        <div className="fade-container flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
-            <div className="fade-in flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
+        <div className="flex items-start gap-[15px] w-full max-lg:flex-col max-lg:flex-col-reverse max-lg:px-[1rem]">
+          <FadeContent duration={1000} delay={120} easing="ease-out">
+            <div className="flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <Link to={ROUTES.WORKS.CAVEMAN} className="text-black transition-opacity">
                     <h2 className="text-3xl font-medium pb-[1rem] max-lg:text-xl max-lg:text-left max-lg:pl-[0.5rem]">Modern Caveman</h2>
                     <h4 className="text-md font-light pr-[8rem] text-[rgb(118,118,118)] [max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[0.5rem] max-lg:text-sm">A series of shadow-based explorations inspired by Plato's Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</h4>
@@ -195,13 +210,16 @@ const Home = () => {
                     </div>
                 </Link>
             </div>
-            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
+          </FadeContent>
+          <FadeContent duration={1000} delay={120} easing="ease-out">
+            <div className="flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full">
                 <Link to={ROUTES.WORKS.CAVEMAN}>
-                <div className="aspect-[3/2] w-full max-w-[1080px] max-lg:max-w-[720px] overflow-hidden">
+                <div className="w-[720px] h-[480px] max-lg:w-[720px] max-lg:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
                     <img className="block w-full h-full object-cover rounded-none" src={Caveman} />
                 </div>
                 </Link>
             </div>
+          </FadeContent>
         </div>
         </Tooltip>
         
