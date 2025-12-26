@@ -12,9 +12,11 @@ const Tooltip = ({ children, content }: TooltipProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const timeoutRef = useRef<number | null>(null);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (e: React.MouseEvent) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     
+    // Set position immediately on enter to prevent stale position on remount
+    setPosition({ x: e.clientX + 15, y: e.clientY + 15 });
     setMounted(true);
     timeoutRef.current = window.setTimeout(() => setVisible(true), 30);
   };
