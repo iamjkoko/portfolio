@@ -44,10 +44,18 @@ const Tooltip = ({ children, content }: TooltipProps) => {
 
       {mounted && createPortal(
         <div
-          className="fixed pointer-events-none z-50 transition-opacity duration-200 ease-out hidden md:block"
-          style={{ left: position.x, top: position.y, opacity: visible ? 1 : 0 }}
+          className="fixed pointer-events-none z-50 hidden md:block"
+          style={{ left: position.x, top: position.y }}
         >
-          <div className="bg-black/20 backdrop-blur-md border border-white/10 text-white text-sm px-3 py-2 rounded-[30px] shadow-lg whitespace-nowrap">
+          <div 
+            className="border border-white/10 text-white text-sm px-3 py-2 rounded-[30px] shadow-lg whitespace-nowrap transition-all duration-200 ease-out"
+            style={{ 
+              opacity: visible ? 1 : 0,
+              backgroundColor: visible ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0)',
+              backdropFilter: visible ? 'blur(12px)' : 'blur(0px)',
+              WebkitBackdropFilter: visible ? 'blur(12px)' : 'blur(0px)',
+            }}
+          >
             {content}
           </div>
         </div>,
