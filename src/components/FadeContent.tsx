@@ -58,14 +58,15 @@ const FadeContent: React.FC<FadeContentProps> = ({
     if (!el) return;
 
     // Resolving the scroller
+    // SmoothScroll uses transform-based scrolling with window.scrollY as the source of truth,
+    // so ScrollTrigger should always use window as the scroller (not the fixed container).
     const getScroller = () => {
-      if (window.innerWidth < 1024) return window;
-      // If container prop is provided, use it
+      // If container prop is explicitly provided, use it
       if (container) {
         return typeof container === 'string' ? document.querySelector(container) : container;
       }
-      // Otherwise use the default SmoothScroll ID
-      return document.getElementById('snap-main-container') || window;
+      // Otherwise always use window since SmoothScroll transforms are based on window.scrollY
+      return window;
     };
 
     const scrollerTarget = getScroller();

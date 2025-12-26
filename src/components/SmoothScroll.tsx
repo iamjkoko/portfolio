@@ -74,7 +74,15 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       
       // Mark as ready immediately for mobile
       setScrollReady(true);
-      return;
+      
+      // Refresh ScrollTrigger after a short delay to ensure proper position calculations
+      const refreshTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+      
+      return () => {
+        clearTimeout(refreshTimeout);
+      };
     }
 
     // Desktop: Full smooth scroll implementation
