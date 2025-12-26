@@ -86,10 +86,7 @@ const Home = () => {
         id="hero" 
         className="flex justify-center items-center h-screen relative overflow-hidden"
       >
-        <StaggeredText 
-          text="Crafting ideas into form." 
-          className="intro-title"
-        />
+        <h1 className="intro-title">Crafting ideas into form.</h1>
         <ColorBends
           colors={["#ffffff"]} 
           rotation={80}
