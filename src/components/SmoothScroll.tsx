@@ -1,14 +1,30 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, createContext, ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function SmoothScroll({ children }) {
-  const containerRef = useRef(null);
+// Define types for the context value
+interface ScrollContextValue {
+  isScrollReady: boolean;
+}
+
+// Create and Export the Context
+export const ScrollContext = createContext<ScrollContextValue>({ isScrollReady: false });
+
+// Define props interface
+interface SmoothScrollProps {
+  children: ReactNode;
+}
+
+export default function SmoothScroll({ children }: SmoothScrollProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const prevPathnameRef = useRef(location.pathname);
+  const prevPathnameRef = useRef<string>(location.pathname);
+  
+  // Add a state to track readiness
+  const [isScrollReady, setScrollReady] = useState<boolean>(false);
 
   // Handle route changes
   useEffect(() => {
@@ -16,7 +32,7 @@ export default function SmoothScroll({ children }) {
     
     if (prevPathnameRef.current !== location.pathname && !location.hash) {
       const scrollTimer = setTimeout(() => {
-        const scrollToTop = () => {
+        const scrollToTop = (): void => {
           window.scrollTo(0, 0);
           document.documentElement.scrollTop = 0;
           document.body.scrollTop = 0;
@@ -42,7 +58,7 @@ export default function SmoothScroll({ children }) {
     const isMobile = window.innerWidth < 1024;
 
     if (isMobile) {
-      const handleInitialHashMobile = () => {
+      const handleInitialHashMobile = (): void => {
         const hash = window.location.hash;
         if (hash) {
           const element = document.querySelector(hash);
@@ -55,13 +71,16 @@ export default function SmoothScroll({ children }) {
       };
 
       handleInitialHashMobile();
+      
+      // Mark as ready immediately for mobile
+      setScrollReady(true);
       return;
     }
 
     // Desktop: Full smooth scroll implementation
     let currentScroll = 0;
     let targetScroll = 0;
-    let rafId = null;
+    let rafId: number | null = null;
 
     gsap.set(container, { 
       position: "fixed", 
@@ -71,7 +90,7 @@ export default function SmoothScroll({ children }) {
       willChange: "transform"
     });
 
-    const updateHeight = () => {
+    const updateHeight = (): void => {
       requestAnimationFrame(() => {
         const height = container.scrollHeight;
         document.body.style.height = `${height}px`;
@@ -79,10 +98,10 @@ export default function SmoothScroll({ children }) {
       });
     };
 
-    const handleInitialHash = () => {
+    const handleInitialHash = (): void => {
       const hash = window.location.hash;
       if (hash) {
-        const element = document.querySelector(hash);
+        const element = document.querySelector(hash) as HTMLElement | null;
         if (element) {
           const scrollPosition = element.offsetTop;
           currentScroll = scrollPosition;
@@ -96,7 +115,7 @@ export default function SmoothScroll({ children }) {
     const initialUpdate = setTimeout(updateHeight, 100);
     setTimeout(handleInitialHash, 150);
 
-    const animate = () => {
+    const animate = (): void => {
       targetScroll = window.scrollY;
       currentScroll += (targetScroll - currentScroll) * 0.1;
       
@@ -108,7 +127,7 @@ export default function SmoothScroll({ children }) {
     };
 
     ScrollTrigger.scrollerProxy(container, {
-      scrollTop(value) {
+      scrollTop(value?: number) {
         if (value !== undefined) {
           currentScroll = targetScroll = value;
         }
@@ -120,6 +139,8 @@ export default function SmoothScroll({ children }) {
         width: window.innerWidth,
         height: window.innerHeight,
       }),
+      // Tell ScrollTrigger the content is fixed
+      pinType: container.style.transform ? "transform" : "fixed"
     });
 
     const observer = new MutationObserver(() => {
@@ -132,8 +153,8 @@ export default function SmoothScroll({ children }) {
       attributes: true,
     });
 
-    let resizeTimeout;
-    const handleResize = () => {
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = (): void => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(updateHeight, 100);
     };
@@ -141,17 +162,32 @@ export default function SmoothScroll({ children }) {
     
     animate();
 
+    // Mark as ready AFTER proxy is set
+    setScrollReady(true);
+
     return () => {
       clearTimeout(initialUpdate);
       clearTimeout(resizeTimeout);
-      cancelAnimationFrame(rafId);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
       observer.disconnect();
       window.removeEventListener("resize", handleResize);
       gsap.set(container, { clearProps: "all" });
       document.body.style.height = "";
       ScrollTrigger.refresh();
+      
+      // Reset on unmount
+      setScrollReady(false);
     };
   }, [children]);
 
-  return <div ref={containerRef} id="snap-main-container">{children}</div>;
+  return (
+    <ScrollContext.Provider value={{ isScrollReady }}>
+      <div ref={containerRef} id="snap-main-container">
+        {children}
+      </div>
+    </ScrollContext.Provider>
+  );
 }
+
