@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 interface TooltipProps {
   children: React.ReactNode;
@@ -26,7 +27,8 @@ const Tooltip = ({ children, content }: TooltipProps) => {
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    setPosition({ x: e.pageX + 15, y: e.pageY + 15 });
+    // Use clientX/clientY since we're portaling to document.body
+    setPosition({ x: e.clientX + 15, y: e.clientY + 15 });
   };
 
   return (
@@ -38,7 +40,7 @@ const Tooltip = ({ children, content }: TooltipProps) => {
     >
       {children}
 
-      {mounted && (
+      {mounted && createPortal(
         <div
           className="fixed pointer-events-none z-50 transition-opacity duration-200 ease-out hidden md:block"
           style={{ left: position.x, top: position.y, opacity: visible ? 1 : 0 }}
@@ -46,7 +48,8 @@ const Tooltip = ({ children, content }: TooltipProps) => {
           <div className="bg-black/20 backdrop-blur-md border border-white/10 text-white text-sm px-3 py-2 rounded-[30px] shadow-lg whitespace-nowrap">
             {content}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
