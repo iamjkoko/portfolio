@@ -46,7 +46,7 @@ function About() {
             </h6>
             <br />
             <h6 className="font-[350] text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.4s] max-[935px]:text-[0.9rem]">
-              Outside of his studio, Eric enjoys capturing moments through his 35mm film camera, practicing bossa nova on his classic guitar, or watching his favorite soccer team play on TV.
+              Outside of the studio, Eric enjoys exploring with his 35mm film camera, studying bossa nova on his classical guitar, or watching his favorite soccer team play on TV.
             </h6>
             <br />
             <p className="font-[350] text-[0.9rem] opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.5s] max-[935px]:text-[0.8rem]">
