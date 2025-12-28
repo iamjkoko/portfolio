@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import '../global.css';
 
 import { Link } from 'react-router-dom';
@@ -18,67 +18,47 @@ import LinkedinIcon from '../assets/icons/linkedin-white.webp';
 import Caveman from '../assets/images/works/caveman/caveman.webp';
 
 const Home = () => {
-  const [showIntro, setShowIntro] = useState(false);
-  const [setIntroStep] = useState(0);
-
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("hasVisited");
     if (!hasVisited) {
       sessionStorage.setItem("hasVisited", "true");
-      setShowIntro(true);
-      
-      // Intro animation timing
-      setTimeout(() => setIntroStep(1), 100);
-      setTimeout(() => setIntroStep(2), 1800);
-      setTimeout(() => {
-        // Dispatch event to show navbar after intro completes with additional delay
-        window.dispatchEvent(new CustomEvent('introComplete'));
-      }, 800);
-    } else {
-      // If user has already visited, still respect the timing for consistency
-      setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('introComplete'));
-      }, 800);
     }
+    
+    // Dispatch event to show navbar after intro completes with additional delay
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('introComplete'));
+    }, 800);
   }, []);
 
-  // Dispatch intro state changes for SmoothScroll
   useEffect(() => {
-    window.dispatchEvent(new CustomEvent('introStateChange', { detail: { showIntro } }));
-  }, [showIntro]);
+    // Small delay to ensure DOM is ready
+    const setupObserver = () => {
+      const fadeInContainers = document.querySelectorAll(".fade-container");
+      if (fadeInContainers.length === 0) return;
 
-
-  useEffect(() => {
-    if (!showIntro) {
-      // Small delay to ensure DOM is ready
-      const setupObserver = () => {
-        const fadeInContainers = document.querySelectorAll(".fade-container");
-        if (fadeInContainers.length === 0) return;
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const children = entry.target.querySelectorAll('.fade-in');
-              children.forEach((child, index) => {
-                setTimeout(() => {
-                  child.setAttribute('data-visible', 'true');
-                }, index * 150);
-              });
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { 
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const children = entry.target.querySelectorAll('.fade-in');
+            children.forEach((child, index) => {
+              setTimeout(() => {
+                child.setAttribute('data-visible', 'true');
+              }, index * 150);
+            });
+            observer.unobserve(entry.target);
+          }
         });
-        
-        fadeInContainers.forEach((container) => observer.observe(container));
-      };
+      }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      fadeInContainers.forEach((container) => observer.observe(container));
+    };
 
-      // Small delay to ensure DOM is fully rendered
-      setTimeout(setupObserver, 100);
-    }
-  }, [showIntro]);
+    // Small delay to ensure DOM is fully rendered
+    setTimeout(setupObserver, 100);
+  }, []);
 
   return (
     <>
