@@ -27,7 +27,7 @@ const Home = () => {
     // Dispatch event to show navbar after intro completes with additional delay
     setTimeout(() => {
       window.dispatchEvent(new CustomEvent('introComplete'));
-    }, 800);
+    }, 300);
   }, []);
 
   useEffect(() => {
