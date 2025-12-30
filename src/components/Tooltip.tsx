@@ -48,7 +48,7 @@ const Tooltip = ({ children, content }: TooltipProps) => {
           style={{ left: position.x, top: position.y }}
         >
           <div 
-            className="border border-white/10 text-white text-sm px-3 py-2 rounded-[30px] shadow-lg whitespace-nowrap transition-all duration-200 ease-out"
+            className="border border-white/10 text-white text-sm px-3 py-2 rounded-[30px] shadow-lg whitespace-nowrap transition-all duration-200 ease-out font-[500]"
             style={{ 
               opacity: visible ? 1 : 0,
               backgroundColor: visible ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0)',
