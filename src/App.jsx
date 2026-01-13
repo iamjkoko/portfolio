@@ -15,9 +15,9 @@ import Works from './pages/Works';
 import Studio from './pages/Studio';
 import Experiments from './pages/Experiments';
 
+import { Caveman, Logo } from './works/index.js';
+
 // Lazy load individual project pages (code splitting)
-const Caveman = lazy(() => import('./works/Caveman'));
-const Logo = lazy(() => import('./works/Logo'));
 
 const Cheso = lazy(() => import('./archive/studio/Cheso'));
 const InfinityBox = lazy(() => import('./archive/studio/InfinityBox'));
