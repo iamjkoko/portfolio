@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ROUTES } from './constants/routes';
@@ -8,29 +8,16 @@ import Layout from './components/Layout';
 
 import SmoothScroll from './components/SmoothScroll';
 
-// Static imports for main pages (always needed)
 import Home from './pages/Home';
 import About from './pages/About';
 import Works from './pages/Works';
+
 import Studio from './pages/Studio';
 import Experiments from './pages/Experiments';
 
 import { Caveman, Logo } from './works/index.js';
-
-// Lazy load individual project pages (code splitting)
-
-const Cheso = lazy(() => import('./archive/studio/Cheso'));
-const InfinityBox = lazy(() => import('./archive/studio/InfinityBox'));
-const Paintbox = lazy(() => import('./archive/studio/Paintbox'));
-const Paperfold = lazy(() => import('./archive/studio/Paperfold'));
-const SaoPaulo = lazy(() => import('./archive/studio/SaoPaulo'));
-const LightPainting = lazy(() => import('./archive/studio/LightPainting'));
-
-const Agora = lazy(() => import('./archive/experiments/Agora'));
-const EchoingNature = lazy(() => import('./archive/experiments/EchoingNature'));
-const DigitalGarden = lazy(() => import('./archive/experiments/DigitalGarden'));
-const MachinaAnima = lazy(() => import('./archive/experiments/MachinaAnima'));
-const LucidLiquids = lazy(() => import('./archive/experiments/LucidLiquids'));
+import { Cheso, InfinityBox, Paintbox, Paperfold, SaoPaulo, LightPainting } from './archive/index.js';
+import { Agora, EchoingNature, DigitalGarden, MachinaAnima, LucidLiquids } from './archive/index.js';
 
 function AnimatedPage({ children }) {
   return (
@@ -40,9 +27,7 @@ function AnimatedPage({ children }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      <Suspense fallback={null}>
-        {children}
-      </Suspense>
+      {children}
     </motion.div>
   );
 }
