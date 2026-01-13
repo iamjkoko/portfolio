@@ -1,6 +1,5 @@
 import React from 'react';
 import '../global.css';
-import '../assets/fonts/boska/boska.css';
 import styles from '../styles/works.module.css';
 
 import Footer from '../components/Footer';
