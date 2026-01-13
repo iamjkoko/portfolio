@@ -5,7 +5,6 @@ import styles from '../../styles/works.module.css';
 import Footer from '../../components/Footer';
 
 import AgoraLayout from '../../assets/images/archive/agora/agora-layout.webp';
-import AgoraConcept from '../../assets/images/archive/agora/agora-concept.webp';
 
 function Agora() {
   return (
@@ -43,11 +42,6 @@ function Agora() {
         </div>
         </div>
     </section>
-
-    <section id="banner" className={styles['banner']}>
-        <img src={AgoraConcept} alt="Agora Concept" />
-    </section>
-
 
     <section id="credits" className={styles['project-credits']}>
         <div className={styles['credits-title']}>
