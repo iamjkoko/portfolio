@@ -29,14 +29,14 @@ function About() {
   return (
     <>
     <section id="about-page" className="flex flex-col min-h-screen justify-center mx-auto w-full bg-white max-[935px]:mt-[10%]">
-        <div className="flex items-center justify-center text-left bg-white p-5 rounded-[10px] flex-1 max-w-[1200px] mx-auto max-[935px]:flex-col">
+        <div className="flex items-center justify-center text-left bg-white p-5 rounded-[10px] flex-1 max-w-[1440px] mx-auto max-[935px]:flex-col">
             <img 
               src={Profile} 
-              className="max-w-[480px] max-h-[640px] mr-[5%] rounded-lg max-[935px]:mr-0 max-[935px]:w-full" 
+              className="max-w-[480px] max-h-[640px] mr-[8%] rounded-lg max-[935px]:mr-0 max-[935px]:w-full" 
               alt="Eric Ko" 
               draggable={false}
             /> 
-        <div className="max-w-[720px] max-[935px]:py-[10%] max-[935px]:px-[4%] max-[935px]:w-full">
+        <div className="max-w-[1080px] max-[935px]:py-[10%] max-[935px]:px-[4%] max-[935px]:w-full">
             <h6 className="font-[350] text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.2s] max-[935px]:text-[0.9rem]">
               <strong>Eric Ko</strong> (b. 2004) is a multidisciplinary artist and designer currently pursuing a BFA in Industrial and Product Design at the Rhode Island School of Design (RISD). Born and raised in Seoul, and having spent four years in São Paulo, Brazil, his works are shaped by his cultural roots and curiosity about the intersection of tradition, innovation, and sustainability.
             </h6>

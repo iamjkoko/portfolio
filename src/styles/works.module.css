@@ -47,6 +47,8 @@ hr {
     .project-vid-hor,
     .project-img {
         margin-top: 6rem;
+        height: 100%;
+        width: 100vw;
     }
     .project-vid-ver {
         margin-top: 0.125rem;
