@@ -55,7 +55,7 @@ const Footer = ({ theme }) => {
         
         {/* Contact Section */}
         <div className="space-y-3">
-          <h3 className="text-base font-medium mb-3 max-[935px]:pt-4">Get in Touch</h3>
+          <h3 className="text-base font-semibold mb-3 max-[935px]:pt-4">Get in Touch</h3>
           <a 
             href="mailto:eko03@risd.edu" 
             className={`flex items-center gap-2 text-sm`}
@@ -77,7 +77,7 @@ const Footer = ({ theme }) => {
 
         {/* Social Links Section */}
         <div className="space-y-3">
-          <h3 className="text-base font-medium mb-3">Links</h3>
+          <h3 className="text-base font-semibold mb-3">Links</h3>
           <div className="flex items-center gap-2">
             <span className="opacity-50">
             <CornerDownRight size={16} />
@@ -87,7 +87,7 @@ const Footer = ({ theme }) => {
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className={`transition-opacity opacity-50 hover:opacity-100`}
+                className={`transition-opacity opacity-35 hover:opacity-100`}
                 aria-label="LinkedIn"
               >
                 <img src={LinkedinIcon} alt="LinkedIn" className="w-6 h-6" />
@@ -96,7 +96,7 @@ const Footer = ({ theme }) => {
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className={`transition-opacity opacity-50 hover:opacity-100`}
+                className={`transition-opacity opacity-35 hover:opacity-100`}
                 aria-label="Instagram"
               >
                 <img src={InstagramIcon} alt="Instagram" className="w-6 h-6" />
