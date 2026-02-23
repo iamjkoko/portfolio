@@ -111,7 +111,7 @@ const Footer = ({ theme }) => {
             Local time: {localTime}
           </p>
           <p className="text-xs opacity-80 pt-0.5">
-            Last updated: December 2025
+            Last updated: February 2026
           </p>
         </div>
       </div>
@@ -119,7 +119,7 @@ const Footer = ({ theme }) => {
       {/* Bottom Bar */}
       <div className="max-w-[1400px] mx-auto pt-60">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-80">
-          <p>© 2025 Eric Ko. All rights reserved.</p>
+          <p>© 2026 Eric Ko. All rights reserved.</p>
           <p>Designed & Built with React</p>
         </div>
       </div>
