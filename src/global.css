@@ -60,12 +60,18 @@ strong {
   font-variation-settings: 'wght' 800;
   font-style: normal;
 }
+.break-desktop { display: inline; }
+.break-mobile  { display: none; }
+
 @media (max-width: 935px) {
   .intro-title {
     bottom: 30px;
     left: 30px;
-    font-size: clamp(5rem, 8vw, 8rem);
+    padding-right: 60px;
+    font-size: clamp(0.5rem, 6vw, 4rem);
   }
+  .break-desktop { display: none; }
+  .break-mobile  { display: inline; }
 }
 
 

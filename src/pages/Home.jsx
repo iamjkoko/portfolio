@@ -67,7 +67,7 @@ const Home = () => {
         className="flex justify-center items-center h-screen relative overflow-hidden"
       >
         <SplitText
-          text={["<strong>Eric Ko</strong> is a <strong>multidisciplinary designer</strong>", "based in <strong>Providence</strong>.", "", "Currently studying <strong>Product Design & CTC</strong> at <strong>RISD</strong>."]}
+          text={[`<strong>Eric Ko</strong> is a<span class="break-mobile"><br></span> <strong>multidisciplinary designer</strong>`, "based in <strong>Providence</strong>.", "", `Currently studying<span class="break-mobile"><br></span> <strong>Product Design & CTC</strong> at <strong>RISD</strong>.`]}
           className="intro-title"
           delay={200}
           duration={1.25}
