@@ -46,7 +46,7 @@ strong {
   position: absolute;
   bottom: 60px;
   left: 60px;
-  font-size: clamp(4rem, 8vw, 8rem);
+  font-size: clamp(2rem, 4vw, 4rem);
   font-variation-settings: 'wght' 400;
   color: white;
   letter-spacing: -0.02em;
@@ -54,22 +54,11 @@ strong {
   font-family: var(--font-family-boska);
   z-index: 9999;
   pointer-events: none;
-  /* Animation: reveal from bottom to top */
-  animation: revealFromBottom 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: 0.1s;
-  opacity: 0;
-  transform: translateY(40px);
 }
 
-@keyframes revealFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.intro-title strong {
+  font-variation-settings: 'wght' 800;
+  font-style: normal;
 }
 @media (max-width: 935px) {
   .intro-title {

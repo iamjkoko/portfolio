@@ -9,8 +9,8 @@ import Gallery from '../../components/Gallery';
 import InfinityBox1 from '../../assets/images/archive/infinity-box/infinity-box-1.webp';
 import InfinityBox2 from '../../assets/images/archive/infinity-box/infinity-box-2.webp';
 
-function InfinityBox() {
-  const imageList = [
+function InfinityBox(): React.JSX.Element {
+  const imageList: { src: string; alt: string }[] = [
     { src: InfinityBox1, alt: 'Infinity Box 1' },
     { src: InfinityBox2, alt: 'Infinity Box 2' },
   ];
@@ -49,5 +49,3 @@ function InfinityBox() {
 }
 
 export default InfinityBox;
-
-

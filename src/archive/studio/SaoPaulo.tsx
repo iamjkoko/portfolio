@@ -8,7 +8,7 @@ import ImgCredit from '../../components/ImgCredit';
 
 import SaoPaulo1 from '../../assets/images/archive/sao-paulo/saopaulo-1.webp';
 
-function SaoPaulo() {
+function SaoPaulo(): React.JSX.Element {
   return (
     <>
       <section id="project-main" className={styles['project-main']}>
@@ -44,18 +44,18 @@ function SaoPaulo() {
             <br />
         </div>
         <div className={styles['youtube']}>
-            <iframe 
+            <iframe
             width="100%"
-            height="100%" 
-            src="https://www.youtube.com/embed/c3BRTlHFpBU?si=zVBfeUrpVqTgVngd" 
-            title="YouTube video player" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerPolicy="strict-origin-when-cross-origin" 
+            height="100%"
+            src="https://www.youtube.com/embed/c3BRTlHFpBU?si=zVBfeUrpVqTgVngd"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             ></iframe>
         </div>
-        <ImgCredit src={SaoPaulo1} alt="Sao Paulo"> 
+        <ImgCredit src={SaoPaulo1} alt="Sao Paulo">
         By <a href="https://www.youtube.com/user/voxdotcom" target="_blank" rel="noopener noreferrer">Vox</a> · YouTube <a rel="nofollow" className="external free" href="https://www.youtube.com/watch?v=c3BRTlHFpBU" target="_blank">https://www.youtube.com/watch?v=c3BRTlHFpBU</a>, © Vox / YouTube, All rights reserved
         </ImgCredit>
         <div className={styles['description-body']}>
@@ -73,7 +73,7 @@ function SaoPaulo() {
             <h3>CREDITS</h3>
         </div>
         <div className={styles['credits-body']}>
-            <h5>Brown University. “Favelas in Rio de Janeiro, Past and Present | Brazil: Five Centuries of Change.” Brown.edu, 2009, library.brown.edu/create/fivecenturiesofchange/chapters/chapter-9/favelas-in-rio-de-janeiro-past-and-present/.</h5>
+            <h5>Brown University. "Favelas in Rio de Janeiro, Past and Present | Brazil: Five Centuries of Change." Brown.edu, 2009, library.brown.edu/create/fivecenturiesofchange/chapters/chapter-9/favelas-in-rio-de-janeiro-past-and-present/.</h5>
             <br />
             <h5>Wallenfeldt, Jeff. "favela". Encyclopedia Britannica, 17 Oct. 2025, https://www.britannica.com/topic/favela. Accessed 5 November 2025.</h5>
         </div>
@@ -87,5 +87,3 @@ function SaoPaulo() {
 }
 
 export default SaoPaulo;
-
-

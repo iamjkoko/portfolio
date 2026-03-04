@@ -17,8 +17,8 @@ import Cheso9 from '../../assets/images/archive/cheso/cheso-9.webp';
 import ChesoConcept1 from '../../assets/images/archive/cheso/cheso-cp1.webp';
 import ChesoConcept2 from '../../assets/images/archive/cheso/cheso-cp2.webp';
 
-function Cheso() {
-  const imageList = [
+function Cheso(): React.JSX.Element {
+  const imageList: { src: string; alt: string }[] = [
     { src: Cheso1, alt: 'Cheso 1' },
     { src: Cheso2, alt: 'Cheso 2' },
     { src: Cheso3, alt: 'Cheso 3' },
@@ -50,7 +50,7 @@ function Cheso() {
               width: '100%',
               height: 'auto',
             }}>
-              <img src={img.src} alt={img.alt} 
+              <img src={img.src} alt={img.alt}
               style={{
                 display: 'block',
                 width: '100%',
@@ -89,12 +89,10 @@ function Cheso() {
       </section>
 
       <br />
-      
+
       <Footer theme="light" />
     </>
   );
 }
 
 export default Cheso;
-
-

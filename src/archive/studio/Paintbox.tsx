@@ -9,8 +9,8 @@ import Gallery from '../../components/Gallery';
 import Paintbox1 from '../../assets/images/archive/paintbox/paintbox-1.webp';
 import Paintbox2 from '../../assets/images/archive/paintbox/paintbox-2.webp';
 
-function Paintbox() {
-  const imageList = [
+function Paintbox(): React.JSX.Element {
+  const imageList: { src: string; alt: string }[] = [
     { src: Paintbox1, alt: 'Paintbox 1' },
     { src: Paintbox2, alt: 'Paintbox 2' },
   ];
@@ -49,5 +49,3 @@ function Paintbox() {
 }
 
 export default Paintbox;
-
-

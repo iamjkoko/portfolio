@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MachinaAnima = () => {
+const EchoingNature = (): React.JSX.Element => {
   return (
     <div className="container">
         <h1>Coming Soon</h1>
@@ -8,4 +8,4 @@ const MachinaAnima = () => {
   );
 };
 
-export default MachinaAnima;
+export default EchoingNature;

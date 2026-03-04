@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DigitalGarden = () => {
+const DigitalGarden = (): React.JSX.Element => {
   return (
     <div className="container">
         <h1>Coming Soon</h1>

@@ -6,7 +6,7 @@ import Footer from '../../components/Footer';
 
 import AgoraLayout from '../../assets/images/archive/agora/agora-layout.webp';
 
-function Agora() {
+function Agora(): React.JSX.Element {
   return (
     <>
     <section id="project-main" className={styles['project-main']}>
@@ -48,7 +48,7 @@ function Agora() {
             <h3>CREDITS</h3>
         </div>
         <div className={styles['credits-body']}>
-            <h5>“Agora of Athens History – Ancient-Greece.org.” Ancient Greece, 23 June 2025, ancient-greece.org/history/the-agora-of-athens-history/.</h5>
+            <h5>"Agora of Athens History – Ancient-Greece.org." Ancient Greece, 23 June 2025, ancient-greece.org/history/the-agora-of-athens-history/.</h5>
             <br />
             <h5>Britannica Editors. "agora". Encyclopedia Britannica, 7 Jun. 2024, https://www.britannica.com/topic/agora. Accessed 8 November 2025.</h5>
         </div>
@@ -64,5 +64,3 @@ function Agora() {
 }
 
 export default Agora;
-
-

@@ -9,8 +9,8 @@ import Gallery from '../../components/Gallery';
 import Paperfold1 from '../../assets/images/archive/paperfold/paperfold-1.webp';
 import Paperfold2 from '../../assets/images/archive/paperfold/paperfold-2.webp';
 
-function Paperfold() {
-  const imageList = [
+function Paperfold(): React.JSX.Element {
+  const imageList: { src: string; alt: string }[] = [
     { src: Paperfold1, alt: 'Paperfold 1' },
     { src: Paperfold2, alt: 'Paperfold 2' },
   ];
@@ -47,5 +47,3 @@ function Paperfold() {
 }
 
 export default Paperfold;
-
-

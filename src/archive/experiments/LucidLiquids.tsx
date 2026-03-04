@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LucidLiquids = () => {
+const LucidLiquids = (): React.JSX.Element => {
   return (
     <div className="container">
         <h1>Coming Soon</h1>

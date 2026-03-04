@@ -8,7 +8,7 @@ import { ChevronDown, ArrowRight } from 'lucide-react';
 import Tooltip from '../components/Tooltip';
 import Underline from '../components/Underline';
 import ColorBends from '../components/ColorBends';
-import StaggeredText from '../components/StaggeredText';
+import SplitText from '../components/SplitText';
 
 import Footer from '../components/Footer';
 
@@ -66,7 +66,19 @@ const Home = () => {
         id="hero" 
         className="flex justify-center items-center h-screen relative overflow-hidden"
       >
-        <h1 className="intro-title">Crafting ideas into form.</h1>
+        <SplitText
+          text={["<strong>Eric Ko</strong> is a <strong>multidisciplinary designer</strong>", "based in <strong>Providence</strong>.", "", "Currently studying <strong>Product Design & CTC</strong> at <strong>RISD</strong>."]}
+          className="intro-title"
+          delay={200}
+          duration={1.25}
+          ease="power3.out"
+          splitType="lines"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="left"
+        />
         <ColorBends
           colors={["#ffffff"]} 
           rotation={80}

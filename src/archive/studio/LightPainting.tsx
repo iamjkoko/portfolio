@@ -9,24 +9,24 @@ import LightPainting1 from '../../assets/images/archive/light-painting/light-pai
 import Inspo1 from '../../assets/images/archive/light-painting/inspo-1.webp';
 import Inspo2 from '../../assets/images/archive/light-painting/inspo-2.webp';
 
-function LightPainting() {
+function LightPainting(): React.JSX.Element {
   useEffect(() => {
     document.documentElement.classList.add("dark");
     return () => document.documentElement.classList.remove("dark");
   }, []);
 
   return (
-    <div style={{ background: 'var(--color-background)', color: 'var(--color-text)' }}> 
+    <div style={{ background: 'var(--color-background)', color: 'var(--color-text)' }}>
       <section id="project-main" className={styles['project-main']}>
-      <img 
-        src={LightPainting1} 
-        alt="Light Painting" 
-        style={{ 
-          width: '100%', 
+      <img
+        src={LightPainting1}
+        alt="Light Painting"
+        style={{
+          width: '100%',
           height: 'auto',
           maxWidth: '1280px',
           padding: '100px 0 20px'
-        }} 
+        }}
       />
         <div className={styles['project-info']}>
         <div className={styles['project-basics']}>
@@ -72,5 +72,3 @@ function LightPainting() {
 }
 
 export default LightPainting;
-
-
