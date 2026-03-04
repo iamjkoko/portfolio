@@ -3,6 +3,8 @@
 /* Tailwind v4 theme configuration */
 @theme {
   --font-family-boska: 'Boska-Variable', serif;
+  --font-family-general-sans: 'GeneralSans-Variable', sans-serif;
+  --font-family-poppins: 'Poppins-Variable', sans-serif;
   --breakpoint-mobile: 935px;
 }
 
@@ -22,8 +24,9 @@ html, body {
   overflow-x: hidden;
   overflow-y: auto;     
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-family-general-sans);
   scroll-behavior: auto !important;
+  word-spacing: 0.08rem;
 }
 img {
   user-select: none;

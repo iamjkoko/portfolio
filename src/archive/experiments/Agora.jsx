@@ -38,7 +38,7 @@ function Agora() {
         <div className={styles['description-body']}>
             <h5>The communal spaces of Agora symbolized the free flow of information and the collective pursuit of insight. The typeface design shares a similar idea through its minimalistic design, characterized by simple variations in thickness. Its clean lines and geometric forms create alphabets that are both fundamental and universally accessible.</h5>
             <br />
-            <h5>The accompanying animation illustrates the formation of knowledge, reflecting the dynamic exchange of ideas that once nourished ancient civilization in the agora.</h5>
+            <h5>The animation illustrates the formation of knowledge, reflecting the dynamic exchange of ideas that once nourished ancient civilization in the agora.</h5>
         </div>
         </div>
     </section>

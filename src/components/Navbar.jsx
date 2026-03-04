@@ -357,7 +357,7 @@ export default function Navbar({ showNavbar = true }) {
       <AnimatePresence>
         {showArchiveDropdown && isExpanded && (
           <motion.div
-            className="fixed top-[calc(2rem+50px+0.3rem)] right-[4.9rem] bg-white shadow-[0_4px_30px_rgba(0,0,0,0.1)] rounded-2xl min-w-[140px] z-[10001]"
+            className="fixed top-[calc(2rem+50px+0.3rem)] right-[4.8rem] bg-white shadow-[0_4px_30px_rgba(0,0,0,0.1)] rounded-2xl min-w-[140px] z-[10001]"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
