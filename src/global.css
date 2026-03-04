@@ -12,7 +12,6 @@
 
 * {
   box-sizing: border-box;
-  overscroll-behavior: none;
 }
 html, body {
   margin: 0;
