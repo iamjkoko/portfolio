@@ -28,7 +28,7 @@ function Works() {
             <Link to={ROUTES.WORKS.CAVEMAN}>
             <Tooltip content="View work">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Caveman} />
+                <img className="block w-full h-full object-cover rounded-none" src={Caveman} alt="" />
             </div>
             </Tooltip>
             </Link>
@@ -37,12 +37,12 @@ function Works() {
         {/* Placeholders */}
         <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} />
+                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} alt="" />
             </div>
         </div>
         <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} />
+                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} alt="" />
             </div>
         </div>
         </div>

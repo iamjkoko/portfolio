@@ -9,4 +9,4 @@ export { default as Agora } from './experiments/Agora';
 export { default as EchoingNature } from './experiments/EchoingNature';
 export { default as DigitalGarden } from './experiments/DigitalGarden';
 export { default as MachinaAnima } from './experiments/MachinaAnima';
-export { default as LucidLiquids} from './experiments/LucidLiquids';
+export { default as LucidLiquids } from './experiments/LucidLiquids';

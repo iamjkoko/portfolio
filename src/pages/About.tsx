@@ -9,21 +9,19 @@ import LinkedinIcon from '../assets/icons/linkedin-black.webp';
 import Signature from '../assets/videos/signature.mp4';
 
 function About() {
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     // Trigger animations when component mounts
-    const h6Elements = document.querySelectorAll('#about-page .description h6');
+    const h6Elements = document.querySelectorAll<HTMLElement>('#about-page .description h6');
     h6Elements.forEach((element, index) => {
       element.style.animationDelay = `${0.2 + (index * 0.2)}s`;
     });
 
     // Delay video playback
-    if (videoRef.current) {
-      setTimeout(() => {
-        videoRef.current.play();
-      }, 600);
-    }
+    setTimeout(() => {
+      videoRef.current?.play();
+    }, 600);
   }, []);
 
   return (
@@ -80,5 +78,3 @@ function About() {
 }
 
 export default About;
-
-

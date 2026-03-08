@@ -52,12 +52,12 @@ function Experiments() {
         {/* Placeholders */}
         <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} />
+                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} alt="" />
             </div>
         </div>
         <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} />
+                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} alt="" />
             </div>
         </div>
         </div>
@@ -69,5 +69,3 @@ function Experiments() {
 }
 
 export default Experiments;
-
-

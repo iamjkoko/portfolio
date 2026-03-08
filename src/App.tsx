@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ROUTES } from './constants/routes';
-import { useEffect } from 'react';
+import { useEffect, ReactNode } from 'react';
 
 import Layout from './components/Layout';
 
@@ -14,11 +14,10 @@ import Works from './pages/Works';
 import Studio from './pages/Studio';
 import Experiments from './pages/Experiments';
 
-import { Caveman, Logo } from './works/index.js';
-import { Cheso, InfinityBox, Paintbox, Paperfold, SaoPaulo, LightPainting } from './archive/index.js';
-import { Agora, EchoingNature, DigitalGarden, MachinaAnima, LucidLiquids } from './archive/index.js';
+import { Caveman, Logo } from './works';
+import { Cheso, InfinityBox, Paintbox, Paperfold, SaoPaulo, LightPainting, Agora, EchoingNature, DigitalGarden, MachinaAnima, LucidLiquids } from './archive';
 
-function AnimatedPage({ children }) {
+function AnimatedPage({ children }: { children: ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -69,7 +68,6 @@ function AppRoutes() {
 }
 
 function App() {
-  // Disable browser scroll restoration
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
