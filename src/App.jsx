@@ -36,8 +36,9 @@ function AppRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+    <SmoothScroll routeKey={location.pathname}>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
             <Route path={ROUTES.HOME} element={<AnimatedPage><Home /></AnimatedPage>} />
             <Route path={ROUTES.ABOUT} element={<AnimatedPage><About /></AnimatedPage>} />
             
@@ -63,7 +64,8 @@ function AppRoutes() {
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.MACHINAANIMA} element={<AnimatedPage><MachinaAnima /></AnimatedPage>} />
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.LUCIDLIQUIDS} element={<AnimatedPage><LucidLiquids /></AnimatedPage>} />
             </Routes>
-    </AnimatePresence>
+      </AnimatePresence>
+    </SmoothScroll>
   );
 }
 
@@ -78,9 +80,7 @@ function App() {
   return (
     <Router>
       <Layout>
-        <SmoothScroll>
-          <AppRoutes />
-        </SmoothScroll>
+        <AppRoutes />
       </Layout>
     </Router>
   );

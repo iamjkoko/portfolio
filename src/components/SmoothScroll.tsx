@@ -16,12 +16,15 @@ export const ScrollContext = createContext<ScrollContextValue>({ isScrollReady: 
 // Define props interface
 interface SmoothScrollProps {
   children: ReactNode;
+  routeKey: string;
 }
 
-export default function SmoothScroll({ children }: SmoothScrollProps) {
+export default function SmoothScroll({ children, routeKey }: SmoothScrollProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const prevPathnameRef = useRef<string>(location.pathname);
+  const currentScrollRef = useRef(0);
+  const targetScrollRef = useRef(0);
   
   // Add a state to track readiness
   const [isScrollReady, setScrollReady] = useState<boolean>(false);
@@ -29,24 +32,26 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
   // Handle route changes
   useEffect(() => {
     const isMobile = window.innerWidth < 1024;
-    
+
     if (prevPathnameRef.current !== location.pathname && !location.hash) {
+      const delay = isMobile ? 300 : 310;
+
       const scrollTimer = setTimeout(() => {
-        const scrollToTop = (): void => {
-          window.scrollTo(0, 0);
-          document.documentElement.scrollTop = 0;
-          document.body.scrollTop = 0;
-        };
-        
-        scrollToTop();
-        
-        requestAnimationFrame(() => {
-          scrollToTop();
-        });
-      }, isMobile ? 300 : 0); // Mobile: hide in fade; Desktop: scroll immediately
-      
+        currentScrollRef.current = 0;
+        targetScrollRef.current = 0;
+
+        if (containerRef.current) {
+          containerRef.current.style.transform = 'translate3d(0, 0, 0)';
+        }
+
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+
+        ScrollTrigger.refresh();
+      }, delay);
+
       prevPathnameRef.current = location.pathname;
-      
       return () => clearTimeout(scrollTimer);
     }
   }, [location.pathname, location.hash]);
@@ -86,8 +91,6 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     }
 
     // Desktop: Full smooth scroll implementation
-    let currentScroll = 0;
-    let targetScroll = 0;
     let rafId: number | null = null;
 
     gsap.set(container, { 
@@ -112,8 +115,8 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         const element = document.querySelector(hash) as HTMLElement | null;
         if (element) {
           const scrollPosition = element.offsetTop;
-          currentScroll = scrollPosition;
-          targetScroll = scrollPosition;
+          currentScrollRef.current = scrollPosition;
+          targetScrollRef.current = scrollPosition;
           window.scrollTo(0, scrollPosition);
           container.style.transform = `translate3d(0, ${-scrollPosition}px, 0)`;
         }
@@ -124,22 +127,24 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     setTimeout(handleInitialHash, 150);
 
     const animate = (): void => {
-      targetScroll = window.scrollY;
-      currentScroll += (targetScroll - currentScroll) * 0.1;
-      
-      if (Math.abs(targetScroll - currentScroll) > 0.1) {
-        container.style.transform = `translate3d(0, ${-currentScroll}px, 0)`;
+      targetScrollRef.current = window.scrollY;
+      const diff = targetScrollRef.current - currentScrollRef.current;
+      currentScrollRef.current += diff * 0.1;
+
+      if (Math.abs(diff) > 0.05) {
+        container.style.transform = `translate3d(0, ${-currentScrollRef.current}px, 0)`;
       }
-      
+
       rafId = requestAnimationFrame(animate);
     };
 
     ScrollTrigger.scrollerProxy(container, {
       scrollTop(value?: number) {
         if (value !== undefined) {
-          currentScroll = targetScroll = value;
+          currentScrollRef.current = value;
+          targetScrollRef.current = value;
         }
-        return currentScroll;
+        return currentScrollRef.current;
       },
       getBoundingClientRect: () => ({
         top: 0,
@@ -158,7 +163,6 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     observer.observe(container, {
       childList: true,
       subtree: true,
-      attributes: true,
     });
 
     let resizeTimeout: NodeJS.Timeout;
@@ -188,7 +192,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       // Reset on unmount
       setScrollReady(false);
     };
-  }, [children]);
+  }, [routeKey]);
 
   return (
     <ScrollContext.Provider value={{ isScrollReady }}>
