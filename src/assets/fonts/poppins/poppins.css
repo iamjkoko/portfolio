@@ -21,8 +21,7 @@
   @font-face {
     font-family: 'Poppins-Variable';
     src: url('./fonts/Poppins-Variable.woff2') format('woff2'),
-         url('./fonts/Poppins-Variable.woff') format('woff'),
-         url('./fonts/Poppins-Variable.ttf') format('truetype');
+         url('./fonts/Poppins-Variable.woff') format('woff');
     font-weight: 100 900;
     font-display: swap;
     font-style: normal;
@@ -38,8 +37,7 @@
   @font-face {
     font-family: 'Poppins-VariableItalic';
     src: url('./fonts/Poppins-VariableItalic.woff2') format('woff2'),
-         url('./fonts/Poppins-VariableItalic.woff') format('woff'),
-         url('./fonts/Poppins-VariableItalic.ttf') format('truetype');
+         url('./fonts/Poppins-VariableItalic.woff') format('woff');
     font-weight: 100 900;
     font-display: swap;
     font-style: italic;

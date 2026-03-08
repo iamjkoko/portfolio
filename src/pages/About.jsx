@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import '../global.css';
 
 import Footer from '../components/Footer';
@@ -42,7 +42,7 @@ function About() {
             </h6>
             <br />
             <h6 className="font-[350] text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.3s] max-[935px]:text-[0.9rem]">
-              Eric's creative practice spans both graphic and product design, as well as visual arts, with a focus on integrating unique narratives between the lines of aesthetics and functionality.
+              Eric&apos;s creative practice spans both graphic and product design, as well as visual arts, with a focus on integrating unique narratives between the lines of aesthetics and functionality.
             </h6>
             <br />
             <h6 className="font-[350] text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.4s] max-[935px]:text-[0.9rem]">
@@ -53,10 +53,10 @@ function About() {
               <u>View CV (available upon request)</u>
             </p>
             <div className="flex gap-2.5 pt-[3%] justify-start opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.6s] max-[935px]:gap-[5%] max-[935px]:py-[15%] max-[935px]:mx-auto">
-                <a href="https://www.instagram.com/morebyko/" className="instagram" target="_blank">
+                <a href="https://www.instagram.com/morebyko/" className="instagram" target="_blank" rel="noreferrer">
                 <img src={InstagramIcon} alt="Instagram" className="max-w-[1.375rem] max-h-[1.375rem] max-[935px]:max-w-8 max-[935px]:max-h-8" />
                 </a>
-                <a href="https://www.linkedin.com/in/ericko26" className="linkedin" target="_blank">
+                <a href="https://www.linkedin.com/in/ericko26" className="linkedin" target="_blank" rel="noreferrer">
                 <img src={LinkedinIcon} alt="LinkedIn" className="max-w-[1.375rem] max-h-[1.375rem] max-[935px]:max-w-8 max-[935px]:max-h-8" />
                 </a>
                 </div>
