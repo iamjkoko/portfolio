@@ -1,17 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const Gallery = ({ images, autoplayInterval = 4000 }) => {
+export interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface GalleryProps {
+  images: GalleryImage[];
+  autoplayInterval?: number;
+}
+
+const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
-  const imageRef = useRef(null);
-  const autoplayRef = useRef(null);
-  const resumeTimeoutRef = useRef(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Touch handling
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const minSwipeDistance = 50;
 
   // Autoplay management
@@ -55,12 +65,13 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
     if (isAutoplayActive && !isTransitioning) startAutoplay();
   }, [currentIndex]);
 
-  const navigate = (direction) => {
+  const navigate = (direction: 'prev' | 'next') => {
     if (isTransitioning) return;
 
     pauseAutoplay();
     setIsTransitioning(true);
     const imageElement = imageRef.current;
+    if (!imageElement) return;
 
     const isNext = direction === "next";
     const swipeOutClass = isNext ? "swipe-left" : "swipe-right";
@@ -90,13 +101,13 @@ const Gallery = ({ images, autoplayInterval = 4000 }) => {
   const goNext = () => navigate("next");
 
   // Touch handlers on container
-  const onTouchStart = (e) => {
+  const onTouchStart = (e: React.TouchEvent) => {
     pauseAutoplay();
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const onTouchMove = (e) => {
+  const onTouchMove = (e: React.TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
 

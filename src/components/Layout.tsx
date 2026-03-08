@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 
-export default function Layout({ children }) {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
   const [showNavbar, setShowNavbar] = useState(false);
   const location = useLocation();
 
@@ -13,7 +17,7 @@ export default function Layout({ children }) {
     };
 
     window.addEventListener('introComplete', handleIntroComplete);
-    
+
     const currentPath = window.location.pathname;
     if (currentPath !== '/' && currentPath !== '') {
       // For non-home pages, show navbar immediately
@@ -22,7 +26,7 @@ export default function Layout({ children }) {
       // For home page, always wait for introComplete event
       // This ensures the delay is respected even for returning visitors
     }
-    
+
     return () => {
       window.removeEventListener('introComplete', handleIntroComplete);
     };

@@ -7,7 +7,11 @@ import logo from '/favicon.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
 
-export default function Navbar({ showNavbar = true }) {
+interface NavbarProps {
+  showNavbar?: boolean;
+}
+
+export default function Navbar({ showNavbar = true }: NavbarProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showArchiveDropdown, setShowArchiveDropdown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -21,7 +25,7 @@ export default function Navbar({ showNavbar = true }) {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -38,7 +42,7 @@ export default function Navbar({ showNavbar = true }) {
 
   const handleNavbarMouseEnter = () => {
     if (isMobile) return;
-    
+
     if (isFirstInteractionRef.current) {
       isFirstInteractionRef.current = false;
     } else {
@@ -46,10 +50,10 @@ export default function Navbar({ showNavbar = true }) {
       setIsHovered(true);
     }
   };
-  
+
   const handleNavbarMouseLeave = () => {
     if (isMobile) return;
-    
+
     if (!showArchiveDropdown) {
       setIsExpanded(false);
       setIsHovered(false);
@@ -58,7 +62,7 @@ export default function Navbar({ showNavbar = true }) {
 
   const handleDropdownMouseLeave = () => {
     if (isMobile) return;
-    
+
     setShowArchiveDropdown(false);
     setIsExpanded(false);
     setIsHovered(false);
@@ -259,11 +263,11 @@ export default function Navbar({ showNavbar = true }) {
       <motion.nav
         className="fixed top-8 right-8 bg-white shadow-[0_4px_30px_rgba(0,0,0,0.1)] border border-white/10 rounded-full overflow-visible z-[10000] text-black"
         initial={{ opacity: 0 }}
-        animate={{ 
+        animate={{
           opacity: showNavbar ? 1 : 0,
-          width: isExpanded ? '28rem' : '3.3rem' 
+          width: isExpanded ? '28rem' : '3.3rem'
         }}
-        transition={{ 
+        transition={{
           opacity: { duration: 0.8, ease: 'easeOut', delay: 0.2 },
           width: { duration: 0.3, ease: 'easeInOut' }
         }}
@@ -302,7 +306,7 @@ export default function Navbar({ showNavbar = true }) {
                     WORKS
                   </Link>
                 </motion.div>
-                
+
 
                 <motion.div
                   className="relative py-2 cursor-default"
@@ -322,16 +326,16 @@ export default function Navbar({ showNavbar = true }) {
           </AnimatePresence>
           <div className="flex justify-center items-center w-[50px] h-[50px] shrink-0 absolute right-0 top-0 z-10">
             <Link to={ROUTES.HOME} className="flex justify-center items-center w-full h-full no-underline">
-              <motion.img 
-                src={logo} 
+              <motion.img
+                src={logo}
                 alt="logo"
                 className="h-[30px] w-[30px] cursor-pointer"
-                animate={{ 
-                  rotate: (isHovered || showArchiveDropdown) ? -90 : 0 
+                animate={{
+                  rotate: (isHovered || showArchiveDropdown) ? -90 : 0
                 }}
-                transition={{ 
-                  duration: 0.3, 
-                  ease: 'easeInOut' 
+                transition={{
+                  duration: 0.3,
+                  ease: 'easeInOut'
                 }}
               />
             </Link>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { CornerDownRight } from "lucide-react";
 
 import InstagramIconBlack from '../assets/icons/instagram-black.webp';
@@ -6,12 +6,16 @@ import LinkedinIconBlack from '../assets/icons/linkedin-black.webp';
 import InstagramIconWhite from '../assets/icons/instagram-white.webp';
 import LinkedinIconWhite from '../assets/icons/linkedin-white.webp';
 
-const Footer = ({ theme }) => {
+interface FooterProps {
+  theme?: 'dark' | 'light';
+}
+
+const Footer = ({ theme }: FooterProps) => {
   const isDark = theme === 'dark';
-  const themeClasses = isDark 
+  const themeClasses = isDark
     ? 'bg-[#111111] text-[#e5e5e5]'
     : 'bg-[#f0f0f0] text-[#808080]';
-  
+
   const InstagramIcon = isDark ? InstagramIconWhite : InstagramIconBlack;
   const LinkedinIcon = isDark ? LinkedinIconWhite : LinkedinIconBlack;
 
@@ -39,7 +43,7 @@ const Footer = ({ theme }) => {
     <footer className={`w-full relative z-[1] p-8 max-[935px]:p-5 border-none ${themeClasses}`}>
       {/*}
       <div className="max-w-[1400px] mx-auto mb-12 md:pl-0">
-        <h2 
+        <h2
           className={`text-[80px] md:text-[80px] lg:text-[150px] leading-none font-bold tracking-tight ${
             isDark ? 'text-white/20' : 'text-black/10'
           }`}
@@ -52,12 +56,12 @@ const Footer = ({ theme }) => {
 
       {/* Main Footer Grid */}
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 pl-4 md:pl-0">
-        
+
         {/* Contact Section */}
         <div className="space-y-3">
           <h3 className="text-base opacity-50 font-semibold mb-3 max-[935px]:pt-4">Get in Touch</h3>
-          <a 
-            href="mailto:eko03@risd.edu" 
+          <a
+            href="mailto:eko03@risd.edu"
             className={`flex items-center gap-2 text-sm`}
           >
             <span className="opacity-50">
@@ -83,18 +87,18 @@ const Footer = ({ theme }) => {
             <CornerDownRight size={16} />
             </span>
             <div className="flex gap-2">
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
+              <a
+                href="https://linkedin.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={`transition-opacity opacity-35 hover:opacity-100`}
                 aria-label="LinkedIn"
               >
                 <img src={LinkedinIcon} alt="LinkedIn" className="w-6 h-6" />
               </a>
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
+              <a
+                href="https://instagram.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={`transition-opacity opacity-35 hover:opacity-100`}
                 aria-label="Instagram"

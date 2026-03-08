@@ -1,3 +1,5 @@
+//Unused component
+
 import React, { useState } from 'react';
 
 interface UnderlineProps {
