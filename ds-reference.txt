@@ -1,7 +1,10 @@
 ================================================================================
 DESIGN SYSTEM REFERENCE
-Margin/Padding Rules & Color Options
+Margin/Padding Rules, Colors, Typography, Animations
 ================================================================================
+Single source of truth for design tokens. Theme variables and base styles live
+in src/global.css (Tailwind v4 @theme + :root / .dark). Project/works layout
+patterns live in src/styles/works.module.css.
 
 QUICK REFERENCE
 --------------------------------------------------------------------------------
@@ -9,19 +12,35 @@ Standard spacing scale: 0.25rem, 0.5rem, 1rem, 1.25rem, 2.5rem, 5rem
 Mobile breakpoint: 935px
 Border radius: 8px (media), 30px (tags)
 Max widths: 720px (images), 960px (YouTube), 1440px (grids)
+Fonts: General Sans (body), Boska (display/titles), Poppins, Tanker (accents)
 
 BREAKPOINTS
 --------------------------------------------------------------------------------
 Mobile Breakpoint: 935px
   - Used in media queries: @media (max-width: 935px)
-  - Tailwind config: --breakpoint-mobile: 935px
+  - Tailwind @theme: --breakpoint-mobile: 935px (src/global.css)
+
+
+================================================================================
+FONT SYSTEM
+================================================================================
+Defined in src/global.css @theme and used via CSS variables.
+
+  --font-family-boska: 'Boska-Variable', serif
+  --font-family-general-sans: 'GeneralSans-Variable', sans-serif
+  --font-family-poppins: 'Poppins-Variable', sans-serif
+
+Additional:
+  - Tanker: 'Tanker-Regular' (src/assets/fonts/tanker/tanker.css) — accent/display
+
+Body default: font-family: var(--font-family-general-sans); font-size: 16px
 
 
 ================================================================================
 COLOR SYSTEM
 ================================================================================
 
-CSS VARIABLES (Theme-based)
+CSS VARIABLES (Theme-based, src/global.css)
 --------------------------------------------------------------------------------
 
 LIGHT THEME (:root)
@@ -45,18 +64,14 @@ DARK THEME (.dark)
 ADDITIONAL COLORS (Used in Components)
 --------------------------------------------------------------------------------
 Hover States:
-  - rgb(140, 140, 140) - Used for hover text color on links/buttons
-  - rgb(118, 118, 118) - Footer text (dark theme)
-  - rgb(170, 170, 170) - Footer text (light theme)
+  - rgb(140, 140, 140) - Hover text (e.g. .back-button in .dark)
 
-Background Colors:
-  - #111111 - Footer background (dark theme)
-  - #f0f0f0 - Footer background (light theme)
-  - white - Default background
-  - black - Default dark background
+Footer (Layout/Footer.tsx):
+  - Dark: background #111111, text #e5e5e5
+  - Light: background #f0f0f0, text #808080
 
 Border Colors:
-  - #bdbdbd - Standard border gray (used in hr elements)
+  - #bdbdbd - Standard border gray (hr, borders)
 
 
 ================================================================================
@@ -304,9 +319,31 @@ References Title h3:
   Desktop: font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted)
   Mobile:   font-size: 1.2rem
 
-Intro Title (.intro-title):
-  Desktop: font-size: clamp(4rem, 8vw, 8rem); font-variation-settings: 'wght' 400; letter-spacing: -0.02em; line-height: 1.2
-  Mobile:   font-size: clamp(5rem, 8vw, 8rem); font-variation-settings: 'wght' 400; letter-spacing: -0.02em; line-height: 1.2
+Home Intro Title (.intro-title, src/global.css):
+  Desktop: font-size: clamp(2rem, 4vw, 4rem); font-family: var(--font-family-boska); font-variation-settings: 'wght' 400; letter-spacing: -0.02em; line-height: 1.2
+  Mobile:  font-size: clamp(0.5rem, 6vw, 4rem); bottom: 30px; left: 30px; padding-right: 60px
+  .intro-title strong: font-variation-settings: 'wght' 800
+
+
+================================================================================
+ANIMATIONS
+================================================================================
+Defined in src/global.css.
+
+Fade-in:
+  .fade-in — opacity 0 → 1, transform; transition 0.8s ease-out
+  Toggle via data-visible="true"
+
+Keyframes:
+  fadeIn — opacity 0 → 1
+  swipeIn — from translateX(100%), opacity 0 → translateX(0), opacity 1; 0.4s ease-in-out
+  swipeInFromLeft — from translateX(-100%), opacity 0 → translateX(0), opacity 1; 0.4s ease-in-out
+
+Utility classes:
+  .swipe-left / .swipe-right — transform + opacity 0
+  .swipe-in / .swipe-in-from-left — animation applied
+
+Page transitions (App.jsx): AnimatePresence opacity 0 → 1, duration 0.3, easeInOut
 
 
 ================================================================================
@@ -316,7 +353,7 @@ NOTES
 - All spacing values use rem units (relative to root font-size of 16px)
 - Mobile breakpoint is consistently 935px across the codebase
 - Padding patterns typically reduce on mobile (e.g., 5rem → 2.125rem or 3rem)
-- Color system uses CSS variables for theme switching
+- Color system uses CSS variables for theme switching (global.css :root / .dark)
 - Hover states consistently use rgb(140, 140, 140) for text color changes
 - Description images have max-width: 720px; max-height: 480px
 - Description videos have max-height: 480px
