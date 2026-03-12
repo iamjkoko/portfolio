@@ -13,7 +13,7 @@ import Footer from '../components/Footer';
 
 import Caveman from '../assets/images/works/caveman/caveman.webp';
 
-const OVERLAY_OPACITY = 0.6;
+const OVERLAY_OPACITY = 0.45;
 
 const Home = () => {
   const [overlayOpacity] = useState(OVERLAY_OPACITY);
