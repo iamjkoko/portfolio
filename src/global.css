@@ -82,11 +82,12 @@ strong {
 /* Custom animations for fade-in effect */
 .fade-in {
   opacity: 0;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  translate: 0 0;
+  transition: opacity 0.8s ease-out, translate 0.8s ease-out, scale 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .fade-in[data-visible="true"] {
   opacity: 1;
-  transform: translateY(0);
+  translate: 0 0;
 }
 
 /* FadeIn keyframes for About page */
