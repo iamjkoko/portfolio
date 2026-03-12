@@ -36,9 +36,7 @@ function AppRoutes() {
   return (
     <LenisProvider>
       <AnimatePresence mode="wait" onExitComplete={() => {
-        setTimeout(() => {
-          window.dispatchEvent(new Event('route-exit-complete'));
-        }, 100);
+        window.dispatchEvent(new Event('route-exit-complete'));
       }}>
         <Routes location={location} key={location.pathname}>
             <Route path={ROUTES.HOME} element={<AnimatedPage><Home /></AnimatedPage>} />

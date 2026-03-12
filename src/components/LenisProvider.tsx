@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useRef, ReactNode } from "react";
-import { useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import gsap from "gsap";
@@ -19,11 +18,10 @@ interface LenisProviderProps {
 
 export default function LenisProvider({ children }: LenisProviderProps) {
   const lenisRef = useRef<Lenis | null>(null);
-  const location = useLocation();
 
   // Initialize Lenis once
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({ lerp: 0.17 })
     lenisRef.current = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
@@ -41,21 +39,21 @@ export default function LenisProvider({ children }: LenisProviderProps) {
     };
   }, []);
 
-  // Reset scroll position on route change
+  // Reset scroll position after exit animation completes
   useEffect(() => {
-    const lenis = lenisRef.current;
-    if (!lenis) return;
+    const handleExitComplete = () => {
+      const lenis = lenisRef.current;
+      if (!lenis) return;
 
-    lenis.scrollTo(0, { immediate: true });
-
-    const deferred = gsap.delayedCall(0, () => {
+      lenis.scrollTo(0, { immediate: true });
       ScrollTrigger.refresh();
-    });
-
-    return () => {
-      deferred.kill();
     };
-  }, [location.pathname]);
+
+    window.addEventListener("route-exit-complete", handleExitComplete);
+    return () => {
+      window.removeEventListener("route-exit-complete", handleExitComplete);
+    };
+  }, []);
 
   return (
     <LenisContext.Provider value={lenisRef.current}>
