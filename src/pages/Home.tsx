@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../global.css';
 
 import { Link } from 'react-router-dom';
@@ -13,7 +13,11 @@ import Footer from '../components/Footer';
 
 import Caveman from '../assets/images/works/caveman/caveman.webp';
 
+const OVERLAY_OPACITY = 0.6;
+
 const Home = () => {
+  const [overlayOpacity] = useState(OVERLAY_OPACITY);
+
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("hasVisited");
     if (!hasVisited) {
@@ -64,7 +68,7 @@ const Home = () => {
       >
         <SplitText
           text={[`<strong>Eric Ko</strong> is a<span class="break-mobile"><br></span> <strong>multidisciplinary designer</strong>`, "based in <strong>Providence</strong>.", "", `Currently studying<span class="break-mobile"><br></span> <strong>Product Design & CTC</strong> at <strong>RISD</strong>.`]}
-          className="intro-title"
+          className="intro-title z-20 relative"
           delay={200}
           duration={1.25}
           ease="power3.out"
@@ -74,6 +78,10 @@ const Home = () => {
           threshold={0.1}
           rootMargin="-100px"
           textAlign="left"
+        />
+        <div
+          className="absolute inset-0 z-10 bg-black pointer-events-none"
+          style={{ opacity: overlayOpacity }}
         />
         <ColorBends
           colors={["#ffffff"]} 
