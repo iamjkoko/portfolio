@@ -5,7 +5,7 @@ import { useEffect, ReactNode } from 'react';
 
 import Layout from './components/Layout';
 
-import SmoothScroll from './components/SmoothScroll';
+import LenisProvider from './components/LenisProvider';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -34,8 +34,12 @@ function AppRoutes() {
   const location = useLocation();
 
   return (
-    <SmoothScroll routeKey={location.pathname}>
-      <AnimatePresence mode="wait">
+    <LenisProvider>
+      <AnimatePresence mode="wait" onExitComplete={() => {
+        setTimeout(() => {
+          window.dispatchEvent(new Event('route-exit-complete'));
+        }, 100);
+      }}>
         <Routes location={location} key={location.pathname}>
             <Route path={ROUTES.HOME} element={<AnimatedPage><Home /></AnimatedPage>} />
             <Route path={ROUTES.ABOUT} element={<AnimatedPage><About /></AnimatedPage>} />
@@ -63,7 +67,7 @@ function AppRoutes() {
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.LUCIDLIQUIDS} element={<AnimatedPage><LucidLiquids /></AnimatedPage>} />
             </Routes>
       </AnimatePresence>
-    </SmoothScroll>
+    </LenisProvider>
   );
 }
 
