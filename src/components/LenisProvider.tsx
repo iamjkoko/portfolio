@@ -21,7 +21,11 @@ export default function LenisProvider({ children }: LenisProviderProps) {
 
   // Initialize Lenis once
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.15 })
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    const lenis = new Lenis({
+      lerp: 0.15,
+      autoResize: !isTouchDevice,
+    })
     lenisRef.current = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);

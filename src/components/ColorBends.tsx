@@ -230,6 +230,7 @@ export default function ColorBends({
 
       const timer = new THREE.Timer();
 
+      let resizeTimer: ReturnType<typeof setTimeout> | null = null;
       const handleResize = () => {
         const w = container.clientWidth || 1;
         const h = container.clientHeight || 1;
@@ -237,9 +238,14 @@ export default function ColorBends({
         material.uniforms.uCanvas.value.set(w, h);
       };
 
+      const debouncedResize = () => {
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(handleResize, 100);
+      };
+
       handleResize();
 
-      const ro = new ResizeObserver(handleResize);
+      const ro = new ResizeObserver(debouncedResize);
       ro.observe(container);
       resizeObserverRef.current = ro;
 
@@ -266,6 +272,7 @@ export default function ColorBends({
       rafRef.current = requestAnimationFrame(loop);
 
       cleanup = () => {
+        if (resizeTimer) clearTimeout(resizeTimer);
         if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
         if (resizeObserverRef.current) resizeObserverRef.current.disconnect();
         geometry.dispose();

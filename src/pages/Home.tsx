@@ -64,7 +64,7 @@ const Home = () => {
     <>
       <section 
         id="hero" 
-        className="flex justify-center items-center h-screen relative overflow-hidden"
+        className="flex justify-center items-center h-svh relative overflow-hidden"
       >
         <SplitText
           text={[`<strong>Eric Ko</strong> is a<span class="break-mobile"><br></span> <strong>multidisciplinary designer</strong>`, "based in <strong>Providence</strong>.", "", `Currently studying<span class="break-mobile"><br></span> <strong>Product Design & CTC</strong> at <strong>RISD</strong>.`]}
