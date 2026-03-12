@@ -21,7 +21,7 @@ export default function LenisProvider({ children }: LenisProviderProps) {
 
   // Initialize Lenis once
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.17 })
+    const lenis = new Lenis({ lerp: 0.15 })
     lenisRef.current = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
