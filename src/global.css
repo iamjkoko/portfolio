@@ -33,7 +33,7 @@ img {
   pointer-events: auto;
 }
 strong {
-  font-weight: 600;
+  font-variation-settings: 'wght' 550;
 }
 
 

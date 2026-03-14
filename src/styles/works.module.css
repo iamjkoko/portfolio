@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 hr {
     border: .8px solid var(--color-border-gray);
     width: 90%;
@@ -73,23 +69,23 @@ hr {
 
 .project-basics h1 {
     font-size: 4rem;
-    font-weight: 900;
+    font-variation-settings: 'wght' 900;
     width: 350px;
-    font-family: 'Boska-Variable', serif;
+    font-family: var(--font-family-boska);
 }
 
 .project-basics h2 {
-    font-weight: 600;
+    font-variation-settings: 'wght' 600;
     margin-bottom: 0.625rem;
 }
 
 .project-basics h3 {
-    font-weight: 400;
+    font-variation-settings: 'wght' 400;
 }
 
 .project-basics h4 {
     padding-top: 2rem;
-    font-weight: 400;
+    font-variation-settings: 'wght' 400;
 }
 
 .project-content {
@@ -99,7 +95,7 @@ hr {
 
 .project-intro h4 {
     font-size: 1.2rem;
-    font-weight: 300;
+    font-variation-settings: 'wght' 400;
     word-spacing: .1rem;
 }
 
@@ -113,7 +109,6 @@ hr {
 
 .project-keywords span {
     font-size: 0.9rem;
-    font-weight: 400;
     color: var(--color-keyword-text);
     padding: 0.25rem 1rem;
     border-radius: 30px;
@@ -147,7 +142,6 @@ hr {
 
     .project-basics h4 {
         padding-top: 2rem;
-        font-weight: 400;
         font-size: 0.9rem;
     }
 
@@ -197,7 +191,7 @@ hr {
 
 .description-title h3 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-variation-settings: 'wght' 700;
     color: var(--color-text-muted);
 }
 
@@ -241,13 +235,13 @@ hr {
 
 .description-body h5 {
     font-size: 1.1rem;
-    font-weight: 300;
+    font-variation-settings: 'wght' 400;
 }
 
 .description-quote {
-    font-family: 'Boska-Variable', sans-serif;
+    font-family: var(--font-family-boska);
     font-size: 3rem;
-    font-variation-settings: 'wght' 300;
+    font-variation-settings: 'wght' 400;
     padding-top: 1.25rem;
 }
 
@@ -293,9 +287,7 @@ hr {
     }
 
     .description-quote {
-        font-family: 'Boska-Variable', sans-serif;
         font-size: 2rem;
-        font-variation-settings: 'wght' 300;
         padding-top: 2.5rem;
     }
 }
@@ -322,7 +314,7 @@ hr {
 
 .progress-title h3 {
     font-size: 1.5rem;
-    font-weight: 300;
+    font-variation-settings: 'wght' 400;
 }
 
 .progress-img {
@@ -407,7 +399,7 @@ hr {
 
 .credits-title h3 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-variation-settings: 'wght' 700;
     color: var(--color-text-muted);
 }
 
@@ -418,7 +410,7 @@ hr {
 
 .credits-body h5 {
     font-size: 0.9rem;
-    font-weight: 300;
+    font-variation-settings: 'wght' 400;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -468,7 +460,7 @@ hr {
 
 .references-title h3 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-variation-settings: 'wght' 700;
     color: var(--color-text-muted);
 }
 
