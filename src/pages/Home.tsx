@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import { ArrowRight } from 'lucide-react';
 
-import Tooltip from '../components/Tooltip';
 import ColorBends from '../components/ColorBends';
 import SplitText from '../components/SplitText';
 
@@ -59,7 +58,7 @@ const Home = () => {
         className="flex justify-center items-center h-svh relative overflow-hidden"
       >
         <SplitText
-          text={[`<strong>Eric Ko</strong> is a<span class="break-mobile"><br></span> <strong>multidisciplinary designer</strong>`, "based in <strong>Providence</strong>.", "", `Currently studying<span class="break-mobile"><br></span> <strong>Product Design & CTC</strong> at <strong>RISD</strong>.`]}
+          text={[`<strong>Eric Ko</strong> is a<span class="break-mobile"><br></span> <strong>multidisciplinary designer</strong>`, "based in <strong>Providence</strong>.", "", `Currently studying<span class="break-mobile"><br></span> <strong>Product Design & CTC</strong> at <a href="https://www.risd.edu" target="_blank" rel="noopener noreferrer" class="risd-link"><strong>RISD</strong></a><svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:super;margin-left:0.05em;"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>.`]}
           className="intro-title z-20 relative"
           delay={200}
           duration={1.25}

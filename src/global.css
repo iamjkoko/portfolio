@@ -60,6 +60,26 @@ strong {
   font-variation-settings: 'wght' 800;
   font-style: normal;
 }
+
+.intro-title .risd-link {
+  pointer-events: auto;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 3px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease-out;
+}
+
+.intro-title .risd-link:hover {
+  background-size: 100% 3px;
+}
+
+.split-line:has(.risd-link) {
+  overflow: visible !important;
+}
 .break-desktop { display: inline; }
 .break-mobile  { display: none; }
 
