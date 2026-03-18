@@ -21,7 +21,7 @@ function Studio() {
     <>
     <section id="studio" className="w-full flex flex-col items-center bg-white pt-24 pb-20 max-[935px]:pt-10 max-[935px]:pb-[5px]">
         <div className="grid grid-cols-3 gap-4 justify-items-center mx-auto overflow-hidden px-12 max-[935px]:grid-cols-1 max-[935px]:p-5">
-        <Tooltip content="View work">
+
         <div className="overflow-hidden">
             <Link to={ROUTES.ARCHIVE.STUDIO.INFINITYBOX}>
             <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-[935px]:max-w-[750px] max-[935px]:max-h-[500px]">
@@ -29,8 +29,8 @@ function Studio() {
             </div>
             </Link>
         </div>
-        </Tooltip>
-        <Tooltip content="View work">
+
+
         <div className="overflow-hidden">
             <Link to={ROUTES.ARCHIVE.STUDIO.PAINTBOX}>
             <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-[935px]:max-w-[750px] max-[935px]:max-h-[500px]">
@@ -38,8 +38,8 @@ function Studio() {
             </div>
             </Link>
         </div>
-        </Tooltip>
-        <Tooltip content="View work">
+
+
         <div className="overflow-hidden">
             <Link to={ROUTES.ARCHIVE.STUDIO.PAPERFOLD}>
             <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-[935px]:max-w-[750px] max-[935px]:max-h-[500px]">
@@ -47,8 +47,8 @@ function Studio() {
             </div>
             </Link>
         </div>
-        </Tooltip>
-        <Tooltip content="View work">
+
+
         <div className="overflow-hidden">
             <Link to={ROUTES.ARCHIVE.STUDIO.CHESO}>
             <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-[935px]:max-w-[750px] max-[935px]:max-h-[500px]">
@@ -56,8 +56,8 @@ function Studio() {
             </div>
             </Link>
         </div>
-        </Tooltip>
-        <Tooltip content="View work">
+
+
         <div className="overflow-hidden">
             <Link to={ROUTES.ARCHIVE.STUDIO.SAOPAULO}>
             <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-[935px]:max-w-[750px] max-[935px]:max-h-[500px]">
@@ -65,8 +65,8 @@ function Studio() {
             </div>
             </Link>
         </div>
-        </Tooltip>
-        <Tooltip content="View work">
+
+
         <div className="overflow-hidden">
             <Link to={ROUTES.ARCHIVE.STUDIO.LIGHTPAINTING}>
             <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-[935px]:max-w-[750px] max-[935px]:max-h-[500px]">
@@ -74,7 +74,6 @@ function Studio() {
             </div>
             </Link>
         </div> 
-        </Tooltip>
         </div>
       </section>
 

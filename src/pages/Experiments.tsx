@@ -39,15 +39,15 @@ function Experiments() {
             </div>
         </div>
         </Tooltip>
-        <Tooltip content="View work">
-        <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden">
+
+        <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[0.98]">
             <Link to={ROUTES.ARCHIVE.EXPERIMENTS.AGORA}>
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:h-auto">
                 <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/agora_w0bynm.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
             </div>
             </Link>
         </div>
-        </Tooltip>
+
 
         {/* Placeholders */}
         <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden">
