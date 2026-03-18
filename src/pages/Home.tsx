@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import '../global.css';
 
 import { Link } from 'react-router-dom';
@@ -13,25 +13,18 @@ import Footer from '../components/Footer';
 
 import Caveman from '../assets/images/works/caveman/caveman.webp';
 
-const OVERLAY_OPACITY = 0.45;
+const OVERLAY_OPACITY = 0.5;
 
 const Home = () => {
-  const [overlayOpacity] = useState(OVERLAY_OPACITY);
+  const overlayOpacity = OVERLAY_OPACITY;
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("hasVisited");
-    if (!hasVisited) {
-      sessionStorage.setItem("hasVisited", "true");
-    }
-    
-    // Dispatch event to show navbar after intro completes with additional delay
     setTimeout(() => {
       window.dispatchEvent(new CustomEvent('introComplete'));
     }, 300);
   }, []);
 
   useEffect(() => {
-    // Small delay to ensure DOM is ready
     const setupObserver = () => {
       const fadeInContainers = document.querySelectorAll(".fade-container");
       if (fadeInContainers.length === 0) return;
@@ -56,7 +49,6 @@ const Home = () => {
       fadeInContainers.forEach((container) => observer.observe(container));
     };
 
-    // Small delay to ensure DOM is fully rendered
     setTimeout(setupObserver, 100);
   }, []);
 
