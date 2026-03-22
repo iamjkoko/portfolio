@@ -18,36 +18,26 @@ hr {
 
 @media (max-width: 935px) {
     .project-main {
-        margin-top: 0rem;
+        padding-top: 3.125rem;
     }
 }
 /* ============================================
    Project Image and Video
    ============================================ */
 .project-vid-hor, 
+.project-vid-ver,
 .project-img {
     display: flex;
     height: 100vh;
-    width: 100%;
+    width: auto;
+    box-sizing: border-box;
 }
-
-.project-vid-ver {
-    display: flex;
-    max-width: 720px;
-    max-height: 1280px;
-    height: 100%;
-    width: 100%;
-}
-
 @media (max-width: 935px) {
     .project-vid-hor,
+    .project-vid-ver,
     .project-img {
-        margin-top: 6rem;
         height: 100%;
         width: 100vw;
-    }
-    .project-vid-ver {
-        margin-top: 0.125rem;
     }
 }
 

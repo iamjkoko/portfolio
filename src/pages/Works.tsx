@@ -3,7 +3,6 @@ import '../global.css';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 
-import Tooltip from '../components/Tooltip';
 import Placeholder from '../assets/images/background/placeholder-lt.png';
 import Footer from '../components/Footer';
 

@@ -125,7 +125,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
 
   return (
     <div
-      className="flex items-center justify-center gap-2.5 relative max-[935px]:flex-col max-[935px]:gap-5 max-[935px]:pb-10"
+      className="flex items-center justify-center gap-2.5 relative max-[935px]:flex-col max-[935px]:gap-5"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -144,7 +144,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
         ref={imageRef}
         src={images[currentIndex].src}
         alt={images[currentIndex].alt}
-        className="max-w-[1280px] max-h-[960px] object-cover mt-[60px] transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-w-[600px] max-[935px]:max-h-[400px] max-[935px]:mt-20 max-[935px]:order-1"
+        className="h-screen w-full border-2 border-red-500 object-cover transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-w-[600px] max-[935px]:max-h-[400px]  max-[935px]:order-1"
       />
 
       <button

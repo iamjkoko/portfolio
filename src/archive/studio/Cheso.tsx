@@ -4,63 +4,15 @@ import styles from '../../styles/works.module.css';
 
 import Footer from '../../components/Footer';
 
-import Cheso1 from '../../assets/images/archive/cheso/cheso-1.webp';
-import Cheso2 from '../../assets/images/archive/cheso/cheso-2.webp';
-import Cheso3 from '../../assets/images/archive/cheso/cheso-3.webp';
-import Cheso4 from '../../assets/images/archive/cheso/cheso-4.webp';
-import Cheso5 from '../../assets/images/archive/cheso/cheso-5.webp';
-import Cheso6 from '../../assets/images/archive/cheso/cheso-6.webp';
-import Cheso7 from '../../assets/images/archive/cheso/cheso-7.webp';
-import Cheso8 from '../../assets/images/archive/cheso/cheso-8.webp';
-import Cheso9 from '../../assets/images/archive/cheso/cheso-9.webp';
-
+import ChesoFull from '../../assets/images/archive/cheso/cheso-full.webp';
 import ChesoConcept1 from '../../assets/images/archive/cheso/cheso-cp1.webp';
 import ChesoConcept2 from '../../assets/images/archive/cheso/cheso-cp2.webp';
 
 function Cheso(): React.JSX.Element {
-  const imageList: { src: string; alt: string }[] = [
-    { src: Cheso1, alt: 'Cheso 1' },
-    { src: Cheso2, alt: 'Cheso 2' },
-    { src: Cheso3, alt: 'Cheso 3' },
-    { src: Cheso4, alt: 'Cheso 4' },
-    { src: Cheso5, alt: 'Cheso 5' },
-    { src: Cheso6, alt: 'Cheso 6' },
-    { src: Cheso7, alt: 'Cheso 7' },
-    { src: Cheso8, alt: 'Cheso 8' },
-    { src: Cheso9, alt: 'Cheso 9' },
-  ];
   return (
     <>
       <section id="project-main" className={styles['project-main']}>
-        <div className="cheso-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '5px',
-          justifyContent: 'center',
-          margin: '0 auto',
-          overflow: 'hidden',
-          padding: '8rem 2rem 1.25rem',
-        }}>
-          {imageList.map((img, i) => (
-            <div className="cheso-cont" key={i}
-            style={{
-              overflow: 'hidden',
-              maxWidth: '500px',
-              width: '100%',
-              height: 'auto',
-            }}>
-              <img src={img.src} alt={img.alt}
-              style={{
-                display: 'block',
-                width: '100%',
-                height: 'auto',
-                objectFit: 'cover',
-              }}
-              />
-            </div>
-          ))}
-        </div>
+        <img className={styles['project-img']} src={ChesoFull} alt="Cheso Full" />
         <div className={styles['project-info']}>
         <div className={styles['project-basics']}>
             <h1>Cheso</h1>
