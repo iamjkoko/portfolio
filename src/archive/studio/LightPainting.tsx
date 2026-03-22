@@ -25,7 +25,7 @@ function LightPainting(): React.JSX.Element {
           width: '100%',
           height: 'auto',
           maxWidth: '1280px',
-          padding: '100px 0 20px'
+          padding: '3.125rem 0'
         }}
       />
         <div className={styles['project-info']}>
