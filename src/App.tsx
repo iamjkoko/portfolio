@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ROUTES } from './constants/routes';
 import { useEffect, ReactNode } from 'react';
@@ -63,6 +63,18 @@ function AppRoutes() {
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.ECHOINGNATURE} element={<AnimatedPage><EchoingNature /></AnimatedPage>} />
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.MACHINAANIMA} element={<AnimatedPage><MachinaAnima /></AnimatedPage>} />
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.LUCIDLIQUIDS} element={<AnimatedPage><LucidLiquids /></AnimatedPage>} />
+
+            <Route path="*" element={
+              <AnimatedPage>
+                <div className="flex flex-col items-center justify-center h-svh bg-white text-black gap-4">
+                  <h1 className="text-6xl font-bold">404</h1>
+                  <p className="text-lg text-gray-500">Page not found</p>
+                  <Link to={ROUTES.HOME} className="mt-4 text-base underline underline-offset-4 hover:opacity-70 transition-opacity">
+                    Back to Home
+                  </Link>
+                </div>
+              </AnimatedPage>
+            } />
             </Routes>
       </AnimatePresence>
     </LenisProvider>

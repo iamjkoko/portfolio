@@ -3,6 +3,7 @@ import '../../global.css';
 import styles from '../../styles/works.module.css';
 
 import Footer from '../../components/Footer';
+import { VIDEO_URLS } from '../../constants/videos';
 
 import AgoraLayout from '../../assets/images/archive/agora/agora-layout.webp';
 
@@ -10,7 +11,7 @@ function Agora(): React.JSX.Element {
   return (
     <>
     <section id="project-main" className={styles['project-main']}>
-        <video className={styles['project-vid-ver']} src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039958/agora-full_kaej38.mp4" autoPlay loop muted playsInline controlsList="nodownload"> 
+        <video className={styles['project-vid-ver']} src={VIDEO_URLS.AGORA_FULL} autoPlay loop muted playsInline controlsList="nodownload"> 
         Your browser does not support the video tag.
         </video>
         <div className={styles['project-info']}>
@@ -21,7 +22,7 @@ function Agora(): React.JSX.Element {
             <h3>Adobe Illustrator, <br /> After Effects</h3>
         </div>
         <div className={styles['project-intro']}>
-            <h4>Agora, pronounced <i>Αγορά</i>, is a typeface concept that draws inspiration from the vibrant public forums of ancient Greece, where citizens exchanged knowledge and ideas on topics such as art, philosophy, and politics.</h4>
+            <p>Agora, pronounced <i>Αγορά</i>, is a typeface concept that draws inspiration from the vibrant public forums of ancient Greece, where citizens exchanged knowledge and ideas on topics such as art, philosophy, and politics.</p>
             <div className={styles['project-keywords']}>
                 <span>TYPEFACE</span>
                 <span>ANIMATION</span>
@@ -36,9 +37,9 @@ function Agora(): React.JSX.Element {
             <img src={AgoraLayout} alt="Agora Layout" className={styles['largeImage']}/>
         </div>
         <div className={styles['description-body']}>
-            <h5>The communal spaces of Agora symbolized the free flow of information and the collective pursuit of insight. The typeface design shares a similar idea through its minimalistic design, characterized by simple variations in thickness. Its clean lines and geometric forms create alphabets that are both fundamental and universally accessible.</h5>
+            <p>The communal spaces of Agora symbolized the free flow of information and the collective pursuit of insight. The typeface design shares a similar idea through its minimalistic design, characterized by simple variations in thickness. Its clean lines and geometric forms create alphabets that are both fundamental and universally accessible.</p>
             <br />
-            <h5>The animation illustrates the formation of knowledge, reflecting the dynamic exchange of ideas that once nourished ancient civilization in the agora.</h5>
+            <p>The animation illustrates the formation of knowledge, reflecting the dynamic exchange of ideas that once nourished ancient civilization in the agora.</p>
         </div>
         </div>
     </section>
@@ -48,9 +49,9 @@ function Agora(): React.JSX.Element {
             <h3>CREDITS</h3>
         </div>
         <div className={styles['credits-body']}>
-            <h5>"Agora of Athens History – Ancient-Greece.org." Ancient Greece, 23 June 2025, ancient-greece.org/history/the-agora-of-athens-history/.</h5>
+            <p>"Agora of Athens History – Ancient-Greece.org." Ancient Greece, 23 June 2025, ancient-greece.org/history/the-agora-of-athens-history/.</p>
             <br />
-            <h5>Britannica Editors. "agora". Encyclopedia Britannica, 7 Jun. 2024, https://www.britannica.com/topic/agora. Accessed 8 November 2025.</h5>
+            <p>Britannica Editors. "agora". Encyclopedia Britannica, 7 Jun. 2024, https://www.britannica.com/topic/agora. Accessed 8 November 2025.</p>
         </div>
     </section>
 

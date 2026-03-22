@@ -144,7 +144,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
         ref={imageRef}
         src={images[currentIndex].src}
         alt={images[currentIndex].alt}
-        className="h-screen w-full border-2 border-red-500 object-cover transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-w-[600px] max-[935px]:max-h-[400px]  max-[935px]:order-1"
+        className="h-screen w-full object-cover transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-w-[600px] max-[935px]:max-h-[400px] max-[935px]:order-1"
       />
 
       <button

@@ -3,8 +3,6 @@ import '../global.css';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 
-import Tooltip from '../components/Tooltip';
-
 // Studio images
 import Cheso from '../assets/images/archive/cheso/cheso.webp';
 import InfinityBox from '../assets/images/archive/infinity-box/infinity-box.webp';

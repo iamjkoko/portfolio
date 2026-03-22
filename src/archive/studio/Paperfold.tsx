@@ -24,10 +24,10 @@ function Paperfold(): React.JSX.Element {
             <br />
             <h2>2024</h2>
             <h3>Paper</h3>
-            <h4>9 x 16 x 10 in.</h4>
+            <p>9 x 16 x 10 in.</p>
         </div>
         <div className={styles['project-intro']}>
-            <h4>Paperfold is an experimental sculpture that investigates into the mathematical and geometric forms through the art of origami. Using different folding techniques, the project transforms flat sheets of paper into complex three-dimensional structures composed of repeating angular modules.</h4>
+            <p>Paperfold is an experimental sculpture that investigates into the mathematical and geometric forms through the art of origami. Using different folding techniques, the project transforms flat sheets of paper into complex three-dimensional structures composed of repeating angular modules.</p>
             <div className={styles['project-keywords']}>
                 <span>SCULPTURE</span>
                 <span>GEOMETRY</span>

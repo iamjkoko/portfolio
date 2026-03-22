@@ -6,7 +6,7 @@ import ImgCredit from '../components/ImgCredit';
 
 import CavemanMain from '../assets/images/works/caveman/caveman.webp';
 import AllegoryOfCave from '../assets/images/works/caveman/allegory-cave.webp';
-import CvmGallery from '../components/CvmGallery';
+import CvmGallery, { CvmGalleryImage } from '../components/CvmGallery';
 
 import Progress1 from '../assets/images/works/caveman/progress-1.webp';
 import Progress2 from '../assets/images/works/caveman/progress-2.webp';
@@ -30,22 +30,17 @@ import ChargerReal from '../assets/images/works/caveman/charger-real.webp';
 import Birdcage from '../assets/images/works/caveman/birdcage.webp';
 import BirdcageReal from '../assets/images/works/caveman/birdcage-real.webp';
 
-interface CavemanImage {
-  src: string;
-  alt: string;
-}
-
 function Caveman() {
-  const cavemanImages: CavemanImage[] = [
-    { src: Horse, alt: HorseReal },
-    { src: Wineglass, alt: WineglassReal },
-    { src: Candle, alt: CandleReal },
-    { src: Toygun, alt: ToygunReal },
-    { src: Plant, alt: PlantReal },
-    { src: Bowling, alt: BowlingReal },
-    { src: Sunglasses, alt: SunglassesReal },
-    { src: Charger, alt: ChargerReal },
-    { src: Birdcage, alt: BirdcageReal },
+  const cavemanImages: CvmGalleryImage[] = [
+    { src: Horse, altSrc: HorseReal, alt: "Shadow of a horse" },
+    { src: Wineglass, altSrc: WineglassReal, alt: "Shadow of a wineglass" },
+    { src: Candle, altSrc: CandleReal, alt: "Shadow of a candle" },
+    { src: Toygun, altSrc: ToygunReal, alt: "Shadow of a toy gun" },
+    { src: Plant, altSrc: PlantReal, alt: "Shadow of a plant" },
+    { src: Bowling, altSrc: BowlingReal, alt: "Shadow of a bowling pin" },
+    { src: Sunglasses, altSrc: SunglassesReal, alt: "Shadow of sunglasses" },
+    { src: Charger, altSrc: ChargerReal, alt: "Shadow of a charger" },
+    { src: Birdcage, altSrc: BirdcageReal, alt: "Shadow of a birdcage" },
   ];
 
   return (
@@ -61,7 +56,7 @@ function Caveman() {
           </div>
           <div className={styles['project-content']}>
             <div className={styles['project-intro']}>
-              <h4>A series of shadow-based explorations inspired by Plato's Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality. This project serves as a reminder that perception is not simply about seeing appearances, but about understanding the relationship between the human viewpoint and the deeper truths they may obscure.</h4>
+              <p>A series of shadow-based explorations inspired by Plato's Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality. This project serves as a reminder that perception is not simply about seeing appearances, but about understanding the relationship between the human viewpoint and the deeper truths they may obscure.</p>
             </div>
             <div className={styles['project-keywords']}>
               <span>CONCEPTUAL</span>
@@ -82,9 +77,9 @@ function Caveman() {
               By <a href="https://en.wikipedia.org/wiki/en:Jan_Saenredam" className="extiw" title="w:en:Jan Saenredam" target="_blank"><span title="Dutch painter, engraver and cartographer (1565–1607)">Jan Saenredam</span></a> / After <a href="https://en.wikipedia.org/wiki/en:Cornelis_van_Haarlem" className="extiw" title="w:en:Cornelis van Haarlem" target="_blank"><span title="Dutch painter (1562-1638)">Cornelis van Haarlem</span></a> - British Museum<a rel="nofollow" className="external free" href="https://www.britishmuseum.org/collection/object/P_1852-1211-120" target="_blank"> https://www.britishmuseum.org/collection/object/P_1852-1211-120</a>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=4040982" target="_blank">Link</a>
             </ImgCredit>
             <div className={styles['description-body']}>
-              <h5>In an ancient thought experiment known as <strong>Plato's Allegory of the Cave</strong>, a group of people are confined to a dark cavern, facing a wall. Behind them, objects pass in front of a fire, casting moving shadows. With no access to the outside world, these shadows become their only reality, being distorted fragments of their true forms. The allegory explores how <strong>perception, when limited, can obscure</strong> the truth and shape an illusory understanding of existence. </h5>
+              <p>In an ancient thought experiment known as <strong>Plato's Allegory of the Cave</strong>, a group of people are confined to a dark cavern, facing a wall. Behind them, objects pass in front of a fire, casting moving shadows. With no access to the outside world, these shadows become their only reality, being distorted fragments of their true forms. The allegory explores how <strong>perception, when limited, can obscure</strong> the truth and shape an illusory understanding of existence. </p>
               <br />
-              <h5>The following project draws on that idea, presenting a series of shadows cast by real-life objects, all rendered using <strong>Blender 3D Cycles</strong>. The darkness and the minimal outlines provide only limited information as to what the shadows represent. Because of this, viewers are compelled to rely on their own intuitions and their understanding of reality to interpret these ambiguous forms.</h5>
+              <p>The following project draws on that idea, presenting a series of shadows cast by real-life objects, all rendered using <strong>Blender 3D Cycles</strong>. The darkness and the minimal outlines provide only limited information as to what the shadows represent. Because of this, viewers are compelled to rely on their own intuitions and their understanding of reality to interpret these ambiguous forms.</p>
             </div>
           </div>
 
@@ -92,11 +87,11 @@ function Caveman() {
 
           <div className={styles['description']}>
             <div className={styles['description-body']}>
-              <h5> The shadows, in fact, are neither entirely clear nor immedietely recognizable, which prompts them to have different interpretations. This process serves to embody the <strong>human struggle for truth, knowledge and enlightenment</strong>—a desire to understand the world in its existence and the nature of reality.</h5>
+              <p> The shadows, in fact, are neither entirely clear nor immedietely recognizable, which prompts them to have different interpretations. This process serves to embody the <strong>human struggle for truth, knowledge and enlightenment</strong>—a desire to understand the world in its existence and the nature of reality.</p>
               <br />
-              <h5>When the actual objects are revealed, however, the outcomes are often <strong>unexpected</strong>. What once appeared to be a fresh, lively plant in shadow is, in truth, decaying and nearing death. A pair of sunglasses turns out to be missing its lenses—an essential part of its functionality. The shadow of a chess piece, despite its small size, resembles a living horse in the viewers' eye. These moments of realization communicate just how easily our <strong>perception can be misled</strong> and how we sometimes tend to form <strong>quick conclusions based on incomplete information</strong>.</h5>
+              <p>When the actual objects are revealed, however, the outcomes are often <strong>unexpected</strong>. What once appeared to be a fresh, lively plant in shadow is, in truth, decaying and nearing death. A pair of sunglasses turns out to be missing its lenses—an essential part of its functionality. The shadow of a chess piece, despite its small size, resembles a living horse in the viewers' eye. These moments of realization communicate just how easily our <strong>perception can be misled</strong> and how we sometimes tend to form <strong>quick conclusions based on incomplete information</strong>.</p>
               <br />
-              <h5>In the contemporary world, media outlets saturate their audience with an overwhelming amount of content, which distorts the ability to process and assess the authenticity of what is real or not through critical thinking. The rapid development of <strong>AI and deepfake technology</strong> today further reiterates the core questions asked in this project:</h5>
+              <p>In the contemporary world, media outlets saturate their audience with an overwhelming amount of content, which distorts the ability to process and assess the authenticity of what is real or not through critical thinking. The rapid development of <strong>AI and deepfake technology</strong> today further reiterates the core questions asked in this project:</p>
               <br />
               <div className={styles['description-quote']}>
                 <em>How confident can we be in what we think we know when our understanding is limited?
@@ -118,9 +113,9 @@ function Caveman() {
             <h3>CREDITS</h3>
           </div>
           <div className={styles['credits-body']}>
-            <h5>DeNicola, Daniel. "Plato's Cave and the Stubborn Persistence of Ignorance." The MIT Press Reader, 12 Sept. 2024, thereader.mitpress.mit.edu/platos-cave-and-the-stubborn-persistence-of-ignorance/.</h5>
+            <p>DeNicola, Daniel. "Plato's Cave and the Stubborn Persistence of Ignorance." The MIT Press Reader, 12 Sept. 2024, thereader.mitpress.mit.edu/platos-cave-and-the-stubborn-persistence-of-ignorance/.</p>
             <br />
-            <h5>Malik, Nesrine. "With "AI Slop" Distorting Our Reality, the World Is Sleepwalking into Disaster." The Guardian, The Guardian, 21 Apr. 2025, www.theguardian.com/commentisfree/2025/apr/21/ai-slop-artificial-intelligence-social-media.</h5>
+            <p>Malik, Nesrine. "With "AI Slop" Distorting Our Reality, the World Is Sleepwalking into Disaster." The Guardian, The Guardian, 21 Apr. 2025, www.theguardian.com/commentisfree/2025/apr/21/ai-slop-artificial-intelligence-social-media.</p>
           </div>
         </section>
 

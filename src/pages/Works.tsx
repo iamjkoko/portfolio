@@ -2,6 +2,7 @@ import '../global.css';
 
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
+import { VIDEO_URLS } from '../constants/videos';
 
 import Placeholder from '../assets/images/background/placeholder-lt.png';
 import Footer from '../components/Footer';
@@ -17,7 +18,7 @@ function Works() {
             <Link to={ROUTES.WORKS.LOGO}>
 
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1764331938/logo_n5druz_1_yopcck.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
+                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.LOGO_ANIMATION} type="video/mp4"/>Your browser does not support the video tag.</video>
             </div>
 
             </Link>

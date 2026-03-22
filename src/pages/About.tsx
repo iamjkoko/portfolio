@@ -13,8 +13,8 @@ function About() {
 
   useEffect(() => {
     // Trigger animations when component mounts
-    const h6Elements = document.querySelectorAll<HTMLElement>('#about-page .description h6');
-    h6Elements.forEach((element, index) => {
+    const pElements = document.querySelectorAll<HTMLElement>('#about-page .description p');
+    pElements.forEach((element, index) => {
       element.style.animationDelay = `${0.2 + (index * 0.2)}s`;
     });
 
@@ -35,17 +35,17 @@ function About() {
               draggable={false}
             /> 
         <div className="max-w-[1080px] max-[935px]:py-[10%] max-[935px]:px-[4%] max-[935px]:w-full">
-            <h6 className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.2s] max-[935px]:text-[0.9rem]">
+            <p className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.2s] max-[935px]:text-[0.9rem]">
               <strong>Eric Ko</strong> (b. 2004) is a multidisciplinary artist and designer currently pursuing a BFA in Industrial and Product Design at the Rhode Island School of Design (RISD). Born and raised in Seoul, and having spent four years in São Paulo, Brazil, his works are shaped by his cultural roots and curiosity about the intersection of tradition, innovation, and sustainability.
-            </h6>
+            </p>
             <br />
-            <h6 className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.3s] max-[935px]:text-[0.9rem]">
+            <p className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.3s] max-[935px]:text-[0.9rem]">
               Eric&apos;s creative practice spans both graphic and product design, as well as visual arts, with a focus on integrating unique narratives between the lines of aesthetics and functionality.
-            </h6>
+            </p>
             <br />
-            <h6 className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.4s] max-[935px]:text-[0.9rem]">
+            <p className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.4s] max-[935px]:text-[0.9rem]">
               Outside of the studio, Eric enjoys exploring with his 35mm film camera, studying bossa nova on his classical guitar, or watching his favorite soccer team play on TV.
-            </h6>
+            </p>
             <br />
             <p className="font-normal text-[0.9rem] opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.5s] max-[935px]:text-[0.8rem]">
               <u>View CV (available upon request)</u>

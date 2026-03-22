@@ -34,12 +34,12 @@ function LightPainting(): React.JSX.Element {
             <br />
             <h2>2022</h2>
             <h3>Oil on canvas</h3>
-            <h4>16 x 22 in.</h4>
+            <p>16 x 22 in.</p>
         </div>
         <div className={styles['project-intro']}>
-            <h4>The following oil painting is a study of light and shadow, inspired by the works of Caravaggio and Joseph Wright. Set within a space where sunlight streams through windows, the piece captures the complex patterns of shadow cast across surfaces.</h4>
+            <p>The following oil painting is a study of light and shadow, inspired by the works of Caravaggio and Joseph Wright. Set within a space where sunlight streams through windows, the piece captures the complex patterns of shadow cast across surfaces.</p>
             <br />
-            <h4>By placing focus on the contrast and tonal depth, the painting reflects an aesthetic exploration of how light sculpts form and creates an emotional atmosphere.</h4>
+            <p>By placing focus on the contrast and tonal depth, the painting reflects an aesthetic exploration of how light sculpts form and creates an emotional atmosphere.</p>
             <div className={styles['project-keywords']}>
                 <span>OIL PAINTING</span>
                 <span>LIGHT & SHADOW</span>

@@ -23,7 +23,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
   // Check if mobile on mount and resize
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 935);
     };
 
     checkMobile();

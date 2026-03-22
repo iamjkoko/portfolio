@@ -73,7 +73,7 @@ hr {
     font-variation-settings: 'wght' 400;
 }
 
-.project-basics h4 {
+.project-basics p {
     padding-top: 2rem;
     font-variation-settings: 'wght' 400;
 }
@@ -83,7 +83,7 @@ hr {
     flex-direction: column;
 }
 
-.project-intro h4 {
+.project-intro p {
     font-size: 1.2rem;
     font-variation-settings: 'wght' 400;
     word-spacing: .1rem;
@@ -130,12 +130,12 @@ hr {
         font-size: 1rem;
     }
 
-    .project-basics h4 {
+    .project-basics p {
         padding-top: 2rem;
         font-size: 0.9rem;
     }
 
-    .project-intro h4 {
+    .project-intro p {
         font-size: 0.875rem;
         padding-top: 1.25rem;
     }
@@ -223,7 +223,7 @@ hr {
     padding-top: 2.5rem;
 }
 
-.description-body h5 {
+.description-body p {
     font-size: 1.1rem;
     font-variation-settings: 'wght' 400;
 }
@@ -272,7 +272,7 @@ hr {
         padding-top: 0.125rem;
     }
 
-    .description-body h5 {
+    .description-body p {
         font-size: 0.875rem;
     }
 
@@ -398,7 +398,7 @@ hr {
     padding: 0 5rem 2.5rem;
 }
 
-.credits-body h5 {
+.credits-body p {
     font-size: 0.9rem;
     font-variation-settings: 'wght' 400;
     word-wrap: break-word;
@@ -423,7 +423,7 @@ hr {
         padding: 0 3rem 2.5rem;
     }
 
-    .credits-body h5 {
+    .credits-body p {
         font-size: 0.6rem;
     }
 }

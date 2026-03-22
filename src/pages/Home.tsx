@@ -3,6 +3,7 @@ import '../global.css';
 
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
+import { VIDEO_URLS } from '../constants/videos';
 import { ArrowRight } from 'lucide-react';
 
 import ColorBends from '../components/ColorBends';
@@ -97,7 +98,7 @@ const Home = () => {
             <div className="fade-in flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <div className="text-black transition-opacity">
                     <h2 className="text-3xl font-medium pb-[1rem] max-lg:text-xl max-lg:text-left max-lg:pl-[0.5rem]">KO: LOGO ANIMATION</h2>
-                    <h4 className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] [max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[0.5rem] max-lg:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</h4>
+                    <p className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[0.5rem] max-lg:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</p>
 
                      <div className="flex flex-row flex-wrap gap-3 pt-8 max-lg:py-0 max-lg:pt-8 max-lg:pb-8 max-lg:pl-[0.5rem]">
                         <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-lg:text-[0.75rem] max-lg:py-[0.25rem] max-lg:px-3">TYPOGRAPHY</span>
@@ -109,7 +110,7 @@ const Home = () => {
             </div>
             <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-lg:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
                 <div className="w-[720px] h-[480px] max-lg:w-[720px] max-lg:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
-                    <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1764331938/logo_n5druz_1_yopcck.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
+                    <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.LOGO_ANIMATION} type="video/mp4"/>Your browser does not support the video tag.</video>
                 </div>
             </div>
         </div>
@@ -123,7 +124,7 @@ const Home = () => {
             <div className="fade-in flex-1 flex items-start pt-[2rem] max-lg:w-full max-lg:pt-4 max-lg:justify-start max-lg:items-start">
                 <div className="text-black transition-opacity">
                     <h2 className="text-3xl font-medium pb-[1rem] max-lg:text-xl max-lg:text-left max-lg:pl-[0.5rem]">MODERN CAVEMAN</h2>
-                    <h4 className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] [max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[0.5rem] max-lg:text-sm">A series of shadow-based explorations inspired by Plato&apos;s Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</h4>
+                    <p className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] max-lg:text-base max-lg:text-left max-lg:pl-[0.5rem] max-lg:pr-[0.5rem] max-lg:text-sm">A series of shadow-based explorations inspired by Plato&apos;s Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</p>
 
                      <div className="flex flex-row flex-wrap gap-3 pt-8 max-lg:py-0 max-lg:pt-8 max-lg:pb-8 max-lg:pl-[0.5rem]">
                         <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-lg:text-[0.75rem] max-lg:py-[0.25rem] max-lg:px-3">CONCEPTUAL</span>

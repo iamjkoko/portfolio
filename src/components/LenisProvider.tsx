@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, ReactNode } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import gsap from "gsap";
@@ -17,39 +17,40 @@ interface LenisProviderProps {
 }
 
 export default function LenisProvider({ children }: LenisProviderProps) {
+  const [lenis, setLenis] = useState<Lenis | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
 
-  // Initialize Lenis once
   useEffect(() => {
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-    const lenis = new Lenis({
+    const instance = new Lenis({
       lerp: 0.15,
       autoResize: !isTouchDevice,
-    })
-    lenisRef.current = lenis;
+    });
+    lenisRef.current = instance;
+    setLenis(instance);
 
-    lenis.on("scroll", ScrollTrigger.update);
+    instance.on("scroll", ScrollTrigger.update);
 
     const ticker = (time: number) => {
-      lenis.raf(time * 1000);
+      instance.raf(time * 1000);
     };
     gsap.ticker.add(ticker);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
       gsap.ticker.remove(ticker);
-      lenis.destroy();
+      instance.destroy();
       lenisRef.current = null;
+      setLenis(null);
     };
   }, []);
 
-  // Reset scroll position after exit animation completes
   useEffect(() => {
     const handleExitComplete = () => {
-      const lenis = lenisRef.current;
-      if (!lenis) return;
+      const l = lenisRef.current;
+      if (!l) return;
 
-      lenis.scrollTo(0, { immediate: true });
+      l.scrollTo(0, { immediate: true });
       ScrollTrigger.refresh();
     };
 
@@ -60,7 +61,7 @@ export default function LenisProvider({ children }: LenisProviderProps) {
   }, []);
 
   return (
-    <LenisContext.Provider value={lenisRef.current}>
+    <LenisContext.Provider value={lenis}>
       {children}
     </LenisContext.Provider>
   );

@@ -24,14 +24,14 @@ function InfinityBox(): React.JSX.Element {
             <br />
             <h2>2025</h2>
             <h3>Cardboard, Reflective Sheet</h3>
-            <h4>15 x 15 x 15 in.</h4>
+            <p>15 x 15 x 15 in.</p>
         </div>
         <div className={styles['project-intro']}>
-            <h4>Infinity Box is an attempt on exploring the <strong>boundless and cyclical nature of infinity</strong>, using cardboard lined with reflective surfaces. Each side of the box serves to mirror the other, creating an <strong>endless set of reflections</strong> that extend far beyond the physical constraints of the object.</h4>
+            <p>Infinity Box is an attempt on exploring the <strong>boundless and cyclical nature of infinity</strong>, using cardboard lined with reflective surfaces. Each side of the box serves to mirror the other, creating an <strong>endless set of reflections</strong> that extend far beyond the physical constraints of the object.</p>
             <br />
-            <h4>Inside the box, a drawing of four Fibonacci sequences is placed to form a circle, which alludes to the concept of boundlessness and mathematical harmony. The Fibonacci spiral, often associated with growth and continuity, resonates with the overarching idea of infinity.</h4>
+            <p>Inside the box, a drawing of four Fibonacci sequences is placed to form a circle, which alludes to the concept of boundlessness and mathematical harmony. The Fibonacci spiral, often associated with growth and continuity, resonates with the overarching idea of infinity.</p>
             <br />
-            <h4>The project invites viewers to consider the <strong>relationships between perception, mathematics and the world around us</strong>, challenging the boundaries of what is tangible and what is infinite.</h4>
+            <p>The project invites viewers to consider the <strong>relationships between perception, mathematics and the world around us</strong>, challenging the boundaries of what is tangible and what is infinite.</p>
             <div className={styles['project-keywords']}>
                 <span>INSTALLATION</span>
                 <span>GEOMETRY</span>

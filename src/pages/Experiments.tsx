@@ -3,6 +3,7 @@ import '../global.css';
 
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
+import { VIDEO_URLS } from '../constants/videos';
 
 import Tooltip from '../components/Tooltip';
 import Placeholder from '../assets/images/background/placeholder-dk.png';
@@ -21,21 +22,21 @@ function Experiments() {
         <Tooltip content="Coming soon">
         <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:h-auto">
-                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1762609034/mach-anim_e1birj.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
+                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.MACHINA_ANIMA} type="video/mp4"/>Your browser does not support the video tag.</video>
             </div>
         </div>
         </Tooltip>
         <Tooltip content="Coming soon">
         <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:h-auto">
-                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1762609026/dig-hal-1_nskehr.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
+                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.DIGITAL_GARDEN} type="video/mp4"/>Your browser does not support the video tag.</video>
             </div>
         </div>
         </Tooltip>
         <Tooltip content="Coming soon">
         <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:h-auto">
-                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1762609021/ech-nat_ddbfyz.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
+                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.ECHOING_NATURE} type="video/mp4"/>Your browser does not support the video tag.</video>
             </div>
         </div>
         </Tooltip>
@@ -43,7 +44,7 @@ function Experiments() {
         <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[0.98]">
             <Link to={ROUTES.ARCHIVE.EXPERIMENTS.AGORA}>
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:h-auto">
-                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src="https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/agora_w0bynm.mp4" type="video/mp4"/>Your browser does not support the video tag.</video>
+                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.AGORA_PREVIEW} type="video/mp4"/>Your browser does not support the video tag.</video>
             </div>
             </Link>
         </div>

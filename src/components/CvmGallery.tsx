@@ -3,16 +3,17 @@ import { useState, useEffect } from 'react';
 
 export interface CvmGalleryImage {
   src: string;
+  altSrc: string;
   alt: string;
 }
 
-const CvmGalleryItem = ({ src, alt }: CvmGalleryImage) => {
+const CvmGalleryItem = ({ src, altSrc, alt }: CvmGalleryImage) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const preload = new Image();
-    preload.src = alt;
-  }, [alt]);
+    preload.src = altSrc;
+  }, [altSrc]);
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -23,14 +24,14 @@ const CvmGalleryItem = ({ src, alt }: CvmGalleryImage) => {
       <img
         className="block w-full h-auto object-cover transition-opacity duration-[500ms] ease-in-out"
         src={src}
-        alt=""
+        alt={alt}
       />
       <img
         className={`block w-full h-auto object-cover transition-opacity duration-[500ms] ease-in-out absolute inset-0 ${
           isActive ? 'opacity-100' : 'opacity-0'
         }`}
-        src={alt}
-        alt=""
+        src={altSrc}
+        alt={`${alt} (revealed)`}
       />
     </div>
   );
@@ -45,7 +46,7 @@ const CvmGallery = ({ images }: CvmGalleryProps) => {
     <section className="w-full flex flex-col items-center bg-white my-[30px] md:my-20">
       <div className="grid grid-cols-3 gap-[10px] md:gap-10 justify-center mx-auto overflow-hidden px-[8%] pb-[4%] md:px-8 md:pb-12">
         {images.map((img, index) => (
-          <CvmGalleryItem key={index} src={img.src} alt={img.alt} />
+          <CvmGalleryItem key={index} src={img.src} altSrc={img.altSrc} alt={img.alt} />
         ))}
       </div>
       <h3 className="font-light text-base md:text-xl md:pt-0 pt-[4%]">CLICK EACH IMAGE TO REVEAL ↑</h3>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { CornerDownRight } from "lucide-react";
 
+import { EXTERNAL_LINKS } from '../constants/routes';
 import InstagramIconBlack from '../assets/icons/instagram-black.webp';
 import LinkedinIconBlack from '../assets/icons/linkedin-black.webp';
 import InstagramIconWhite from '../assets/icons/instagram-white.webp';
@@ -88,7 +89,7 @@ const Footer = ({ theme }: FooterProps) => {
             </span>
             <div className="flex gap-2">
               <a
-                href="https://linkedin.com"
+                href={EXTERNAL_LINKS.LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`transition-opacity opacity-35 hover:opacity-100`}
@@ -97,7 +98,7 @@ const Footer = ({ theme }: FooterProps) => {
                 <img src={LinkedinIcon} alt="LinkedIn" className="w-6 h-6" />
               </a>
               <a
-                href="https://instagram.com"
+                href={EXTERNAL_LINKS.INSTAGRAM}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`transition-opacity opacity-35 hover:opacity-100`}
