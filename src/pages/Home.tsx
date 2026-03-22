@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../global.css';
 
 import { Link } from 'react-router-dom';
@@ -17,12 +17,23 @@ const OVERLAY_OPACITY = 0.5;
 
 const Home = () => {
   const overlayOpacity = OVERLAY_OPACITY;
+  const [fontsReady, setFontsReady] = useState(false);
+  const [colorBendsReady, setColorBendsReady] = useState(false);
+  const heroReady = fontsReady && colorBendsReady;
 
   useEffect(() => {
-    setTimeout(() => {
-      window.dispatchEvent(new CustomEvent('introComplete'));
-    }, 300);
+    if (document.fonts.status === 'loaded') {
+      setFontsReady(true);
+    } else {
+      document.fonts.ready.then(() => setFontsReady(true));
+    }
   }, []);
+
+  useEffect(() => {
+    if (heroReady) {
+      window.dispatchEvent(new CustomEvent('introComplete'));
+    }
+  }, [heroReady]);
 
   useEffect(() => {
     const setupObserver = () => {
@@ -54,6 +65,10 @@ const Home = () => {
 
   return (
     <>
+      <div
+        className="fixed inset-0 bg-black z-[9999] pointer-events-none transition-opacity duration-700 ease-out"
+        style={{ opacity: heroReady ? 0 : 1 }}
+      />
       <section 
         id="hero" 
         className="flex justify-center items-center h-svh relative overflow-hidden"
@@ -86,6 +101,7 @@ const Home = () => {
           mouseInfluence={0.5}
           parallax={0.6}
           noise={0.08}
+          onReady={() => setColorBendsReady(true)}
         />
       </section>
 

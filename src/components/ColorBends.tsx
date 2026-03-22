@@ -94,6 +94,7 @@ interface ColorBendsProps {
   mouseInfluence?: number;
   parallax?: number;
   noise?: number;
+  onReady?: () => void;
 }
 
 export default function ColorBends({
@@ -106,7 +107,8 @@ export default function ColorBends({
   warpStrength = 1,
   mouseInfluence = 1,
   parallax = 0.5,
-  noise = 0.1
+  noise = 0.1,
+  onReady
 }: ColorBendsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<WebGLRenderer | null>(null);
@@ -116,6 +118,8 @@ export default function ColorBends({
   const autoRotateRef = useRef(autoRotate);
   const pointerTargetRef = useRef<PointerVector>(createPointerVector());
   const pointerCurrentRef = useRef<PointerVector>(createPointerVector());
+  const onReadyRef = useRef(onReady);
+  onReadyRef.current = onReady;
 
   useEffect(() => {
     let canceled = false;
@@ -199,6 +203,7 @@ export default function ColorBends({
       rotationRef.current = rotation;
       autoRotateRef.current = autoRotate;
 
+      let readyFired = false;
       const loop = () => {
         timer.update();
         const dt = timer.getDelta();
@@ -217,6 +222,10 @@ export default function ColorBends({
         cur.lerp(tgt, amt);
         material.uniforms.uPointer.value.copy(cur);
         renderer.render(scene, camera);
+        if (!readyFired) {
+          readyFired = true;
+          onReadyRef.current?.();
+        }
         rafRef.current = requestAnimationFrame(loop);
       };
       rafRef.current = requestAnimationFrame(loop);
