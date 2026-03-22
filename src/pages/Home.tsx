@@ -66,7 +66,7 @@ const Home = () => {
   return (
     <>
       <div
-        className="fixed inset-0 bg-black z-[9999] pointer-events-none transition-opacity duration-700 ease-out"
+        className="fixed inset-0 bg-black z-[10000] pointer-events-none transition-opacity duration-700 ease-out"
         style={{ opacity: heroReady ? 0 : 1 }}
       />
       <section 
