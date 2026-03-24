@@ -7,6 +7,7 @@ import { VIDEO_URLS } from '../constants/videos';
 import { ArrowRight } from 'lucide-react';
 
 import ColorBends from '../components/ColorBends';
+import LoadingScreen from '../components/LoadingScreen';
 import SplitText from '../components/SplitText';
 
 import Footer from '../components/Footer';
@@ -15,11 +16,24 @@ import Caveman from '../assets/images/works/caveman/caveman.webp';
 
 const OVERLAY_OPACITY = 0.5;
 
+const INTRO_SEEN_STORAGE_KEY = 'portfolio-home-intro-seen';
+
+function getIntroAlreadySeen(): boolean {
+  try {
+    return typeof sessionStorage !== 'undefined' && sessionStorage.getItem(INTRO_SEEN_STORAGE_KEY) === '1';
+  } catch {
+    return true;
+  }
+}
+
 const Home = () => {
   const overlayOpacity = OVERLAY_OPACITY;
   const [fontsReady, setFontsReady] = useState(false);
   const [colorBendsReady, setColorBendsReady] = useState(false);
   const heroReady = fontsReady && colorBendsReady;
+
+  const [introAlreadySeen] = useState(getIntroAlreadySeen);
+  const [loadingScreenComplete, setLoadingScreenComplete] = useState(introAlreadySeen);
 
   useEffect(() => {
     if (document.fonts.status === 'loaded') {
@@ -30,10 +44,29 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (heroReady) {
+    if (introAlreadySeen) {
       window.dispatchEvent(new CustomEvent('introComplete'));
     }
-  }, [heroReady]);
+  }, [introAlreadySeen]);
+
+  useEffect(() => {
+    if (introAlreadySeen) return;
+    if (!heroReady) return;
+
+    const extraDelayMs = 1000;
+
+    const id = window.setTimeout(() => {
+      try {
+        sessionStorage.setItem(INTRO_SEEN_STORAGE_KEY, '1');
+      } catch {
+        /* ignore */
+      }
+      setLoadingScreenComplete(true);
+      window.dispatchEvent(new CustomEvent('introComplete'));
+    }, extraDelayMs);
+
+    return () => window.clearTimeout(id);
+  }, [heroReady, introAlreadySeen]);
 
   useEffect(() => {
     const setupObserver = () => {
@@ -65,16 +98,14 @@ const Home = () => {
 
   return (
     <>
-      <div
-        className="fixed inset-0 bg-black z-[10000] pointer-events-none transition-opacity duration-700 ease-out"
-        style={{ opacity: heroReady ? 0 : 1 }}
-      />
+      <LoadingScreen isVisible={!loadingScreenComplete} />
       <section 
         id="hero" 
         className="flex justify-center items-center h-svh relative overflow-hidden"
       >
         <SplitText
           text={[`<strong>Eric Ko</strong> is a<span class="break-mobile"><br></span> <strong>multidisciplinary designer</strong>`, "based in <strong>Providence</strong>.", "", `Currently studying<span class="break-mobile"><br></span> <strong>Product Design & CTC</strong> at <a href="https://www.risd.edu" target="_blank" rel="noopener noreferrer" class="risd-link"><strong>RISD</strong></a><svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:super;margin-left:0.05em;"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>.`]}
+          animationReady={loadingScreenComplete}
           className="intro-title z-20 relative"
           delay={200}
           duration={1.25}

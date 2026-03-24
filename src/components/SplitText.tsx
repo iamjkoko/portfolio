@@ -20,6 +20,8 @@ export interface SplitTextProps {
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   textAlign?: React.CSSProperties['textAlign'];
   onLetterAnimationComplete?: () => void;
+  /** When false, the split + animation are deferred (e.g. until a loading overlay is gone). Default true. */
+  animationReady?: boolean;
 }
 
 const SplitText: React.FC<SplitTextProps> = ({
@@ -35,7 +37,8 @@ const SplitText: React.FC<SplitTextProps> = ({
   rootMargin = '-100px',
   tag = 'p',
   textAlign = 'center',
-  onLetterAnimationComplete
+  onLetterAnimationComplete,
+  animationReady = true
 }) => {
   const ref = useRef<HTMLParagraphElement>(null);
   const animationCompletedRef = useRef(false);
@@ -60,7 +63,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   useGSAP(
     () => {
       const isEmpty = !text || (Array.isArray(text) && text.length === 0);
-      if (!ref.current || isEmpty || !fontsLoaded) return;
+      if (!ref.current || isEmpty || !fontsLoaded || !animationReady) return;
       // Prevent re-animation if already completed
       if (animationCompletedRef.current) return;
       const el = ref.current as HTMLElement & {
@@ -150,7 +153,8 @@ const SplitText: React.FC<SplitTextProps> = ({
         JSON.stringify(to),
         threshold,
         rootMargin,
-        fontsLoaded
+        fontsLoaded,
+        animationReady
       ],
       scope: ref
     }
@@ -160,7 +164,8 @@ const SplitText: React.FC<SplitTextProps> = ({
     const style: React.CSSProperties = {
       textAlign,
       wordWrap: 'break-word',
-      willChange: 'transform, opacity'
+      willChange: 'transform, opacity',
+      ...(!animationReady ? { opacity: 0, pointerEvents: 'none' } : {})
     };
     const classes = `split-parent overflow-hidden inline-block whitespace-normal ${className}`;
     const Tag = (tag || 'p') as React.ElementType;
