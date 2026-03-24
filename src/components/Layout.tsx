@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
+import { INTRO_SEEN_STORAGE_KEY } from "../constants/homeIntro";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -20,11 +21,17 @@ export default function Layout({ children }: LayoutProps) {
 
     const currentPath = window.location.pathname;
     if (currentPath !== '/' && currentPath !== '') {
-      // For non-home pages, show navbar immediately
       setShowNavbar(true);
     } else {
-      // For home page, always wait for introComplete event
-      // This ensures the delay is respected even for returning visitors
+      // Home: child (Home) useEffects run before this parent effect, so
+      // introComplete may already have fired while showNavbar was still false.
+      try {
+        if (sessionStorage.getItem(INTRO_SEEN_STORAGE_KEY) === "1") {
+          setShowNavbar(true);
+        }
+      } catch {
+        /* ignore */
+      }
     }
 
     return () => {

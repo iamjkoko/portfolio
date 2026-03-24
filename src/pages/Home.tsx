@@ -13,10 +13,9 @@ import SplitText from '../components/SplitText';
 import Footer from '../components/Footer';
 
 import Caveman from '../assets/images/works/caveman/caveman.webp';
+import { INTRO_SEEN_STORAGE_KEY } from '../constants/homeIntro';
 
 const OVERLAY_OPACITY = 0.5;
-
-const INTRO_SEEN_STORAGE_KEY = 'portfolio-home-intro-seen';
 
 function getIntroAlreadySeen(): boolean {
   try {
