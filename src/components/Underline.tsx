@@ -30,7 +30,7 @@ const Underline: React.FC<UnderlineProps> = ({
       onMouseEnter={() => externalIsHovered === undefined && setInternalIsHovered(true)}
       onMouseLeave={() => externalIsHovered === undefined && setInternalIsHovered(false)}
     >
-      <span style={{ position: 'relative', display: 'inline-block', paddingBottom: '12px' }}>
+      <span style={{ position: 'relative', display: 'inline-block', paddingBottom: '0.75rem' }}>
         {text.split(' ').map((word, wordIndex) => (
           <React.Fragment key={wordIndex}>
             {word.split('').map((char, i) => {

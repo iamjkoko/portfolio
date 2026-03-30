@@ -17,7 +17,7 @@ function Experiments() {
 
   return (
     <div style={{ background: 'var(--color-background)', color: 'var(--color-text)' }}> 
-    <section id="experiments" className="w-full min-h-screen flex flex-col items-center pt-32 pb-[60px] max-[935px]:pt-20 max-[935px]:pb-[5px]">
+    <section id="experiments" className="w-full min-h-screen flex flex-col items-center pt-32 pb-[60px] max-[935px]:pt-10 max-[935px]:pb-[5px]">
         <div className="grid grid-cols-3 gap-[15px] justify-center mx-auto overflow-hidden px-[30px] max-[935px]:grid-cols-1 max-[935px]:p-[10px]">
         <Tooltip content="Coming soon">
         <div className="border-2 border-[#212121] rounded-[8px] overflow-hidden">

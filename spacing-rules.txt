@@ -1,0 +1,284 @@
+SPACING RULES AUDIT
+Project: PORTFOLIO
+Date: 2026-03-30
+
+Scope
+- Scanned for spacing declarations across `src/`:
+  - CSS properties: margin, padding, gap (+ directional variants)
+  - Inline TSX style object spacing keys
+- Primary files containing spacing rules:
+  - src/global.css
+  - src/styles/works.module.css
+  - src/archive/studio/LightPainting.tsx
+  - src/components/Underline.tsx
+  - src/pages/Home.tsx (inline SVG style string with margin-left)
+
+============================================================
+1) GLOBAL RESET / BASE SPACING
+============================================================
+File: src/global.css
+
+- html, body
+  - margin: 0
+  - padding: 0
+
+- .intro-title (mobile)
+  - padding-right: 60px
+
+============================================================
+2) WORKS PAGE SPACING RULES
+============================================================
+File: src/styles/works.module.css
+
+Core layout
+- hr
+  - margin: 1.25rem auto
+
+- .project-main (mobile)
+  - padding-top: 3.125rem
+
+- .project-info
+  - padding: 4rem 10rem 3.75rem
+  - mobile: padding: 2.5rem 2.125rem 1rem
+
+- .project-basics
+  - padding-right: 8rem
+  - mobile: padding-right: 2rem
+  - mobile: padding-bottom: 1rem
+
+- .project-basics h2
+  - margin-bottom: 0.625rem
+
+- .project-basics p
+  - padding-top: 2rem
+
+Keywords / tags
+- .project-keywords
+  - gap: 0.75rem
+  - padding-top: 3rem
+  - mobile: padding: 3rem 0 2rem
+
+- .project-keywords span
+  - padding: 0.25rem 1rem
+  - mobile: padding: 0.25rem 0.75rem
+
+Description section
+- .project-description
+  - padding: 1.25rem 5rem
+  - mobile: padding: 4rem 0 1rem
+
+- .description
+  - padding: 0 5rem 2.5rem
+  - mobile: padding: 0 2.125rem 2.5rem
+
+- .description-title (mobile)
+  - padding-bottom: 1rem
+
+- .description-img
+  - margin: 0 auto
+  - padding: 2.5rem 0 0.5rem
+  - mobile: padding: 0.125rem 0 0.5rem
+
+- .description-vid
+  - margin: 0 auto
+  - padding: 2.5rem 0 0.5rem
+  - mobile: padding: 2.5rem 0
+
+- .description-body
+  - padding-top: 2.5rem
+  - mobile: padding-top: 0.125rem
+
+- .description-quote
+  - padding-top: 1.25rem
+  - mobile: padding-top: 2.5rem
+
+Progress section
+- .progress
+  - padding: 1.25rem 0 2.5rem
+  - mobile: padding: 1.25rem 2rem 2.5rem
+
+- .progress-title
+  - margin: 0 auto
+  - padding-bottom: 1.25rem
+  - mobile: padding: 0 5rem 2.5rem
+
+- .progress-title h3 (mobile)
+  - padding-bottom: 3.75rem
+
+- .progress-img
+  - gap: 0.625rem
+  - margin: 0 auto
+  - padding: 0 2.5rem
+  - mobile: padding: 0
+
+- .progress-vid
+  - margin: 0 auto
+  - padding: 0.5rem 2.5rem 0
+  - mobile: padding: 0.5rem 0
+
+Credits and references
+- .project-credits
+  - padding: 4rem 5rem
+  - mobile: padding: 1.25rem 0 0
+
+- .credits-title
+  - padding: 0 5rem 1.25rem
+  - mobile: padding: 0 3rem 1.25rem
+
+- .credits-body
+  - padding: 0 5rem 2.5rem
+  - mobile: padding: 0 3rem 2.5rem
+
+- .references
+  - padding: 4rem 5rem
+  - mobile: padding: 1.25rem 3rem 0
+
+- .references-title
+  - padding: 0 5rem 1.25rem
+  - mobile: padding: 0 0 1.25rem
+
+- .references-img
+  - gap: 1.25rem
+  - margin: 0 auto
+  - mobile: gap: 1.25rem
+
+- .figcaption
+  - margin-top: 1.25rem
+  - mobile: padding-bottom: 2.5rem
+
+Banner / embedded media
+- .banner
+  - margin: 0 auto
+  - padding: 2.5rem 0 1.25rem
+
+- .youtube
+  - margin: 0 auto
+  - padding: 2.5rem 0 0.5rem
+  - mobile: padding-bottom: 0.25rem
+
+============================================================
+3) INLINE TSX SPACING RULES
+============================================================
+- src/archive/studio/LightPainting.tsx
+  - padding: '3.125rem 0'
+
+- src/components/Underline.tsx
+  - paddingBottom: '12px'
+
+- src/pages/Home.tsx
+  - Inline SVG style string contains: margin-left: 0.05em
+
+============================================================
+4) CONSOLIDATED VALUE SCALE (FOUND IN CODE)
+============================================================
+Rem values
+- 0.125rem
+- 0.25rem
+- 0.5rem
+- 0.625rem
+- 0.75rem
+- 1rem
+- 1.25rem
+- 2rem
+- 2.125rem
+- 2.5rem
+- 3rem
+- 3.125rem
+- 3.75rem
+- 4rem
+- 5rem
+- 8rem
+- 10rem
+
+Px values
+- 60px
+- 12px
+
+Other units
+- 0.05em
+
+============================================================
+5) QUICK OBSERVATIONS
+============================================================
+- Spacing is primarily centralized in `src/styles/works.module.css`.
+- The project consistently uses rem-based spacing for layout.
+- Mobile rules are handled mostly via a single breakpoint at 935px.
+- Only a few spacing declarations are defined inline in TSX.
+
+============================================================
+6) RECOMMENDED NORMALIZED SCALE
+============================================================
+Proposed spacing tokens (rem):
+- 0.125rem
+- 0.25rem
+- 0.5rem
+- 0.75rem
+- 1rem
+- 1.25rem
+- 2rem
+- 2.5rem
+- 3rem
+- 4rem
+- 5rem
+- 8rem
+- 10rem
+
+Rationale
+- Keeps existing visual rhythm while removing uncommon increments.
+- Preserves all major section sizes already used in layout.
+- Reduces one-off values that make spacing harder to maintain.
+
+Unit policy
+- Layout spacing (margin/padding/gap): use rem tokens.
+- Keep px only where tied to typography/icon optical alignment.
+- Keep em only when intentionally tied to font size behavior.
+
+============================================================
+7) VALUE NORMALIZATION MAP
+============================================================
+Replace uncommon spacing values:
+- 0.625rem -> 0.75rem (or 0.5rem where tighter spacing is desired)
+- 2.125rem -> 2rem
+- 3.125rem -> 3rem
+- 3.75rem -> 4rem
+
+Optional unit harmonization:
+- 60px -> 3.75rem (or 4rem to align with token scale)
+- 12px -> 0.75rem
+- 0.05em -> keep (micro inline icon offset, font-relative)
+
+============================================================
+8) SELECTORS TO UPDATE FIRST
+============================================================
+File: src/styles/works.module.css
+
+High-priority one-off values:
+- .project-main (mobile): padding-top: 3.125rem -> 3rem
+- .project-info: padding-bottom 3.75rem -> 4rem
+- .project-info (mobile): horizontal 2.125rem -> 2rem
+- .description (mobile): horizontal 2.125rem -> 2rem
+- .progress-title h3 (mobile): padding-bottom 3.75rem -> 4rem
+- .progress-img: gap 0.625rem -> 0.75rem (or 0.5rem)
+
+Medium-priority consistency updates:
+- .project-basics h2: margin-bottom 0.625rem -> 0.75rem (or 0.5rem)
+- .credits / references mobile horizontal paddings:
+  - currently mixed between 3rem and 5rem contexts; align by section rhythm
+
+File: src/global.css
+- .intro-title (mobile): padding-right 60px -> 3.75rem (or 4rem)
+
+File: src/components/Underline.tsx
+- inline style paddingBottom '12px' -> '0.75rem'
+
+============================================================
+9) RHYTHM INCONSISTENCIES TO REVIEW (DESIGN DECISION)
+============================================================
+These may be intentional, but are visually notable:
+- .project-description top padding increases on mobile (1.25rem -> 4rem).
+- .description-quote top padding increases on mobile (1.25rem -> 2.5rem).
+- Mobile horizontal spacing varies across sections (2rem-ish, 3rem, and 5rem contexts).
+
+If you want tighter mobile rhythm, consider one horizontal rule:
+- Content sections: 2rem mobile horizontal padding
+- Major wrappers: 3rem mobile horizontal padding
