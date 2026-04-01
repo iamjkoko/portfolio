@@ -87,7 +87,7 @@ strong {
   .intro-title {
     bottom: 30px;
     left: 30px;
-    padding-right: 4rem;
+    padding-right: 3rem;
     font-size: clamp(0.5rem, 6vw, 4rem);
   }
   .break-desktop { display: none; }
