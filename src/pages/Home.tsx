@@ -52,7 +52,7 @@ const Home = () => {
     if (introAlreadySeen) return;
     if (!heroReady) return;
 
-    const extraDelayMs = 1000;
+    const extraDelayMs = 500;
 
     const id = window.setTimeout(() => {
       try {
