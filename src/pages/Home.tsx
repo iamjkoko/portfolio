@@ -98,8 +98,9 @@ const Home = () => {
   return (
     <>
       <LoadingScreen isVisible={!loadingScreenComplete} />
-      <section 
-        id="hero" 
+      <section
+        id="hero"
+        data-navbar-theme="dark"
         className="flex justify-center items-center h-svh relative overflow-hidden"
       >
         <SplitText

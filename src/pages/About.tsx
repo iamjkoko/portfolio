@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import '../global.css';
 
 import Footer from '../components/Footer';
+import Library from '../components/Library';
 
 import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
@@ -26,8 +27,9 @@ function About() {
 
   return (
     <>
-    <section id="about-page" className="flex flex-col min-h-screen justify-center mx-auto w-full bg-white max-[935px]:mt-[10%]">
-        <div className="flex items-center justify-center text-left bg-white p-5 rounded-[10px] flex-1 max-w-[1440px] mx-auto max-[935px]:flex-col">
+    <section id="about-page" className="w-full bg-white">
+        <div className="flex min-h-dvh w-full flex-col justify-center bg-white max-[935px]:pt-[10%]">
+        <div className="flex flex-1 items-center justify-center text-left bg-white p-5 rounded-[10px] max-w-[1440px] mx-auto w-full max-[935px]:flex-col">
             <img 
               src={Profile} 
               className="max-w-[480px] max-h-[640px] mr-[8%] rounded-lg max-[935px]:mr-0 max-[935px]:w-full" 
@@ -71,6 +73,8 @@ function About() {
                 </video>
             </div>
         </div>
+        </div>
+        <Library />
     </section>
     <Footer theme="light" />
     </>

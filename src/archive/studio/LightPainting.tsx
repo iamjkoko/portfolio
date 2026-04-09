@@ -16,7 +16,10 @@ function LightPainting(): React.JSX.Element {
   }, []);
 
   return (
-    <div style={{ background: 'var(--color-background)', color: 'var(--color-text)' }}>
+    <div
+      data-navbar-theme="dark"
+      style={{ background: 'var(--color-background)', color: 'var(--color-text)' }}
+    >
       <section id="project-main" className={styles['project-main']}>
       <img
         src={LightPainting1}

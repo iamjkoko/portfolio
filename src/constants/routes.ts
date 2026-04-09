@@ -8,6 +8,7 @@ export const ROUTES = {
     LOGO: '/works/logo',
   },
   ARCHIVE: {
+    ROOT: '/archive',
     STUDIO: {
       ROOT: '/archive/studio',
       CHESO: '/archive/studio/cheso',
