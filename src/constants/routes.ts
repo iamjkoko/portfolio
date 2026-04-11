@@ -33,4 +33,5 @@ export const ROUTES = {
 export const EXTERNAL_LINKS = {
   INSTAGRAM: 'https://www.instagram.com/morebyko/',
   LINKEDIN: 'https://www.linkedin.com/in/ericko26',
+  ARENA: 'https://www.are.na/eric-ko/channels',
 } as const;

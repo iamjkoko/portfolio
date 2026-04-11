@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ROUTES, EXTERNAL_LINKS } from '../constants/routes';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
+import ArenaIcon from '../assets/icons/are.na-black.webp';
 import { useLenis } from './LenisProvider';
 
 const LOGO_LIGHT = '/favicon-black.svg';
@@ -176,7 +177,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <nav className="flex flex-col items-start gap-0 w-full h-full p-8 max-[360px]:gap-6">
+              <nav className="flex flex-col items-start gap-0 w-full h-full py-8 px-[var(--page-padding-x-mobile)] max-[360px]:gap-6">
                 <div className="flex flex-col items-start gap-0">
                   {/* First Group: HOME, ABOUT, WORKS */}
                   <div className="flex flex-col items-start gap-0">
@@ -272,6 +273,15 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
                       className="max-w-[2rem] max-h-[2rem] transition-opacity duration-300 ease-in-out hover:opacity-70"
                     />
                   </a>
+                  <a
+                    href={EXTERNAL_LINKS.ARENA}
+                    className="arena"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMobileMenu}
+                  >
+                    <img src={ArenaIcon} alt="Arena" className="max-w-[3rem] max-h-[3rem] transition-opacity duration-300 ease-in-out hover:opacity-70" />
+                  </a>
                 </motion.div>
               </nav>
             </motion.div>
@@ -285,7 +295,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
 
   return (
     <motion.header
-      className={`fixed inset-x-4 top-4 z-[10050] overflow-hidden rounded-4xl ${
+      className={`fixed inset-x-4 top-6 z-[10050] overflow-hidden rounded-4xl ${
         navbarTheme === 'dark'
           ? 'border border-white/20 text-white shadow-[0_4px_24px_rgba(0,0,0,0.2)]'
           : 'border border-black/10 text-black shadow-[0_4px_24px_rgba(0,0,0,0.06)]'

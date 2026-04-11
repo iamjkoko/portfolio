@@ -86,8 +86,8 @@ strong {
 @media (max-width: 935px) {
   .intro-title {
     bottom: 30px;
-    left: 30px;
-    padding-right: 3rem;
+    left: var(--page-padding-x-mobile);
+    padding-right: var(--page-padding-x-mobile);
     font-size: clamp(0.5rem, 6vw, 4rem);
   }
   .break-desktop { display: none; }
@@ -165,18 +165,20 @@ strong {
   /* Core Theme Colors */
   --color-background: white;
   --color-text: black;
-  --color-border-gray: #bdbdbd;
+  --color-border-gray: rgb(189, 189, 189);
   --color-keyword-text: rgb(113, 113, 113);
-  --color-keyword-bg: #ececec;
+  --color-keyword-bg: rgb(236, 236, 236);
   --color-text-muted: rgb(194, 194, 194);
   --color-figcaption: black;
+  /* Horizontal inset for main content at ≤935px (matches Navbar / project pages) */
+  --page-padding-x-mobile: 1.875rem;
 }
 .dark {
   /* Dark Theme */
   --color-background: black;
   --color-text: white;
-  --color-border-gray: #bdbdbd;
-  --color-keyword-text: #ececec;
+  --color-border-gray: rgb(189, 189, 189);
+  --color-keyword-text: rgb(236, 236, 236);
   --color-keyword-bg: rgb(113, 113, 113);
   --color-text-muted: rgb(194, 194, 194);
   --color-figcaption: white;

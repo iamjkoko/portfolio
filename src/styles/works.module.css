@@ -14,12 +14,7 @@ hr {
     justify-content: center;
     width: 100%;
     height: 100%;
-}
-
-@media (max-width: 935px) {
-    .project-main {
-        padding-top: 3rem;
-    }
+    padding-top: var(--page-padding-top);
 }
 /* ============================================
    Project Image and Video
@@ -108,11 +103,11 @@ hr {
 @media (max-width: 935px) {
     .project-info {
         flex-direction: column;
-        padding: 2.5rem 2rem 1rem;
+        padding: 2.5rem var(--page-padding-x-mobile) 1rem;
     }
 
     .project-basics {
-        padding-right: 2rem;
+        padding-right: 0;
         padding-bottom: 1rem;
     }
 
@@ -241,7 +236,7 @@ hr {
     }
 
     .description {
-        padding: 0 2rem 2.5rem;
+        padding: 0 var(--page-padding-x-mobile) 2.5rem;
         box-sizing: border-box;
     }
 
@@ -343,11 +338,11 @@ hr {
 
 @media (max-width: 935px) {
     .progress {
-        padding: 1.25rem 2rem 2.5rem;
+        padding: 1.25rem var(--page-padding-x-mobile) 2.5rem;
     }
 
     .progress-title {
-        padding: 0 5rem 2.5rem;
+        padding: 0 var(--page-padding-x-mobile) 2.5rem;
     }
 
     .progress-title h3 {
@@ -411,7 +406,7 @@ hr {
     }
 
     .credits-title {
-        padding: 0 3rem 1.25rem;
+        padding: 0 var(--page-padding-x-mobile) 1.25rem;
     }
 
     .credits-title h3 {
@@ -420,7 +415,7 @@ hr {
 
     .credits-body {
         width: 100%;
-        padding: 0 3rem 2.5rem;
+        padding: 0 var(--page-padding-x-mobile) 2.5rem;
     }
 
     .credits-body p {
@@ -487,7 +482,7 @@ hr {
 
 @media (max-width: 935px) {
     .references {
-        padding: 1.25rem 3rem 0;
+        padding: 1.25rem var(--page-padding-x-mobile) 0;
     }
 
     .references-title {

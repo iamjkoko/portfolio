@@ -8,6 +8,7 @@ import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
 import Signature from '../assets/videos/signature.mp4';
+import ArenaIcon from '../assets/icons/are.na-black.webp';
 
 function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -29,14 +30,14 @@ function About() {
     <>
     <section id="about-page" className="w-full bg-white">
         <div className="flex min-h-dvh w-full flex-col justify-center bg-white max-[935px]:pt-[10%]">
-        <div className="flex flex-1 items-center justify-center text-left bg-white p-5 rounded-[10px] max-w-[1440px] mx-auto w-full max-[935px]:flex-col">
+        <div className="flex flex-1 items-center justify-center text-left bg-white p-5 rounded-[10px] max-w-[1440px] mx-auto w-full max-[935px]:flex-col max-[935px]:px-[var(--page-padding-x-mobile)]">
             <img 
               src={Profile} 
               className="max-w-[480px] max-h-[640px] mr-[8%] rounded-lg max-[935px]:mr-0 max-[935px]:w-full" 
               alt="Eric Ko" 
               draggable={false}
             /> 
-        <div className="max-w-[1080px] max-[935px]:py-[10%] max-[935px]:px-[4%] max-[935px]:w-full">
+        <div className="max-w-[1080px] max-[935px]:py-[10%] max-[935px]:px-0 max-[935px]:w-full">
             <p className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.2s] max-[935px]:text-[0.9rem]">
               <strong>Eric Ko</strong> (b. 2004) is a multidisciplinary artist and designer currently pursuing a BFA in Industrial and Product Design at the Rhode Island School of Design (RISD). Born and raised in Seoul, and having spent four years in São Paulo, Brazil, his works are shaped by his cultural roots and curiosity about the intersection of tradition, innovation, and sustainability.
             </p>
@@ -58,6 +59,9 @@ function About() {
                 </a>
                 <a href="https://www.linkedin.com/in/ericko26" className="linkedin" target="_blank" rel="noreferrer">
                 <img src={LinkedinIcon} alt="LinkedIn" className="max-w-[1.375rem] max-h-[1.375rem] max-[935px]:max-w-8 max-[935px]:max-h-8" />
+                </a>
+                <a href="https://www.are.na/eric-ko/channels" className="arena" target="_blank" rel="noreferrer">
+                <img src={ArenaIcon} alt="Arena" className="max-w-[2.375rem] max-h-[2.375rem] max-[935px]:max-w-8 max-[935px]:max-h-8" />
                 </a>
                 </div>
                 <video 

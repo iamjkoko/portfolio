@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import '../global.css';
@@ -15,6 +16,11 @@ const FILTERS: { value: ArchiveCategory; label: string }[] = [
   { value: 'studio', label: 'STUDIO' },
   { value: 'experiments', label: 'EXPERIMENTS' },
 ];
+
+const archiveFilterFade = {
+  duration: 0.4,
+  ease: [0.45, 0, 0.2, 1] as const,
+};
 
 function pathnameToFilter(pathname: string): 'all' | ArchiveCategory {
   if (pathname === ROUTES.ARCHIVE.STUDIO.ROOT) return 'studio';
@@ -47,31 +53,39 @@ function Archive() {
         id="archive"
         className="w-full flex flex-col items-center bg-white pt-24 pb-20 max-[935px]:pt-10 max-[935px]:pb-[5px]"
       >
-        <div className="w-full px-[30px] max-[935px]:px-[10px]">
+        <div className="w-full px-[30px] max-[935px]:px-[var(--page-padding-x-mobile)]">
           <div className="max-w-[1440px] mx-auto mt-5 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <div className="flex flex-wrap gap-2">
-              {FILTERS.map(({ value, label }) => {
-                const isActive = filter === value;
-                return (
-                  <button
-                    key={value}
-                    type="button"
-                    onClick={() => setFilter(value)}
-                    className={
-                      isActive
-                        ? 'rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:"wght"_500] bg-[var(--color-text)] text-[var(--color-background)] transition-colors'
-                        : 'rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:"wght"_400] bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] transition-colors hover:opacity-90'
-                    }
-                  >
-                    {label}
-                  </button>
-                );
-              })}
+              <div
+                className="flex flex-wrap gap-2"
+                role="tablist"
+                aria-label="Archive categories"
+              >
+                {FILTERS.map(({ value, label }) => {
+                  const isActive = filter === value;
+                  return (
+                    <button
+                      key={value}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setFilter(value)}
+                      className={`cursor-pointer rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:"wght"_400] transition-colors duration-250 ease-out ${
+                        isActive
+                          ? 'bg-[var(--color-text)] text-[var(--color-background)]'
+                          : 'bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] hover:bg-[var(--color-text)] hover:text-[var(--color-background)]'
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
               <a
                 href={ROUTES.PHOTOGRAPHY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:&quot;wght&quot;_400] bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] transition-colors hover:opacity-90 no-underline"
+                className="cursor-pointer rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:&quot;wght&quot;_400] bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] transition-colors duration-250 ease-out hover:bg-[var(--color-text)] hover:text-[var(--color-background)] no-underline"
               >
                 PHOTOGRAPHY
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="ml-1 inline-block h-[0.9em] w-[0.9em] shrink-0 align-[-0.06em]"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -80,9 +94,15 @@ function Archive() {
           </div>
         </div>
 
-        <ul
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.ul
+            key={filter}
             role="list"
-            className="mt-8 grid grid-cols-3 gap-[15px] justify-items-center mx-auto overflow-hidden px-[30px] max-[935px]:grid-cols-1 max-[935px]:p-[10px] list-none p-0 m-0 w-full"
+            className="mt-8 grid grid-cols-3 gap-[15px] justify-items-center mx-auto overflow-hidden px-[30px] max-[935px]:grid-cols-1 max-[935px]:px-[var(--page-padding-x-mobile)] max-[935px]:py-0 list-none p-0 m-0 w-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={archiveFilterFade}
           >
             {filteredItems.map((item) => {
               const isStudio = item.category === 'studio';
@@ -171,7 +191,8 @@ function Archive() {
                 </li>
               );
             })}
-          </ul>
+          </motion.ul>
+        </AnimatePresence>
       </section>
       <Footer theme="light" />
     </>

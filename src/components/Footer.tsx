@@ -4,8 +4,10 @@ import { CornerDownRight } from "lucide-react";
 import { EXTERNAL_LINKS } from '../constants/routes';
 import InstagramIconBlack from '../assets/icons/instagram-black.webp';
 import LinkedinIconBlack from '../assets/icons/linkedin-black.webp';
+import ArenaIconBlack from '../assets/icons/are.na-black.webp';
 import InstagramIconWhite from '../assets/icons/instagram-white.webp';
 import LinkedinIconWhite from '../assets/icons/linkedin-white.webp';
+import ArenaIconWhite from '../assets/icons/are.na-white.webp';
 
 interface FooterProps {
   theme?: 'dark' | 'light';
@@ -19,7 +21,7 @@ const Footer = ({ theme }: FooterProps) => {
 
   const InstagramIcon = isDark ? InstagramIconWhite : InstagramIconBlack;
   const LinkedinIcon = isDark ? LinkedinIconWhite : LinkedinIconBlack;
-
+  const ArenaIcon = isDark ? ArenaIconWhite : ArenaIconBlack;
   const [localTime, setLocalTime] = useState('');
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const Footer = ({ theme }: FooterProps) => {
   }, []);
 
   return (
-    <footer className={`w-full relative z-[1] p-8 max-[935px]:p-5 border-none ${themeClasses}`}>
+    <footer className={`w-full relative z-[1] p-8 max-[935px]:py-5 max-[935px]:px-[var(--page-padding-x-mobile)] border-none ${themeClasses}`}>
       {/*}
       <div className="max-w-[1400px] mx-auto mb-12 md:pl-0">
         <h2
@@ -56,7 +58,7 @@ const Footer = ({ theme }: FooterProps) => {
       */}
 
       {/* Main Footer Grid */}
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 pl-4 md:pl-0">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
 
         {/* Contact Section */}
         <div className="space-y-3">
@@ -106,6 +108,15 @@ const Footer = ({ theme }: FooterProps) => {
               >
                 <img src={InstagramIcon} alt="Instagram" className="w-6 h-6" />
               </a>
+              <a
+                href={EXTERNAL_LINKS.ARENA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`transition-opacity opacity-35 hover:opacity-100`}
+                aria-label="Arena"
+              >
+                <img src={ArenaIcon} alt="Arena" className="w-10 h-6" />
+              </a>
             </div>
           </div>
         </div>
@@ -116,7 +127,7 @@ const Footer = ({ theme }: FooterProps) => {
             Local time: {localTime}
           </p>
           <p className="text-xs opacity-80 pt-0.5">
-            Last updated: March 2026
+            Last updated: April 2026
           </p>
         </div>
       </div>
