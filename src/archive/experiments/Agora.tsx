@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
 import Footer from '../../components/Footer';
 import { VIDEO_URLS } from '../../constants/videos';
+import useProjectInfoStagger from '../../hooks/useProjectInfoStagger';
 
 import AgoraLayout from '../../assets/images/archive/agora/agora-layout.webp';
 
 function Agora(): React.JSX.Element {
+  const projectInfoRef = useRef<HTMLDivElement | null>(null);
+  useProjectInfoStagger(projectInfoRef);
+
   return (
     <>
     <section id="project-main" className={styles['project-main']}>
         <video className={styles['project-vid-ver']} src={VIDEO_URLS.AGORA_FULL} autoPlay loop muted playsInline controlsList="nodownload"> 
         Your browser does not support the video tag.
         </video>
-        <div className={styles['project-info']}>
+        <div ref={projectInfoRef} className={styles['project-info']}>
         <div className={styles['project-basics']}>
             <h1>Agora</h1>
             <br />

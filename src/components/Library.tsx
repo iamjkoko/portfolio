@@ -23,22 +23,22 @@ const libraryFade = {
 
 function RatingStars({ rating }: { rating: number }) {
   return (
-    <div className="mt-2 flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
+    <div className="mt-1.5 flex gap-0.5 sm:mt-2" aria-label={`${rating} out of 5 stars`}>
       {[1, 2, 3, 4, 5].map((i) => {
         const fillPercent = Math.max(0, Math.min(1, rating - (i - 1)));
         const fillWidth = `${fillPercent * 100}%`;
         const isEmpty = fillPercent <= 0;
 
         return (
-          <span key={i} className="relative inline-flex h-5 w-5" aria-hidden>
+          <span key={i} className="relative inline-flex h-3.5 w-3.5 sm:h-5 sm:w-5" aria-hidden>
             <Star
-              className="absolute inset-0 h-5 w-5 fill-transparent text-[var(--color-border-gray)]"
+              className="absolute inset-0 h-3.5 w-3.5 sm:h-5 sm:w-5 fill-transparent text-[var(--color-border-gray)]"
               strokeWidth={1.25}
             />
             {!isEmpty ? (
               <span className="absolute inset-0 overflow-hidden" style={{ width: fillWidth }}>
                 <Star
-                  className="h-5 w-5 fill-[var(--color-text)] text-[var(--color-text)]"
+                  className="h-3.5 w-3.5 sm:h-5 sm:w-5 fill-[var(--color-text)] text-[var(--color-text)]"
                   strokeWidth={1.25}
                 />
               </span>
@@ -107,7 +107,7 @@ function Library() {
       {selected ? (
         <motion.div
           key="library-modal"
-          className="fixed inset-0 z-[10100] flex items-center justify-center overflow-hidden overscroll-contain bg-black/65 p-4"
+          className="fixed inset-0 z-[10100] flex items-center justify-center overflow-hidden overscroll-contain bg-black/65 p-3 sm:p-4"
           data-lenis-prevent
           role="presentation"
           initial={{ opacity: 0 }}
@@ -123,7 +123,7 @@ function Library() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="library-modal-title"
-            className="relative my-auto flex min-h-0 w-full max-w-[min(94vw,900px)] max-h-[70vh] flex-col overflow-hidden rounded-lg bg-[var(--color-background)] text-[var(--color-text)] shadow-xl p-8 max-[935px]:p-6"
+            className="relative my-auto flex max-h-[min(72dvh,calc(100dvh-2.5rem))] min-h-0 w-full max-w-[min(86vw,340px)] flex-col overflow-hidden rounded-lg bg-[var(--color-background)] text-[var(--color-text)] shadow-xl py-8 px-8 sm:max-h-[60vh] sm:max-w-[min(94vw,900px)] sm:p-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -138,8 +138,11 @@ function Library() {
             >
               <X size={20} strokeWidth={1.5} />
             </button>
-            <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto overscroll-contain sm:flex-row sm:gap-8 sm:items-stretch sm:overflow-hidden">
-              <div className="mx-auto w-full max-w-[240px] shrink-0 overflow-hidden sm:mx-0 sm:w-[min(38%,300px)] sm:max-w-[300px]">
+            <div
+              className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch] [touch-action:pan-y] sm:flex-row sm:gap-8 sm:items-stretch sm:overflow-hidden sm:[touch-action:auto]"
+              data-lenis-prevent
+            >
+              <div className="mx-auto w-full max-w-[200px] shrink-0 overflow-hidden sm:mx-0 sm:w-[min(38%,300px)] sm:max-w-[300px]">
                 <div
                   className={
                     selected.category === 'music'
@@ -155,31 +158,38 @@ function Library() {
                   />
                 </div>
               </div>
-              <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+              <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-visible sm:overflow-hidden">
                 <h2
                   id="library-modal-title"
-                  className="shrink-0 text-xl sm:text-2xl [font-variation-settings:'wght'_600]"
+                  className="shrink-0 pr-8 text-[0.92rem] leading-snug [font-variation-settings:'wght'_600] sm:text-xl md:text-2xl sm:leading-normal"
                 >
                   {selected.title}
-                  <span className="ml-2 text-[0.6em] text-[var(--color-text-muted)] [font-variation-settings:'wght'_450]">
+                  <span className="ml-1.5 text-[0.62em] text-[var(--color-text-muted)] [font-variation-settings:'wght'_450] sm:text-[0.6em]">
                     {selected.year}
                   </span>
                 </h2>
-                <p className="mt-2 shrink-0 text-base sm:text-[1.0625rem] leading-relaxed [font-variation-settings:'wght'_400] whitespace-pre-line max-[935px]:text-[0.8rem]">
+                <p className="mt-1.5 shrink-0 text-[0.7rem] leading-relaxed [font-variation-settings:'wght'_400] whitespace-pre-line sm:text-base md:text-[1.0625rem]">
                   {selected.author}
                 </p>
-                <div className="mt-2 shrink-0">
+                <div className="mt-1 shrink-0 sm:mt-2">
                   <RatingStars rating={selected.rating} />
                 </div>
                 <div
-                  className="mt-4 min-h-0 flex-1 overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch]"
+                  className="mt-2 min-h-0 flex-none overflow-visible sm:mt-4 sm:flex-1 sm:overflow-y-auto sm:overscroll-contain sm:[-webkit-overflow-scrolling:touch]"
                   data-lenis-prevent
                   tabIndex={0}
                   aria-label="Review"
                 >
-                  <p className="text-base sm:text-[1.0625rem] leading-relaxed [font-variation-settings:'wght'_400] whitespace-pre-line max-[935px]:text-[0.9rem]">
-                    {selected.review}
-                  </p>
+                  <div className="flex flex-col gap-1 sm:gap-2">
+                    {selected.review.split('\n').map((block, i) => (
+                      <p
+                        key={i}
+                        className="m-0 text-[0.78rem] leading-relaxed [font-variation-settings:'wght'_400] sm:text-base md:text-[0.9rem]"
+                      >
+                        {block || '\u00A0'}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

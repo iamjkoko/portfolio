@@ -14,6 +14,13 @@ const LOGO_DARK = '/favicon-white.svg';
 /** Regions that intersect the viewport use this attribute; Navbar is the only reader (chrome vs page `html.dark` / CSS vars). */
 const DARK_SECTION_SELECTOR = '[data-navbar-theme="dark"]';
 
+/** Fade when switching glass (dark) ↔ solid white (default). Tweak `durationMs`, `delayMs`, and `easing` here. */
+const NAVBAR_THEME_TRANSITION = {
+  durationMs: 400,
+  delayMs: 0,
+  easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+} as const;
+
 const linkBase =
   'no-underline text-base font-medium whitespace-nowrap py-2 px-2 transition-[color_0.3s_ease]';
 
@@ -293,6 +300,16 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
 
   const linkClass = navbarTheme === 'dark' ? linkClassDark : linkClassDefault;
 
+  const themeTransition = `${NAVBAR_THEME_TRANSITION.durationMs}ms ${NAVBAR_THEME_TRANSITION.easing} ${NAVBAR_THEME_TRANSITION.delayMs}ms`;
+  const navbarThemeStyleTransition = [
+    `background ${themeTransition}`,
+    `backdrop-filter ${themeTransition}`,
+    `-webkit-backdrop-filter ${themeTransition}`,
+    `border-color ${themeTransition}`,
+    `box-shadow ${themeTransition}`,
+    `color ${themeTransition}`
+  ].join(', ');
+
   return (
     <motion.header
       className={`fixed inset-x-4 top-6 z-[10050] overflow-hidden rounded-4xl ${
@@ -311,9 +328,18 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
       }}
       style={{
         pointerEvents: showNavbar ? 'auto' : 'none',
-        background: 'rgba(255, 255, 255, 0.1)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)'
+        transition: navbarThemeStyleTransition,
+        ...(navbarTheme === 'dark'
+          ? {
+              background: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)'
+            }
+          : {
+              background: '#ffffff',
+              backdropFilter: 'none',
+              WebkitBackdropFilter: 'none'
+            })
       }}
     >
       <nav className="flex h-[60px] items-center justify-between pl-6 pr-8">

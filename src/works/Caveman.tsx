@@ -1,8 +1,10 @@
 import '../global.css';
 import styles from '../styles/works.module.css';
+import { useRef } from 'react';
 
 import Footer from '../components/Footer';
 import ImgCredit from '../components/ImgCredit';
+import useProjectInfoStagger from '../hooks/useProjectInfoStagger';
 
 import CavemanMain from '../assets/images/works/caveman/caveman.webp';
 import AllegoryOfCave from '../assets/images/works/caveman/allegory-cave.webp';
@@ -31,6 +33,9 @@ import Birdcage from '../assets/images/works/caveman/birdcage.webp';
 import BirdcageReal from '../assets/images/works/caveman/birdcage-real.webp';
 
 function Caveman() {
+  const projectInfoRef = useRef<HTMLDivElement | null>(null);
+  useProjectInfoStagger(projectInfoRef);
+
   const cavemanImages: CvmGalleryImage[] = [
     { src: Horse, altSrc: HorseReal, alt: "Shadow of a horse" },
     { src: Wineglass, altSrc: WineglassReal, alt: "Shadow of a wineglass" },
@@ -46,8 +51,7 @@ function Caveman() {
   return (
     <>
       <section id="project-main" className={styles['project-main']}>
-        <img className={styles['project-img']} src={CavemanMain} alt="Caveman" />
-        <div className={styles['project-info']}>
+        <div ref={projectInfoRef} className={styles['project-info']}>
           <div className={styles['project-basics']}>
             <h1>Modern Caveman</h1>
             <br />
@@ -64,6 +68,9 @@ function Caveman() {
             </div>
           </div>
         </div>
+        <img className={styles['project-img']} src={CavemanMain} alt="Caveman" />
+
+        <hr />
 
         <section id="project-description" className={styles['project-description']}>
           <div className={styles['description']}>

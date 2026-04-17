@@ -2,6 +2,7 @@ hr {
     border: .8px solid var(--color-border-gray);
     width: 90%;
     margin: 1.25rem auto;
+    margin: 6rem 0 4rem;
 }
 
 /* ============================================
@@ -23,16 +24,19 @@ hr {
 .project-vid-ver,
 .project-img {
     display: flex;
-    height: 100vh;
-    width: auto;
+    width: 100%;
+    max-width: 1080px;
+    height: auto;
     box-sizing: border-box;
+    border-radius: 8px;
 }
 @media (max-width: 935px) {
     .project-vid-hor,
     .project-vid-ver,
     .project-img {
-        height: 100%;
-        width: 100vw;
+        width: 100%;
+        height: auto;
+        border-radius: 0;
     }
 }
 
@@ -42,20 +46,20 @@ hr {
 .project-info {
     display: flex;
     position: relative;
-    padding: 4rem 10rem 4rem;
-    flex-direction: row;
+    padding: 10rem 10rem 4rem;
+    flex-direction: column;
+    gap: 1.5rem;
     width: 100%;
     min-height: 300px;
 }
 
 .project-basics {
-    padding-right: 8rem;
+    padding-right: 0;
 }
 
 .project-basics h1 {
-    font-size: 4rem;
-    font-variation-settings: 'wght' 900;
-    width: 350px;
+    font-size: 3rem;
+    font-variation-settings: 'wght' 600;
     font-family: var(--font-family-boska);
 }
 
@@ -79,7 +83,7 @@ hr {
 }
 
 .project-intro p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-variation-settings: 'wght' 400;
     word-spacing: .1rem;
 }
@@ -103,7 +107,7 @@ hr {
 @media (max-width: 935px) {
     .project-info {
         flex-direction: column;
-        padding: 2.5rem var(--page-padding-x-mobile) 1rem;
+        padding: 6rem var(--page-padding-x-mobile) 1rem;
     }
 
     .project-basics {
@@ -326,7 +330,7 @@ hr {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    padding: 0.5rem 2.5rem 0;
+    padding: 0.75rem 2.5rem 0;
 }
 
 .progress-vid video {
@@ -358,7 +362,7 @@ hr {
     }
 
     .progress-vid {
-        padding: 0.5rem 0;
+        padding: 0.75rem 0;
     }
 }
 

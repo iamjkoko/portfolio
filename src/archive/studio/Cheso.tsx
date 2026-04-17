@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
 import Footer from '../../components/Footer';
+import useProjectInfoStagger from '../../hooks/useProjectInfoStagger';
 
 import ChesoFull from '../../assets/images/archive/cheso/cheso-full.webp';
-import ChesoConcept1 from '../../assets/images/archive/cheso/cheso-cp1.webp';
-import ChesoConcept2 from '../../assets/images/archive/cheso/cheso-cp2.webp';
 
 function Cheso(): React.JSX.Element {
+  const projectInfoRef = useRef<HTMLDivElement | null>(null);
+  useProjectInfoStagger(projectInfoRef);
+
   return (
     <>
       <section id="project-main" className={styles['project-main']}>
-        <img className={styles['project-img']} src={ChesoFull} alt="Cheso Full" />
-        <div className={styles['project-info']}>
+        <div ref={projectInfoRef} className={styles['project-info']}>
         <div className={styles['project-basics']}>
             <h1>Cheso</h1>
             <br />
@@ -32,12 +33,7 @@ function Cheso(): React.JSX.Element {
             </div>
         </div>
         </div>
-      </section>
-      <section id="progress" className={styles['progress']}>
-        <div className={styles['progress-img']}>
-          <img src={ChesoConcept1} alt="Cheso Concept 1" />
-          <img src={ChesoConcept2} alt="Cheso Concept 2" />
-        </div>
+        <img className={styles['project-img']} src={ChesoFull} alt="Cheso Full" />
       </section>
 
       <br />

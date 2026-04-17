@@ -6,6 +6,9 @@ import filmTheBrutalist from '../assets/images/library/films/the-brutalist.webp'
 import filmEEAAO from '../assets/images/library/films/eeaao.webp';
 import filmOneBattleAfterAnother from '../assets/images/library/films/one-battle-after-another.webp';
 
+import bookSteveJobs from '../assets/images/library/books/steve-jobs.webp';
+import bookTheCamphorKeeper from '../assets/images/library/books/the-camphor-keeper.webp';
+
 import musicBlonde from '../assets/images/library/music/blonde.webp';
 import musicDonda from '../assets/images/library/music/donda.webp';
 import musicHowDeepIsYourLove from '../assets/images/library/music/how-deep-is-your-love.webp';
@@ -41,7 +44,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmOneBattleAfterAnother,
     rating: 5,
-    review: 'Description',
+    review: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. \n Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. \n Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. \n Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
   },
   {
     id: 'film-2',
@@ -191,32 +194,22 @@ export const libraryEntries: LibraryEntry[] = [
   // Books
   {
     id: 'book-1',
-    title: 'Title',
-    author: 'Author',
-    year: 2020,
+    title: 'Steve Jobs',
+    author: 'Walter Isaacson',
+    year: 2011,
     category: 'book',
-    coverImage: libraryCoverPlaceholder,
-    rating: 5,
-    review: 'Description',
-  },
-  {
-    id: 'book-2',
-    title: 'Title',
-    author: 'Author',
-    year: 2021,
-    category: 'book',
-    coverImage: libraryCoverPlaceholder,
+    coverImage: bookSteveJobs,
     rating: 4,
     review: 'Description',
   },
   {
-    id: 'book-3',
-    title: 'Title',
-    author: 'Author',
-    year: 2022,
+    id: 'book-2',
+    title: 'The Camphor Keeper',
+    author: 'Keigo Higashino',
+    year: 2020,
     category: 'book',
-    coverImage: libraryCoverPlaceholder,
-    rating: 3,
+    coverImage: bookTheCamphorKeeper,
+    rating: 2.5,
     review: 'Description',
   },
 ];

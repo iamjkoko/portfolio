@@ -1,8 +1,10 @@
 import '../global.css';
 import styles from '../styles/works.module.css';
+import { useRef } from 'react';
 
 import Footer from '../components/Footer';
 import { VIDEO_URLS } from '../constants/videos';
+import useProjectInfoStagger from '../hooks/useProjectInfoStagger';
 
 import LogoStc from '../assets/videos/logo-stc.mp4';
 
@@ -10,13 +12,13 @@ import Progress1 from '../assets/images/works/logo/progress-1.webp';
 import Progress2 from '../assets/images/works/logo/progress-2.webp';
 
 function Logo() {
+  const projectInfoRef = useRef<HTMLDivElement | null>(null);
+  useProjectInfoStagger(projectInfoRef);
+
   return (
     <>
       <section id="project-main" className={styles['project-main']}>
-        <video className={styles['project-vid-hor']} src={VIDEO_URLS.LOGO_ANIMATION} autoPlay loop muted playsInline controlsList="nodownload">
-          Your browser does not support the video tag.
-        </video>
-        <div className={styles['project-info']}>
+        <div ref={projectInfoRef} className={styles['project-info']}>
           <div className={styles['project-basics']}>
             <h1>Ko: Logo Animation</h1>
             <br />
@@ -35,6 +37,11 @@ function Logo() {
             </div>
           </div>
         </div>
+        <video className={styles['project-vid-hor']} src={VIDEO_URLS.LOGO_ANIMATION} autoPlay loop muted playsInline controlsList="nodownload">
+          Your browser does not support the video tag.
+        </video>
+
+        <hr />
 
         <section id="project-description" className={styles['project-description']}>
           <div className={styles['description']}>
