@@ -32,10 +32,6 @@ function InfinityBox(): React.JSX.Element {
           <div className={styles['project-content']}>
             <div className={styles['project-intro']}>
               <p>Infinity Box is an attempt on exploring the <strong>boundless and cyclical nature of infinity</strong>, using cardboard lined with reflective surfaces. Each side of the box serves to mirror the other, creating an <strong>endless set of reflections</strong> that extend far beyond the physical constraints of the object.</p>
-              <br />
-              <p>Inside the box, a drawing of four Fibonacci sequences is placed to form a circle, which alludes to the concept of boundlessness and mathematical harmony. The Fibonacci spiral, often associated with growth and continuity, resonates with the overarching idea of infinity.</p>
-              <br />
-              <p>The project invites viewers to consider the <strong>relationships between perception, mathematics and the world around us</strong>, challenging the boundaries of what is tangible and what is infinite.</p>
             </div>
             <div className={styles['project-keywords']}>
                 <span>INSTALLATION</span>
@@ -43,8 +39,22 @@ function InfinityBox(): React.JSX.Element {
                 <span>MATERIALITY</span>
             </div>
           </div>
+          <div className={styles['project-gallery']}>
+            <Gallery images={imageList} />
+          </div>
         </div>
-        <Gallery images={imageList} />
+      </section>
+
+      <br />
+
+      <section id="project-description" className={styles['project-description']}>
+        <div className={styles['description']}>
+        <div className={styles['description-body']}>
+          <p>Inside the box, a drawing of four Fibonacci sequences is placed to form a circle, which alludes to the concept of boundlessness and mathematical harmony. The Fibonacci spiral, often associated with growth and continuity, resonates with the overarching idea of infinity.</p>
+          <br />
+          <p>The project invites viewers to consider the <strong>relationships between perception, mathematics and the world around us</strong>, challenging the boundaries of what is tangible and what is infinite.</p>
+        </div>
+        </div>
       </section>
 
       <br />

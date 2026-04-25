@@ -44,17 +44,13 @@ function LightPainting(): React.JSX.Element {
                 <span>LIGHT & SHADOW</span>
             </div>
           </div>
+          <img
+            className={styles['project-img']}
+            src={LightPainting1}
+            alt="Light Painting"
+            style={{ padding: '3.125rem 0' }}
+          />
         </div>
-        <img
-          src={LightPainting1}
-          alt="Light Painting"
-          style={{
-            width: '100%',
-            height: 'auto',
-            maxWidth: '1280px',
-            padding: '3.125rem 0'
-          }}
-        />
       </section>
 
       <section id="references" className={styles['references']}>

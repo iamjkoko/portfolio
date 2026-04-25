@@ -36,10 +36,10 @@ function Logo() {
               <span>MOTION DESIGN</span>
             </div>
           </div>
+          <video className={styles['project-vid-hor']} src={VIDEO_URLS.LOGO_ANIMATION} autoPlay loop muted playsInline controlsList="nodownload">
+            Your browser does not support the video tag.
+          </video>
         </div>
-        <video className={styles['project-vid-hor']} src={VIDEO_URLS.LOGO_ANIMATION} autoPlay loop muted playsInline controlsList="nodownload">
-          Your browser does not support the video tag.
-        </video>
 
         <hr />
 

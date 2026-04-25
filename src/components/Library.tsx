@@ -12,7 +12,7 @@ import { useLenis } from './LenisProvider';
 
 const FILTERS: { value: LibraryCategory; label: string }[] = [
   { value: 'film', label: 'FILMS' },
-  { value: 'book', label: 'BOOKS' },
+  // { value: 'book', label: 'BOOKS' },
   { value: 'music', label: 'MUSIC' },
 ];
 

@@ -23,17 +23,24 @@ function Cheso(): React.JSX.Element {
         </div>
         <div className={styles['project-intro']}>
             <p>Cheso (Korean: 채소) embodies the concept of <strong>recyclability</strong> and a <strong>return to nature</strong>. Crafted entirely from eco-friendly materials such as vegetables and rice-based clay, these artifacts blend <strong>functionality</strong> and <strong>sustainability</strong>.</p>
-            <p>Designed as vessels and decorative items, each piece carries a dual purpose: to serve in daily life and to symbolize the human interconnectedness with the natural world.</p>
-            <br />
-            <p>After fulfilling their purpose, the items are designed to "return to nature" through natural decomposition, which leaves no trace and therefore reinforces the <strong>cyclical relationship between humans and the environment</strong>. Cheso not only challenges the boundaries of traditional material usage but also reimagines how art and utility can coexist in an environmentally conscious way. It invites viewers to reflect on impermanence, sustainability, and the beauty of embracing organic forms in design.</p>
             <div className={styles['project-keywords']}>
                 <span>SUSTAINABILITY</span>
                 <span>BIO-DESIGN</span>
                 <span>ECOLOGY</span>
             </div>
         </div>
-        </div>
         <img className={styles['project-img']} src={ChesoFull} alt="Cheso Full" />
+        </div>
+      </section>
+
+      <section id="project-description" className={styles['project-description']}>
+        <div className={styles['description']}>
+        <div className={styles['description-body']}>
+          <p>Each piece carries a dual purpose: to serve in daily life and to symbolize the human interconnectedness with the natural world.</p>
+          <br />
+          <p>After fulfilling their purpose, the items are designed to "return to nature" through natural decomposition, which leaves no trace and therefore reinforces the <strong>cyclical relationship between humans and the environment</strong>. Cheso not only challenges the boundaries of traditional material usage but also reimagines how art and utility can coexist in an environmentally conscious way. It invites viewers to reflect on impermanence, sustainability, and the beauty of embracing organic forms in design.</p>
+        </div>
+        </div>
       </section>
 
       <br />

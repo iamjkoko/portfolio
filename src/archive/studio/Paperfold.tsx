@@ -39,14 +39,14 @@ function Paperfold(): React.JSX.Element {
                 <span>ORIGAMI</span>
             </div>
           </div>
+          <div className={styles['project-gallery']}>
+            <Gallery images={imageList} />
+          </div>
         </div>
-        <Gallery images={imageList} />
       </section>
 
       <br />
-      <br />
-      <br />
-
+      
       <Footer theme="light" />
     </>
   );

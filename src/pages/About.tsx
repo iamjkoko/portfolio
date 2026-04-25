@@ -29,7 +29,7 @@ function About() {
   return (
     <>
     <section id="about-page" className="w-full bg-white">
-        <div className="flex min-h-dvh w-full flex-col justify-center bg-white max-[935px]:pt-[10%]">
+        <div className="flex min-h-dvh w-full flex-col justify-center bg-white max-[935px]:pt-25">
         <div className="flex flex-1 items-center justify-center text-left bg-white p-5 rounded-[10px] max-w-[1440px] mx-auto w-full max-[935px]:flex-col max-[935px]:px-[var(--page-padding-x-mobile)]">
             <img 
               src={Profile} 

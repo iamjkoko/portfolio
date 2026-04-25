@@ -67,8 +67,8 @@ function Caveman() {
               <span>3D RENDERING</span>
             </div>
           </div>
+          <img className={styles['project-img']} src={CavemanMain} alt="Caveman" />
         </div>
-        <img className={styles['project-img']} src={CavemanMain} alt="Caveman" />
 
         <hr />
 

@@ -51,7 +51,7 @@ function Archive() {
     <>
       <section
         id="archive"
-        className="w-full flex flex-col items-center bg-white pt-24 pb-20 max-[935px]:pt-10 max-[935px]:pb-[5px]"
+        className="w-full flex flex-col items-center bg-white pt-24 pb-20 max-[935px]:pt-25 max-[935px]:pb-[5px]"
       >
         <div className="w-full px-[30px] max-[935px]:px-[var(--page-padding-x-mobile)]">
           <div className="max-w-[1440px] mx-auto mt-5 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">

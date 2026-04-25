@@ -2,7 +2,12 @@ hr {
     border: .8px solid var(--color-border-gray);
     width: 90%;
     margin: 1.25rem auto;
-    margin: 6rem 0 4rem;
+    margin: 4rem 0;
+}
+@media (max-width: 935px) {
+    hr {
+        margin: 1rem 0;
+    }
 }
 
 /* ============================================
@@ -21,14 +26,21 @@ hr {
    Project Image and Video
    ============================================ */
 .project-vid-hor, 
-.project-vid-ver,
 .project-img {
     display: flex;
     width: 100%;
-    max-width: 1080px;
+    max-width: 1280px;
     height: auto;
     box-sizing: border-box;
     border-radius: 8px;
+    margin: 0 auto;
+}
+.project-vid-ver {
+    max-width: 720px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 @media (max-width: 935px) {
     .project-vid-hor,
@@ -46,15 +58,32 @@ hr {
 .project-info {
     display: flex;
     position: relative;
-    padding: 10rem 10rem 4rem;
+    padding: 10rem 0 2rem;
     flex-direction: column;
     gap: 1.5rem;
     width: 100%;
     min-height: 300px;
 }
 
-.project-basics {
-    padding-right: 0;
+.project-info > .project-basics,
+.project-info > .project-intro,
+.project-info > .project-content {
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+.project-info > .project-basics { order: 1; }
+.project-info > .project-intro,
+.project-info > .project-content { order: 2; }
+.project-info > .project-img,
+.project-info > .project-vid-hor,
+.project-info > .project-vid-ver,
+.project-info > .project-gallery { order: 3; }
+
+.project-gallery {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .project-basics h1 {
@@ -93,7 +122,7 @@ hr {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.75rem;
-    padding-top: 3rem;
+    padding: 3rem 0;
 }
 
 .project-keywords span {
@@ -107,11 +136,25 @@ hr {
 @media (max-width: 935px) {
     .project-info {
         flex-direction: column;
-        padding: 6rem var(--page-padding-x-mobile) 1rem;
+        padding-top: 7rem;
     }
 
+    .project-info > .project-basics,
+    .project-info > .project-intro,
+    .project-info > .project-content {
+        padding-left: var(--page-padding-x-mobile);
+        padding-right: var(--page-padding-x-mobile);
+    }
+
+    .project-info > .project-basics { order: 1; }
+    .project-info > .project-img,
+    .project-info > .project-vid-hor,
+    .project-info > .project-vid-ver,
+    .project-info > .project-gallery { order: 2; }
+    .project-info > .project-intro,
+    .project-info > .project-content { order: 3; }
+
     .project-basics {
-        padding-right: 0;
         padding-bottom: 1rem;
     }
 
@@ -119,6 +162,7 @@ hr {
         font-size: 2.5rem;
         overflow-wrap: break-word;
         width: 100%;
+        padding-right: 4rem;
     }
 
     .project-basics h2 {
@@ -236,7 +280,7 @@ hr {
 
 @media (max-width: 935px) {
     .project-description {
-        padding: 4rem 0 1rem;
+        padding: 2rem 0 1rem;
     }
 
     .description {

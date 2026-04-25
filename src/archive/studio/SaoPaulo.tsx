@@ -18,7 +18,7 @@ function SaoPaulo(): React.JSX.Element {
       <section id="project-main" className={styles['project-main']}>
         <div ref={projectInfoRef} className={styles['project-info']}>
           <div className={styles['project-basics']}>
-            <h1>Fragments of <br />São Paulo</h1>
+            <h1>Fragments of São Paulo</h1>
             <br />
             <h2>2021</h2>
             <h3>Digital Collage (Cardboard, Adobe Photoshop)</h3>
@@ -35,8 +35,8 @@ function SaoPaulo(): React.JSX.Element {
                 <span>CULTURAL IDENTITY</span>
             </div>
           </div>
+          <img src={SaoPaulo1} alt="Sao Paulo" className={styles['project-img']} />
         </div>
-        <img src={SaoPaulo1} alt="Sao Paulo" className={styles['project-img']} />
 
         <hr />
 
