@@ -205,7 +205,7 @@ function Library() {
       <h2 className="text-[1.5rem] max-[935px]:text-[1.2rem] [font-variation-settings:'wght'_700] text-[var(--color-text-muted)]">
         LIBRARY
       </h2>
-      <div className="mt-5 flex flex-wrap gap-2" role="tablist" aria-label="Library categories">
+      <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Library categories">
         {FILTERS.map(({ value, label }) => {
           const isActive = filter === value;
           return (

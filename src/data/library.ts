@@ -11,11 +11,10 @@ import filmMemento from '../assets/images/library/films/memento.webp';
 import filmOppenheimer from '../assets/images/library/films/oppenheimer.webp';
 import filmProjectHailMary from '../assets/images/library/films/project-hail-mary.webp';
 import filmTheBoyAndHeron from '../assets/images/library/films/the-boy-and-heron.webp';
-import filmXmenDofp from '../assets/images/library/films/xmen-dofp.webp';
 import filmTenet from '../assets/images/library/films/tenet.webp';
 import filmBulletTrain from '../assets/images/library/films/bullet-train.webp';
-import filmIRobot from '../assets/images/library/films/i-robot.webp';
 import filmSnowpiercer from '../assets/images/library/films/snowpiercer.webp';
+import filmGrandBudapestHotel from '../assets/images/library/films/grand-budapest-hotel.webp';
 
 import musicBlonde from '../assets/images/library/music/blonde.webp';
 import musicDonda from '../assets/images/library/music/donda.webp';
@@ -26,7 +25,6 @@ import musicChetBakerSings from '../assets/images/library/music/chet-baker-sings
 import musicDepacseOhw from '../assets/images/library/music/depacse-ohw.webp';
 import musicIKnowNigo from '../assets/images/library/music/i-know-nigo.webp';
 import musicLegend from '../assets/images/library/music/legend.webp';
-import musicLateLateSummer from '../assets/images/library/music/late-late-summer.webp';
 import music24kMagic from '../assets/images/library/music/24k-magic.webp';
 import music130Mood from '../assets/images/library/music/130-mood.webp';
 import musicFunkWaveBounces from '../assets/images/library/music/funk-wave-bounces.webp';
@@ -73,7 +71,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmOneBattleAfterAnother,
     rating: 5,
-    review: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. \n Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. \n Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. \n Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
+    review: 'Description',
   },
   {
     id: 'film-4',
@@ -83,16 +81,6 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmEEAAO,
     rating: 5,
-    review: 'Description',
-  },
-  {
-    id: 'film-6',
-    title: 'Tenet',
-    author: 'Christopher Nolan',
-    year: 2020,
-    category: 'film',
-    coverImage: filmTenet,
-    rating: 4.5,
     review: 'Description',
   },
   {
@@ -106,12 +94,32 @@ export const libraryEntries: LibraryEntry[] = [
     review: 'Description',
   },
   {
+    id: 'film-6',
+    title: 'Tenet',
+    author: 'Christopher Nolan',
+    year: 2020,
+    category: 'film',
+    coverImage: filmTenet,
+    rating: 4.5,
+    review: 'Description',
+  },
+  {
     id: 'film-11',
     title: 'Oppenheimer',
     author: 'Christopher Nolan',
     year: 2023,
     category: 'film',
     coverImage: filmOppenheimer,
+    rating: 4.5,
+    review: 'Description',
+  },
+  {
+    id: 'film-14',
+    title: 'The Grand Budapest Hotel',
+    author: 'Wes Anderson',
+    year: 2014,
+    category: 'film',
+    coverImage: filmGrandBudapestHotel,
     rating: 4.5,
     review: 'Description',
   },
@@ -239,16 +247,6 @@ export const libraryEntries: LibraryEntry[] = [
     review: 'Description',
   },
   {
-    id: 'music-14',
-    title: 'Getz/Gilberto',
-    author: 'Stan Getz, João Gilberto',
-    year: 1964,
-    category: 'music',
-    coverImage: musicGetzGilberto,
-    rating: 5,
-    review: 'Description',
-  },
-  {
     id: 'music-15',
     title: 'Graduation',
     author: 'Kanye West',
@@ -269,22 +267,22 @@ export const libraryEntries: LibraryEntry[] = [
     review: 'Description',
   },
   {
+    id: 'music-14',
+    title: 'Getz/Gilberto',
+    author: 'Stan Getz, João Gilberto',
+    year: 1964,
+    category: 'music',
+    coverImage: musicGetzGilberto,
+    rating: 4.5,
+    review: 'Description',
+  },
+  {
     id: 'music-11',
     title: '24K Magic',
     author: 'Bruno Mars',
     year: 2016,
     category: 'music',
     coverImage: music24kMagic,
-    rating: 4.5,
-    review: 'Description',
-  },
-  {
-    id: 'music-12',
-    title: '130 Mood: TRBL',
-    author: 'Dean',
-    year: 2016,
-    category: 'music',
-    coverImage: music130Mood,
     rating: 4.5,
     review: 'Description',
   },
@@ -299,13 +297,23 @@ export const libraryEntries: LibraryEntry[] = [
     review: 'Description',
   },
   {
+    id: 'music-12',
+    title: '130 Mood: TRBL',
+    author: 'Dean',
+    year: 2016,
+    category: 'music',
+    coverImage: music130Mood,
+    rating: 3.5,
+    review: 'Description',
+  },
+  {
     id: 'music-5',
     title: 'Die Lit',
     author: 'Playboi Carti',
     year: 2018,
     category: 'music',
     coverImage: musicDieLit,
-    rating: 4,
+    rating: 3.5,
     review: 'Description',
   },
   {
@@ -369,16 +377,6 @@ export const libraryEntries: LibraryEntry[] = [
     review: 'Description',
   },
   {
-    id: 'music-10',
-    title: 'Late Late Summer',
-    author: 'Bread and Butter',
-    year: 2023,
-    category: 'music',
-    coverImage: musicLateLateSummer,
-    rating: 3,
-    review: 'Description',
-  },
-  {
     id: 'music-8',
     title: 'I Know Nigo',
     author: 'Nigo',
@@ -390,7 +388,7 @@ export const libraryEntries: LibraryEntry[] = [
   },
   {
     id: 'music-7',
-    title: 'Depacse Ohw',
+    title: '?Depacse Ohw',
     author: 'Seori',
     year: 2020,
     category: 'music',
