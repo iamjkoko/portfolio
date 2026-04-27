@@ -50,7 +50,7 @@ function About() {
               Away from his studio, he explores with his 35mm film camera, and is slowly learning bossa nova.
             </p>
             <br />
-            <p className="font-normal text-[0.9rem] opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.5s] max-[935px]:text-[0.8rem]">
+            <p className="font-normal text-[0.9rem] opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.5s] max-[935px]:text-[0.8rem] max-[935px]:pb-8">
               <u>View CV (available upon request)</u>
             </p>
             {/*
@@ -72,14 +72,14 @@ function About() {
                 <img src={LinkedinIcon} alt="LinkedIn" className="max-w-[1.375rem] max-h-[1.375rem] max-[935px]:max-w-8 max-[935px]:max-h-8" />
                 </a>
                 <a href="https://www.are.na/eric-ko/channels" className="arena" target="_blank" rel="noreferrer">
-                <img src={ArenaIcon} alt="Arena" className="max-w-[2.375rem] max-h-[2.375rem] max-[935px]:max-w-8 max-[935px]:max-h-8" />
+                <img src={ArenaIcon} alt="Arena" className="max-w-[2.375rem] max-h-[2.375rem] max-[935px]:max-w-13 max-[935px]:max-h-8" />
                 </a>
                 </div>
                 
                 <video 
                   ref={videoRef} 
                   src={Signature} 
-                  className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.9s]" 
+                  className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.9s] max-[935px]:max-w-[200px] max-[935px]:max-h-[133px]" 
                   muted 
                   playsInline 
                   controlsList="nodownload" 
