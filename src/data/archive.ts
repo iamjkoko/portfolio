@@ -68,14 +68,6 @@ export const archiveEntries: ArchiveEntry[] = [
     media: { type: 'image', src: LightPainting, alt: 'Light Painting' },
   },
   {
-    id: 'machina-anima',
-    category: 'experiments',
-    title: 'Machina Anima',
-    href: null,
-    comingSoon: true,
-    media: { type: 'video', src: VIDEO_URLS.MACHINA_ANIMA },
-  },
-  {
     id: 'digital-garden',
     category: 'experiments',
     title: 'Digital Garden',
@@ -92,13 +84,6 @@ export const archiveEntries: ArchiveEntry[] = [
     media: { type: 'video', src: VIDEO_URLS.ECHOING_NATURE },
   },
   {
-    id: 'agora',
-    category: 'experiments',
-    title: 'Agora',
-    href: ROUTES.ARCHIVE.EXPERIMENTS.AGORA,
-    media: { type: 'video', src: VIDEO_URLS.AGORA_PREVIEW },
-  },
-  {
     id: 'placeholder-1',
     category: 'experiments',
     title: '',
@@ -107,6 +92,20 @@ export const archiveEntries: ArchiveEntry[] = [
   },
   {
     id: 'placeholder-2',
+    category: 'experiments',
+    title: '',
+    href: null,
+    media: { type: 'image', src: Placeholder, alt: '' },
+  },
+  {
+    id: 'placeholder-3',
+    category: 'experiments',
+    title: '',
+    href: null,
+    media: { type: 'image', src: Placeholder, alt: '' },
+  },
+  {
+    id: 'placeholder-4',
     category: 'experiments',
     title: '',
     href: null,
