@@ -51,11 +51,11 @@ function Archive() {
     <>
       <section
         id="archive"
-        className="w-full flex flex-col items-center bg-white pt-24 pb-20 max-[935px]:pt-25 max-[935px]:pb-[5px]"
+        className="w-full flex flex-col items-center bg-white pt-24 pb-20 max-[935px]:pt-25 max-[935px]:pb-10"
       >
         <div className="w-full px-[30px] max-[935px]:px-[var(--page-padding-x-mobile)]">
           <div className="max-w-[1440px] mx-auto mt-5 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 max-[935px]:flex-nowrap max-[935px]:gap-1.5">
               <div
                 className="flex flex-wrap gap-2"
                 role="tablist"
@@ -70,7 +70,7 @@ function Archive() {
                       role="tab"
                       aria-selected={isActive}
                       onClick={() => setFilter(value)}
-                      className={`cursor-pointer rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:"wght"_400] transition-colors duration-250 ease-out ${
+                      className={`cursor-pointer rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:"wght"_400] transition-colors duration-250 ease-out max-[935px]:px-3 max-[935px]:text-xs ${
                         isActive
                           ? 'bg-[var(--color-text)] text-[var(--color-background)]'
                           : 'bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] hover:bg-[var(--color-text)] hover:text-[var(--color-background)]'
@@ -85,7 +85,7 @@ function Archive() {
                 href={ROUTES.PHOTOGRAPHY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cursor-pointer rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:&quot;wght&quot;_400] bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] transition-colors duration-250 ease-out hover:bg-[var(--color-text)] hover:text-[var(--color-background)] no-underline"
+                className="cursor-pointer rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:&quot;wght&quot;_400] bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] transition-colors duration-250 ease-out hover:bg-[var(--color-text)] hover:text-[var(--color-background)] no-underline max-[935px]:px-3 max-[935px]:text-xs"
               >
                 PHOTOGRAPHY
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="ml-1 inline-block h-[0.9em] w-[0.9em] shrink-0 align-[-0.06em]"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>

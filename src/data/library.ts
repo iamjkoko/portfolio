@@ -7,7 +7,6 @@ import filmArrival from '../assets/images/library/films/arrival.webp';
 import filmDuneTwo from '../assets/images/library/films/dune-two.webp';
 import filmInterstellar from '../assets/images/library/films/interstellar.webp';
 import filmLaLaLand from '../assets/images/library/films/lalaland.webp';
-import filmMemento from '../assets/images/library/films/memento.webp';
 import filmOppenheimer from '../assets/images/library/films/oppenheimer.webp';
 import filmProjectHailMary from '../assets/images/library/films/project-hail-mary.webp';
 import filmTheBoyAndHeron from '../assets/images/library/films/the-boy-and-heron.webp';
@@ -61,7 +60,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmLaLaLand,
     rating: 5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-1',
@@ -71,7 +70,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmOneBattleAfterAnother,
     rating: 5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-4',
@@ -81,7 +80,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmEEAAO,
     rating: 5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-7',
@@ -91,7 +90,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmDuneTwo,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-6',
@@ -101,7 +100,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmTenet,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-11',
@@ -111,7 +110,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmOppenheimer,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-14',
@@ -121,7 +120,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmGrandBudapestHotel,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-8',
@@ -131,7 +130,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmInterstellar,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-6',
@@ -141,7 +140,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmArrival,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-2',
@@ -151,7 +150,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmNoOtherChoice,
     rating: 4,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-5',
@@ -161,7 +160,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmTheBrutalist,
     rating: 4,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-3',
@@ -171,7 +170,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmRentalFamily,
     rating: 3,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-13',
@@ -181,17 +180,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmTheBoyAndHeron,
     rating: 3,
-    review: 'Description',
-  },
-  {
-    id: 'film-10',
-    title: 'Memento',
-    author: 'Christopher Nolan',
-    year: 2000,
-    category: 'film',
-    coverImage: filmMemento,
-    rating: 3,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-12',
@@ -201,7 +190,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmProjectHailMary,
     rating: 3,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-17',
@@ -211,7 +200,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'film',
     coverImage: filmSnowpiercer,
     rating: 3,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'film-15',
@@ -220,8 +209,8 @@ export const libraryEntries: LibraryEntry[] = [
     year: 2022,
     category: 'film',
     coverImage: filmBulletTrain,
-    rating: 3,
-    review: 'Description',
+    rating: 2.5,
+    review: '',
   },
 
 
@@ -234,7 +223,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicDonda,
     rating: 5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-9',
@@ -244,7 +233,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicLegend,
     rating: 5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-15',
@@ -254,7 +243,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicGraduation,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-1',
@@ -264,7 +253,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicBlonde,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-14',
@@ -274,7 +263,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicGetzGilberto,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-11',
@@ -284,7 +273,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: music24kMagic,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-4',
@@ -294,7 +283,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicRodeo,
     rating: 4.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-12',
@@ -304,7 +293,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: music130Mood,
     rating: 3.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-5',
@@ -314,7 +303,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicDieLit,
     rating: 3.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-6',
@@ -324,7 +313,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicChetBakerSings,
     rating: 3.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-18',
@@ -334,7 +323,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicTimely,
     rating: 3.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-17',
@@ -344,7 +333,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicSilkSonic,
     rating: 3.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-3',
@@ -354,7 +343,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicHowDeepIsYourLove,
     rating: 3.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-13',
@@ -364,7 +353,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicFunkWaveBounces,
     rating: 3.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-16',
@@ -374,7 +363,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicHer,
     rating: 3.5,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-8',
@@ -384,7 +373,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicIKnowNigo,
     rating: 3,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'music-7',
@@ -394,7 +383,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'music',
     coverImage: musicDepacseOhw,
     rating: 3,
-    review: 'Description',
+    review: '',
   },
 
 
@@ -407,7 +396,7 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'book',
     coverImage: bookSteveJobs,
     rating: 4,
-    review: 'Description',
+    review: '',
   },
   {
     id: 'book-2',
@@ -417,6 +406,6 @@ export const libraryEntries: LibraryEntry[] = [
     category: 'book',
     coverImage: bookTheCamphorKeeper,
     rating: 2.5,
-    review: 'Description',
+    review: '',
   },
 ];
