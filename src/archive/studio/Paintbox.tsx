@@ -42,9 +42,8 @@ function Paintbox(): React.JSX.Element {
             <Gallery images={imageList} />
           </div>
         </div>
-      </section>
 
-      <br />
+      </section>
 
       <section id="project-description" className={styles['project-description']}>
         <div className={styles['description']}>

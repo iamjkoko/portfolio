@@ -45,8 +45,6 @@ function InfinityBox(): React.JSX.Element {
         </div>
       </section>
 
-      <br />
-
       <section id="project-description" className={styles['project-description']}>
         <div className={styles['description']}>
         <div className={styles['description-body']}>

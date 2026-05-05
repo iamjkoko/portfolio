@@ -21,6 +21,9 @@ export default function LenisProvider({ children }: LenisProviderProps) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Clear any leftover stopped class from a previous HMR cycle in dev.
+    document.documentElement.classList.remove("lenis-stopped");
+
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
     const instance = new Lenis({
       lerp: 0.15,
@@ -37,12 +40,22 @@ export default function LenisProvider({ children }: LenisProviderProps) {
     gsap.ticker.add(ticker);
     gsap.ticker.lagSmoothing(0);
 
-    return () => {
+    const teardown = () => {
       gsap.ticker.remove(ticker);
       instance.destroy();
-      lenisRef.current = null;
-      setLenis(null);
+      document.documentElement.classList.remove("lenis-stopped");
+      if (lenisRef.current === instance) {
+        lenisRef.current = null;
+        setLenis(null);
+      }
     };
+
+    // Tear down before Vite swaps the module so wheel listeners can't double up.
+    if (import.meta.hot) {
+      import.meta.hot.dispose(teardown);
+    }
+
+    return teardown;
   }, []);
 
   useEffect(() => {

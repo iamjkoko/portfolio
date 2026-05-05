@@ -65,6 +65,9 @@ function Library() {
     lenis?.stop();
     return () => {
       lenis?.start();
+      // Guarantee the class is gone even if the lenis instance identity
+      // changed between stop() and cleanup (e.g. during dev HMR).
+      document.documentElement.classList.remove('lenis-stopped');
     };
   }, [selected, lenis]);
 

@@ -137,6 +137,7 @@ hr {
     .project-info {
         flex-direction: column;
         padding-top: 7rem;
+        padding-bottom: 0;
     }
 
     .project-info > .project-basics,
@@ -280,7 +281,7 @@ hr {
 
 @media (max-width: 935px) {
     .project-description {
-        padding: 2rem 0 1rem;
+        padding: 1rem 0 1rem;
     }
 
     .description {
