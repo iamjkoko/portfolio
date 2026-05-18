@@ -5,8 +5,10 @@ import { useRef } from 'react';
 import Footer from '../components/Footer';
 import { VIDEO_URLS } from '../constants/videos';
 import useProjectInfoStagger from '../hooks/useProjectInfoStagger';
+import useIsMobile from '../hooks/useIsMobile';
 
-import LogoStc from '../assets/videos/logo-stc.webm';
+import LogoStcWebm from '../assets/videos/logo-stc.webm';
+import LogoStcMov from '../assets/videos/logo-stc.mov';
 
 import Progress1 from '../assets/images/works/logo/progress-1.webp';
 import Progress2 from '../assets/images/works/logo/progress-2.webp';
@@ -14,6 +16,8 @@ import Progress2 from '../assets/images/works/logo/progress-2.webp';
 function Logo() {
   const projectInfoRef = useRef<HTMLDivElement | null>(null);
   useProjectInfoStagger(projectInfoRef);
+  const isMobile = useIsMobile();
+  const logoStcSrc = isMobile ? LogoStcMov : LogoStcWebm;
 
   return (
     <>
@@ -52,7 +56,7 @@ function Logo() {
               <p>My Korean name, spelled 고정혁 (pronounced KO-JUNG-HYOUK), follows the naming tradition of my country. The family name, 고 (KO), is inherited from my father, and my given name, 정혁 (JUNG-HYOUK), consists of two syllables, which is a common structure in Korea.</p>
             </div>
             <div className={styles['description-vid']}>
-              <video src={LogoStc} autoPlay muted playsInline controlsList="nodownload">
+              <video key={logoStcSrc} src={logoStcSrc} autoPlay muted playsInline controlsList="nodownload">
                 Your browser does not support the video tag.
               </video>
             </div>
