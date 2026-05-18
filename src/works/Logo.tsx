@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import { VIDEO_URLS } from '../constants/videos';
 import useProjectInfoStagger from '../hooks/useProjectInfoStagger';
 
-import LogoStc from '../assets/videos/logo-stc.mp4';
+import LogoStc from '../assets/videos/logo-stc.webm';
 
 import Progress1 from '../assets/images/works/logo/progress-1.webp';
 import Progress2 from '../assets/images/works/logo/progress-2.webp';

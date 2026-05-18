@@ -43,7 +43,7 @@ interface CvmGalleryProps {
 
 const CvmGallery = ({ images }: CvmGalleryProps) => {
   return (
-    <section className="w-full flex flex-col items-center bg-white my-[30px] md:my-20">
+    <section className="w-full flex flex-col items-center bg-[#fafafa] my-[30px] md:my-20">
       <div className="grid grid-cols-3 gap-[10px] md:gap-10 justify-center mx-auto overflow-hidden px-[8%] pb-[4%] md:px-8 md:pb-12">
         {images.map((img, index) => (
           <CvmGalleryItem key={index} src={img.src} altSrc={img.altSrc} alt={img.alt} />

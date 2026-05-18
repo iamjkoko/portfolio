@@ -12,7 +12,7 @@ import Caveman from '../assets/images/works/caveman/caveman.webp';
 function Works() {
   return (
     <>
-      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-white pt-30 pb-[3.75rem] max-[935px]:pt-25 max-[935px]:pb-10">
+      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-[#fafafa] pt-30 pb-[3.75rem] max-[935px]:pt-25 max-[935px]:pb-10">
         <div className="grid grid-cols-2 gap-[15px] justify-items-center mx-auto overflow-hidden px-[var(--page-padding-x-mobile)] max-[935px]:grid-cols-1 max-[935px]:py-[0.625rem] max-[935px]:gap-[15px]">
         <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[0.98]">
             <Link to={ROUTES.WORKS.LOGO}>

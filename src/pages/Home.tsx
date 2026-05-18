@@ -136,7 +136,7 @@ const Home = () => {
         />
       </section>
 
-      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-white pt-32 pb-16 max-[935px]:pt-10 max-[935px]:pb-10">
+      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-[#fafafa] pt-32 pb-16 max-[935px]:pt-10 max-[935px]:pb-10">
         <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-[935px]:gap-[15px] max-[935px]:px-[var(--page-padding-x-mobile)]">
 
         {/* Ko: Logo Animation */}

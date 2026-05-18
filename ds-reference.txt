@@ -44,7 +44,7 @@ CSS VARIABLES (Theme-based, src/global.css)
 --------------------------------------------------------------------------------
 
 LIGHT THEME (:root)
-  --color-background: white
+  --color-background: #fafafa
   --color-text: black
   --color-border-gray: #bdbdbd
   --color-keyword-text: rgb(113, 113, 113)

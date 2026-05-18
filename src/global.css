@@ -28,6 +28,7 @@ html, body {
   font-family: var(--font-family-general-sans);
   scroll-behavior: auto !important;
   word-spacing: 0.08rem;
+  background-color: #fafafa;
 }
 img {
   user-select: none;
@@ -164,7 +165,7 @@ strong {
 /* ========================================== */
 :root {
   /* Core Theme Colors */
-  --color-background: white;
+  --color-background: #fafafa;
   --color-text: black;
   --color-border-gray: rgb(189, 189, 189);
   --color-keyword-text: rgb(113, 113, 113);

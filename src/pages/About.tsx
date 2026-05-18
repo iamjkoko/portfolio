@@ -7,7 +7,7 @@ import Library from '../components/Library';
 import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
-import Signature from '../assets/videos/signature.mp4';
+import Signature from '../assets/videos/signature.webm';
 import ArenaIcon from '../assets/icons/are.na-black.webp';
 
 function About() {
@@ -28,9 +28,9 @@ function About() {
 
   return (
     <>
-    <section id="about-hero" className="w-full bg-white">
-        <div className="flex min-h-dvh w-full flex-col justify-center bg-white max-[935px]:pt-25">
-        <div className="flex flex-1 items-center justify-center text-left bg-white p-5 rounded-[10px] max-w-[1440px] mx-auto w-full max-[935px]:flex-col max-[935px]:px-[var(--page-padding-x-mobile)]">
+    <section id="about-hero" className="w-full bg-[#fafafa]">
+        <div className="flex min-h-dvh w-full flex-col justify-center bg-[#fafafa] max-[935px]:pt-25">
+        <div className="flex flex-1 items-center justify-center text-left bg-[#fafafa] p-5 rounded-[10px] max-w-[1440px] mx-auto w-full max-[935px]:flex-col max-[935px]:px-[var(--page-padding-x-mobile)]">
             <img 
               src={Profile} 
               className="max-w-[480px] max-h-[640px] mr-[8%] rounded-lg max-[935px]:mr-0 max-[935px]:w-full" 

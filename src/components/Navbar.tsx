@@ -149,7 +149,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
       <>
         {/* Pill top bar — mirrors desktop navbar aesthetic */}
         <motion.header
-          className="fixed inset-x-4 top-6 z-[10062] overflow-hidden rounded-4xl border border-black/10 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+          className="fixed inset-x-4 top-6 z-[10062] overflow-hidden rounded-4xl border border-black/10 bg-[#fafafa] shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: showNavbar ? 1 : 0, y: showNavbar ? 0 : -8 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
@@ -201,7 +201,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
           {mobileMenuOpen && (
             <motion.div
               key="mobile-menu"
-              className="fixed inset-0 z-[10060] bg-white"
+              className="fixed inset-0 z-[10060] bg-[#fafafa]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -343,7 +343,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
               WebkitBackdropFilter: 'blur(12px)'
             }
           : {
-              background: '#ffffff',
+              background: '#fafafa',
               backdropFilter: 'none',
               WebkitBackdropFilter: 'none'
             })

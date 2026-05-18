@@ -80,7 +80,7 @@ function AppRoutes() {
 
             <Route path="*" element={
               <AnimatedPage>
-                <div className="flex flex-col items-center justify-center h-svh bg-white text-black gap-4">
+                <div className="flex flex-col items-center justify-center h-svh bg-[#fafafa] text-black gap-4">
                   <h1 className="text-6xl font-bold">404</h1>
                   <p className="text-lg text-gray-500">Page not found</p>
                   <Link to={ROUTES.HOME} className="mt-4 text-base underline underline-offset-4 hover:opacity-70 transition-opacity">

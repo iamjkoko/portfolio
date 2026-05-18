@@ -204,70 +204,72 @@ function Library() {
   );
 
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-5 mt-16 pb-16 max-[935px]:px-[var(--page-padding-x-mobile)]">
-      <h2 className="text-[1.5rem] max-[935px]:text-[1.2rem] [font-variation-settings:'wght'_700] text-[var(--color-text-muted)]">
-        LIBRARY
-      </h2>
-      <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Library categories">
-        {FILTERS.map(({ value, label }) => {
-          const isActive = filter === value;
-          return (
-            <button
-              key={value}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              onClick={() => setFilter(value)}
-              className={`cursor-pointer rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:"wght"_400] transition-colors duration-250 ease-out ${
-                isActive
-                  ? 'bg-[var(--color-text)] text-[var(--color-background)]'
-                  : 'bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] hover:bg-[var(--color-text)] hover:text-[var(--color-background)]'
-              }`}
-            >
-              {label}
-            </button>
-          );
-        })}
-      </div>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.ul
-          key={filter}
-          className="mt-8 grid grid-cols-3 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 sm:gap-3 list-none p-0 m-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={libraryFade}
-        >
-          {filteredItems.map((item) => (
-            <li key={item.id}>
+    <section className="w-full bg-[var(--color-background)]">
+      <div className="w-full max-w-[1440px] mx-auto px-5 mt-16 pb-16 max-[935px]:px-[var(--page-padding-x-mobile)]">
+        <h2 className="text-[1.5rem] max-[935px]:text-[1.2rem] [font-variation-settings:'wght'_700] text-[var(--color-text-muted)]">
+          LIBRARY
+        </h2>
+        <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Library categories">
+          {FILTERS.map(({ value, label }) => {
+            const isActive = filter === value;
+            return (
               <button
+                key={value}
                 type="button"
-                onClick={() => setSelected(item)}
-                className="group w-full cursor-pointer border-0 bg-transparent p-0 text-left"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setFilter(value)}
+                className={`cursor-pointer rounded-[30px] px-4 py-1.5 text-sm [font-variation-settings:"wght"_400] transition-colors duration-250 ease-out ${
+                  isActive
+                    ? 'bg-[var(--color-text)] text-[var(--color-background)]'
+                    : 'bg-[var(--color-keyword-bg)] text-[var(--color-keyword-text)] hover:bg-[var(--color-text)] hover:text-[var(--color-background)]'
+                }`}
               >
-                <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
-                  <div
-                    className={
-                      item.category === 'music'
-                        ? 'w-full aspect-square overflow-hidden'
-                        : 'w-full aspect-[2/3] overflow-hidden'
-                    }
-                  >
-                    <img
-                      className="block h-full w-full object-cover rounded-none"
-                      src={item.coverImage}
-                      alt={item.title}
-                      draggable={false}
-                    />
-                  </div>
-                </div>
+                {label}
               </button>
-            </li>
-          ))}
-        </motion.ul>
-      </AnimatePresence>
-      {modal}
-    </div>
+            );
+          })}
+        </div>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.ul
+            key={filter}
+            className="mt-8 grid grid-cols-3 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-10 sm:gap-3 list-none p-0 m-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={libraryFade}
+          >
+            {filteredItems.map((item) => (
+              <li key={item.id}>
+                <button
+                  type="button"
+                  onClick={() => setSelected(item)}
+                  className="group w-full cursor-pointer border-0 bg-transparent p-0 text-left"
+                >
+                  <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
+                    <div
+                      className={
+                        item.category === 'music'
+                          ? 'w-full aspect-square overflow-hidden'
+                          : 'w-full aspect-[2/3] overflow-hidden'
+                      }
+                    >
+                      <img
+                        className="block h-full w-full object-cover rounded-none"
+                        src={item.coverImage}
+                        alt={item.title}
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
+                </button>
+              </li>
+            ))}
+          </motion.ul>
+        </AnimatePresence>
+        {modal}
+      </div>
+    </section>
   );
 }
 
