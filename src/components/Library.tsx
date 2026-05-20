@@ -246,7 +246,7 @@ function Library() {
                   onClick={() => setSelected(item)}
                   className="group w-full cursor-pointer border-0 bg-transparent p-0 text-left"
                 >
-                  <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
+                  <div className="border-0.5 border-[var(--color-border-gray)] rounded-[4px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
                     <div
                       className={
                         item.category === 'music'

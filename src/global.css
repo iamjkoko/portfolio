@@ -70,7 +70,7 @@ strong {
   cursor: pointer;
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 3px;
-  background-position: left bottom;
+  background-position: left calc(100% - 3px);
   background-repeat: no-repeat;
   transition: background-size 0.3s ease-out;
 }

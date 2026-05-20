@@ -11,6 +11,72 @@ import ArenaIcon from '../assets/icons/are.na-black.webp';
 
 import Signature from '../assets/videos/signature.mp4';
 
+type AboutSectionEntry = {
+  role: string;
+  org: string;
+  detail?: string;
+  period: string;
+};
+
+const educationEntries: AboutSectionEntry[] = [
+  {
+    role: 'BFA Candidate',
+    org: 'Rhode Island School of Design',
+    detail: 'Graphic Design · Computation, Technology, and Culture (CTC)',
+    period: '2023 — Present',
+  },
+];
+
+const experienceEntries: AboutSectionEntry[] = [
+  {
+    role: '-',
+    org: '-',
+    detail: '-',
+    period: '-',
+  },
+];
+
+function AboutInfoSection({
+  title,
+  entries,
+}: {
+  title: string;
+  entries: AboutSectionEntry[];
+}) {
+  return (
+    <div className="flex flex-col gap-8 max-[935px]:gap-6 min-[936px]:flex-row min-[936px]:items-start min-[936px]:gap-16">
+      <h2 className="shrink-0 text-[1.5rem] max-[935px]:text-[1.2rem] [font-variation-settings:'wght'_700] text-[var(--color-text-muted)] min-[936px]:w-[min(28%,220px)]">
+        {title}
+      </h2>
+      <ul className="m-0 flex min-w-0 flex-1 list-none flex-col gap-6 p-0 max-[935px]:gap-5">
+        {entries.map((entry) => (
+          <li
+            key={`${entry.org}-${entry.period}`}
+            className="flex flex-col mt-1 gap-1 min-[936px]:flex-row min-[936px]:items-start min-[936px]:justify-between min-[936px]:gap-8"
+          >
+            <div className="min-w-0">
+              <p className="m-0 text-base leading-snug [font-variation-settings:'wght'_550] text-[var(--color-text)]">
+                {entry.role}
+              </p>
+              <p className="m-0 mt-1 text-sm leading-relaxed [font-variation-settings:'wght'_400] text-[var(--color-text)]">
+                {entry.org}
+              </p>
+              {entry.detail ? (
+                <p className="m-0 mt-0.5 text-sm leading-relaxed [font-variation-settings:'wght'_400] text-[var(--color-keyword-text)]">
+                  {entry.detail}
+                </p>
+              ) : null}
+            </div>
+            <p className="m-0 shrink-0 text-sm [font-variation-settings:'wght'_400] text-[var(--color-text-muted)] min-[936px]:pt-0.5">
+              {entry.period}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -91,6 +157,12 @@ function About() {
             </div>
         </div>
         </div>
+    </section>
+    <section className="w-full bg-[var(--color-background)]">
+      <div className="flex w-full max-w-[1440px] flex-col gap-25 mx-auto px-5 pt-20 pb-20 max-[935px]:gap-15 max-[935px]:px-[var(--page-padding-x-mobile)]">
+        <AboutInfoSection title="EDUCATION" entries={educationEntries} />
+        <AboutInfoSection title="EXPERIENCE" entries={experienceEntries} />
+      </div>
     </section>
     <Library />
     <Footer theme="light" />
