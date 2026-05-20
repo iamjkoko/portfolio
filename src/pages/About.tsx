@@ -80,7 +80,7 @@ function About() {
                 
                 <video 
                   ref={videoRef} 
-                  className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.9s] max-[935px]:max-w-[200px] max-[935px]:max-h-[133px]" 
+                  className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 bg-transparent animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.9s] max-[935px]:max-w-[200px] max-[935px]:max-h-[133px]" 
                   muted 
                   playsInline 
                   controlsList="nodownload" 
