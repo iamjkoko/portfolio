@@ -7,7 +7,7 @@ import Library from '../components/Library';
 import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
-import Signature from '../assets/videos/signature.webm';
+import Signature from '../assets/videos/signature.mp4';
 import ArenaIcon from '../assets/icons/are.na-black.webp';
 
 function About() {
