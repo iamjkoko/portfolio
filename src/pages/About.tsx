@@ -3,19 +3,15 @@ import '../global.css';
 
 import Footer from '../components/Footer';
 import Library from '../components/Library';
-import useIsMobile from '../hooks/useIsMobile';
 
 import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
-import SignatureWebm from '../assets/videos/signature.webm';
-import SignatureMov from '../assets/videos/signature.mov';
+import Signature from '../assets/videos/signature.webm';
 import ArenaIcon from '../assets/icons/are.na-black.webp';
 
 function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isMobile = useIsMobile();
-  const signatureSrc = isMobile ? SignatureMov : SignatureWebm;
 
   useEffect(() => {
     // Trigger animations when component mounts
@@ -81,9 +77,8 @@ function About() {
                 </div>
                 
                 <video 
-                  key={signatureSrc}
                   ref={videoRef} 
-                  src={signatureSrc} 
+                  src={Signature} 
                   className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.9s] max-[935px]:max-w-[200px] max-[935px]:max-h-[133px]" 
                   muted 
                   playsInline 
