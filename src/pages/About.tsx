@@ -7,8 +7,10 @@ import Library from '../components/Library';
 import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
-import Signature from '../assets/videos/signature.mp4';
 import ArenaIcon from '../assets/icons/are.na-black.webp';
+
+import SignatureWebm from '../assets/videos/signature.webm';
+import SignatureMov from '../assets/videos/signature.mov';
 
 function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -78,14 +80,15 @@ function About() {
                 
                 <video 
                   ref={videoRef} 
-                  src={Signature} 
                   className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.9s] max-[935px]:max-w-[200px] max-[935px]:max-h-[133px]" 
                   muted 
                   playsInline 
                   controlsList="nodownload" 
                   draggable={false}
                 > 
-                Your browser does not support the video tag.
+                  <source src={SignatureWebm} type="video/webm" />
+                  <source src={SignatureMov} type="video/quicktime" />
+                  Your browser does not support the video tag.
                 </video>
             </div>
         </div>
