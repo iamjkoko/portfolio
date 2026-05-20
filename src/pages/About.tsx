@@ -9,8 +9,7 @@ import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
 import ArenaIcon from '../assets/icons/are.na-black.webp';
 
-import SignatureWebm from '../assets/videos/signature.webm';
-import SignatureMov from '../assets/videos/signature.mov';
+import Signature from '../assets/videos/signature.mp4';
 
 function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -30,9 +29,9 @@ function About() {
 
   return (
     <>
-    <section id="about-hero" className="w-full bg-[#fafafa]">
-        <div className="flex min-h-dvh w-full flex-col justify-center bg-[#fafafa] max-[935px]:pt-25">
-        <div className="flex flex-1 items-center justify-center text-left bg-[#fafafa] p-5 rounded-[10px] max-w-[1440px] mx-auto w-full max-[935px]:flex-col max-[935px]:px-[var(--page-padding-x-mobile)]">
+    <section id="about-hero" className="w-full bg-[#ffffff]">
+        <div className="flex min-h-dvh w-full flex-col justify-center bg-[#ffffff] max-[935px]:pt-25">
+        <div className="flex flex-1 items-center justify-center text-left bg-[#ffffff] p-5 rounded-[10px] max-w-[1440px] mx-auto w-full max-[935px]:flex-col max-[935px]:px-[var(--page-padding-x-mobile)]">
             <img 
               src={Profile} 
               className="max-w-[480px] max-h-[640px] mr-[8%] rounded-lg max-[935px]:mr-0 max-[935px]:w-full" 
@@ -86,8 +85,7 @@ function About() {
                   controlsList="nodownload" 
                   draggable={false}
                 > 
-                  <source src={SignatureWebm} type="video/webm" />
-                  <source src={SignatureMov} type="video/quicktime" />
+                  <source src={Signature} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
             </div>
