@@ -41,7 +41,7 @@ function Logo() {
           </video>
         </div>
 
-        <hr />
+
 
         <section id="project-description" className={styles['project-description']}>
           <div className={styles['description']}>

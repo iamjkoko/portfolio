@@ -38,7 +38,6 @@ function SaoPaulo(): React.JSX.Element {
           <img src={SaoPaulo1} alt="Sao Paulo" className={styles['project-img']} />
         </div>
 
-        <hr />
 
         <div className={styles['project-description']}>
           <div className={styles['description']}>

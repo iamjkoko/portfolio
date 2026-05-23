@@ -70,7 +70,7 @@ function Caveman() {
           <img className={styles['project-img']} src={CavemanMain} alt="Caveman" />
         </div>
 
-        <hr />
+
 
         <section id="project-description" className={styles['project-description']}>
           <div className={styles['description']}>

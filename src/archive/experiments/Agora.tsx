@@ -34,8 +34,6 @@ function Agora(): React.JSX.Element {
         Your browser does not support the video tag.
         </video>
         </div>
-
-        <hr />
     </section>
 
     <section id="project-description" className={styles['project-description']}>
