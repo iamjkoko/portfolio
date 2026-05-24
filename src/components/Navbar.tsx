@@ -149,7 +149,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
       <>
         {/* Pill top bar — mirrors desktop navbar aesthetic */}
         <motion.header
-          className="fixed inset-x-4 top-6 z-[10062] overflow-hidden rounded-4xl border border-black/10 bg-[#ffffff] shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+          className="fixed inset-x-4 top-4 z-[10062] overflow-hidden rounded-4xl border border-black/10 bg-[#ffffff] shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: showNavbar ? 1 : 0, y: showNavbar ? 0 : -8 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
@@ -319,7 +319,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
 
   return (
     <motion.header
-      className={`fixed inset-x-4 top-6 z-[10050] overflow-hidden rounded-4xl ${
+      className={`fixed inset-x-4 top-4 z-[10050] overflow-hidden rounded-4xl ${
         navbarTheme === 'dark'
           ? 'border border-white/20 text-white shadow-[0_4px_24px_rgba(0,0,0,0.2)]'
           : 'border border-black/10 text-black shadow-[0_4px_24px_rgba(0,0,0,0.06)]'

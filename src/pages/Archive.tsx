@@ -53,7 +53,7 @@ function Archive() {
         id="archive"
         className="w-full flex flex-col items-center bg-[#ffffff] pt-24 pb-20 max-[935px]:pt-25 max-[935px]:pb-10"
       >
-        <div className="w-full px-[30px] max-[935px]:px-[var(--page-padding-x-mobile)] mt-5">
+        <div className="w-full px-[30px] max-[935px]:px-[var(--page-padding-x-mobile)] mt-2 max-[935px]:mt-0">
           <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
             <div className="flex flex-wrap gap-2 max-[935px]:flex-nowrap max-[935px]:gap-1.5">
               <div
