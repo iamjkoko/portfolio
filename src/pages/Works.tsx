@@ -34,11 +34,14 @@ function Works() {
             </Link>
         </div>
         
-        {/* Placeholders */}
-        <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden">
+        <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[0.98]">
+            <Link to={ROUTES.WORKS.AGORA}>
+
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
-                <img className="block w-full h-full object-cover rounded-none" src={Placeholder} alt="" />
+                <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.AGORA_PREVIEW} type="video/mp4"/>Your browser does not support the video tag.</video>
             </div>
+
+            </Link>
         </div>
         <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">

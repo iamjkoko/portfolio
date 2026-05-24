@@ -4,6 +4,7 @@ export const ROUTES = {
   ABOUT: '/about',
   WORKS: {
     ROOT: '/works',
+    AGORA: '/works/agora',
     CAVEMAN: '/works/caveman',
     LOGO: '/works/logo',
   },
@@ -20,7 +21,6 @@ export const ROUTES = {
     },
     EXPERIMENTS: {
       ROOT: '/archive/experiments',
-      AGORA: '/archive/experiments/agora',
       DIGITALGARDEN: '/archive/experiments/digital-garden',
       ECHOINGNATURE: '/archive/experiments/echoing-nature',
       MACHINAANIMA: '/archive/experiments/machina-anima',

@@ -230,43 +230,45 @@ function Library() {
             );
           })}
         </div>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.ul
-            key={filter}
-            className="mt-8 grid grid-cols-3 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-10 sm:gap-3 list-none p-0 m-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={libraryFade}
-          >
-            {filteredItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  onClick={() => setSelected(item)}
-                  className="group w-full cursor-pointer border-0 bg-transparent p-0 text-left"
-                >
-                  <div className="border-0.5 border-[var(--color-border-gray)] rounded-[4px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
-                    <div
-                      className={
-                        item.category === 'music'
-                          ? 'w-full aspect-square overflow-hidden'
-                          : 'w-full aspect-[2/3] overflow-hidden'
-                      }
-                    >
-                      <img
-                        className="block h-full w-full object-cover rounded-none"
-                        src={item.coverImage}
-                        alt={item.title}
-                        draggable={false}
-                      />
+        <div className="mt-8 min-h-[61rem] md:min-h-[66rem] lg:min-h-[26rem]">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.ul
+              key={filter}
+              className="grid grid-cols-3 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-10 sm:gap-3 list-none p-0 m-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={libraryFade}
+            >
+              {filteredItems.map((item) => (
+                <li key={item.id}>
+                  <button
+                    type="button"
+                    onClick={() => setSelected(item)}
+                    className="group w-full cursor-pointer border-0 bg-transparent p-0 text-left"
+                  >
+                    <div className="border-0.5 border-[var(--color-border-gray)] rounded-[4px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
+                      <div
+                        className={
+                          item.category === 'music'
+                            ? 'w-full aspect-square overflow-hidden'
+                            : 'w-full aspect-[2/3] overflow-hidden'
+                        }
+                      >
+                        <img
+                          className="block h-full w-full object-cover rounded-none"
+                          src={item.coverImage}
+                          alt={item.title}
+                          draggable={false}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </button>
-              </li>
-            ))}
-          </motion.ul>
-        </AnimatePresence>
+                  </button>
+                </li>
+              ))}
+            </motion.ul>
+          </AnimatePresence>
+        </div>
         {modal}
       </div>
     </section>

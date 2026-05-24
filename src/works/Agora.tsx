@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
-import '../../global.css';
-import styles from '../../styles/works.module.css';
+import '../global.css';
+import styles from '../styles/works.module.css';
 
-import Footer from '../../components/Footer';
-import { VIDEO_URLS } from '../../constants/videos';
-import useProjectInfoStagger from '../../hooks/useProjectInfoStagger';
+import Footer from '../components/Footer';
+import { VIDEO_URLS } from '../constants/videos';
+import useProjectInfoStagger from '../hooks/useProjectInfoStagger';
 
-import AgoraLayout from '../../assets/images/archive/agora/agora-layout.webp';
+import AgoraLayout from '../assets/images/works/agora/agora-layout.webp';
 
 function Agora(): React.JSX.Element {
   const projectInfoRef = useRef<HTMLDivElement | null>(null);

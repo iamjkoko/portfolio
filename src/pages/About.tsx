@@ -27,6 +27,7 @@ const educationEntries: AboutSectionEntry[] = [
   },
 ];
 
+{/*
 const experienceEntries: AboutSectionEntry[] = [
   {
     role: '-',
@@ -35,6 +36,7 @@ const experienceEntries: AboutSectionEntry[] = [
     period: '-',
   },
 ];
+*/}
 
 function AboutInfoSection({
   title,
@@ -161,7 +163,7 @@ function About() {
     <section className="w-full bg-[var(--color-background)]">
       <div className="flex w-full max-w-[1440px] flex-col gap-25 mx-auto px-5 pt-20 pb-20 max-[935px]:gap-15 max-[935px]:px-[var(--page-padding-x-mobile)]">
         <AboutInfoSection title="EDUCATION" entries={educationEntries} />
-        <AboutInfoSection title="EXPERIENCE" entries={experienceEntries} />
+        {/*<AboutInfoSection title="EXPERIENCE" entries={experienceEntries} />*/}
       </div>
     </section>
     <Library />

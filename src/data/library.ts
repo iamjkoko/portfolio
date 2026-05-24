@@ -28,9 +28,7 @@ import music24kMagic from '../assets/images/library/music/24k-magic.webp';
 import music130Mood from '../assets/images/library/music/130-mood.webp';
 import musicFunkWaveBounces from '../assets/images/library/music/funk-wave-bounces.webp';
 import musicGetzGilberto from '../assets/images/library/music/getz-gilberto.webp';
-import musicGraduation from '../assets/images/library/music/graduation.webp';
 import musicHer from '../assets/images/library/music/her.webp';
-import musicSilkSonic from '../assets/images/library/music/silk-sonic.webp';
 import musicTimely from '../assets/images/library/music/timely.webp';
 
 import bookSteveJobs from '../assets/images/library/books/steve-jobs.webp';
@@ -236,16 +234,6 @@ export const libraryEntries: LibraryEntry[] = [
     review: '',
   },
   {
-    id: 'music-15',
-    title: 'Graduation',
-    author: 'Kanye West',
-    year: 2007,
-    category: 'music',
-    coverImage: musicGraduation,
-    rating: 4.5,
-    review: '',
-  },
-  {
     id: 'music-1',
     title: 'Blonde',
     author: 'Frank Ocean',
@@ -256,12 +244,12 @@ export const libraryEntries: LibraryEntry[] = [
     review: '',
   },
   {
-    id: 'music-14',
-    title: 'Getz/Gilberto',
-    author: 'Stan Getz, João Gilberto',
-    year: 1964,
+    id: 'music-4',
+    title: 'Rodeo',
+    author: 'Travis Scott',
+    year: 2015,
     category: 'music',
-    coverImage: musicGetzGilberto,
+    coverImage: musicRodeo,
     rating: 4.5,
     review: '',
   },
@@ -276,12 +264,12 @@ export const libraryEntries: LibraryEntry[] = [
     review: '',
   },
   {
-    id: 'music-4',
-    title: 'Rodeo',
-    author: 'Travis Scott',
-    year: 2015,
+    id: 'music-14',
+    title: 'Getz/Gilberto',
+    author: 'Stan Getz, João Gilberto',
+    year: 1964,
     category: 'music',
-    coverImage: musicRodeo,
+    coverImage: musicGetzGilberto,
     rating: 4.5,
     review: '',
   },
@@ -322,16 +310,6 @@ export const libraryEntries: LibraryEntry[] = [
     year: 1983,
     category: 'music',
     coverImage: musicTimely,
-    rating: 3.5,
-    review: '',
-  },
-  {
-    id: 'music-17',
-    title: 'Silk Sonic',
-    author: 'Bruno Mars, Anderson .Paak',
-    year: 2021,
-    category: 'music',
-    coverImage: musicSilkSonic,
     rating: 3.5,
     review: '',
   },

@@ -15,8 +15,8 @@ import Works from './pages/Works';
 
 import Archive from './pages/Archive';
 
-import { Caveman, Logo } from './works';
-import { Cheso, InfinityBox, Paintbox, Paperfold, SaoPaulo, LightPainting, Agora, EchoingNature, DigitalGarden, MachinaAnima, LucidLiquids } from './archive';
+import { Caveman, Logo, Agora } from './works';
+import { Cheso, InfinityBox, Paintbox, Paperfold, SaoPaulo, LightPainting, EchoingNature, DigitalGarden, MachinaAnima, LucidLiquids } from './archive';
 
 const dissolve = {
   duration: 0.5,
@@ -58,6 +58,7 @@ function AppRoutes() {
             
             <Route path={ROUTES.WORKS.CAVEMAN} element={<AnimatedPage><Caveman /></AnimatedPage>} />
             <Route path={ROUTES.WORKS.LOGO} element={<AnimatedPage><Logo /></AnimatedPage>} />
+            <Route path={ROUTES.WORKS.AGORA} element={<AnimatedPage><Agora /></AnimatedPage>} />
             
             {/* Archive listing – default to studio */}
             <Route path={ROUTES.ARCHIVE.ROOT} element={<Navigate to={ROUTES.ARCHIVE.STUDIO.ROOT} replace />} />
@@ -72,7 +73,6 @@ function AppRoutes() {
 
             {/* Archive Experiments */}
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} element={<AnimatedPage><Archive /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.EXPERIMENTS.AGORA} element={<AnimatedPage><Agora /></AnimatedPage>} />
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.DIGITALGARDEN} element={<AnimatedPage><DigitalGarden /></AnimatedPage>} />
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.ECHOINGNATURE} element={<AnimatedPage><EchoingNature /></AnimatedPage>} />
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.MACHINAANIMA} element={<AnimatedPage><MachinaAnima /></AnimatedPage>} />
