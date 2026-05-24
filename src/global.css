@@ -145,13 +145,33 @@ strong {
   }
 }
 
+@keyframes swipeLeftOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes swipeRightOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
 .swipe-left {
-  transform: translateX(-100%);
-  opacity: 0;
+  animation: swipeLeftOut 0.4s ease-in-out forwards;
 }
 .swipe-right {
-  transform: translateX(100%);
-  opacity: 0;
+  animation: swipeRightOut 0.4s ease-in-out forwards;
 }
 .swipe-in {
   animation: swipeIn 0.4s ease-in-out forwards;

@@ -11,24 +11,24 @@ interface GalleryProps {
   autoplayInterval?: number;
 }
 
+const SWIPE_DURATION_MS = 400;
+
 const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [animationClass, setAnimationClass] = useState("");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
-  const imageRef = useRef<HTMLImageElement>(null);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Touch handling
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const touchStartRef = useRef<number | null>(null);
+  const touchEndRef = useRef<number | null>(null);
   const minSwipeDistance = 50;
 
-  // Autoplay management
   const startAutoplay = () => {
     if (autoplayRef.current) clearInterval(autoplayRef.current);
     autoplayRef.current = setInterval(() => {
-      goNext();
+      navigate("next", { fromUser: false });
     }, autoplayInterval);
   };
 
@@ -52,67 +52,78 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
   };
 
   useEffect(() => {
-    if (isAutoplayActive) startAutoplay();
+    if (isAutoplayActive && !isTransitioning) startAutoplay();
     else stopAutoplay();
 
+    return () => stopAutoplay();
+  }, [isAutoplayActive, autoplayInterval, isTransitioning]);
+
+  useEffect(() => {
     return () => {
       stopAutoplay();
       if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
-  }, [isAutoplayActive, autoplayInterval]);
+  }, []);
 
-  useEffect(() => {
-    if (isAutoplayActive && !isTransitioning) startAutoplay();
-  }, [currentIndex]);
-
-  const navigate = (direction: 'prev' | 'next') => {
+  const navigate = (
+    direction: "prev" | "next",
+    { fromUser = true }: { fromUser?: boolean } = {}
+  ) => {
     if (isTransitioning) return;
 
-    pauseAutoplay();
+    stopAutoplay();
+    if (fromUser) pauseAutoplay();
     setIsTransitioning(true);
-    const imageElement = imageRef.current;
-    if (!imageElement) return;
 
     const isNext = direction === "next";
     const swipeOutClass = isNext ? "swipe-left" : "swipe-right";
     const swipeInClass = isNext ? "swipe-in" : "swipe-in-from-left";
 
-    imageElement.classList.add(swipeOutClass);
+    setAnimationClass(swipeOutClass);
 
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         isNext
-          ? prevIndex === images.length - 1 ? 0 : prevIndex + 1
-          : prevIndex === 0 ? images.length - 1 : prevIndex - 1
+          ? prevIndex === images.length - 1
+            ? 0
+            : prevIndex + 1
+          : prevIndex === 0
+            ? images.length - 1
+            : prevIndex - 1
       );
-
-      imageElement.classList.remove(swipeOutClass);
-      imageElement.classList.add(swipeInClass);
+      setAnimationClass(swipeInClass);
 
       setTimeout(() => {
-        imageElement.classList.remove(swipeInClass);
+        setAnimationClass("");
         setIsTransitioning(false);
-        resumeAutoplayDelayed();
-      }, 500);
-    }, 300);
+        if (fromUser) resumeAutoplayDelayed();
+      }, SWIPE_DURATION_MS);
+    }, SWIPE_DURATION_MS);
   };
 
   const goPrev = () => navigate("prev");
   const goNext = () => navigate("next");
 
-  // Touch handlers on container
   const onTouchStart = (e: React.TouchEvent) => {
     pauseAutoplay();
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
+    touchEndRef.current = null;
+    touchStartRef.current = e.targetTouches[0].clientX;
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    touchEndRef.current = e.targetTouches[0].clientX;
   };
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    const touchStart = touchStartRef.current;
+    const touchEnd = touchEndRef.current;
+
+    if (touchStart === null) return;
+
+    if (touchEnd === null) {
+      resumeAutoplayDelayed();
+      return;
+    }
 
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
@@ -129,7 +140,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      style={{ touchAction: "pan-y" }} // allow vertical scroll
+      style={{ touchAction: "pan-y" }}
     >
       <button
         onClick={goPrev}
@@ -141,10 +152,9 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
       </button>
 
       <img
-        ref={imageRef}
         src={images[currentIndex].src}
         alt={images[currentIndex].alt}
-        className="w-full max-w-[1280px] mx-auto overflow-hidden rounded-[8px] box-border object-cover transition-[transform,opacity] duration-[400ms] ease-in-out translate-x-0 max-[935px]:max-h-[400px] max-[935px]:order-1"
+        className={`w-full max-w-[1280px] mx-auto overflow-hidden rounded-[8px] box-border object-cover translate-x-0 max-[935px]:max-h-[400px] max-[935px]:order-1 ${animationClass}`}
       />
 
       <button
