@@ -1,1 +1,1 @@
-export const UNDER_RENOVATION = false;
+export const UNDER_RENOVATION = true;
