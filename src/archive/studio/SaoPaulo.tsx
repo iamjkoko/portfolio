@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
-import Footer from '../../components/Footer';
 import useProjectInfoStagger from '../../hooks/useProjectInfoStagger';
 
 import ImgCredit from '../../components/ImgCredit';
@@ -85,10 +84,6 @@ function SaoPaulo(): React.JSX.Element {
             <p>Wallenfeldt, Jeff. "favela". Encyclopedia Britannica, 17 Oct. 2025, https://www.britannica.com/topic/favela. Accessed 5 November 2025.</p>
         </div>
     </section>
-
-      <br />
-
-      <Footer theme="light" />
     </>
   );
 }

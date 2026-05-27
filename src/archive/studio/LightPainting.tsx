@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
-import Footer from '../../components/Footer';
 import useProjectInfoStagger from '../../hooks/useProjectInfoStagger';
 
 import LightPainting1 from '../../assets/images/archive/light-painting/light-painting-1.webp';
@@ -14,16 +13,8 @@ function LightPainting(): React.JSX.Element {
   const projectInfoRef = useRef<HTMLDivElement | null>(null);
   useProjectInfoStagger(projectInfoRef);
 
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-    return () => document.documentElement.classList.remove("dark");
-  }, []);
-
   return (
-    <div
-      data-navbar-theme="dark"
-      style={{ background: 'var(--color-background)', color: 'var(--color-text)' }}
-    >
+    <>
       <section id="project-main" className={styles['project-main']}>
         <div ref={projectInfoRef} className={styles['project-info']}>
           <div className={styles['project-basics']}>
@@ -68,11 +59,7 @@ function LightPainting(): React.JSX.Element {
           </figure>
         </div>
       </section>
-
-      <br />
-
-      <Footer theme="dark" />
-    </div>
+    </>
   );
 }
 

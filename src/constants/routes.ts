@@ -21,10 +21,6 @@ export const ROUTES = {
     },
     EXPERIMENTS: {
       ROOT: '/archive/experiments',
-      DIGITALGARDEN: '/archive/experiments/digital-garden',
-      ECHOINGNATURE: '/archive/experiments/echoing-nature',
-      MACHINAANIMA: '/archive/experiments/machina-anima',
-      LUCIDLIQUIDS: '/archive/experiments/lucid-liquids',
     },
   },
   PHOTOGRAPHY: 'https://filmbyko.cargo.site/',

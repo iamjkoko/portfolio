@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
-import Footer from '../../components/Footer';
 import useProjectInfoStagger from '../../hooks/useProjectInfoStagger';
 
 import ChesoFull from '../../assets/images/archive/cheso/cheso-full.webp';
@@ -42,10 +41,6 @@ function Cheso(): React.JSX.Element {
         </div>
         </div>
       </section>
-
-      <br />
-
-      <Footer theme="light" />
     </>
   );
 }

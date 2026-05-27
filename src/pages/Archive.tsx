@@ -12,8 +12,8 @@ import {
 import Footer from '../components/Footer';
 import Tooltip from '../components/Tooltip';
 
+// Studio is temporarily hidden — only experiments is exposed in the UI for now.
 const FILTERS: { value: ArchiveCategory; label: string }[] = [
-  { value: 'studio', label: 'STUDIO' },
   { value: 'experiments', label: 'EXPERIMENTS' },
 ];
 
@@ -22,10 +22,8 @@ const archiveFilterFade = {
   ease: [0.45, 0, 0.2, 1] as const,
 };
 
-function pathnameToFilter(pathname: string): 'all' | ArchiveCategory {
-  if (pathname === ROUTES.ARCHIVE.STUDIO.ROOT) return 'studio';
-  if (pathname === ROUTES.ARCHIVE.EXPERIMENTS.ROOT) return 'experiments';
-  return 'all';
+function pathnameToFilter(_pathname: string): ArchiveCategory {
+  return 'experiments';
 }
 
 function Archive() {
@@ -34,16 +32,12 @@ function Archive() {
 
   const filter = pathnameToFilter(location.pathname);
 
-  const setFilter = (value: ArchiveCategory) => {
-    if (value === 'studio') navigate(ROUTES.ARCHIVE.STUDIO.ROOT);
-    else navigate(ROUTES.ARCHIVE.EXPERIMENTS.ROOT);
+  const setFilter = (_value: ArchiveCategory) => {
+    navigate(ROUTES.ARCHIVE.EXPERIMENTS.ROOT);
   };
 
   const filteredItems = useMemo(
-    () =>
-      filter === 'all'
-        ? archiveEntries
-        : archiveEntries.filter((e) => e.category === filter),
+    () => archiveEntries.filter((e) => e.category === filter),
     [filter],
   );
 
@@ -106,32 +100,36 @@ function Archive() {
           >
             {filteredItems.map((item) => {
               const isStudio = item.category === 'studio';
+              const hasHref = Boolean(item.href) && !item.comingSoon;
 
-              const studioFrame = (
-                <div className="overflow-hidden">
-                  <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-[935px]:max-w-[750px] max-[935px]:max-h-[500px]">
-                    {item.media.type === 'image' ? (
-                      <img
-                        className="block w-full h-auto object-cover transition-transform duration-200 ease-in-out hover:scale-110"
-                        src={item.media.src}
-                        alt={item.media.alt}
-                        draggable={false}
-                      />
-                    ) : (
-                      <video
-                        className="block w-full h-full object-cover rounded-none"
-                        playsInline
-                        autoPlay
-                        loop
-                        muted
-                        preload="auto"
-                      >
-                        <source src={item.media.src} type="video/mp4" />
-                      </video>
-                    )}
-                  </div>
+              const studioMediaInner = (
+                <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-[935px]:max-w-[750px] max-[935px]:max-h-[500px]">
+                  {item.media.type === 'image' ? (
+                    <img
+                      className="block w-full h-auto object-cover transition-transform duration-200 ease-in-out hover:scale-110"
+                      src={item.media.src}
+                      alt={item.media.alt}
+                      draggable={false}
+                    />
+                  ) : (
+                    <video
+                      className="block w-full h-full object-cover rounded-none"
+                      playsInline
+                      autoPlay
+                      loop
+                      muted
+                      preload="auto"
+                    >
+                      <source src={item.media.src} type="video/mp4" />
+                    </video>
+                  )}
                 </div>
               );
+
+              const studioOuterClass = hasHref
+                ? 'overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[0.98]'
+                : 'overflow-hidden';
+              const studioFrame = <div className={studioOuterClass}>{studioMediaInner}</div>;
 
               const experimentsMedia = (
                 <>
@@ -157,10 +155,9 @@ function Archive() {
                 </>
               );
 
-              const experimentsOuterClass =
-                item.href && !item.comingSoon
-                  ? 'border-2 border-transparent rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[0.98]'
-                  : 'border-2 border-transparent rounded-[8px] overflow-hidden';
+              const experimentsOuterClass = hasHref
+                ? 'border-2 border-transparent rounded-[8px] overflow-hidden transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[0.98]'
+                : 'border-2 border-transparent rounded-[8px] overflow-hidden';
 
               const experimentsFrame = (
                 <div className={experimentsOuterClass}>
@@ -172,16 +169,15 @@ function Archive() {
 
               const frame = isStudio ? studioFrame : experimentsFrame;
 
-              const inner =
-                item.comingSoon ? (
-                  <Tooltip content="Coming soon">{frame}</Tooltip>
-                ) : (
-                  frame
-                );
+              const inner = item.comingSoon ? (
+                <Tooltip content="Coming soon">{frame}</Tooltip>
+              ) : (
+                frame
+              );
 
               return (
                 <li key={item.id}>
-                  {item.href ? (
+                  {hasHref && item.href ? (
                     <Link to={item.href} className="block no-underline text-inherit">
                       {inner}
                     </Link>

@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import '../../global.css';
 import styles from '../../styles/works.module.css';
 
-import Footer from '../../components/Footer';
 import useProjectInfoStagger from '../../hooks/useProjectInfoStagger';
 
 import Gallery from '../../components/Gallery';
@@ -44,10 +43,6 @@ function Paperfold(): React.JSX.Element {
           </div>
         </div>
       </section>
-
-      <br />
-      
-      <Footer theme="light" />
     </>
   );
 }

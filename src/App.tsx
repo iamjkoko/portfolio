@@ -16,7 +16,10 @@ import Works from './pages/Works';
 import Archive from './pages/Archive';
 
 import { Caveman, Logo, Agora } from './works';
-import { Cheso, InfinityBox, Paintbox, Paperfold, SaoPaulo, LightPainting, EchoingNature, DigitalGarden, MachinaAnima, LucidLiquids } from './archive';
+// Studio archive imports are temporarily disabled while the studio section is hidden.
+// To restore: uncomment the lines below (plus `Footer`) and the studio routes in <AppRoutes /> below.
+// import { Cheso, InfinityBox, Paintbox, Paperfold, SaoPaulo, LightPainting } from './archive';
+// import Footer from './components/Footer';
 
 const dissolve = {
   duration: 0.5,
@@ -37,7 +40,7 @@ function AnimatedPage({ children }: { children: ReactNode }) {
 }
 
 function archiveRouteKey(pathname: string) {
-  if (pathname === ROUTES.ARCHIVE.STUDIO.ROOT || pathname === ROUTES.ARCHIVE.EXPERIMENTS.ROOT) {
+  if (pathname === ROUTES.ARCHIVE.EXPERIMENTS.ROOT) {
     return ROUTES.ARCHIVE.ROOT;
   }
   return pathname;
@@ -60,23 +63,24 @@ function AppRoutes() {
             <Route path={ROUTES.WORKS.LOGO} element={<AnimatedPage><Logo /></AnimatedPage>} />
             <Route path={ROUTES.WORKS.AGORA} element={<AnimatedPage><Agora /></AnimatedPage>} />
             
-            {/* Archive listing – default to studio */}
-            <Route path={ROUTES.ARCHIVE.ROOT} element={<Navigate to={ROUTES.ARCHIVE.STUDIO.ROOT} replace />} />
-            {/* Archive Studio */}
-            <Route path={ROUTES.ARCHIVE.STUDIO.ROOT} element={<AnimatedPage><Archive /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.STUDIO.CHESO} element={<AnimatedPage><Cheso /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.STUDIO.INFINITYBOX} element={<AnimatedPage><InfinityBox /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.STUDIO.PAINTBOX} element={<AnimatedPage><Paintbox /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.STUDIO.PAPERFOLD} element={<AnimatedPage><Paperfold /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.STUDIO.SAOPAULO} element={<AnimatedPage><SaoPaulo /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.STUDIO.LIGHTPAINTING} element={<AnimatedPage><LightPainting /></AnimatedPage>} />
+            {/* Archive listing – studio is temporarily hidden; default to experiments */}
+            <Route path={ROUTES.ARCHIVE.ROOT} element={<Navigate to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} replace />} />
+            {/* Archive Studio is temporarily hidden — all studio routes redirect to experiments.
+                To restore, re-enable the imports at the top of this file and swap the catch-all
+                redirect below for the per-project routes:
+                  <Route path={ROUTES.ARCHIVE.STUDIO.ROOT} element={<AnimatedPage><Archive /></AnimatedPage>} />
+                  <Route path={ROUTES.ARCHIVE.STUDIO.CHESO} element={<AnimatedPage><Cheso /><Footer theme="light" /></AnimatedPage>} />
+                  <Route path={ROUTES.ARCHIVE.STUDIO.INFINITYBOX} element={<AnimatedPage><InfinityBox /><Footer theme="light" /></AnimatedPage>} />
+                  <Route path={ROUTES.ARCHIVE.STUDIO.PAINTBOX} element={<AnimatedPage><Paintbox /><Footer theme="light" /></AnimatedPage>} />
+                  <Route path={ROUTES.ARCHIVE.STUDIO.PAPERFOLD} element={<AnimatedPage><Paperfold /><Footer theme="light" /></AnimatedPage>} />
+                  <Route path={ROUTES.ARCHIVE.STUDIO.SAOPAULO} element={<AnimatedPage><SaoPaulo /><Footer theme="light" /></AnimatedPage>} />
+                  <Route path={ROUTES.ARCHIVE.STUDIO.LIGHTPAINTING} element={<AnimatedPage><LightPainting /><Footer theme="light" /></AnimatedPage>} />
+                Also restore the studio filter in src/pages/Archive.tsx. */}
+            <Route path="/archive/studio/*" element={<Navigate to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} replace />} />
 
-            {/* Archive Experiments */}
+            {/* Archive Experiments – every entry is coming-soon, so per-project routes redirect to listing */}
             <Route path={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} element={<AnimatedPage><Archive /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.EXPERIMENTS.DIGITALGARDEN} element={<AnimatedPage><DigitalGarden /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.EXPERIMENTS.ECHOINGNATURE} element={<AnimatedPage><EchoingNature /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.EXPERIMENTS.MACHINAANIMA} element={<AnimatedPage><MachinaAnima /></AnimatedPage>} />
-            <Route path={ROUTES.ARCHIVE.EXPERIMENTS.LUCIDLIQUIDS} element={<AnimatedPage><LucidLiquids /></AnimatedPage>} />
+            <Route path="/archive/experiments/*" element={<Navigate to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} replace />} />
 
             <Route path="*" element={
               <AnimatedPage>
