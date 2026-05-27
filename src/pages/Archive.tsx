@@ -9,6 +9,7 @@ import {
   archiveEntries,
   type ArchiveCategory,
 } from '../data/archive';
+import ArchiveVideo from '../components/ArchiveVideo';
 import Footer from '../components/Footer';
 import Tooltip from '../components/Tooltip';
 
@@ -113,16 +114,7 @@ function Archive() {
                       draggable={false}
                     />
                   ) : (
-                    <video
-                      className="block w-full h-full object-cover rounded-none"
-                      playsInline
-                      autoPlay
-                      loop
-                      muted
-                      preload="auto"
-                    >
-                      <source src={item.media.src} type="video/mp4" />
-                    </video>
+                    <ArchiveVideo src={item.media.src} />
                   )}
                 </div>
               );
@@ -142,16 +134,7 @@ function Archive() {
                       draggable={false}
                     />
                   ) : (
-                    <video
-                      className="block w-full h-full object-cover rounded-none"
-                      playsInline
-                      autoPlay
-                      loop
-                      muted
-                      preload="auto"
-                    >
-                      <source src={item.media.src} type="video/mp4" />
-                    </video>
+                    <ArchiveVideo src={item.media.src} />
                   )}
                 </>
               );

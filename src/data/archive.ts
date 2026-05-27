@@ -75,6 +75,7 @@ export const archiveEntries: ArchiveEntry[] = [
     category: 'experiments',
     title: 'Something About Us',
     href: null,
+    comingSoon: true,
     media: { type: 'video', src: VIDEO_URLS.SOMETHING_ABOUT_US },
   },
   {
@@ -82,6 +83,7 @@ export const archiveEntries: ArchiveEntry[] = [
     category: 'experiments',
     title: 'Image to Point Cloud',
     href: null,
+    comingSoon: true,
     media: { type: 'video', src: VIDEO_URLS.IMG_TO_PTCLOUD },
   },
   {
@@ -105,6 +107,7 @@ export const archiveEntries: ArchiveEntry[] = [
     category: 'experiments',
     title: 'Wormhole',
     href: null,
+    comingSoon: true,
     media: { type: 'video', src: VIDEO_URLS.WORMHOLE },
   },
   {
