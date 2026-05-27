@@ -188,8 +188,10 @@ strong {
   --color-background: #ffffff;
   --color-text: black;
   --color-border-gray: rgb(189, 189, 189);
+
   --color-keyword-text: rgb(113, 113, 113);
   --color-keyword-bg: rgb(236, 236, 236);
+  
   --color-text-muted: rgb(194, 194, 194);
   --color-figcaption: black;
   /* Horizontal inset for main content at ≤935px (matches Navbar / project pages) */
@@ -200,8 +202,10 @@ strong {
   --color-background: black;
   --color-text: white;
   --color-border-gray: rgb(189, 189, 189);
+
   --color-keyword-text: rgb(236, 236, 236);
   --color-keyword-bg: rgb(113, 113, 113);
+
   --color-text-muted: rgb(194, 194, 194);
   --color-figcaption: white;
 }

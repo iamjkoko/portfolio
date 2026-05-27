@@ -42,10 +42,11 @@ function Archive() {
   );
 
   return (
-    <>
+    <div className="dark bg-[var(--color-background)]">
       <section
         id="archive"
-        className="w-full flex flex-col items-center bg-[#ffffff] pt-24 pb-20 max-[935px]:pt-25 max-[935px]:pb-10"
+        data-navbar-theme="dark"
+        className="w-full flex flex-col items-center bg-[var(--color-background)] pt-24 pb-20 max-[935px]:pt-25 max-[935px]:pb-10"
       >
         <div className="w-full px-[30px] max-[935px]:px-[var(--page-padding-x-mobile)] mt-2 max-[935px]:mt-0">
           <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
@@ -190,8 +191,8 @@ function Archive() {
           </motion.ul>
         </AnimatePresence>
       </section>
-      <Footer theme="light" />
-    </>
+      <Footer theme="dark" />
+    </div>
   );
 }
 

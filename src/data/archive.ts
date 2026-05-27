@@ -7,7 +7,7 @@ import Paintbox from '../assets/images/archive/paintbox/paintbox.webp';
 import Paperfold from '../assets/images/archive/paperfold/paperfold.webp';
 import SaoPaulo from '../assets/images/archive/sao-paulo/saopaulo.webp';
 import LightPainting from '../assets/images/archive/light-painting/light-painting.webp';
-import Placeholder from '../assets/images/background/placeholder-lt.png';
+import Placeholder from '../assets/images/background/placeholder-dk.png';
 
 export type ArchiveCategory = 'studio' | 'experiments';
 
@@ -25,6 +25,7 @@ export type ArchiveEntry = {
 };
 
 export const archiveEntries: ArchiveEntry[] = [
+  // Studio
   {
     id: 'infinity-box',
     category: 'studio',
@@ -67,13 +68,29 @@ export const archiveEntries: ArchiveEntry[] = [
     href: ROUTES.ARCHIVE.STUDIO.LIGHTPAINTING,
     media: { type: 'image', src: LightPainting, alt: 'Light Painting' },
   },
+
+  // Experiments
   {
-    id: 'digital-garden',
+    id: 'smth-abt-us',
     category: 'experiments',
-    title: 'Digital Garden',
+    title: 'Something About Us',
+    href: null,
+    media: { type: 'video', src: VIDEO_URLS.SOMETHING_ABOUT_US },
+  },
+  {
+    id: 'img-to-ptcloud',
+    category: 'experiments',
+    title: 'Image to Point Cloud',
+    href: null,
+    media: { type: 'video', src: VIDEO_URLS.IMG_TO_PTCLOUD },
+  },
+  {
+    id: 'fluid-ticks',
+    category: 'experiments',
+    title: 'Fluid Ticks',
     href: null,
     comingSoon: true,
-    media: { type: 'video', src: VIDEO_URLS.DIGITAL_GARDEN },
+    media: { type: 'video', src: VIDEO_URLS.FLUID_TICKS },
   },
   {
     id: 'echoing-nature',
@@ -84,25 +101,11 @@ export const archiveEntries: ArchiveEntry[] = [
     media: { type: 'video', src: VIDEO_URLS.ECHOING_NATURE },
   },
   {
-    id: 'placeholder-1',
+    id: 'wormhole',
     category: 'experiments',
-    title: '',
+    title: 'Wormhole',
     href: null,
-    media: { type: 'image', src: Placeholder, alt: '' },
-  },
-  {
-    id: 'placeholder-2',
-    category: 'experiments',
-    title: '',
-    href: null,
-    media: { type: 'image', src: Placeholder, alt: '' },
-  },
-  {
-    id: 'placeholder-3',
-    category: 'experiments',
-    title: '',
-    href: null,
-    media: { type: 'image', src: Placeholder, alt: '' },
+    media: { type: 'video', src: VIDEO_URLS.WORMHOLE },
   },
   {
     id: 'placeholder-4',
