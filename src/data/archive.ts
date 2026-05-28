@@ -7,7 +7,10 @@ import Paintbox from '../assets/images/archive/paintbox/paintbox.webp';
 import Paperfold from '../assets/images/archive/paperfold/paperfold.webp';
 import SaoPaulo from '../assets/images/archive/sao-paulo/saopaulo.webp';
 import LightPainting from '../assets/images/archive/light-painting/light-painting.webp';
+
+{/*
 import Placeholder from '../assets/images/background/placeholder-dk.png';
+*/}
 
 export type ArchiveCategory = 'studio' | 'experiments';
 
@@ -109,12 +112,5 @@ export const archiveEntries: ArchiveEntry[] = [
     href: null,
     comingSoon: true,
     media: { type: 'video', src: VIDEO_URLS.WORMHOLE },
-  },
-  {
-    id: 'placeholder-4',
-    category: 'experiments',
-    title: '',
-    href: null,
-    media: { type: 'image', src: Placeholder, alt: '' },
   },
 ];

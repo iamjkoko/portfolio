@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import { VIDEO_URLS } from '../constants/videos';
 
+{/*
 import Placeholder from '../assets/images/background/placeholder-lt.png';
+*/}
+
 import Footer from '../components/Footer';
 
 import Caveman from '../assets/images/works/caveman/caveman.webp';
@@ -43,12 +46,17 @@ function Works() {
 
             </Link>
         </div>
+
+        {/*
         <div className="border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden">
             <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-[935px]:max-w-[750px] max-[935px]:max-h-[500px] max-[935px]:w-full max-[935px]:h-auto">
                 <img className="block w-full h-full object-cover rounded-none" src={Placeholder} alt="" />
             </div>
         </div>
+        */}
+
         </div>
+
         </section>
 
         <Footer theme='light' />
