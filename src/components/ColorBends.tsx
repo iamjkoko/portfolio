@@ -24,6 +24,7 @@ const createPointerVector = (x = 0, y = 0): PointerVector => ({
 });
 
 const POINTER_SMOOTH = 8;
+const MOBILE_MAX_WIDTH_PX = 935;
 
 const frag = `
 uniform vec2 uCanvas;
@@ -164,6 +165,14 @@ export default function ColorBends({
       });
       materialRef.current = material;
 
+      const isMobile = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH_PX}px)`).matches;
+      if (isMobile) {
+        material.uniforms.uMouseInfluence.value = 0;
+        material.uniforms.uParallax.value = 0;
+        pointerTargetRef.current.set(0, 0);
+        pointerCurrentRef.current.set(0, 0);
+      }
+
       const mesh = new THREE.Mesh(geometry, material);
       scene.add(mesh);
 
@@ -257,6 +266,20 @@ export default function ColorBends({
     const container = containerRef.current;
     if (!container) return;
 
+    const mobileMq = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH_PX}px)`);
+
+    const resetPointer = () => {
+      pointerTargetRef.current.set(0, 0);
+      pointerCurrentRef.current.set(0, 0);
+    };
+
+    const syncPointerInfluence = (enabled: boolean) => {
+      const material = materialRef.current;
+      if (!material) return;
+      material.uniforms.uMouseInfluence.value = enabled ? mouseInfluence : 0;
+      material.uniforms.uParallax.value = enabled ? parallax : 0;
+    };
+
     const handlePointerMove = (e: PointerEvent) => {
       const rect = container.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / (rect.width || 1)) * 2 - 1;
@@ -264,11 +287,25 @@ export default function ColorBends({
       pointerTargetRef.current.set(x, y);
     };
 
-    container.addEventListener('pointermove', handlePointerMove);
+    const syncPointerListener = () => {
+      const enabled = !mobileMq.matches;
+      syncPointerInfluence(enabled);
+      if (enabled) {
+        container.addEventListener('pointermove', handlePointerMove);
+      } else {
+        container.removeEventListener('pointermove', handlePointerMove);
+        resetPointer();
+      }
+    };
+
+    syncPointerListener();
+    mobileMq.addEventListener('change', syncPointerListener);
+
     return () => {
+      mobileMq.removeEventListener('change', syncPointerListener);
       container.removeEventListener('pointermove', handlePointerMove);
     };
-  }, []);
+  }, [mouseInfluence, parallax]);
 
   return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />;
 }
