@@ -123,6 +123,7 @@ hr {
     flex-wrap: wrap;
     gap: 0.75rem;
     padding: 3rem 0;
+    cursor: default;
 }
 
 .project-keywords span {
