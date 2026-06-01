@@ -8,24 +8,10 @@ import LinkedinIcon from '../assets/icons/linkedin-black.webp';
 import ArenaIcon from '../assets/icons/are.na-black.webp';
 import { useLenis } from './LenisProvider';
 
-const LOGO_LIGHT = '/favicon-black.svg';
-const LOGO_DARK = '/favicon-white.svg';
+const LOGO = '/favicon-black.svg';
 
-/** Regions that intersect the viewport use this attribute; Navbar is the only reader (chrome vs page `html.dark` / CSS vars). */
-const DARK_SECTION_SELECTOR = '[data-navbar-theme="dark"]';
-
-/** Fade when switching glass (dark) ↔ solid white (default). Tweak `durationMs`, `delayMs`, and `easing` here. */
-const NAVBAR_THEME_TRANSITION = {
-  durationMs: 400,
-  delayMs: 0,
-  easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
-} as const;
-
-const linkBase =
-  'no-underline text-base font-medium whitespace-nowrap py-2 px-2 transition-[color_0.3s_ease]';
-
-const linkClassDefault = `${linkBase} text-black hover:text-[rgb(140,140,140)]`;
-const linkClassDark = `${linkBase} text-white hover:text-white/70`;
+const linkClass =
+  'no-underline text-base font-medium whitespace-nowrap py-2 px-2 transition-[color_0.3s_ease] text-black hover:text-[rgb(140,140,140)]';
 
 interface NavbarProps {
   showNavbar?: boolean;
@@ -36,14 +22,10 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollHidden, setScrollHidden] = useState(false);
   const [logoHovered, setLogoHovered] = useState(false);
-  /** `'dark'` = light text/logo for contrast over dark hero regions; `'default'` = black links on light sections. */
-  const [navbarTheme, setNavbarTheme] = useState<'default' | 'dark'>('default');
 
   const lenis = useLenis();
   const location = useLocation();
   const lastScrollY = useRef(0);
-  /** Bumped after `route-exit-complete` so theme observer re-runs once the next page is in the DOM (AnimatePresence mode="wait" delays mount vs. pathname updates). */
-  const [routeEnterGeneration, setRouteEnterGeneration] = useState(0);
 
   // Check if mobile on mount and resize
   useEffect(() => {
@@ -63,49 +45,6 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
   useEffect(() => {
     setScrollHidden(false);
   }, [location.pathname]);
-
-  useEffect(() => {
-    const onRouteEnter = () => {
-      requestAnimationFrame(() => setRouteEnterGeneration((g) => g + 1));
-    };
-    window.addEventListener('route-exit-complete', onRouteEnter);
-    return () => window.removeEventListener('route-exit-complete', onRouteEnter);
-  }, []);
-
-  useEffect(() => {
-    if (isMobile) {
-      setNavbarTheme('default');
-      return;
-    }
-
-    const nodes = document.querySelectorAll(DARK_SECTION_SELECTOR);
-    if (nodes.length === 0) {
-      setNavbarTheme('default');
-      return;
-    }
-
-    const visibility = new Map<Element, boolean>();
-    nodes.forEach((el) => visibility.set(el, false));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          visibility.set(entry.target, entry.isIntersecting);
-        }
-        const anyIntersecting = Array.from(visibility.values()).some(Boolean);
-        setNavbarTheme(anyIntersecting ? 'dark' : 'default');
-      },
-      {
-        root: null,
-        rootMargin: '-80px 0px 0px 0px',
-        threshold: [0, 0.05, 0.1]
-      }
-    );
-
-    nodes.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, [location.pathname, isMobile, routeEnterGeneration]);
 
   useEffect(() => {
     if (!lenis || isMobile) return;
@@ -163,7 +102,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
               className="flex size-[44px] shrink-0 items-center justify-center"
               aria-label="Home"
             >
-              <img src={LOGO_LIGHT} alt="" aria-hidden className="h-[30px] w-[30px]" />
+              <img src={LOGO} alt="" aria-hidden className="h-[30px] w-[30px]" />
             </Link>
 
             {/* Menu toggle */}
@@ -305,25 +244,9 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
     );
   }
 
-  const linkClass = navbarTheme === 'dark' ? linkClassDark : linkClassDefault;
-
-  const themeTransition = `${NAVBAR_THEME_TRANSITION.durationMs}ms ${NAVBAR_THEME_TRANSITION.easing} ${NAVBAR_THEME_TRANSITION.delayMs}ms`;
-  const navbarThemeStyleTransition = [
-    `background ${themeTransition}`,
-    `backdrop-filter ${themeTransition}`,
-    `-webkit-backdrop-filter ${themeTransition}`,
-    `border-color ${themeTransition}`,
-    `box-shadow ${themeTransition}`,
-    `color ${themeTransition}`
-  ].join(', ');
-
   return (
     <motion.header
-      className={`fixed inset-x-4 top-4 z-[10050] overflow-hidden rounded-4xl ${
-        navbarTheme === 'dark'
-          ? 'border border-white/20 text-white shadow-[0_4px_24px_rgba(0,0,0,0.2)]'
-          : 'border border-black/10 text-black shadow-[0_4px_24px_rgba(0,0,0,0.06)]'
-      }`}
+      className="fixed inset-x-4 top-4 z-[10050] overflow-hidden rounded-4xl border border-black/10 bg-[#ffffff] text-black shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
       initial={false}
       animate={{
         y: scrollHidden ? 'calc(-100% - 1.5rem)' : '0%',
@@ -333,31 +256,19 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
         y: { duration: 0.35, ease: [0.32, 0.72, 0, 1] },
         opacity: { duration: 0.8, ease: 'easeOut', delay: showNavbar ? 0.2 : 0 }
       }}
-      style={{
-        pointerEvents: showNavbar ? 'auto' : 'none',
-        transition: navbarThemeStyleTransition,
-        ...(navbarTheme === 'dark'
-          ? {
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)'
-            }
-          : {
-              background: '#ffffff',
-              backdropFilter: 'none',
-              WebkitBackdropFilter: 'none'
-            })
-      }}
+      style={{ pointerEvents: showNavbar ? 'auto' : 'none' }}
     >
       <nav className="flex h-[60px] items-center justify-between pl-6 pr-8">
         {/* Logo — left side */}
-        <span
-          className="flex size-[50px] shrink-0 cursor-default items-center justify-center"
+        <Link
+          to={ROUTES.HOME}
+          aria-label="Home"
+          className="flex size-[50px] shrink-0 items-center justify-center no-underline"
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
           <motion.img
-            src={navbarTheme === 'dark' ? LOGO_DARK : LOGO_LIGHT}
+            src={LOGO}
             alt=""
             aria-hidden
             className="h-[35px] w-[35px]"
@@ -369,7 +280,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
               ease: 'easeInOut'
             }}
           />
-        </span>
+        </Link>
 
         {/* Nav links — right side */}
         <div className="flex items-center">
@@ -382,7 +293,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
           <Link to={ROUTES.WORKS.ROOT} className={linkClass}>
             WORKS
           </Link>
-          <Link to={ROUTES.ARCHIVE.ROOT} className={linkClass}>
+          <Link to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} className={linkClass}>
             ARCHIVE
           </Link>
         </div>

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -8,10 +8,11 @@ import { ROUTES } from '../constants/routes';
 import {
   archiveEntries,
   type ArchiveCategory,
+  type ArchiveEntry,
 } from '../data/archive';
+import ArchiveModal from '../components/ArchiveModal';
 import ArchiveVideo from '../components/ArchiveVideo';
 import Footer from '../components/Footer';
-import Tooltip from '../components/Tooltip';
 
 // Studio is temporarily hidden — only experiments is exposed in the UI for now.
 const FILTERS: { value: ArchiveCategory; label: string }[] = [
@@ -30,6 +31,7 @@ function pathnameToFilter(_pathname: string): ArchiveCategory {
 function Archive() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [selected, setSelected] = useState<ArchiveEntry | null>(null);
 
   const filter = pathnameToFilter(location.pathname);
 
@@ -43,10 +45,9 @@ function Archive() {
   );
 
   return (
-    <div className="dark bg-[var(--color-background)]">
+    <div className="bg-[var(--color-background)]">
       <section
         id="archive"
-        data-navbar-theme="dark"
         className="w-full flex flex-col items-center bg-[var(--color-background)] pt-24 pb-20 max-[935px]:pt-25 max-[935px]:pb-10"
       >
         <div className="w-full px-[30px] max-[935px]:px-[var(--page-padding-x-mobile)] mt-2 max-[935px]:mt-0">
@@ -153,28 +154,32 @@ function Archive() {
 
               const frame = isStudio ? studioFrame : experimentsFrame;
 
-              const inner = item.comingSoon ? (
-                <Tooltip content="Coming soon">{frame}</Tooltip>
-              ) : (
-                frame
-              );
-
               return (
                 <li key={item.id}>
-                  {hasHref && item.href ? (
+                  {isStudio && hasHref && item.href ? (
                     <Link to={item.href} className="block no-underline text-inherit">
-                      {inner}
+                      {frame}
                     </Link>
+                  ) : isStudio ? (
+                    frame
                   ) : (
-                    inner
+                    <button
+                      type="button"
+                      onClick={() => setSelected(item)}
+                      aria-label={`View ${item.title}`}
+                      className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left"
+                    >
+                      {frame}
+                    </button>
                   )}
                 </li>
               );
             })}
           </motion.ul>
         </AnimatePresence>
+        <ArchiveModal entry={selected} onClose={() => setSelected(null)} />
       </section>
-      <Footer theme="dark" />
+      <Footer theme="light" />
     </div>
   );
 }

@@ -24,6 +24,9 @@ export type ArchiveEntry = {
   title: string;
   href: string | null;
   comingSoon?: boolean;
+  year?: string;
+  description?: string;
+  keywords?: string[];
   media: ArchiveMedia;
 };
 
@@ -79,6 +82,10 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Something About Us',
     href: null,
     comingSoon: true,
+    year: '2024',
+    keywords: ['GENERATIVE', 'MOTION', 'AUDIO'],
+    description:
+      'A generative motion study exploring rhythm and repetition through abstract visual forms synced to ambient sound.',
     media: { type: 'video', src: VIDEO_URLS.SOMETHING_ABOUT_US },
   },
   {
@@ -87,6 +94,10 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Image to Point Cloud',
     href: null,
     comingSoon: true,
+    year: '2024',
+    keywords: ['POINT CLOUD', 'DEPTH', '3D'],
+    description:
+      'Converts flat images into spatial point clouds, revealing depth and structure through particle-based rendering.',
     media: { type: 'video', src: VIDEO_URLS.IMG_TO_PTCLOUD },
   },
   {
@@ -95,6 +106,10 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Fluid Ticks',
     href: null,
     comingSoon: true,
+    year: '2024',
+    keywords: ['FLUID SIM', 'PARTICLES', 'REAL-TIME'],
+    description:
+      'Real-time fluid simulation driven by discrete tick events, producing organic motion from minimal input.',
     media: { type: 'video', src: VIDEO_URLS.FLUID_TICKS },
   },
   {
@@ -103,6 +118,10 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Echoing Nature',
     href: null,
     comingSoon: true,
+    year: '2024',
+    keywords: ['NATURE', 'SOUND', 'GENERATIVE'],
+    description:
+      'Generative visuals that respond to natural soundscapes, translating environmental audio into flowing organic forms.',
     media: { type: 'video', src: VIDEO_URLS.ECHOING_NATURE },
   },
   {
@@ -111,6 +130,10 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Wormhole',
     href: null,
     comingSoon: true,
+    year: '2024',
+    keywords: ['SHADER', 'SPACE', 'DISTORTION'],
+    description:
+      'A shader experiment simulating gravitational lensing and spatial distortion through a traversable wormhole.',
     media: { type: 'video', src: VIDEO_URLS.WORMHOLE },
   },
 ];

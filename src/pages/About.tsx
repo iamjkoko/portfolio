@@ -2,7 +2,10 @@ import { useEffect, useRef } from 'react';
 import '../global.css';
 
 import Footer from '../components/Footer';
+
+{/*
 import Library from '../components/Library';
+*/}
 
 import Profile from '/profile-test.webp';
 import InstagramIcon from '../assets/icons/instagram-black.webp';
@@ -166,7 +169,10 @@ function About() {
         {/*<AboutInfoSection title="EXPERIENCE" entries={experienceEntries} />*/}
       </div>
     </section>
+    {/*
+    Library is temporarily hidden
     <Library />
+    */}
     <Footer theme="light" />
     </>
   );
