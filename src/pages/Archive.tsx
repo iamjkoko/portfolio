@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import '../global.css';
 
+import { ARCHIVE_MODAL_ENABLED } from '../constants/renovation';
 import { ROUTES } from '../constants/routes';
 import {
   archiveEntries,
@@ -165,9 +166,15 @@ function Archive() {
                   ) : (
                     <button
                       type="button"
-                      onClick={() => setSelected(item)}
-                      aria-label={`View ${item.title}`}
-                      className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left"
+                      onClick={
+                        ARCHIVE_MODAL_ENABLED
+                          ? () => setSelected(item)
+                          : undefined
+                      }
+                      aria-label={
+                        ARCHIVE_MODAL_ENABLED ? `View ${item.title}` : undefined
+                      }
+                      className={`block w-full border-0 bg-transparent p-0 text-left ${ARCHIVE_MODAL_ENABLED ? 'cursor-pointer' : 'cursor-default'}`}
                     >
                       {frame}
                     </button>
@@ -177,7 +184,9 @@ function Archive() {
             })}
           </motion.ul>
         </AnimatePresence>
-        <ArchiveModal entry={selected} onClose={() => setSelected(null)} />
+        {ARCHIVE_MODAL_ENABLED ? (
+          <ArchiveModal entry={selected} onClose={() => setSelected(null)} />
+        ) : null}
       </section>
       <Footer theme="light" />
     </div>

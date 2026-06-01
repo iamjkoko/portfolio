@@ -127,7 +127,7 @@ const Footer = ({ theme }: FooterProps) => {
             Local time: {localTime}
           </p>
           <p className="text-xs opacity-80 pt-0.5">
-            Last updated: April 2026
+            Last updated: June 2026
           </p>
         </div>
       </div>

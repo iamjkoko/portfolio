@@ -10,8 +10,19 @@ import { useLenis } from './LenisProvider';
 
 const LOGO = '/favicon-black.svg';
 
-const linkClass =
-  'no-underline text-base font-medium whitespace-nowrap py-2 px-2 transition-[color_0.3s_ease] text-black hover:text-[rgb(140,140,140)]';
+const desktopLinks = [
+  { label: 'WORKS', to: ROUTES.WORKS.ROOT },
+  { label: 'ABOUT', to: ROUTES.ABOUT },
+  { label: 'ARCHIVE', to: ROUTES.ARCHIVE.EXPERIMENTS.ROOT }
+] as const;
+
+function isNavActive(pathname: string, to: string): boolean {
+  if (to === ROUTES.HOME) return pathname === ROUTES.HOME;
+  if (to === ROUTES.ABOUT) return pathname === ROUTES.ABOUT;
+  if (to === ROUTES.WORKS.ROOT) return pathname.startsWith(ROUTES.WORKS.ROOT);
+  if (to.startsWith('/archive')) return pathname.startsWith('/archive');
+  return pathname === to;
+}
 
 interface NavbarProps {
   showNavbar?: boolean;
@@ -79,8 +90,8 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
   if (isMobile) {
     const mobileLinks: Array<{ label: string; to: string; index: string }> = [
       { label: 'Home', to: ROUTES.HOME, index: '01' },
-      { label: 'About', to: ROUTES.ABOUT, index: '02' },
-      { label: 'Works', to: ROUTES.WORKS.ROOT, index: '03' },
+      { label: 'Works', to: ROUTES.WORKS.ROOT, index: '02' },
+      { label: 'About', to: ROUTES.ABOUT, index: '03' },
       { label: 'Archive', to: ROUTES.ARCHIVE.ROOT, index: '04' }
     ];
 
@@ -149,38 +160,49 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
               <nav className="flex h-full w-full flex-col px-[var(--page-padding-x-mobile)] pb-8 pt-[calc(6rem+env(safe-area-inset-top))]">
                 {/* Primary nav list */}
                 <ul className="flex flex-col">
-                  {mobileLinks.map((item, i) => (
-                    <motion.li
-                      key={item.to}
-                      initial={{ opacity: 0, y: 24 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 12 }}
-                      transition={{
-                        delay: 0.12 + i * 0.06,
-                        duration: 0.45,
-                        ease: [0.32, 0.72, 0, 1]
-                      }}
-                    >
-                      <Link
-                        to={item.to}
-                        onClick={closeMobileMenu}
-                        className="group flex items-baseline gap-4 py-5 text-black no-underline"
+                  {mobileLinks.map((item, i) => {
+                    const isActive = isNavActive(location.pathname, item.to);
+
+                    return (
+                      <motion.li
+                        key={item.to}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 12 }}
+                        transition={{
+                          delay: 0.12 + i * 0.06,
+                          duration: 0.45,
+                          ease: [0.32, 0.72, 0, 1]
+                        }}
                       >
-                        <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-black/40">
-                          {item.index}
-                        </span>
-                        <span
-                          className="text-[3rem] leading-[0.95] tracking-[-0.01em] max-[360px]:text-[2.6rem]"
-                          style={{
-                            fontFamily: "var(--font-family-boska)",
-                            fontVariationSettings: "'wght' 500"
-                          }}
+                        <Link
+                          to={item.to}
+                          onClick={closeMobileMenu}
+                          className={`group flex items-baseline gap-4 py-5 text-black no-underline ${
+                            isActive ? 'cursor-default' : 'cursor-pointer'
+                          }`}
+                          aria-current={isActive ? 'page' : undefined}
                         >
-                          {item.label}
-                        </span>
-                      </Link>
-                    </motion.li>
-                  ))}
+                          <span
+                            className={`text-[0.7rem] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${
+                              isActive ? 'text-black' : 'text-black/40'
+                            }`}
+                          >
+                            {item.index}
+                          </span>
+                          <span
+                            className="text-[3rem] leading-[0.95] tracking-[-0.01em] max-[360px]:text-[2.6rem]"
+                            style={{
+                              fontFamily: 'var(--font-family-boska)',
+                              fontVariationSettings: isActive ? "'wght' 800" : "'wght' 500"
+                            }}
+                          >
+                            {item.label}
+                          </span>
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
                 </ul>
 
                 {/* Footer row */}
@@ -284,18 +306,25 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
 
         {/* Nav links — right side */}
         <div className="flex items-center">
-          <Link to={ROUTES.HOME} className={linkClass}>
-            HOME
-          </Link>
-          <Link to={ROUTES.ABOUT} className={linkClass}>
-            ABOUT
-          </Link>
-          <Link to={ROUTES.WORKS.ROOT} className={linkClass}>
-            WORKS
-          </Link>
-          <Link to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} className={linkClass}>
-            ARCHIVE
-          </Link>
+          {desktopLinks.map(({ label, to }) => {
+            const isActive = isNavActive(location.pathname, to);
+
+            return (
+              <Link
+                key={to}
+                to={to}
+                aria-current={isActive ? 'page' : undefined}
+                className={`inline-flex no-underline whitespace-nowrap py-2 px-4 text-base text-black transition-[color_0.3s_ease] ${
+                  isActive
+                    ? 'cursor-default'
+                    : 'cursor-pointer hover:text-[rgb(140,140,140)]'
+                }`}
+                style={{ fontVariationSettings: isActive ? "'wght' 600" : "'wght' 500" }}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </div>
       </nav>
     </motion.header>
