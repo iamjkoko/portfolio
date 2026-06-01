@@ -164,7 +164,7 @@ function About() {
         </div>
     </section>
     <section className="w-full bg-[var(--color-background)]">
-      <div className="flex w-full max-w-[1440px] flex-col gap-25 mx-auto px-5 pt-20 pb-20 max-[935px]:gap-15 max-[935px]:px-[var(--page-padding-x-mobile)]">
+      <div className="flex w-full max-w-[1440px] flex-col gap-25 mx-auto px-5 pt-5 pb-40 max-[935px]:gap-15 max-[935px]:px-[var(--page-padding-x-mobile)] max-[935px]:pt-10 max-[935px]:pb-20">
         <AboutInfoSection title="EDUCATION" entries={educationEntries} />
         {/*<AboutInfoSection title="EXPERIENCE" entries={experienceEntries} />*/}
       </div>
