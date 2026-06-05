@@ -11,4 +11,5 @@ export const VIDEO_URLS = {
   SOMETHING_ABOUT_US: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1779863062/smth-us-tb_t8zppv.mp4',
   IMG_TO_PTCLOUD: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1779863061/img-ptcloud-tb_adclwm.mp4',
   WORMHOLE: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1779863062/wormhole-tb_xktz5h.mp4',
+  CHAOTIC_TILES: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1780639682/ct-tiles_wxsfx7.mp4'
 } as const;

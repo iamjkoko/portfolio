@@ -77,12 +77,24 @@ export const archiveEntries: ArchiveEntry[] = [
 
   // Experiments
   {
+    id: 'chaotic-tiles',
+    category: 'experiments',
+    title: 'Chaotic Tiles',
+    href: null,
+    comingSoon: true,
+    year: '2026',
+    keywords: ['SHADER', 'TILES', 'CHAOS'],
+    description:
+      'A shader experiment creating a chaotic tile pattern with dynamic noise and movement.',
+    media: { type: 'video', src: VIDEO_URLS.CHAOTIC_TILES },
+  },
+  {
     id: 'smth-abt-us',
     category: 'experiments',
     title: 'Something About Us',
     href: null,
     comingSoon: true,
-    year: '2024',
+    year: '2026',
     keywords: ['GENERATIVE', 'MOTION', 'AUDIO'],
     description:
       'A generative motion study exploring rhythm and repetition through abstract visual forms synced to ambient sound.',
@@ -94,7 +106,7 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Image to Point Cloud',
     href: null,
     comingSoon: true,
-    year: '2024',
+    year: '2026',
     keywords: ['POINT CLOUD', 'DEPTH', '3D'],
     description:
       'Converts flat images into spatial point clouds, revealing depth and structure through particle-based rendering.',
@@ -106,7 +118,7 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Fluid Ticks',
     href: null,
     comingSoon: true,
-    year: '2024',
+    year: '2025',
     keywords: ['FLUID SIM', 'PARTICLES', 'REAL-TIME'],
     description:
       'Real-time fluid simulation driven by discrete tick events, producing organic motion from minimal input.',
@@ -118,7 +130,7 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Echoing Nature',
     href: null,
     comingSoon: true,
-    year: '2024',
+    year: '2025',
     keywords: ['NATURE', 'SOUND', 'GENERATIVE'],
     description:
       'Generative visuals that respond to natural soundscapes, translating environmental audio into flowing organic forms.',
@@ -130,7 +142,7 @@ export const archiveEntries: ArchiveEntry[] = [
     title: 'Wormhole',
     href: null,
     comingSoon: true,
-    year: '2024',
+    year: '2025',
     keywords: ['SHADER', 'SPACE', 'DISTORTION'],
     description:
       'A shader experiment simulating gravitational lensing and spatial distortion through a traversable wormhole.',
