@@ -4,9 +4,13 @@
 @theme {
   --font-family-boska: 'Boska-Variable', serif;
   --font-family-general-sans: 'GeneralSans-Variable', sans-serif;
-  --font-family-poppins: 'Poppins-Variable', sans-serif;
-  --font-family-satoshi: 'Satoshi-Variable', sans-serif;
-  --breakpoint-mobile: 935px;
+  /*
+   * Mobile breakpoint. Set to 936 so that:
+   *   max-mobile:  ->  @media (width < 936px)   (i.e. <= 935px, the mobile layout)
+   *   mobile:      ->  @media (width >= 936px)  (i.e. desktop and up)
+   * Keep in sync with MOBILE_MAX_WIDTH_PX in src/hooks/useIsMobile.ts (935).
+   */
+  --breakpoint-mobile: 936px;
 }
 
 /* ========================================== */
@@ -82,7 +86,6 @@ strong {
 .split-line:has(.risd-link) {
   overflow: visible !important;
 }
-.break-desktop { display: inline; }
 .break-mobile  { display: none; }
 
 @media (max-width: 935px) {
@@ -92,7 +95,6 @@ strong {
     padding-right: var(--page-padding-x-mobile);
     font-size: clamp(0.5rem, 6vw, 4rem);
   }
-  .break-desktop { display: none; }
   .break-mobile  { display: inline; }
 }
 
@@ -208,15 +210,4 @@ strong {
 
   --color-text-muted: rgb(194, 194, 194);
   --color-figcaption: white;
-}
-
-/* Back button theme styling */
-.dark .back-button {
-  color: white;
-}
-.dark .back-button:hover {
-  color: rgb(140, 140, 140);
-}
-.dark .back-button svg {
-  color: inherit;
 }

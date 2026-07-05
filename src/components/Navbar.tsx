@@ -7,6 +7,7 @@ import InstagramIcon from '../assets/icons/instagram-black.webp';
 import LinkedinIcon from '../assets/icons/linkedin-black.webp';
 import ArenaIcon from '../assets/icons/are.na-black.webp';
 import { useLenis } from './LenisProvider';
+import useIsMobile from '../hooks/useIsMobile';
 
 const LOGO = '/favicon-black.svg';
 
@@ -29,7 +30,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ showNavbar = true }: NavbarProps) {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollHidden, setScrollHidden] = useState(false);
   const [logoHovered, setLogoHovered] = useState(false);
@@ -37,17 +38,6 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
   const lenis = useLenis();
   const location = useLocation();
   const lastScrollY = useRef(0);
-
-  // Check if mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 935);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   useEffect(() => {
     if (isMobile) setScrollHidden(false);

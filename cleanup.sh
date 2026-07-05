@@ -67,29 +67,7 @@ find . -name ".DS_Store" -not -path "*/node_modules/*" -delete
 find . -name "Thumbs.db"  -not -path "*/node_modules/*" -delete
 ok "OS junk files removed"
 
-# ── 9. Cursor AI cache (app-level) ────────────────────────────
-log "Clearing Cursor editor cache..."
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  CURSOR_CACHE="$HOME/Library/Application Support/Cursor"
-  for dir in Cache "Code Cache" GPUCache CachedData CachedExtensionVSIXs; do
-    if [ -d "$CURSOR_CACHE/$dir" ]; then
-      rm -rf "$CURSOR_CACHE/$dir"
-      ok "  Removed Cursor/$dir"
-    fi
-  done
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  CURSOR_CACHE="$HOME/.config/Cursor"
-  for dir in Cache "Code Cache" GPUCache CachedData; do
-    if [ -d "$CURSOR_CACHE/$dir" ]; then
-      rm -rf "$CURSOR_CACHE/$dir"
-      ok "  Removed Cursor/$dir"
-    fi
-  done
-elif [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
-  warn "Windows detected — manually delete: %APPDATA%\\Cursor\\Cache and Code Cache"
-fi
-
-# ── 10. Reinstall dependencies ────────────────────────────────
+# ── 9. Reinstall dependencies ────────────────────────────────
 echo ""
 log "Reinstalling dependencies..."
 npm install

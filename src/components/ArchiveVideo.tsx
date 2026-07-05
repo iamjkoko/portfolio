@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Placeholder from '../assets/images/background/placeholder-dk.png';
+import Placeholder from '../assets/images/background/placeholder-lt.png';
 
 type ArchiveVideoProps = {
   src: string;

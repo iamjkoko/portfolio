@@ -1,5 +1,8 @@
 /// <reference types="vite/client" />
 
+/** Injected at build time via `define` in vite.config.js (e.g. "July 2026"). */
+declare const __BUILD_DATE__: string;
+
 declare module '*.module.css' {
   const classes: { readonly [key: string]: string };
   export default classes;

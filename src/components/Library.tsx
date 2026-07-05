@@ -78,6 +78,10 @@ function Library() {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
+    // Remember the trigger so focus can be restored when the modal closes.
+    const previouslyFocused =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
     const focusable = dialog.querySelectorAll<HTMLElement>(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
@@ -102,7 +106,10 @@ function Library() {
       }
     };
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      previouslyFocused?.focus();
+    };
   }, [selected]);
 
   const modal = createPortal(
@@ -205,8 +212,8 @@ function Library() {
 
   return (
     <section className="w-full bg-[var(--color-background)]">
-      <div className="w-full max-w-[1440px] mx-auto px-5 mt-16 pb-16 max-[935px]:px-[var(--page-padding-x-mobile)]">
-        <h2 className="text-[1.5rem] max-[935px]:text-[1.2rem] [font-variation-settings:'wght'_700] text-[var(--color-text-muted)]">
+      <div className="w-full max-w-[1440px] mx-auto px-5 mt-16 pb-16 max-mobile:px-[var(--page-padding-x-mobile)]">
+        <h2 className="text-[1.5rem] max-mobile:text-[1.2rem] [font-variation-settings:'wght'_700] text-[var(--color-text-muted)]">
           LIBRARY
         </h2>
         <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Library categories">

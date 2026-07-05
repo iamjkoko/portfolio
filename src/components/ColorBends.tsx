@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import type { WebGLRenderer, ShaderMaterial } from 'three';
+import { MOBILE_MEDIA_QUERY } from '../hooks/useIsMobile';
 
 interface PointerVector {
   x: number;
@@ -24,7 +25,6 @@ const createPointerVector = (x = 0, y = 0): PointerVector => ({
 });
 
 const POINTER_SMOOTH = 8;
-const MOBILE_MAX_WIDTH_PX = 935;
 
 const frag = `
 uniform vec2 uCanvas;
@@ -165,7 +165,7 @@ export default function ColorBends({
       });
       materialRef.current = material;
 
-      const isMobile = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH_PX}px)`).matches;
+      const isMobile = window.matchMedia(MOBILE_MEDIA_QUERY).matches;
       if (isMobile) {
         material.uniforms.uMouseInfluence.value = 0;
         material.uniforms.uParallax.value = 0;
@@ -266,7 +266,7 @@ export default function ColorBends({
     const container = containerRef.current;
     if (!container) return;
 
-    const mobileMq = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH_PX}px)`);
+    const mobileMq = window.matchMedia(MOBILE_MEDIA_QUERY);
 
     const resetPointer = () => {
       pointerTargetRef.current.set(0, 0);

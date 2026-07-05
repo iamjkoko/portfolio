@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import { INTRO_SEEN_STORAGE_KEY } from "../constants/homeIntro";
+import { INTRO_COMPLETE_EVENT } from "../constants/events";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,9 +18,9 @@ export default function Layout({ children }: LayoutProps) {
       setShowNavbar(true);
     };
 
-    window.addEventListener('introComplete', handleIntroComplete);
+    window.addEventListener(INTRO_COMPLETE_EVENT, handleIntroComplete);
 
-    const currentPath = window.location.pathname;
+    const currentPath = location.pathname;
     if (currentPath !== '/' && currentPath !== '') {
       setShowNavbar(true);
     } else {
@@ -35,7 +36,7 @@ export default function Layout({ children }: LayoutProps) {
     }
 
     return () => {
-      window.removeEventListener('introComplete', handleIntroComplete);
+      window.removeEventListener(INTRO_COMPLETE_EVENT, handleIntroComplete);
     };
   }, [location]);
 

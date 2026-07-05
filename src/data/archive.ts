@@ -9,7 +9,7 @@ import SaoPaulo from '../assets/images/archive/sao-paulo/saopaulo.webp';
 import LightPainting from '../assets/images/archive/light-painting/light-painting.webp';
 
 {/*
-import Placeholder from '../assets/images/background/placeholder-dk.png';
+import Placeholder from '../assets/images/background/placeholder-lt.png';
 */}
 
 export type ArchiveCategory = 'studio' | 'experiments';

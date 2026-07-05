@@ -20,6 +20,8 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const swipeOutTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const swipeInTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const touchStartRef = useRef<number | null>(null);
   const touchEndRef = useRef<number | null>(null);
@@ -62,6 +64,8 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
     return () => {
       stopAutoplay();
       if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+      if (swipeOutTimeoutRef.current) clearTimeout(swipeOutTimeoutRef.current);
+      if (swipeInTimeoutRef.current) clearTimeout(swipeInTimeoutRef.current);
     };
   }, []);
 
@@ -81,7 +85,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
 
     setAnimationClass(swipeOutClass);
 
-    setTimeout(() => {
+    swipeOutTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         isNext
           ? prevIndex === images.length - 1
@@ -93,7 +97,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
       );
       setAnimationClass(swipeInClass);
 
-      setTimeout(() => {
+      swipeInTimeoutRef.current = setTimeout(() => {
         setAnimationClass("");
         setIsTransitioning(false);
         if (fromUser) resumeAutoplayDelayed();
@@ -136,7 +140,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
 
   return (
     <div
-      className="flex items-center justify-center gap-2.5 relative max-[935px]:flex-col max-[935px]:gap-5"
+      className="flex items-center justify-center gap-2.5 relative max-mobile:flex-col max-mobile:gap-5"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -144,7 +148,7 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
     >
       <button
         onClick={goPrev}
-        className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-[935px]:hidden"
+        className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-mobile:hidden"
         aria-label="Previous"
         disabled={isTransitioning}
       >
@@ -154,12 +158,12 @@ const Gallery = ({ images, autoplayInterval = 4000 }: GalleryProps) => {
       <img
         src={images[currentIndex].src}
         alt={images[currentIndex].alt}
-        className={`w-full max-w-[1280px] mx-auto overflow-hidden rounded-[8px] box-border object-cover translate-x-0 max-[935px]:max-h-[400px] max-[935px]:order-1 ${animationClass}`}
+        className={`w-full max-w-[1280px] mx-auto overflow-hidden rounded-[8px] box-border object-cover translate-x-0 max-mobile:max-h-[400px] max-mobile:order-1 ${animationClass}`}
       />
 
       <button
         onClick={goNext}
-        className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-[935px]:hidden"
+        className="bg-transparent border-none cursor-pointer transition-opacity hover:opacity-70 max-mobile:hidden"
         aria-label="Next"
         disabled={isTransitioning}
       >

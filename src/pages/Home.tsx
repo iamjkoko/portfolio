@@ -14,6 +14,7 @@ import Footer from '../components/Footer';
 
 import Caveman from '../assets/images/works/caveman/caveman.webp';
 import { INTRO_SEEN_STORAGE_KEY } from '../constants/homeIntro';
+import { INTRO_COMPLETE_EVENT } from '../constants/events';
 
 const OVERLAY_OPACITY = 0.5;
 
@@ -44,7 +45,7 @@ const Home = () => {
 
   useEffect(() => {
     if (introAlreadySeen) {
-      window.dispatchEvent(new CustomEvent('introComplete'));
+      window.dispatchEvent(new CustomEvent(INTRO_COMPLETE_EVENT));
     }
   }, [introAlreadySeen]);
 
@@ -61,18 +62,20 @@ const Home = () => {
         /* ignore */
       }
       setLoadingScreenComplete(true);
-      window.dispatchEvent(new CustomEvent('introComplete'));
+      window.dispatchEvent(new CustomEvent(INTRO_COMPLETE_EVENT));
     }, extraDelayMs);
 
     return () => window.clearTimeout(id);
   }, [heroReady, introAlreadySeen]);
 
   useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+
     const setupObserver = () => {
       const fadeInContainers = document.querySelectorAll(".fade-container");
       if (fadeInContainers.length === 0) return;
 
-      const observer = new IntersectionObserver((entries) => {
+      observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const children = entry.target.querySelectorAll('.fade-in');
@@ -81,7 +84,7 @@ const Home = () => {
                 child.setAttribute('data-visible', 'true');
               }, index * 150);
             });
-            observer.unobserve(entry.target);
+            observer?.unobserve(entry.target);
           }
         });
       }, { 
@@ -89,10 +92,15 @@ const Home = () => {
         rootMargin: '0px 0px -50px 0px'
       });
       
-      fadeInContainers.forEach((container) => observer.observe(container));
+      fadeInContainers.forEach((container) => observer?.observe(container));
     };
 
-    setTimeout(setupObserver, 100);
+    const timeoutId = window.setTimeout(setupObserver, 100);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      observer?.disconnect();
+    };
   }, []);
 
   return (
@@ -135,27 +143,27 @@ const Home = () => {
         />
       </section>
 
-      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-[#ffffff] pt-32 pb-16 max-[935px]:pt-10 max-[935px]:pb-10">
-        <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-[935px]:gap-[15px] max-[935px]:px-[var(--page-padding-x-mobile)]">
+      <section id="works" className="w-full min-h-screen flex flex-col items-center bg-[#ffffff] pt-32 pb-16 max-mobile:pt-10 max-mobile:pb-10">
+        <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-mobile:gap-[15px] max-mobile:px-[var(--page-padding-x-mobile)]">
 
         {/* Ko: Logo Animation */}
         <Link to={ROUTES.WORKS.LOGO} className="group block">
-        <div className="fade-container flex items-start gap-[15px] w-full max-[935px]:flex-col max-[935px]:flex-col-reverse">
-            <div className="fade-in flex-1 flex items-start pt-[2rem] max-[935px]:w-full max-[935px]:pt-4 max-[935px]:justify-start max-[935px]:items-start">
+        <div className="fade-container flex items-start gap-[15px] w-full max-mobile:flex-col max-mobile:flex-col-reverse">
+            <div className="fade-in flex-1 flex items-start pt-[2rem] max-mobile:w-full max-mobile:pt-4 max-mobile:justify-start max-mobile:items-start">
                 <div className="text-black transition-opacity">
-                    <h2 className="text-3xl font-medium pb-[1rem] max-[935px]:text-xl max-[935px]:text-left">KO: LOGO ANIMATION</h2>
-                    <p className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] max-[935px]:text-base max-[935px]:text-left max-[935px]:pr-0 max-[935px]:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</p>
+                    <h2 className="text-3xl font-medium pb-[1rem] max-mobile:text-xl max-mobile:text-left">KO: LOGO ANIMATION</h2>
+                    <p className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] max-mobile:text-base max-mobile:text-left max-mobile:pr-0 max-mobile:text-sm">A short typography animation, which aims to explore the elements of personal branding and motion design.</p>
 
-                     <div className="flex flex-row flex-wrap gap-3 pt-8 max-[935px]:py-0 max-[935px]:pt-8 max-[935px]:pb-8">
-                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-[935px]:text-[0.75rem] max-[935px]:py-[0.25rem] max-[935px]:px-3">TYPOGRAPHY</span>
-                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-[935px]:text-[0.75rem] max-[935px]:py-[0.25rem] max-[935px]:px-3">ANIMATION</span>
-                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-[935px]:text-[0.75rem] max-[935px]:py-[0.25rem] max-[935px]:px-3">BRANDING</span>
-                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-[935px]:text-[0.75rem] max-[935px]:py-[0.25rem] max-[935px]:px-3">MOTION DESIGN</span>
+                     <div className="flex flex-row flex-wrap gap-3 pt-8 max-mobile:py-0 max-mobile:pt-8 max-mobile:pb-8">
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">TYPOGRAPHY</span>
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">ANIMATION</span>
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">BRANDING</span>
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">MOTION DESIGN</span>
                     </div>
                 </div>
             </div>
-            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-[935px]:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
-                <div className="w-[720px] h-[480px] max-[935px]:w-[720px] max-[935px]:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
+            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-mobile:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
+                <div className="w-[720px] h-[480px] max-mobile:w-[720px] max-mobile:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
                     <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.LOGO_ANIMATION} type="video/mp4"/>Your browser does not support the video tag.</video>
                 </div>
             </div>
@@ -166,30 +174,30 @@ const Home = () => {
         
         {/* Modern Caveman */}
         <Link to={ROUTES.WORKS.CAVEMAN} className="group block">
-        <div className="fade-container flex items-start gap-[15px] w-full max-[935px]:flex-col max-[935px]:flex-col-reverse">
-            <div className="fade-in flex-1 flex items-start pt-[2rem] max-[935px]:w-full max-[935px]:pt-4 max-[935px]:justify-start max-[935px]:items-start">
+        <div className="fade-container flex items-start gap-[15px] w-full max-mobile:flex-col max-mobile:flex-col-reverse">
+            <div className="fade-in flex-1 flex items-start pt-[2rem] max-mobile:w-full max-mobile:pt-4 max-mobile:justify-start max-mobile:items-start">
                 <div className="text-black transition-opacity">
-                    <h2 className="text-3xl font-medium pb-[1rem] max-[935px]:text-xl max-[935px]:text-left">MODERN CAVEMAN</h2>
-                    <p className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] max-[935px]:text-base max-[935px]:text-left max-[935px]:pr-0 max-[935px]:text-sm">A series of shadow-based explorations inspired by Plato&apos;s Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</p>
+                    <h2 className="text-3xl font-medium pb-[1rem] max-mobile:text-xl max-mobile:text-left">MODERN CAVEMAN</h2>
+                    <p className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] max-mobile:text-base max-mobile:text-left max-mobile:pr-0 max-mobile:text-sm">A series of shadow-based explorations inspired by Plato&apos;s Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality.</p>
 
-                     <div className="flex flex-row flex-wrap gap-3 pt-8 max-[935px]:py-0 max-[935px]:pt-8 max-[935px]:pb-8">
-                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-[935px]:text-[0.75rem] max-[935px]:py-[0.25rem] max-[935px]:px-3">CONCEPTUAL</span>
-                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-[935px]:text-[0.75rem] max-[935px]:py-[0.25rem] max-[935px]:px-3">3D RENDERING</span>
+                     <div className="flex flex-row flex-wrap gap-3 pt-8 max-mobile:py-0 max-mobile:pt-8 max-mobile:pb-8">
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">CONCEPTUAL</span>
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">3D RENDERING</span>
                     </div>
                 </div>
             </div>
-            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-[935px]:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
-            <div className="w-[720px] h-[480px] max-[935px]:w-[720px] max-[935px]:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
+            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-mobile:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
+            <div className="w-[720px] h-[480px] max-mobile:w-[720px] max-mobile:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
                 <img className="block w-full h-full object-cover rounded-none" src={Caveman} />
             </div>
             </div>
         </div>
         </Link>
         
-        <div className="flex justify-end pt-20 max-[935px]:pt-10">
-          <Link to={ROUTES.WORKS.ROOT} className="flex items-center gap-2 text-[rgb(118,118,118)] text-lg max-[935px]:text-sm group">
+        <div className="flex justify-end pt-20 max-mobile:pt-10">
+          <Link to={ROUTES.WORKS.ROOT} className="flex items-center gap-2 text-[rgb(118,118,118)] text-lg max-mobile:text-sm group">
             VIEW ALL PROJECTS
-            <ArrowRight className="w-5 h-5 max-[935px]:w-4 max-[935px]:h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+            <ArrowRight className="w-5 h-5 max-mobile:w-4 max-mobile:h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
           </Link>
         </div>
         </div>

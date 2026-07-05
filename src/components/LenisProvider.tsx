@@ -3,11 +3,13 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { ROUTE_EXIT_COMPLETE_EVENT } from "../constants/events";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const LenisContext = createContext<Lenis | null>(null);
 
+// eslint-disable-next-line react-refresh/only-export-components -- provider + hook are intentionally colocated
 export function useLenis() {
   return useContext(LenisContext);
 }
@@ -67,9 +69,9 @@ export default function LenisProvider({ children }: LenisProviderProps) {
       ScrollTrigger.refresh();
     };
 
-    window.addEventListener("route-exit-complete", handleExitComplete);
+    window.addEventListener(ROUTE_EXIT_COMPLETE_EVENT, handleExitComplete);
     return () => {
-      window.removeEventListener("route-exit-complete", handleExitComplete);
+      window.removeEventListener(ROUTE_EXIT_COMPLETE_EVENT, handleExitComplete);
     };
   }, []);
 

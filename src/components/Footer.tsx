@@ -43,7 +43,7 @@ const Footer = ({ theme }: FooterProps) => {
   }, []);
 
   return (
-    <footer className={`w-full relative z-[1] p-8 max-[935px]:py-5 max-[935px]:px-[var(--page-padding-x-mobile)] border-none ${themeClasses}`}>
+    <footer className={`w-full relative z-[1] p-8 max-mobile:py-5 max-mobile:px-[var(--page-padding-x-mobile)] border-none ${themeClasses}`}>
       {/*}
       <div className="max-w-[1400px] mx-auto mb-12 md:pl-0">
         <h2
@@ -62,7 +62,7 @@ const Footer = ({ theme }: FooterProps) => {
 
         {/* Contact Section */}
         <div className="space-y-3">
-          <h3 className="text-base opacity-50 font-semibold mb-3 max-[935px]:pt-4">Get in Touch</h3>
+          <h3 className="text-base opacity-50 font-semibold mb-3 max-mobile:pt-4">Get in Touch</h3>
           <a
             href="mailto:eko03@risd.edu"
             className={`flex items-center gap-2 text-sm`}
@@ -127,7 +127,7 @@ const Footer = ({ theme }: FooterProps) => {
             Local time: {localTime}
           </p>
           <p className="text-xs opacity-80 pt-0.5">
-            Last updated: June 2026
+            Last updated: {__BUILD_DATE__}
           </p>
         </div>
       </div>

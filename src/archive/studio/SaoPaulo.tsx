@@ -62,7 +62,7 @@ function SaoPaulo(): React.JSX.Element {
             ></iframe>
             </div>
             <ImgCredit src={SaoPaulo1} alt="Sao Paulo">
-            By <a href="https://www.youtube.com/user/voxdotcom" target="_blank" rel="noopener noreferrer">Vox</a> · YouTube <a rel="nofollow" className="external free" href="https://www.youtube.com/watch?v=c3BRTlHFpBU" target="_blank">https://www.youtube.com/watch?v=c3BRTlHFpBU</a>, © Vox / YouTube, All rights reserved
+            By <a href="https://www.youtube.com/user/voxdotcom" target="_blank" rel="noopener noreferrer">Vox</a> · YouTube <a rel="nofollow noopener noreferrer" className="external free" href="https://www.youtube.com/watch?v=c3BRTlHFpBU" target="_blank">https://www.youtube.com/watch?v=c3BRTlHFpBU</a>, © Vox / YouTube, All rights reserved
             </ImgCredit>
             <div className={styles['description-body']}>
                 <br />

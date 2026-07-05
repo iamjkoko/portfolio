@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ROUTES } from './constants/routes';
+import { ROUTE_EXIT_COMPLETE_EVENT } from './constants/events';
 import { useEffect, ReactNode } from 'react';
 
 import Layout from './components/Layout';
@@ -51,7 +52,7 @@ function AppRoutes() {
 
   return (
     <AnimatePresence mode="wait" onExitComplete={() => {
-      window.dispatchEvent(new Event('route-exit-complete'));
+      window.dispatchEvent(new Event(ROUTE_EXIT_COMPLETE_EVENT));
     }}>
         <Routes location={location} key={archiveRouteKey(location.pathname)}>
             <Route path={ROUTES.HOME} element={<AnimatedPage><Home /></AnimatedPage>} />
