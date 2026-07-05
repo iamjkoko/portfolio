@@ -3,29 +3,25 @@ import '../global.css';
 
 import Footer from '../components/Footer';
 import LogoLoop from '../components/LogoLoop';
-import {
-  SiReact,
-  SiTypescript,
-  SiTailwindcss,
-  SiVite,
-  SiThreedotjs,
-  SiFramer,
-  SiGreensock,
-  SiFigma,
-  SiBlender,
-  SiProcessingfoundation,
-  SiArduino,
-} from 'react-icons/si';
+import ReactIcon from '../assets/icons/react.svg';
+import TailwindIcon from '../assets/icons/tailwind.svg';
+import FigmaIcon from '../assets/icons/figma.svg';
+import BlenderIcon from '../assets/icons/blender.svg';
+import CursorIcon from '../assets/icons/cursor.svg';
+import PsIcon from '../assets/icons/ps.svg';
+import AiIcon from '../assets/icons/ai.svg';
+import AeIcon from '../assets/icons/ae.svg';
+import PrIcon from '../assets/icons/pr.svg';
+import LrcIcon from '../assets/icons/lrc.svg';
+import TdIcon from '../assets/icons/td.svg';
+import MidjourneyIcon from '../assets/icons/midjourney.svg';
+import MagnificIcon from '../assets/icons/magnific.svg';
 
 {/*
 import Library from '../components/Library';
 */}
 
-import { EXTERNAL_LINKS } from '../constants/routes';
 import Profile from '/profile-test.webp';
-import InstagramIcon from '../assets/icons/instagram-black.webp';
-import LinkedinIcon from '../assets/icons/linkedin-black.webp';
-import ArenaIcon from '../assets/icons/are.na-black.webp';
 
 import Signature from '../assets/videos/signature.mp4';
 
@@ -45,18 +41,21 @@ const educationEntries: AboutSectionEntry[] = [
   },
 ];
 
-const techLogos = [
-  { node: <SiReact />, title: 'React', href: 'https://react.dev' },
-  { node: <SiTypescript />, title: 'TypeScript', href: 'https://www.typescriptlang.org' },
-  { node: <SiTailwindcss />, title: 'Tailwind CSS', href: 'https://tailwindcss.com' },
-  { node: <SiVite />, title: 'Vite', href: 'https://vite.dev' },
-  { node: <SiThreedotjs />, title: 'Three.js', href: 'https://threejs.org' },
-  { node: <SiFramer />, title: 'Framer Motion', href: 'https://motion.dev' },
-  { node: <SiGreensock />, title: 'GSAP', href: 'https://gsap.com' },
-  { node: <SiFigma />, title: 'Figma', href: 'https://www.figma.com' },
-  { node: <SiBlender />, title: 'Blender', href: 'https://www.blender.org' },
-  { node: <SiProcessingfoundation />, title: 'Processing', href: 'https://processing.org' },
-  { node: <SiArduino />, title: 'Arduino', href: 'https://www.arduino.cc' },
+const stackLogos = [
+  // Custom SVGs
+  { src: ReactIcon, alt: 'React', href: 'https://react.dev' },
+  { src: TailwindIcon, alt: 'Tailwind CSS', href: 'https://tailwindcss.com' },
+  { src: FigmaIcon, alt: 'Figma', href: 'https://www.figma.com' },
+  { src: BlenderIcon, alt: 'Blender', href: 'https://www.blender.org' },
+  { src: CursorIcon, alt: 'Cursor', href: 'https://cursor.com' },
+  { src: PsIcon, alt: 'Photoshop', href: 'https://www.adobe.com/products/photoshop.html' },
+  { src: AiIcon, alt: 'Illustrator', href: 'https://www.adobe.com/products/illustrator.html' },
+  { src: AeIcon, alt: 'After Effects', href: 'https://www.adobe.com/products/aftereffects.html' },
+  { src: PrIcon, alt: 'Premiere Pro', href: 'https://www.adobe.com/products/premiere.html' },
+  { src: LrcIcon, alt: 'Lightroom Classic', href: 'https://www.adobe.com/products/photoshop-lightroom-classic.html' },
+  { src: TdIcon, alt: 'TouchDesigner', href: 'https://derivative.ca' },
+  { src: MidjourneyIcon, alt: 'Midjourney', href: 'https://www.midjourney.com' },
+  { src: MagnificIcon, alt: 'Magnific', href: 'https://magnific.ai' },
 ];
 
 {/*
@@ -134,7 +133,7 @@ function About() {
               alt="Eric Ko" 
               draggable={false}
             /> 
-        <div className="max-w-[1080px] max-mobile:py-[10%] max-mobile:px-0 max-mobile:w-full">
+        <div className="max-w-[1080px] max-mobile:pt-[10%] max-mobile:px-0 max-mobile:w-full">
             <p className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.2s] max-mobile:text-[0.9rem]">
               <strong>Eric Ko</strong> (b. 2004) is a multidisciplinary artist and designer currently pursuing a BFA in Graphic Design with a concentration in Computation, Technology, and Culture (CTC) at the Rhode Island School of Design (RISD). 
             </p>
@@ -147,8 +146,8 @@ function About() {
               Away from his studio, he explores with his 35mm film camera, and is slowly learning bossa nova.
             </p>
             <br />
-            <p className="font-normal text-[0.9rem] opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.5s] max-mobile:text-[0.8rem] max-mobile:pb-8">
-              <u>View CV (available upon request)</u>
+            <p className="font-normal text-[var(--color-text-muted)] text-[0.9rem] opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.5s] max-mobile:text-[0.8rem] max-mobile:pb-8 cursor-default">
+              <u>View CV</u>
             </p>
             {/*
             <div className="my-12 max-w-[760px] opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.5s] max-mobile:my-10">
@@ -162,20 +161,9 @@ function About() {
             </div>
             */}
             <div className="flex gap-2.5 pt-[3%] justify-start opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.8s] max-mobile:mx-auto max-mobile:gap-[5%] max-mobile:py-[5%]">
-                <a href={EXTERNAL_LINKS.INSTAGRAM} className="instagram" target="_blank" rel="noopener noreferrer">
-                <img src={InstagramIcon} alt="Instagram" className="max-w-[1.375rem] max-h-[1.375rem] max-mobile:max-w-8 max-mobile:max-h-8" />
-                </a>
-                <a href={EXTERNAL_LINKS.LINKEDIN} className="linkedin" target="_blank" rel="noopener noreferrer">
-                <img src={LinkedinIcon} alt="LinkedIn" className="max-w-[1.375rem] max-h-[1.375rem] max-mobile:max-w-8 max-mobile:max-h-8" />
-                </a>
-                <a href={EXTERNAL_LINKS.ARENA} className="arena" target="_blank" rel="noopener noreferrer">
-                <img src={ArenaIcon} alt="Arena" className="max-w-[2.375rem] max-h-[2.375rem] max-mobile:max-w-13 max-mobile:max-h-8" />
-                </a>
-                </div>
-                
                 <video 
                   ref={videoRef} 
-                  className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 bg-transparent animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.9s] max-mobile:max-w-[200px] max-mobile:max-h-[133px]" 
+                  className="max-w-[300px] max-h-[200px] w-full h-auto mt-5 rounded-lg opacity-0 bg-transparent animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.9s] max-mobile:max-w-[200px] max-mobile:max-h-[133px] max-mobile:mt-0 max-mobile:mb-0" 
                   muted 
                   playsInline 
                   controlsList="nodownload" 
@@ -184,6 +172,7 @@ function About() {
                   <source src={Signature} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+            </div>
             </div>
         </div>
         </div>
@@ -197,29 +186,29 @@ function About() {
         {/*<AboutInfoSection title="EXPERIENCE" entries={experienceEntries} />*/}
         <div className="flex flex-col gap-8 max-mobile:gap-6 mobile:flex-row mobile:items-center mobile:gap-16">
           <h2 className="shrink-0 text-[1.5rem] max-mobile:text-[1.2rem] [font-variation-settings:'wght'_700] text-[var(--color-text-muted)] mobile:w-[min(28%,220px)]">
-            TOOLS
+            STACK
           </h2>
           <div className="relative min-w-0 flex-1 overflow-hidden">
             <LogoLoop
-              logos={techLogos}
+              logos={stackLogos}
               speed={80}
               direction="left"
               logoHeight={36}
               gap={48}
               hoverSpeed={0}
-              scaleOnHover
               fadeOut
               fadeOutColor="var(--color-background)"
-              ariaLabel="Tools and technologies"
+              ariaLabel="stack"
             />
           </div>
         </div>
       </div>
     </section>
+
     {/*
-    Library is temporarily hidden
     <Library />
     */}
+
     <Footer theme="light" />
     </>
   );
