@@ -29,12 +29,12 @@ function Logo() {
             <div className={styles['project-intro']}>
               <p>A short typography animation, which aims to explore the elements of personal branding and motion design. The design combines textual elements of the artist's name in both the Korean and English language. </p>
             </div>
-            <div className={styles['project-keywords']}>
-              <span>TYPOGRAPHY</span>
-              <span>ANIMATION</span>
-              <span>BRANDING</span>
-              <span>MOTION DESIGN</span>
-            </div>
+          </div>
+          <div className={styles['project-keywords']}>
+            <span>TYPOGRAPHY</span>
+            <span>ANIMATION</span>
+            <span>BRANDING</span>
+            <span>MOTION DESIGN</span>
           </div>
           <video className={styles['project-vid-hor']} src={VIDEO_URLS.LOGO_ANIMATION} autoPlay loop muted playsInline controlsList="nodownload">
             Your browser does not support the video tag.

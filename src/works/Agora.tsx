@@ -24,12 +24,12 @@ function Agora(): React.JSX.Element {
         </div>
         <div className={styles['project-intro']}>
             <p>Agora, pronounced <i>Αγορά</i>, is a typeface concept that draws inspiration from the vibrant public forums of ancient Greece, where citizens exchanged knowledge and ideas on topics such as art, philosophy, and politics.</p>
-            <div className={styles['project-keywords']}>
-                <span>TYPEFACE</span>
-                <span>ANIMATION</span>
-                <span>MOTION DESIGN</span>
-            </div>
-        </div>    
+        </div>
+        <div className={styles['project-keywords']}>
+            <span>TYPEFACE</span>
+            <span>ANIMATION</span>
+            <span>MOTION DESIGN</span>
+        </div>
         <video className={styles['project-vid-ver']} src={VIDEO_URLS.AGORA_FULL} autoPlay loop muted playsInline controlsList="nodownload"> 
         Your browser does not support the video tag.
         </video>

@@ -62,10 +62,10 @@ function Caveman() {
             <div className={styles['project-intro']}>
               <p>A series of shadow-based explorations inspired by Plato's Allegory of the Cave, which prompts viewers to pause, reflect, and reconsider how they perceive reality. This project serves as a reminder that perception is not simply about seeing appearances, but about understanding the relationship between the human viewpoint and the deeper truths they may obscure.</p>
             </div>
-            <div className={styles['project-keywords']}>
-              <span>CONCEPTUAL</span>
-              <span>3D RENDERING</span>
-            </div>
+          </div>
+          <div className={styles['project-keywords']}>
+            <span>CONCEPTUAL</span>
+            <span>3D RENDERING</span>
           </div>
           <img className={styles['project-img']} src={CavemanMain} alt="Caveman" />
         </div>
