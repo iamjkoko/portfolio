@@ -184,12 +184,22 @@ const useAnimationLoop = (
 
     rafRef.current = requestAnimationFrame(animate);
 
+    // rAF is paused while the tab is backgrounded. Resetting the timestamp on
+    // return avoids a large deltaTime that would jump the track forward.
+    const resetTimestamp = () => {
+      lastTimestampRef.current = null;
+    };
+    document.addEventListener('visibilitychange', resetTimestamp);
+    window.addEventListener('focus', resetTimestamp);
+
     return () => {
       if (rafRef.current !== null) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
       lastTimestampRef.current = null;
+      document.removeEventListener('visibilitychange', resetTimestamp);
+      window.removeEventListener('focus', resetTimestamp);
     };
   }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical]);
 };
@@ -304,6 +314,22 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     const handleMouseLeave = useCallback(() => {
       if (effectiveHoverSpeed !== undefined) setIsHovered(false);
     }, [effectiveHoverSpeed]);
+
+    // When opening a logo link in a new tab, the browser can skip the matching
+    // mouseleave (desktop) or never fire it after synthesized touch events
+    // (mobile), leaving isHovered stuck on and the loop paused. Clearing hover
+    // on blur/visibility change guarantees it resumes when the user returns.
+    useEffect(() => {
+      const clearHover = () => setIsHovered(false);
+      window.addEventListener('blur', clearHover);
+      window.addEventListener('pagehide', clearHover);
+      document.addEventListener('visibilitychange', clearHover);
+      return () => {
+        window.removeEventListener('blur', clearHover);
+        window.removeEventListener('pagehide', clearHover);
+        document.removeEventListener('visibilitychange', clearHover);
+      };
+    }, []);
 
     const renderLogoItem = useCallback(
       (item: LogoItem, key: React.Key) => {
