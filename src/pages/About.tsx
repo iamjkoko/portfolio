@@ -58,7 +58,7 @@ const stackLogos = [
   { src: MagnificIcon, alt: 'Magnific', href: 'https://magnific.ai' },
 ];
 
-
+{/*
 const experienceEntries: AboutSectionEntry[] = [
   {
     role: 'Brand & Research Intern',
@@ -67,7 +67,7 @@ const experienceEntries: AboutSectionEntry[] = [
     period: 'Feb - Apr, 2022',
   },
 ];
-
+*/}
 
 function AboutInfoSection({
   title,
@@ -183,7 +183,9 @@ function About() {
     <section className="w-full bg-[var(--color-background)]">
       <div className="flex w-full max-w-[1440px] flex-col gap-25 mx-auto px-5 pt-5 pb-40 max-mobile:gap-15 max-mobile:px-[var(--page-padding-x-mobile)] max-mobile:pt-10 max-mobile:pb-20">
         <AboutInfoSection title="EDUCATION" entries={educationEntries} />
+        {/*
         <AboutInfoSection title="EXPERIENCE" entries={experienceEntries} />
+        */}
         <div className="flex flex-col gap-8 max-mobile:gap-6 mobile:flex-row mobile:items-center mobile:gap-16">
           <h2 className="shrink-0 text-[1.5rem] max-mobile:text-[1.2rem] [font-variation-settings:'wght'_700] text-[var(--color-text-muted)] mobile:w-[min(28%,220px)]">
             STACK
