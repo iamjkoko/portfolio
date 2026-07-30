@@ -133,7 +133,7 @@ function About() {
               alt="Eric Ko" 
               draggable={false}
             /> 
-        <div className="max-w-[1080px] max-mobile:pt-[10%] max-mobile:px-0 max-mobile:w-full">
+        <div className="max-w-[1080px] max-mobile:pt-[10%] max-mobile:px-2 max-mobile:w-full">
             <p className="font-normal text-base opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] [animation-delay:0.2s] max-mobile:text-[0.9rem]">
               <strong>Eric Ko</strong> (b. 2004) is a multidisciplinary artist and designer currently pursuing a BFA in Graphic Design with a concentration in Computation, Technology, and Culture (CTC) at the Rhode Island School of Design (RISD). 
             </p>

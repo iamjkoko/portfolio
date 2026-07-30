@@ -6,6 +6,7 @@ import '../global.css';
 
 import { ROUTES } from '../constants/routes';
 import { archiveEntries, type ArchiveCategory } from '../data/archive';
+import ArchiveImage from '../components/ArchiveImage';
 import ArchiveVideo from '../components/ArchiveVideo';
 import Footer from '../components/Footer';
 
@@ -177,13 +178,9 @@ function Archive() {
             const renderingsFrame = (
               <div className="border-2 border-transparent rounded-[8px] overflow-hidden">
                 {item.media.type === 'image' ? (
-                  <img
-                    className="block w-full h-auto"
-                    src={item.media.src}
-                    alt={item.media.alt}
-                    draggable={false}
-                    loading="lazy"
-                  />
+                  <div className="w-full aspect-[4/5]">
+                    <ArchiveImage src={item.media.src} alt={item.media.alt} />
+                  </div>
                 ) : (
                   <ArchiveVideo src={item.media.src} />
                 )}
