@@ -165,20 +165,6 @@ export const archiveEntries: ArchiveEntry[] = [
     media: { type: 'image', src: Mj01, alt: 'Abstract rendering study 01' },
   },
   {
-    id: 'mj-02',
-    category: 'renderings',
-    title: 'Rendering 02',
-    href: null,
-    media: { type: 'image', src: Mj02, alt: 'Abstract rendering study 02' },
-  },
-  {
-    id: 'mj-03',
-    category: 'renderings',
-    title: 'Rendering 03',
-    href: null,
-    media: { type: 'image', src: Mj03, alt: 'Abstract rendering study 03' },
-  },
-  {
     id: 'mj-04',
     category: 'renderings',
     title: 'Rendering 04',
@@ -186,11 +172,25 @@ export const archiveEntries: ArchiveEntry[] = [
     media: { type: 'image', src: Mj04, alt: 'Abstract rendering study 04' },
   },
   {
+    id: 'mj-02',
+    category: 'renderings',
+    title: 'Rendering 02',
+    href: null,
+    media: { type: 'image', src: Mj02, alt: 'Abstract rendering study 02' },
+  },
+  {
     id: 'mj-05',
     category: 'renderings',
     title: 'Rendering 05',
     href: null,
     media: { type: 'image', src: Mj05, alt: 'Abstract rendering study 05' },
+  },
+  {
+    id: 'mj-03',
+    category: 'renderings',
+    title: 'Rendering 03',
+    href: null,
+    media: { type: 'image', src: Mj03, alt: 'Abstract rendering study 03' },
   },
   {
     id: 'mj-06',
