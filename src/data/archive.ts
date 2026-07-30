@@ -92,7 +92,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2026',
     keywords: ['SHADER', 'TILES', 'CHAOS'],
     description:
-      'A shader experiment creating a chaotic tile pattern with dynamic noise and movement.',
+      'Random fractal patterns made with instancing + noise TOPs in TouchDesigner.',
     media: { type: 'video', src: VIDEO_URLS.CHAOTIC_TILES },
   },
   {
@@ -104,7 +104,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2026',
     keywords: ['GENERATIVE', 'MOTION', 'AUDIO'],
     description:
-      'A generative motion study exploring rhythm and repetition through abstract visual forms synced to ambient sound.',
+      'A generative motion project exploring rhythm and repetition through abstract visual forms synced to ambient sound, music by Daft Punk (Something About Us).',
     media: { type: 'video', src: VIDEO_URLS.SOMETHING_ABOUT_US },
   },
   {
@@ -116,7 +116,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2026',
     keywords: ['POINT CLOUD', 'DEPTH', '3D'],
     description:
-      'Converts flat images into spatial point clouds, revealing depth and structure through particle-based rendering.',
+      'Converts flat images into spatial point clouds, revealing depth and structure through particle-based rendering. Made with TouchDesigner.',
     media: { type: 'video', src: VIDEO_URLS.IMG_TO_PTCLOUD },
   },
   {
@@ -128,7 +128,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2025',
     keywords: ['FLUID SIM', 'PARTICLES', 'REAL-TIME'],
     description:
-      'Real-time fluid simulation driven by discrete tick events, producing organic motion from minimal input.',
+      'Real-time fluid simulation via TouchDesigner, producing organic motion from minimal input.',
     media: { type: 'video', src: VIDEO_URLS.FLUID_TICKS },
   },
   {
@@ -140,7 +140,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2025',
     keywords: ['NATURE', 'SOUND', 'GENERATIVE'],
     description:
-      'Generative visuals that respond to natural soundscapes, translating environmental audio into flowing organic forms.',
+      'Generative visuals that respond to natural soundscapes, translating environmental audio into flowing organic forms. Audio is recorded in a small village garden in Richeliu, France.',
     media: { type: 'video', src: VIDEO_URLS.ECHOING_NATURE },
   },
   {
@@ -152,7 +152,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2025',
     keywords: ['SHADER', 'SPACE', 'DISTORTION'],
     description:
-      'A shader experiment simulating gravitational lensing and spatial distortion through a traversable wormhole.',
+      'A shader experiment simulating gravitational lensing and spatial distortion through a traversable wormhole. Made with Touchdesigner.',
     media: { type: 'video', src: VIDEO_URLS.WORMHOLE },
   },
 

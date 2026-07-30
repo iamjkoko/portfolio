@@ -154,10 +154,23 @@ function Archive() {
             );
 
             const motionFrame = (
-              <div className="border-2 border-transparent rounded-[8px] overflow-hidden">
-                <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-mobile:max-w-[750px] max-mobile:max-h-[500px] max-mobile:h-auto">
-                  {motionMedia}
+              <div className="flex w-full flex-col">
+                <div className="border-2 border-transparent rounded-[8px] overflow-hidden">
+                  <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-mobile:max-w-[750px] max-mobile:max-h-[500px] max-mobile:h-auto">
+                    {motionMedia}
+                  </div>
                 </div>
+                {item.description ? (
+                  <div className="mt-2 flex items-start gap-1.5 text-[var(--color-keyword-text)]">
+                    <span
+                      aria-hidden
+                      className="mt-[0.4em] shrink-0 border-x-[3.5px] border-b-[5px] border-x-transparent border-b-current"
+                    />
+                    <p className="text-xs [font-variation-settings:'wght'_400]">
+                      {item.description}
+                    </p>
+                  </div>
+                ) : null}
               </div>
             );
 
