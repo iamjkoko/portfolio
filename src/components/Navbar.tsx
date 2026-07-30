@@ -14,7 +14,7 @@ const LOGO = '/favicon-black.svg';
 const desktopLinks = [
   { label: 'WORKS', to: ROUTES.WORKS.ROOT },
   { label: 'ABOUT', to: ROUTES.ABOUT },
-  { label: 'ARCHIVE', to: ROUTES.ARCHIVE.EXPERIMENTS.ROOT }
+  { label: 'ARCHIVE', to: ROUTES.ARCHIVE.MOTION.ROOT }
 ] as const;
 
 function isNavActive(pathname: string, to: string): boolean {

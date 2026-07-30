@@ -9,20 +9,29 @@ import { archiveEntries, type ArchiveCategory } from '../data/archive';
 import ArchiveVideo from '../components/ArchiveVideo';
 import Footer from '../components/Footer';
 
-// Studio is temporarily hidden — only experiments is exposed in the UI for now.
+// Studio is temporarily hidden — MOTION and RENDERINGS are exposed in the UI.
 // To restore the studio section, reintroduce the studio entry in FILTERS and the
 // studio routes in App.tsx (see the comment there).
 const FILTERS: { value: ArchiveCategory; label: string }[] = [
-  { value: 'experiments', label: 'EXPERIMENTS' },
+  { value: 'motion', label: 'MOTION' },
+  { value: 'renderings', label: 'RENDERINGS' },
 ];
+
+const FILTER_ROUTES: Record<'motion' | 'renderings', string> = {
+  motion: ROUTES.ARCHIVE.MOTION.ROOT,
+  renderings: ROUTES.ARCHIVE.RENDERINGS.ROOT,
+};
 
 const archiveFilterFade = {
   duration: 0.4,
   ease: [0.45, 0, 0.2, 1] as const,
 };
 
-function pathnameToFilter(_pathname: string): ArchiveCategory {
-  return 'experiments';
+function pathnameToFilter(pathname: string): ArchiveCategory {
+  if (pathname.startsWith(ROUTES.ARCHIVE.RENDERINGS.ROOT)) {
+    return 'renderings';
+  }
+  return 'motion';
 }
 
 function Archive() {
@@ -31,14 +40,18 @@ function Archive() {
 
   const filter = pathnameToFilter(location.pathname);
 
-  const setFilter = (_value: ArchiveCategory) => {
-    navigate(ROUTES.ARCHIVE.EXPERIMENTS.ROOT);
+  const setFilter = (value: ArchiveCategory) => {
+    if (value === 'motion' || value === 'renderings') {
+      navigate(FILTER_ROUTES[value]);
+    }
   };
 
   const filteredItems = useMemo(
     () => archiveEntries.filter((e) => e.category === filter),
     [filter],
   );
+
+  const isRenderings = filter === 'renderings';
 
   return (
     <div className="bg-[var(--color-background)]">
@@ -91,7 +104,11 @@ function Archive() {
           <motion.ul
             key={filter}
             role="list"
-            className="mt-8 grid grid-cols-3 gap-[15px] justify-items-center mx-auto overflow-hidden px-[30px] max-mobile:grid-cols-1 max-mobile:px-[var(--page-padding-x-mobile)] max-mobile:py-0 list-none p-0 m-0 w-full"
+            className={
+              isRenderings
+                ? 'mt-8 columns-3 gap-[15px] mx-auto overflow-hidden px-[30px] max-mobile:columns-2 max-mobile:px-[var(--page-padding-x-mobile)] max-mobile:py-0 list-none p-0 m-0 w-full'
+                : 'mt-8 grid grid-cols-3 gap-[15px] justify-items-center mx-auto overflow-hidden px-[30px] max-mobile:grid-cols-1 max-mobile:px-[var(--page-padding-x-mobile)] max-mobile:py-0 list-none p-0 m-0 w-full'
+            }
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -121,7 +138,7 @@ function Archive() {
               : 'overflow-hidden';
             const studioFrame = <div className={studioOuterClass}>{studioMediaInner}</div>;
 
-            const experimentsMedia = (
+            const motionMedia = (
               <>
                 {item.media.type === 'image' ? (
                   <img
@@ -136,18 +153,41 @@ function Archive() {
               </>
             );
 
-            const experimentsFrame = (
+            const motionFrame = (
               <div className="border-2 border-transparent rounded-[8px] overflow-hidden">
                 <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-mobile:max-w-[750px] max-mobile:max-h-[500px] max-mobile:h-auto">
-                  {experimentsMedia}
+                  {motionMedia}
                 </div>
               </div>
             );
 
-            const frame = isStudio ? studioFrame : experimentsFrame;
+            const renderingsFrame = (
+              <div className="border-2 border-transparent rounded-[8px] overflow-hidden">
+                {item.media.type === 'image' ? (
+                  <img
+                    className="block w-full h-auto"
+                    src={item.media.src}
+                    alt={item.media.alt}
+                    draggable={false}
+                    loading="lazy"
+                  />
+                ) : (
+                  <ArchiveVideo src={item.media.src} />
+                )}
+              </div>
+            );
+
+            const frame = isStudio
+              ? studioFrame
+              : isRenderings
+                ? renderingsFrame
+                : motionFrame;
 
             return (
-              <li key={item.id}>
+              <li
+                key={item.id}
+                className={isRenderings ? 'break-inside-avoid mb-[15px]' : undefined}
+              >
                 {hasHref && item.href ? (
                   <Link to={item.href} className="block no-underline text-inherit">
                     {frame}

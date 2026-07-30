@@ -41,7 +41,10 @@ function AnimatedPage({ children }: { children: ReactNode }) {
 }
 
 function archiveRouteKey(pathname: string) {
-  if (pathname === ROUTES.ARCHIVE.EXPERIMENTS.ROOT) {
+  if (
+    pathname === ROUTES.ARCHIVE.MOTION.ROOT ||
+    pathname === ROUTES.ARCHIVE.RENDERINGS.ROOT
+  ) {
     return ROUTES.ARCHIVE.ROOT;
   }
   return pathname;
@@ -64,9 +67,9 @@ function AppRoutes() {
             <Route path={ROUTES.WORKS.LOGO} element={<AnimatedPage><Logo /></AnimatedPage>} />
             <Route path={ROUTES.WORKS.AGORA} element={<AnimatedPage><Agora /></AnimatedPage>} />
             
-            {/* Archive listing – studio is temporarily hidden; default to experiments */}
-            <Route path={ROUTES.ARCHIVE.ROOT} element={<Navigate to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} replace />} />
-            {/* Archive Studio is temporarily hidden — all studio routes redirect to experiments.
+            {/* Archive listing – studio is temporarily hidden; default to motion */}
+            <Route path={ROUTES.ARCHIVE.ROOT} element={<Navigate to={ROUTES.ARCHIVE.MOTION.ROOT} replace />} />
+            {/* Archive Studio is temporarily hidden — all studio routes redirect to motion.
                 To restore, re-enable the imports at the top of this file and swap the catch-all
                 redirect below for the per-project routes:
                   <Route path={ROUTES.ARCHIVE.STUDIO.ROOT} element={<AnimatedPage><Archive /></AnimatedPage>} />
@@ -77,11 +80,19 @@ function AppRoutes() {
                   <Route path={ROUTES.ARCHIVE.STUDIO.SAOPAULO} element={<AnimatedPage><SaoPaulo /><Footer theme="light" /></AnimatedPage>} />
                   <Route path={ROUTES.ARCHIVE.STUDIO.LIGHTPAINTING} element={<AnimatedPage><LightPainting /><Footer theme="light" /></AnimatedPage>} />
                 Also restore the studio filter in src/pages/Archive.tsx. */}
-            <Route path="/archive/studio/*" element={<Navigate to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} replace />} />
+            <Route path="/archive/studio/*" element={<Navigate to={ROUTES.ARCHIVE.MOTION.ROOT} replace />} />
 
-            {/* Archive Experiments – every entry is coming-soon, so per-project routes redirect to listing */}
-            <Route path={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} element={<AnimatedPage><Archive /></AnimatedPage>} />
-            <Route path="/archive/experiments/*" element={<Navigate to={ROUTES.ARCHIVE.EXPERIMENTS.ROOT} replace />} />
+            {/* Archive Motion + Renderings */}
+            <Route path={ROUTES.ARCHIVE.MOTION.ROOT} element={<AnimatedPage><Archive /></AnimatedPage>} />
+            <Route path="/archive/motion/*" element={<Navigate to={ROUTES.ARCHIVE.MOTION.ROOT} replace />} />
+            <Route path={ROUTES.ARCHIVE.RENDERINGS.ROOT} element={<AnimatedPage><Archive /></AnimatedPage>} />
+            <Route path="/archive/renderings/*" element={<Navigate to={ROUTES.ARCHIVE.RENDERINGS.ROOT} replace />} />
+
+            {/* Legacy URLs → motion */}
+            <Route path="/archive/systems" element={<Navigate to={ROUTES.ARCHIVE.MOTION.ROOT} replace />} />
+            <Route path="/archive/systems/*" element={<Navigate to={ROUTES.ARCHIVE.MOTION.ROOT} replace />} />
+            <Route path="/archive/experiments" element={<Navigate to={ROUTES.ARCHIVE.MOTION.ROOT} replace />} />
+            <Route path="/archive/experiments/*" element={<Navigate to={ROUTES.ARCHIVE.MOTION.ROOT} replace />} />
 
             <Route path="*" element={
               <AnimatedPage>

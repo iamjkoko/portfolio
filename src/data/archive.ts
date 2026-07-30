@@ -8,11 +8,18 @@ import Paperfold from '../assets/images/archive/paperfold/paperfold.webp';
 import SaoPaulo from '../assets/images/archive/sao-paulo/saopaulo.webp';
 import LightPainting from '../assets/images/archive/light-painting/light-painting.webp';
 
+import Mj01 from '../assets/images/archive/renderings/mj-01.webp';
+import Mj02 from '../assets/images/archive/renderings/mj-02.webp';
+import Mj03 from '../assets/images/archive/renderings/mj-03.webp';
+import Mj04 from '../assets/images/archive/renderings/mj-04.webp';
+import Mj05 from '../assets/images/archive/renderings/mj-05.webp';
+import Mj06 from '../assets/images/archive/renderings/mj-06.webp';
+
 {/*
 import Placeholder from '../assets/images/background/placeholder-lt.png';
 */}
 
-export type ArchiveCategory = 'studio' | 'experiments';
+export type ArchiveCategory = 'studio' | 'motion' | 'renderings';
 
 export type ArchiveMedia =
   | { type: 'image'; src: string; alt: string }
@@ -75,10 +82,10 @@ export const archiveEntries: ArchiveEntry[] = [
     media: { type: 'image', src: LightPainting, alt: 'Light Painting' },
   },
 
-  // Experiments
+  // Motion
   {
     id: 'chaotic-tiles',
-    category: 'experiments',
+    category: 'motion',
     title: 'Chaotic Tiles',
     href: null,
     comingSoon: true,
@@ -90,7 +97,7 @@ export const archiveEntries: ArchiveEntry[] = [
   },
   {
     id: 'smth-abt-us',
-    category: 'experiments',
+    category: 'motion',
     title: 'Something About Us',
     href: null,
     comingSoon: true,
@@ -102,7 +109,7 @@ export const archiveEntries: ArchiveEntry[] = [
   },
   {
     id: 'img-to-ptcloud',
-    category: 'experiments',
+    category: 'motion',
     title: 'Image to Point Cloud',
     href: null,
     comingSoon: true,
@@ -114,7 +121,7 @@ export const archiveEntries: ArchiveEntry[] = [
   },
   {
     id: 'fluid-ticks',
-    category: 'experiments',
+    category: 'motion',
     title: 'Fluid Ticks',
     href: null,
     comingSoon: true,
@@ -126,7 +133,7 @@ export const archiveEntries: ArchiveEntry[] = [
   },
   {
     id: 'echoing-nature',
-    category: 'experiments',
+    category: 'motion',
     title: 'Echoing Nature',
     href: null,
     comingSoon: true,
@@ -138,7 +145,7 @@ export const archiveEntries: ArchiveEntry[] = [
   },
   {
     id: 'wormhole',
-    category: 'experiments',
+    category: 'motion',
     title: 'Wormhole',
     href: null,
     comingSoon: true,
@@ -147,5 +154,49 @@ export const archiveEntries: ArchiveEntry[] = [
     description:
       'A shader experiment simulating gravitational lensing and spatial distortion through a traversable wormhole.',
     media: { type: 'video', src: VIDEO_URLS.WORMHOLE },
+  },
+
+  // Renderings (CSS columns fill top-to-bottom per column)
+  {
+    id: 'mj-01',
+    category: 'renderings',
+    title: 'Rendering 01',
+    href: null,
+    media: { type: 'image', src: Mj01, alt: 'Abstract rendering study 01' },
+  },
+  {
+    id: 'mj-02',
+    category: 'renderings',
+    title: 'Rendering 02',
+    href: null,
+    media: { type: 'image', src: Mj02, alt: 'Abstract rendering study 02' },
+  },
+  {
+    id: 'mj-03',
+    category: 'renderings',
+    title: 'Rendering 03',
+    href: null,
+    media: { type: 'image', src: Mj03, alt: 'Abstract rendering study 03' },
+  },
+  {
+    id: 'mj-04',
+    category: 'renderings',
+    title: 'Rendering 04',
+    href: null,
+    media: { type: 'image', src: Mj04, alt: 'Abstract rendering study 04' },
+  },
+  {
+    id: 'mj-05',
+    category: 'renderings',
+    title: 'Rendering 05',
+    href: null,
+    media: { type: 'image', src: Mj05, alt: 'Abstract rendering study 05' },
+  },
+  {
+    id: 'mj-06',
+    category: 'renderings',
+    title: 'Rendering 06',
+    href: null,
+    media: { type: 'image', src: Mj06, alt: 'Abstract rendering study 06' },
   },
 ];

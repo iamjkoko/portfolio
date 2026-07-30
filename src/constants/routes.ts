@@ -19,8 +19,11 @@ export const ROUTES = {
       LIGHTPAINTING: '/archive/studio/light-painting',
       INFINITYBOX: '/archive/studio/infinity-box',
     },
-    EXPERIMENTS: {
-      ROOT: '/archive/experiments',
+    MOTION: {
+      ROOT: '/archive/motion',
+    },
+    RENDERINGS: {
+      ROOT: '/archive/renderings',
     },
   },
   PHOTOGRAPHY: 'https://filmbyko.cargo.site/',
