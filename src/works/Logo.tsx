@@ -3,6 +3,7 @@ import styles from '../styles/works.module.css';
 import { useRef } from 'react';
 
 import Footer from '../components/Footer';
+import Back from '../components/Back';
 import { VIDEO_URLS } from '../constants/videos';
 import useProjectInfoStagger from '../hooks/useProjectInfoStagger';
 
@@ -20,6 +21,7 @@ function Logo() {
       <section id="project-main" className={styles['project-main']}>
         <div ref={projectInfoRef} className={styles['project-info']}>
           <div className={styles['project-basics']}>
+            <Back />
             <h1>Ko: Logo Animation</h1>
             <br />
             <h2>2025</h2>

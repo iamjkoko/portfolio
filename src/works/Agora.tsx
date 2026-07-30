@@ -3,6 +3,7 @@ import '../global.css';
 import styles from '../styles/works.module.css';
 
 import Footer from '../components/Footer';
+import Back from '../components/Back';
 import { VIDEO_URLS } from '../constants/videos';
 import useProjectInfoStagger from '../hooks/useProjectInfoStagger';
 
@@ -17,6 +18,7 @@ function Agora(): React.JSX.Element {
     <section id="project-main" className={styles['project-main']}>
         <div ref={projectInfoRef} className={styles['project-info']}>
         <div className={styles['project-basics']}>
+            <Back />
             <h1>Agora</h1>
             <br />
             <h2>2022</h2>

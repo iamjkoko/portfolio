@@ -57,7 +57,7 @@ hr {
 .project-info {
     display: flex;
     position: relative;
-    padding: 10rem 0 2rem;
+    padding: 8rem 0 2rem;
     flex-direction: column;
     gap: 1.5rem;
     width: 100%;
@@ -85,6 +85,32 @@ hr {
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+.back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+    color: rgb(118, 118, 118);
+    font-size: 0.95rem;
+    font-variation-settings: 'wght' 400;
+    text-decoration: none;
+    transition: color 0.25s ease-out;
+}
+
+.back:hover {
+    color: var(--color-text);
+}
+
+.back-icon {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.3s ease-out;
+}
+
+.back:hover .back-icon {
+    transform: translateX(-0.2rem);
 }
 
 .project-basics h1 {
@@ -161,6 +187,16 @@ hr {
 
     .project-basics {
         padding-bottom: 1rem;
+    }
+
+    .back {
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .back-icon {
+        width: 0.9rem;
+        height: 0.9rem;
     }
 
     .project-basics h1 {

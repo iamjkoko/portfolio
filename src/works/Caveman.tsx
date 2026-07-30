@@ -4,6 +4,7 @@ import { useRef } from 'react';
 
 import Footer from '../components/Footer';
 import ImgCredit from '../components/ImgCredit';
+import Back from '../components/Back';
 import useProjectInfoStagger from '../hooks/useProjectInfoStagger';
 
 import CavemanMain from '../assets/images/works/caveman/caveman.webp';
@@ -53,6 +54,7 @@ function Caveman() {
       <section id="project-main" className={styles['project-main']}>
         <div ref={projectInfoRef} className={styles['project-info']}>
           <div className={styles['project-basics']}>
+            <Back />
             <h1>Modern Caveman</h1>
             <br />
             <h2>2025</h2>
