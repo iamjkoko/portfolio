@@ -128,7 +128,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2025',
     keywords: ['FLUID SIM', 'PARTICLES', 'REAL-TIME'],
     description:
-      'Real-time fluid simulation via TouchDesigner, producing organic motion from minimal input.',
+      'Real-time fluid animation made in TouchDesigner, producing organic motion from minimal input.',
     media: { type: 'video', src: VIDEO_URLS.FLUID_TICKS },
   },
   {
