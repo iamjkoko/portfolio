@@ -1,13 +1,18 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import '../global.css';
 
 import { ROUTES } from '../constants/routes';
-import { archiveEntries, type ArchiveCategory } from '../data/archive';
+import {
+  archiveEntries,
+  type ArchiveCategory,
+  type ArchiveEntry,
+} from '../data/archive';
 import ArchiveImage from '../components/ArchiveImage';
 import ArchiveVideo from '../components/ArchiveVideo';
+import VideoModal from '../components/VideoModal';
 import Footer from '../components/Footer';
 
 // Studio is temporarily hidden — MOTION and RENDERINGS are exposed in the UI.
@@ -38,6 +43,7 @@ function pathnameToFilter(pathname: string): ArchiveCategory {
 function Archive() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [selectedVideo, setSelectedVideo] = useState<ArchiveEntry | null>(null);
 
   const filter = pathnameToFilter(location.pathname);
 
@@ -118,6 +124,7 @@ function Archive() {
           {filteredItems.map((item) => {
             const isStudio = item.category === 'studio';
             const hasHref = Boolean(item.href) && !item.comingSoon;
+            const hasModal = Boolean(item.modalVideoSrc);
 
             const studioMediaInner = (
               <div className="max-w-[810px] max-h-[540px] w-full h-auto overflow-hidden object-cover max-mobile:max-w-[750px] max-mobile:max-h-[500px]">
@@ -156,7 +163,13 @@ function Archive() {
 
             const motionFrame = (
               <div className="flex w-full flex-col">
-                <div className="border-2 border-transparent rounded-[8px] overflow-hidden">
+                <div
+                  className={`border-2 border-transparent rounded-[8px] overflow-hidden ${
+                    hasModal
+                      ? 'transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[0.98]'
+                      : ''
+                  }`}
+                >
                   <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-mobile:max-w-[750px] max-mobile:max-h-[500px] max-mobile:h-auto">
                     {motionMedia}
                   </div>
@@ -202,6 +215,15 @@ function Archive() {
                   <Link to={item.href} className="block no-underline text-inherit">
                     {frame}
                   </Link>
+                ) : hasModal ? (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedVideo(item)}
+                    className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-inherit"
+                    aria-label={`Play ${item.title}`}
+                  >
+                    {frame}
+                  </button>
                 ) : (
                   frame
                 )}
@@ -211,6 +233,7 @@ function Archive() {
           </motion.ul>
         </AnimatePresence>
       </section>
+      <VideoModal entry={selectedVideo} onClose={() => setSelectedVideo(null)} />
       <Footer theme="light" />
     </div>
   );

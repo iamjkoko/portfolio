@@ -11,5 +11,11 @@ export const VIDEO_URLS = {
   SOMETHING_ABOUT_US: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1779863062/smth-us-tb_t8zppv.mp4',
   IMG_TO_PTCLOUD: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1779863061/img-ptcloud-tb_adclwm.mp4',
   WORMHOLE: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1779863062/wormhole-tb_xktz5h.mp4',
-  CHAOTIC_TILES: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1780639682/ct-tiles_wxsfx7.mp4'
+  CHAOTIC_TILES: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1780639682/ct-tiles_wxsfx7.mp4',
+
+  // Experiments — full-quality versions played in the archive video modal.
+  // Only entries that set modalVideoSrc to one of these become clickable.
+  ECHOING_NATURE_FULL: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1779863060/ech-ntr-tb_fzocsk.mp4',
+  SOMETHING_ABOUT_US_FULL: 'https://cdn.sanity.io/files/ze2apb9r/production/03814c0380ad3469b48afcd3b53474d9cd32f644.mp4',
+  IMG_TO_PTCLOUD_FULL: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1779863061/img-ptcloud-tb_adclwm.mp4',
 } as const;

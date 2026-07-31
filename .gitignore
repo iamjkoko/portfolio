@@ -15,6 +15,11 @@ dist-ssr
 # Local working notes (not part of the site)
 notes/
 
+# Env
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

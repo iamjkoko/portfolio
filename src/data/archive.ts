@@ -35,6 +35,8 @@ export type ArchiveEntry = {
   description?: string;
   keywords?: string[];
   media: ArchiveMedia;
+  /** Full-quality video played in the archive modal. Entries with this set are clickable. */
+  modalVideoSrc?: string;
 };
 
 export const archiveEntries: ArchiveEntry[] = [
@@ -106,6 +108,7 @@ export const archiveEntries: ArchiveEntry[] = [
     description:
       'A generative motion project exploring rhythm and repetition through abstract visual forms synced to ambient sound, music by Daft Punk (Something About Us).',
     media: { type: 'video', src: VIDEO_URLS.SOMETHING_ABOUT_US },
+    modalVideoSrc: VIDEO_URLS.SOMETHING_ABOUT_US_FULL,
   },
   {
     id: 'img-to-ptcloud',
@@ -118,6 +121,7 @@ export const archiveEntries: ArchiveEntry[] = [
     description:
       'Converts flat images into spatial point clouds, revealing depth and structure through particle-based rendering. Made with TouchDesigner.',
     media: { type: 'video', src: VIDEO_URLS.IMG_TO_PTCLOUD },
+    modalVideoSrc: VIDEO_URLS.IMG_TO_PTCLOUD_FULL,
   },
   {
     id: 'fluid-ticks',
@@ -142,6 +146,7 @@ export const archiveEntries: ArchiveEntry[] = [
     description:
       'Generative visuals that respond to natural soundscapes, translating environmental audio into flowing organic forms. Audio is recorded in a small village garden in Richeliu, France.',
     media: { type: 'video', src: VIDEO_URLS.ECHOING_NATURE },
+    modalVideoSrc: VIDEO_URLS.ECHOING_NATURE_FULL,
   },
   {
     id: 'wormhole',
