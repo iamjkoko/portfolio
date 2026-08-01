@@ -121,7 +121,6 @@ export const archiveEntries: ArchiveEntry[] = [
     description:
       'Converts flat images into spatial point clouds, revealing depth and structure through particle-based rendering. Made with TouchDesigner.',
     media: { type: 'video', src: VIDEO_URLS.IMG_TO_PTCLOUD },
-    modalVideoSrc: VIDEO_URLS.IMG_TO_PTCLOUD_FULL,
   },
   {
     id: 'fluid-ticks',

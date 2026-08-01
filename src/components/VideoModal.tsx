@@ -78,7 +78,7 @@ function VideoModal({ entry, onClose }: VideoModalProps) {
     window.addEventListener('keydown', onKeyDown);
     return () => {
       window.removeEventListener('keydown', onKeyDown);
-      previouslyFocused?.focus();
+      previouslyFocused?.focus({ preventScroll: true });
     };
   }, [isOpen, onClose]);
 
@@ -189,7 +189,7 @@ function VideoModal({ entry, onClose }: VideoModalProps) {
 
             <video
               ref={videoRef}
-              className="block max-h-[85dvh] max-w-[92vw] w-auto h-auto cursor-pointer rounded-[8px] object-contain"
+              className="block max-h-[65dvh] max-w-[92vw] w-auto h-auto cursor-pointer rounded-[8px] object-contain"
               src={entry.modalVideoSrc}
               playsInline
               loop
