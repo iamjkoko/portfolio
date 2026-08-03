@@ -221,7 +221,6 @@ hr {
 
     .project-intro p {
         font-size: 0.875rem;
-        padding-top: 1.25rem;
     }
 
     .project-keywords {
@@ -246,7 +245,7 @@ hr {
     flex-direction: column;
     width: 100%;
     align-items: center;
-    padding: 1.25rem 5rem;
+    padding: 4rem 5rem;
     box-sizing: border-box;
 }
 

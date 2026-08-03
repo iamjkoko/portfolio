@@ -146,6 +146,31 @@ const Home = () => {
       <section id="works" className="w-full min-h-screen flex flex-col items-center bg-[#ffffff] pt-32 pb-16 max-mobile:pt-10 max-mobile:pb-10">
         <div className="flex flex-col gap-[2rem] w-full px-[8rem] max-mobile:gap-[15px] max-mobile:px-[var(--page-padding-x-mobile)]">
 
+        {/* Stamps By Ko */}
+        <Link to={ROUTES.WORKS.STAMPS} className="group block">
+        <div className="fade-container flex items-start gap-[15px] w-full max-mobile:flex-col max-mobile:flex-col-reverse">
+            <div className="fade-in flex-1 flex items-start pt-[2rem] max-mobile:w-full max-mobile:pt-4 max-mobile:justify-start max-mobile:items-start">
+                <div className="text-black transition-opacity">
+                    <h2 className="text-3xl font-medium pb-[1rem] max-mobile:text-xl max-mobile:text-left">THE STAMP ARCHIVE</h2>
+                    <p className="text-md font-normal pr-[8rem] text-[rgb(118,118,118)] max-mobile:text-base max-mobile:text-left max-mobile:pr-0 max-mobile:text-sm">An online archive of my father's stamp collection, spanning hundreds of pieces from around the world.</p>
+
+                     <div className="flex flex-row flex-wrap gap-3 pt-8 max-mobile:py-0 max-mobile:pt-8 max-mobile:pb-8">
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">FRONT-END</span>
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">PYTHON</span>
+                        <span className="text-[0.9rem] font-normal text-[rgb(113,113,113)] py-1 px-4 rounded-[30px] bg-[#ececec] max-mobile:text-[0.75rem] max-mobile:py-[0.25rem] max-mobile:px-3">ARCHIVING</span>
+                    </div>
+                </div>
+            </div>
+            <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-mobile:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
+                <div className="w-[720px] h-[480px] max-mobile:w-[720px] max-mobile:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
+                    <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.STAMPS_DEMO_PREVIEW} type="video/mp4"/>Your browser does not support the video tag.</video>
+                </div>
+            </div>
+        </div>
+        </Link>
+
+        <br />
+        
         {/* Ko: Logo Animation */}
         <Link to={ROUTES.WORKS.LOGO} className="group block">
         <div className="fade-container flex items-start gap-[15px] w-full max-mobile:flex-col max-mobile:flex-col-reverse">

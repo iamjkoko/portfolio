@@ -7,6 +7,7 @@ export const ROUTES = {
     AGORA: '/works/agora',
     CAVEMAN: '/works/caveman',
     LOGO: '/works/logo',
+    STAMPS: '/works/stamps',
   },
   ARCHIVE: {
     ROOT: '/archive',

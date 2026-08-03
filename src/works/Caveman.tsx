@@ -58,7 +58,7 @@ function Caveman() {
             <h1>Modern Caveman</h1>
             <br />
             <h2>2025</h2>
-            <h3>Blender, <br /> Adobe Photoshop</h3>
+            <h3>Blender, Adobe Photoshop</h3>
           </div>
           <div className={styles['project-content']}>
             <div className={styles['project-intro']}>

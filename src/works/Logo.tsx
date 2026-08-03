@@ -25,7 +25,7 @@ function Logo() {
             <h1>Ko: Logo Animation</h1>
             <br />
             <h2>2025</h2>
-            <h3>Adobe Illustrator, <br /> After Effects</h3>
+            <h3>Adobe Illustrator, After Effects</h3>
           </div>
           <div className={styles['project-content']}>
             <div className={styles['project-intro']}>
@@ -42,8 +42,6 @@ function Logo() {
             Your browser does not support the video tag.
           </video>
         </div>
-
-
 
         <section id="project-description" className={styles['project-description']}>
           <div className={styles['description']}>

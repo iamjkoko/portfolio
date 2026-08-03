@@ -16,7 +16,7 @@ import Works from './pages/Works';
 
 import Archive from './pages/Archive';
 
-import { Caveman, Logo, Agora } from './works';
+import { Caveman, Logo, Agora, Stamps } from './works';
 // Studio archive imports are temporarily disabled while the studio section is hidden.
 // To restore: uncomment the lines below (plus `Footer`) and the studio routes in <AppRoutes /> below.
 // import { Cheso, InfinityBox, Paintbox, Paperfold, SaoPaulo, LightPainting } from './archive';
@@ -66,6 +66,7 @@ function AppRoutes() {
             <Route path={ROUTES.WORKS.CAVEMAN} element={<AnimatedPage><Caveman /></AnimatedPage>} />
             <Route path={ROUTES.WORKS.LOGO} element={<AnimatedPage><Logo /></AnimatedPage>} />
             <Route path={ROUTES.WORKS.AGORA} element={<AnimatedPage><Agora /></AnimatedPage>} />
+            <Route path={ROUTES.WORKS.STAMPS} element={<AnimatedPage><Stamps /></AnimatedPage>} />
             
             {/* Archive listing – studio is temporarily hidden; default to motion */}
             <Route path={ROUTES.ARCHIVE.ROOT} element={<Navigate to={ROUTES.ARCHIVE.MOTION.ROOT} replace />} />
