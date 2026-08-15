@@ -47,7 +47,7 @@ function Agora(): React.JSX.Element {
         </div>
         <br />
         <div className={styles['description-img']}>
-            <img src={AgoraLayout} alt="Agora Layout" className={styles['largeImage']}/>
+            <img src={AgoraLayout} alt="Agora Layout" className="max-w-[1200px]" />
         </div>
         </div>
     </section>

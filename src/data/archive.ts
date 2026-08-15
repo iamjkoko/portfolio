@@ -119,7 +119,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2026',
     keywords: ['POINT CLOUD', 'DEPTH', '3D'],
     description:
-      'Converts flat images into spatial point clouds, revealing depth and structure through particle-based rendering. Made with TouchDesigner.',
+      'Simulating conversion of flat images into spatial point clouds, revealing depth and structure through particle-based rendering.',
     media: { type: 'video', src: VIDEO_URLS.IMG_TO_PTCLOUD },
   },
   {
@@ -156,7 +156,7 @@ export const archiveEntries: ArchiveEntry[] = [
     year: '2025',
     keywords: ['SHADER', 'SPACE', 'DISTORTION'],
     description:
-      'A shader experiment simulating gravitational lensing and spatial distortion through a traversable wormhole. Made with Touchdesigner.',
+      'A shader experiment simulating gravitational lensing and spatial distortion through a traversable wormhole.',
     media: { type: 'video', src: VIDEO_URLS.WORMHOLE },
   },
 
