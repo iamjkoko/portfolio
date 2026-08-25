@@ -182,6 +182,27 @@ strong {
   animation: swipeInFromLeft 0.4s ease-in-out forwards;
 }
 
+/* Loading screen */
+.loading-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  animation: loadingFlicker 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-dot {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* ========================================== */
 /* THEME & VARIABLES */
 /* ========================================== */

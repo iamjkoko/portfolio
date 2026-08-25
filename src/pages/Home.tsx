@@ -18,6 +18,9 @@ import { INTRO_COMPLETE_EVENT } from '../constants/events';
 
 const OVERLAY_OPACITY = 0.5;
 
+/* Loading Screen Duration */
+const MIN_LOADING_SCREEN_MS = 3000;
+
 function getIntroAlreadySeen(): boolean {
   try {
     return typeof sessionStorage !== 'undefined' && sessionStorage.getItem(INTRO_SEEN_STORAGE_KEY) === '1';
@@ -34,6 +37,7 @@ const Home = () => {
 
   const [introAlreadySeen] = useState(getIntroAlreadySeen);
   const [loadingScreenComplete, setLoadingScreenComplete] = useState(introAlreadySeen);
+  const [loadingStartedAt] = useState(() => performance.now());
 
   useEffect(() => {
     if (document.fonts.status === 'loaded') {
@@ -53,7 +57,10 @@ const Home = () => {
     if (introAlreadySeen) return;
     if (!heroReady) return;
 
-    const extraDelayMs = 500;
+    // Hold the loading screen until the minimum display time has passed,
+    // with a small buffer after assets become ready.
+    const elapsedMs = performance.now() - loadingStartedAt;
+    const extraDelayMs = Math.max(500, MIN_LOADING_SCREEN_MS - elapsedMs);
 
     const id = window.setTimeout(() => {
       try {
@@ -66,7 +73,7 @@ const Home = () => {
     }, extraDelayMs);
 
     return () => window.clearTimeout(id);
-  }, [heroReady, introAlreadySeen]);
+  }, [heroReady, introAlreadySeen, loadingStartedAt]);
 
   useEffect(() => {
     let observer: IntersectionObserver | null = null;

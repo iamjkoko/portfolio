@@ -306,6 +306,7 @@
     font-family: var(--font-family-boska);
     font-size: 3rem;
     font-variation-settings: 'wght' 400;
+    padding-top: 2rem;
 }
 
 @media (max-width: 935px) {
@@ -340,8 +341,8 @@
 
     .description-quote {
         font-size: 2rem;
-        padding-top: 2.5rem;
-        padding-left: 1rem;
+        padding-top: 1.5rem;
+        padding-left: 0.25rem;
     }
 }
 
