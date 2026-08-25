@@ -170,8 +170,18 @@ function Archive() {
                       : ''
                   }`}
                 >
-                  <div className="max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-mobile:max-w-[750px] max-mobile:max-h-[500px] max-mobile:h-auto">
+                  <div className="relative max-w-[810px] max-h-[540px] w-full aspect-[3/2] overflow-hidden max-mobile:max-w-[750px] max-mobile:max-h-[500px] max-mobile:h-auto">
                     {motionMedia}
+                    {hasModal ? (
+                      <div
+                        className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/50"
+                        aria-hidden
+                      >
+                        <span className="text-lg text-white [font-variation-settings:'wght'_600] max-mobile:text-sm">
+                          CLICK TO VIEW
+                        </span>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                 {item.description ? (
