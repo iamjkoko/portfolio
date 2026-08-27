@@ -169,7 +169,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-mobile:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
-                <div className="w-[720px] h-[480px] max-mobile:w-[720px] max-mobile:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
+                <div className="w-full aspect-[3/2] overflow-hidden">
                     <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.STAMPS_DEMO_PREVIEW} type="video/mp4"/>Your browser does not support the video tag.</video>
                 </div>
             </div>
@@ -195,7 +195,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-mobile:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
-                <div className="w-[720px] h-[480px] max-mobile:w-[720px] max-mobile:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
+                <div className="w-full aspect-[3/2] overflow-hidden">
                     <video className="block w-full h-full object-cover rounded-none" playsInline autoPlay loop muted preload="auto"><source src={VIDEO_URLS.LOGO_ANIMATION} type="video/mp4"/>Your browser does not support the video tag.</video>
                 </div>
             </div>
@@ -219,7 +219,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="fade-in flex-1 border-2 border-[#f6f6f6] rounded-[8px] overflow-hidden max-mobile:w-full transition-[scale] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[0.98]">
-            <div className="w-[720px] h-[480px] max-mobile:w-[720px] max-mobile:h-[480px] max-md:w-full max-md:h-auto max-md:aspect-[3/2] overflow-hidden">
+            <div className="w-full aspect-[3/2] overflow-hidden">
                 <img className="block w-full h-full object-cover rounded-none" src={Caveman} />
             </div>
             </div>
