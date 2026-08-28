@@ -115,6 +115,7 @@ const Home = () => {
       <LoadingScreen isVisible={!loadingScreenComplete} />
       <section
         id="hero"
+        data-nosnippet
         className="flex justify-center items-center h-svh relative overflow-hidden"
       >
         <SplitText
