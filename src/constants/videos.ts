@@ -4,7 +4,7 @@ export const VIDEO_URLS = {
   LOGO_WIP: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/logo-wip_fc1z63.mp4',
   AGORA_PREVIEW: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/agora_w0bynm.mp4',
   AGORA_FULL: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1750039958/agora-full_kaej38.mp4',
-  STAMPS_DEMO_PREVIEW: 'https://cdn.sanity.io/files/ze2apb9r/production/1590f4a0d1f6ba98ecde10036cc7f6865320c6dc.mp4',
+  STAMPS_DEMO_PREVIEW: 'https://cdn.sanity.io/files/ze2apb9r/production/a9f84b1e9420c0accc2cd2cbeb8f0f4eb05d08c3.mp4',
   STAMPS_DEMO_FULL: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1785751080/stamps-demo_r0xi6h.mp4',
 
   // Experiments
