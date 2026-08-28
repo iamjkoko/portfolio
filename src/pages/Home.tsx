@@ -19,7 +19,7 @@ import { INTRO_COMPLETE_EVENT } from '../constants/events';
 const OVERLAY_OPACITY = 0.5;
 
 /* Loading Screen Duration */
-const MIN_LOADING_SCREEN_MS = 3000;
+const MIN_LOADING_SCREEN_MS = 2000;
 
 function getIntroAlreadySeen(): boolean {
   try {
