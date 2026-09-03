@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Pause, Play, Volume2, VolumeX, X } from 'lucide-react';
 
 import type { ArchiveEntry } from '../data/archive';
+import useIsMobile from '../hooks/useIsMobile';
 import { useLenis } from './LenisProvider';
 
 const modalFade = {
@@ -20,13 +21,14 @@ type VideoModalProps = {
 
 function VideoModal({ entry, onClose }: VideoModalProps) {
   const lenis = useLenis();
+  const isMobile = useIsMobile();
+  const controlIconSize = isMobile ? 18 : 22;
   const dialogRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const hideTimerRef = useRef<number | null>(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(1);
   const [controlsVisible, setControlsVisible] = useState(true);
 
   const isOpen = Boolean(entry?.modalVideoSrc);
@@ -87,7 +89,6 @@ function VideoModal({ entry, onClose }: VideoModalProps) {
     if (!isOpen) return;
     setIsPlaying(false);
     setIsMuted(false);
-    setVolume(1);
     setControlsVisible(true);
   }, [isOpen, entry?.id]);
 
@@ -132,21 +133,6 @@ function VideoModal({ entry, onClose }: VideoModalProps) {
     const next = !video.muted;
     video.muted = next;
     setIsMuted(next);
-  };
-
-  const handleVolumeChange = (value: number) => {
-    const video = videoRef.current;
-    setVolume(value);
-    if (!video) return;
-    video.volume = value;
-    if (value > 0 && video.muted) {
-      video.muted = false;
-      setIsMuted(false);
-    }
-    if (value === 0 && !video.muted) {
-      video.muted = true;
-      setIsMuted(true);
-    }
   };
 
   return createPortal(
@@ -198,9 +184,7 @@ function VideoModal({ entry, onClose }: VideoModalProps) {
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
               onVolumeChange={(e) => {
-                const video = e.currentTarget;
-                setIsMuted(video.muted);
-                setVolume(video.volume);
+                setIsMuted(e.currentTarget.muted);
               }}
             />
 
@@ -213,40 +197,28 @@ function VideoModal({ entry, onClose }: VideoModalProps) {
               <button
                 type="button"
                 onClick={togglePlay}
-                className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-transparent text-white/80 transition-colors hover:text-white"
+                className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-transparent text-white transition-colors hover:text-white mobile:h-12 mobile:w-12"
                 aria-label={isPlaying ? 'Pause' : 'Play'}
               >
                 {isPlaying ? (
-                  <Pause size={18} strokeWidth={1.5} fill="currentColor" />
+                  <Pause size={controlIconSize} strokeWidth={1.5} fill="currentColor" />
                 ) : (
-                  <Play size={18} strokeWidth={1.5} fill="currentColor" />
+                  <Play size={controlIconSize} strokeWidth={1.5} fill="currentColor" />
                 )}
               </button>
 
-              <div className="ml-auto flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={toggleMute}
-                  className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-transparent text-white/80 transition-colors hover:text-white"
-                  aria-label={isMuted ? 'Unmute' : 'Mute'}
-                >
-                  {isMuted || volume === 0 ? (
-                    <VolumeX size={18} strokeWidth={1.5} />
-                  ) : (
-                    <Volume2 size={18} strokeWidth={1.5} />
-                  )}
-                </button>
-                <input
-                  type="range"
-                  min={0}
-                  max={1}
-                  step={0.05}
-                  value={isMuted ? 0 : volume}
-                  onChange={(e) => handleVolumeChange(Number(e.target.value))}
-                  className="h-1 w-20 cursor-pointer accent-white"
-                  aria-label="Volume"
-                />
-              </div>
+              <button
+                type="button"
+                onClick={toggleMute}
+                className="ml-auto flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-transparent text-white transition-colors hover:text-white mobile:h-12 mobile:w-12"
+                aria-label={isMuted ? 'Unmute' : 'Mute'}
+              >
+                {isMuted ? (
+                  <VolumeX size={controlIconSize} strokeWidth={1.5} />
+                ) : (
+                  <Volume2 size={controlIconSize} strokeWidth={1.5} />
+                )}
+              </button>
             </div>
           </motion.div>
         </motion.div>
