@@ -309,7 +309,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
                     ? 'cursor-default'
                     : 'cursor-pointer hover:text-[rgb(140,140,140)]'
                 }`}
-                style={{ fontVariationSettings: isActive ? "'wght' 800" : "'wght' 600" }}
+                style={{ fontVariationSettings: isActive ? "'wght' 600" : "'wght' 500" }}
               >
                 {label}
               </Link>
