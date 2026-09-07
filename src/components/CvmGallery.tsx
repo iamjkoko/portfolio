@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-// import './styles/cvm-gallery.css'; // Kept for reference, now using Tailwind
+import { ArrowDown } from 'lucide-react';
 
 export interface CvmGalleryImage {
   src: string;
@@ -43,13 +43,16 @@ interface CvmGalleryProps {
 
 const CvmGallery = ({ images }: CvmGalleryProps) => {
   return (
-    <section className="w-full flex flex-col items-center bg-[#ffffff] my-[30px] md:my-20">
+    <section className="w-full flex flex-col items-center bg-[#ffffff] mb-[20px] md:my-10">
+      <h3 className="font-light text-base md:text-xl md:pt-0 pb-[4%] inline-flex items-center gap-1.5">
+        CLICK EACH IMAGE TO REVEAL
+        <ArrowDown className="size-4 md:size-5" aria-hidden />
+      </h3>
       <div className="grid grid-cols-3 gap-[10px] md:gap-10 justify-center mx-auto overflow-hidden px-[8%] pb-[4%] md:px-8 md:pb-12">
         {images.map((img, index) => (
           <CvmGalleryItem key={index} src={img.src} altSrc={img.altSrc} alt={img.alt} />
         ))}
       </div>
-      <h3 className="font-light text-base md:text-xl md:pt-0 pt-[4%]">CLICK EACH IMAGE TO REVEAL ↑</h3>
     </section>
   );
 };

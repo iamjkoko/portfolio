@@ -104,7 +104,7 @@ function Caveman() {
 
               <br />
               <div className={styles['description-quote']}>
-                <h1 className="pb-4" ><em>How confident can we be in what we think we know when our understanding is limited?</em></h1>
+                <h1 className="pb-8" ><em>How confident can we be in what we think we know when our understanding is limited?</em></h1>
                 <h1><em>How much should we trust our intuition—or even our own eyes?</em></h1>
               </div>
             </div>
