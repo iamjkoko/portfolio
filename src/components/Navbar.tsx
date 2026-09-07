@@ -168,9 +168,7 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
                         <Link
                           to={item.to}
                           onClick={closeMobileMenu}
-                          className={`group flex items-baseline gap-4 py-5 text-black no-underline ${
-                            isActive ? 'cursor-default' : 'cursor-pointer'
-                          }`}
+                          className="group flex cursor-pointer items-baseline gap-4 py-5 text-black no-underline"
                           aria-current={isActive ? 'page' : undefined}
                         >
                           <span
@@ -304,10 +302,8 @@ export default function Navbar({ showNavbar = true }: NavbarProps) {
                 key={to}
                 to={to}
                 aria-current={isActive ? 'page' : undefined}
-                className={`inline-flex no-underline whitespace-nowrap py-2 px-4 text-base text-black transition-[color_0.3s_ease] ${
-                  isActive
-                    ? 'cursor-default'
-                    : 'cursor-pointer hover:text-[rgb(140,140,140)]'
+                className={`inline-flex cursor-pointer no-underline whitespace-nowrap py-2 px-4 text-base text-black transition-[color_0.3s_ease] ${
+                  isActive ? '' : 'hover:text-[rgb(140,140,140)]'
                 }`}
                 style={{ fontVariationSettings: isActive ? "'wght' 600" : "'wght' 500" }}
               >
