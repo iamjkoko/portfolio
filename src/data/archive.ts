@@ -30,10 +30,7 @@ export type ArchiveEntry = {
   category: ArchiveCategory;
   title: string;
   href: string | null;
-  comingSoon?: boolean;
-  year?: string;
   description?: string;
-  keywords?: string[];
   media: ArchiveMedia;
   /** Full-quality video played in the archive modal. Entries with this set are clickable. */
   modalVideoSrc?: string;
@@ -86,13 +83,20 @@ export const archiveEntries: ArchiveEntry[] = [
 
   // Motion
   {
+    id: 'andata',
+    category: 'motion',
+    title: 'Andata',
+    href: null,
+    description:
+      'Growing stems to Ryuichi Sakamoto’s “A Flower is not a Flower(花非花)”. Each note triggers a branch, built with p5.js with audio onset detection.',
+    media: { type: 'video', src: VIDEO_URLS.ANDATA },
+    modalVideoSrc: VIDEO_URLS.ANDATA,
+  },
+  {
     id: 'chaotic-tiles',
     category: 'motion',
     title: 'Chaotic Tiles',
     href: null,
-    comingSoon: true,
-    year: '2026',
-    keywords: ['SHADER', 'TILES', 'CHAOS'],
     description:
       'Random fractal patterns made with instancing + noise TOPs in TouchDesigner.',
     media: { type: 'video', src: VIDEO_URLS.CHAOTIC_TILES },
@@ -102,9 +106,6 @@ export const archiveEntries: ArchiveEntry[] = [
     category: 'motion',
     title: 'Something About Us',
     href: null,
-    comingSoon: true,
-    year: '2026',
-    keywords: ['GENERATIVE', 'MOTION', 'AUDIO'],
     description:
       'A generative motion project exploring rhythm and repetition through abstract visual forms synced to ambient sound, music by Daft Punk (Something About Us).',
     media: { type: 'video', src: VIDEO_URLS.SOMETHING_ABOUT_US },
@@ -115,9 +116,6 @@ export const archiveEntries: ArchiveEntry[] = [
     category: 'motion',
     title: 'Image to Point Cloud',
     href: null,
-    comingSoon: true,
-    year: '2026',
-    keywords: ['POINT CLOUD', 'DEPTH', '3D'],
     description:
       'Simulating conversion of flat images into spatial point clouds, revealing depth and structure through particle-based rendering.',
     media: { type: 'video', src: VIDEO_URLS.IMG_TO_PTCLOUD },
@@ -127,9 +125,6 @@ export const archiveEntries: ArchiveEntry[] = [
     category: 'motion',
     title: 'Fluid Ticks',
     href: null,
-    comingSoon: true,
-    year: '2025',
-    keywords: ['FLUID SIM', 'PARTICLES', 'REAL-TIME'],
     description:
       'Real-time fluid animation made in TouchDesigner, producing organic motion from minimal input.',
     media: { type: 'video', src: VIDEO_URLS.FLUID_TICKS },
@@ -139,9 +134,6 @@ export const archiveEntries: ArchiveEntry[] = [
     category: 'motion',
     title: 'Echoing Nature',
     href: null,
-    comingSoon: true,
-    year: '2025',
-    keywords: ['NATURE', 'SOUND', 'GENERATIVE'],
     description:
       'Generative visuals that respond to natural soundscapes, translating environmental audio into flowing organic forms. Audio is recorded in a small village garden in Richeliu, France.',
     media: { type: 'video', src: VIDEO_URLS.ECHOING_NATURE },
@@ -152,9 +144,6 @@ export const archiveEntries: ArchiveEntry[] = [
     category: 'motion',
     title: 'Wormhole',
     href: null,
-    comingSoon: true,
-    year: '2025',
-    keywords: ['SHADER', 'SPACE', 'DISTORTION'],
     description:
       'A shader experiment simulating gravitational lensing and spatial distortion through a traversable wormhole.',
     media: { type: 'video', src: VIDEO_URLS.WORMHOLE },

@@ -13,7 +13,7 @@
     "@gsap/react": "^2.1.2",
     "@sanity/client": "^7.26.0",
     "@sanity/image-url": "^2.1.1",
-    "@tailwindcss/vite": "^4.1.16",
+    "@tailwindcss/vite": "^4.3.3",
     "framer-motion": "^12.35.1",
     "groq": "^6.8.0",
     "gsap": "^3.14.2",
@@ -37,7 +37,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^17.4.0",
-    "tailwindcss": "^4.2.1",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.62.1",
     "vite": "^7.3.1"

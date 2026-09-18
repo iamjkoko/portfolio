@@ -19,4 +19,5 @@ export const VIDEO_URLS = {
   // Only entries that set modalVideoSrc to one of these become clickable.
   ECHOING_NATURE_FULL: 'https://cdn.sanity.io/files/ze2apb9r/production/9e56030e13c1fd3c3cc8da812074d5f00524fa5a.mp4',
   SOMETHING_ABOUT_US_FULL: 'https://cdn.sanity.io/files/ze2apb9r/production/03814c0380ad3469b48afcd3b53474d9cd32f644.mp4',
+  ANDATA: 'https://cdn.sanity.io/files/ze2apb9r/production/82d486f27488b203dc009d91f5123c35449adcbf.mp4',
 } as const;

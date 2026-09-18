@@ -123,7 +123,7 @@ function Archive() {
           >
           {filteredItems.map((item) => {
             const isStudio = item.category === 'studio';
-            const hasHref = Boolean(item.href) && !item.comingSoon;
+            const hasHref = Boolean(item.href);
             const hasModal = Boolean(item.modalVideoSrc);
 
             const studioMediaInner = (
