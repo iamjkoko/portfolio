@@ -60,7 +60,7 @@ function Andante() {
           <div className={styles['description-body']}>
             <p>The fence reference provides a shared grid for the uppercase and lowercase forms. The construction studies and experiments explore how geometric elements can be arranged within that system to shape individual letters.</p>
           </div>
-          <div className="mx-auto grid w-full max-w-[1200px] grid-cols-2 items-start gap-3 pt-10 pb-2 max-mobile:gap-2 max-mobile:pt-4">
+          <div className="mx-auto grid w-full max-w-[1200px] grid-cols-2 items-start gap-3 pt-10 pb-2 max-mobile:grid-cols-1 max-mobile:gap-2 max-mobile:pt-4">
             <video className="block h-auto w-full min-w-0 rounded-lg" autoPlay loop muted playsInline preload="metadata" aria-label="Andante grid construction animation 1">
               <source src={VIDEO_URLS.ANDANTE_GRID_01} type="video/mp4" />
               Your browser does not support the video tag.
