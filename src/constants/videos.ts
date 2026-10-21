@@ -1,5 +1,7 @@
 export const VIDEO_URLS = {
   // Works
+  ANDANTE_GRID_01: 'https://cdn.sanity.io/files/ze2apb9r/production/f7bf816293fa547c9f03ca244cee9d7b2eb5610a.mp4',
+  ANDANTE_GRID_02: 'https://cdn.sanity.io/files/ze2apb9r/production/306d3a05afe6cec0b45c0f9233817f1c090d6bbe.mp4',
   LOGO_ANIMATION: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1764331938/logo_n5druz_1_yopcck.mp4',
   LOGO_WIP: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/logo-wip_fc1z63.mp4',
   AGORA_PREVIEW: 'https://res.cloudinary.com/db6ifdikq/video/upload/v1750039959/agora_w0bynm.mp4',

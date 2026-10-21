@@ -5,6 +5,7 @@ export const ROUTES = {
   WORKS: {
     ROOT: '/works',
     AGORA: '/works/agora',
+    ANDANTE: '/works/andante',
     CAVEMAN: '/works/caveman',
     LOGO: '/works/logo',
     STAMPS: '/works/stamps',

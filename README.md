@@ -38,36 +38,14 @@ Open [http://localhost:5173](http://localhost:5173). Production build: `npm run 
 
 ### Design system
 
-- **Reference:** [`ds-reference.txt`](./ds-reference.txt)  
-  Single source of truth for spacing, colors, typography, breakpoints, and animation tokens. Use it when changing layout, adding pages, or styling components.
-
 ### Routing
 
 - All routes live in `ROUTES` in `src/constants/routes.ts`. Add new work/archive routes there and in `App.tsx`, then add the page under `src/works/` or `src/archive/...`.
-
-### Theming
-
-- Light/dark use CSS variables in `global.css` (`:root` and `.dark`). Use `var(--color-background)`, `var(--color-text)`, etc.
-
-### Breakpoints
-
-- Mobile breakpoint is **935px** everywhere (media queries and Tailwind `--breakpoint-mobile`).
 
 ### Code style
 
 - The codebase is TypeScript-first (`.ts` / `.tsx`). Follow existing typing patterns when adding components, constants, and routes.
 
----
-
-## Adding a new work or archive page
-
-1. Add route(s) to `src/constants/routes.ts` (under `ROUTES.WORKS` or `ROUTES.ARCHIVE.STUDIO` / `EXPERIMENTS`).
-2. Create the page in `src/works/` or `src/archive/studio/` / `src/archive/experiments/`.
-3. Export it from `src/works/index.ts` or `src/archive/index.ts`.
-4. In `App.tsx`, add the `<Route>` and import the component.
-5. Use `works.module.css` and tokens from `ds-reference.txt` for layout and spacing.
-
----
 
 ## Scripts
 
